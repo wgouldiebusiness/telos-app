@@ -1,0 +1,216 @@
+/* Shared portal page styles */
+.pageHead {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--linec);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pageTitle {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  font-weight: 300;
+  color: var(--green);
+}
+
+.emptyCard {
+  background: var(--panel);
+  border: 1px solid var(--linec);
+  border-top: 2px solid var(--gold);
+  padding: 2.5rem 2rem;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.emptyTitle {
+  font-size: var(--text-xl);
+  font-weight: 300;
+  color: var(--green);
+}
+
+.emptyText {
+  font-size: var(--text-base);
+  color: var(--ink-soft);
+  line-height: 1.78;
+}
+
+/* Requests form */
+.requestForm {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.requestIntro {
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+
+.fieldLabel {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.select,
+.textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--bone);
+  border: 1px solid var(--linec);
+  color: var(--ink);
+  font-family: var(--font-garamond, 'EB Garamond'), Georgia, serif;
+  font-size: var(--text-md);
+  outline: none;
+  transition: border-color var(--t-fast);
+  resize: vertical;
+}
+
+.select:focus,
+.textarea:focus {
+  border-color: var(--green);
+}
+
+.submitBtn {
+  position: relative;
+  overflow: hidden;
+  padding: 0.875rem 2rem;
+  background: var(--green);
+  color: var(--bone);
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  width: fit-content;
+  transition: color var(--t-base);
+}
+
+.submitBtn span { position: relative; z-index: 1; }
+
+.submitBtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  transform: translateX(-101%);
+  transition: transform 400ms cubic-bezier(0.2,0.7,0.2,1);
+}
+
+.submitBtn:hover::after { transform: translateX(0); }
+
+/* Meetings */
+.meetCard {
+  background: var(--panel);
+  border: 1px solid var(--linec);
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.meetDesc {
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+/* Stripe button */
+.stripeBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--green);
+  color: var(--bone);
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background var(--t-fast);
+  width: fit-content;
+}
+
+.stripeBtn:hover { background: var(--green-2); }
+
+/* Support */
+.supportCard {
+  background: var(--panel);
+  border: 1px solid var(--linec);
+  border-top: 2px solid var(--gold-2);
+  padding: 2.5rem 2rem;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+}
+
+.supportIcon {
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.supportTitle {
+  font-size: var(--text-xl);
+  font-weight: 300;
+  color: var(--green);
+}
+
+.supportDesc {
+  font-size: var(--text-base);
+  color: var(--ink-soft);
+  line-height: 1.75;
+}
+
+.waBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem 1.75rem;
+  background: #25D366;
+  color: #fff;
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: opacity var(--t-fast);
+  width: fit-content;
+}
+
+.waBtn:hover { opacity: 0.9; }
+
+.supportAlt {
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+}
+
+.supportAlt a {
+  color: var(--brown);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

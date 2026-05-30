@@ -1,0 +1,94 @@
+'use client'
+import { useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import Logo from '@/components/Logo/Logo'
+import styles from './PortalShell.module.css'
+
+const navItems = [
+  { label: 'Dashboard',          href: '/portal',              icon: '◈' },
+  { label: 'Performance Report', href: '/portal/performance',  icon: '▲' },
+  { label: 'Sales',              href: '/portal/sales',        icon: '◉' },
+  { label: 'Request Changes',    href: '/portal/requests',     icon: '◇' },
+  { label: 'Book a Meeting',     href: '/portal/meetings',     icon: '◎' },
+  { label: 'Billing',            href: '/portal/billing',      icon: '◻' },
+]
+
+export default function PortalShell({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  return (
+    <div className={styles.shell}>
+      {/* Sidebar */}
+      <aside className={`${styles.sidebar} ${mobileOpen ? styles.sidebarOpen : ''}`}>
+        <div className={styles.sidebarHead}>
+          <Link href="/" className={styles.brand}>
+            <Logo size="sm" dark />
+            <span className={styles.wordmark}>TELOS</span>
+          </Link>
+        </div>
+
+        <div className={styles.bizName}>
+          {/* Replaced with real business name once Supabase is wired */}
+          <span className={styles.bizLabel}>Your Portal</span>
+        </div>
+
+        <nav className={styles.nav}>
+          {navItems.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`${styles.navItem} ${pathname === item.href ? styles.active : ''}`}
+              onClick={() => setMobileOpen(false)}
+            >
+              <span className={styles.navIcon}>{item.icon}</span>
+              <span className={styles.navLabel}>{item.label}</span>
+            </Link>
+          ))}
+        </nav>
+
+        <div className={styles.sidebarFoot}>
+          <Link
+            href="/portal/support"
+            className={`${styles.navItem} ${styles.whatsapp} ${pathname === '/portal/support' ? styles.active : ''}`}
+            onClick={() => setMobileOpen(false)}
+          >
+            <span className={styles.navIcon}>◆</span>
+            <span className={styles.navLabel}>WhatsApp Support</span>
+          </Link>
+          <Link href="/" className={styles.backLink}>
+            Back to website
+          </Link>
+        </div>
+      </aside>
+
+      {/* Mobile overlay */}
+      {mobileOpen && (
+        <div className={styles.overlay} onClick={() => setMobileOpen(false)} />
+      )}
+
+      {/* Main content */}
+      <div className={styles.main}>
+        <header className={styles.topBar}>
+          <button
+            className={styles.menuBtn}
+            onClick={() => setMobileOpen(v => !v)}
+            aria-label="Open portal menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+          <div className={styles.topBarRight}>
+            <span className={styles.statusDot} aria-label="All systems operational" />
+            <span className={styles.statusText}>All operational</span>
+          </div>
+        </header>
+        <div className={styles.content}>
+          {children}
+        </div>
+      </div>
+    </div>
+  )
+}

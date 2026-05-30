@@ -1,0 +1,117 @@
+.hero { padding-top: 9rem; padding-bottom: 2rem; }
+
+.heroHeadline {
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-weight: 200;
+  color: var(--green);
+  margin-top: 0.75rem;
+  margin-bottom: 1.5rem;
+  max-width: 28ch;
+}
+
+.heroSub {
+  font-size: var(--text-lg);
+  color: var(--ink-soft);
+  max-width: 58ch;
+  line-height: 1.75;
+}
+
+/* Two-column layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+/* Agenda card (green) */
+.agendaCard {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+.agendaList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  flex: 1;
+}
+
+.agendaItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--font-garamond, 'EB Garamond'), Georgia, serif;
+  font-size: var(--text-lg);
+  color: var(--bone);
+  line-height: 1.5;
+}
+
+.agendaDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold-2);
+  flex-shrink: 0;
+}
+
+.agendaNote {
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240,234,218,0.15);
+}
+
+.agendaNote p {
+  font-style: italic;
+  color: rgba(240,234,218,0.7);
+  font-size: var(--text-base);
+  line-height: 1.7;
+}
+
+/* Book card */
+.bookCard {
+  padding: 3rem 2.5rem;
+  background: var(--panel);
+  border: 1px solid var(--linec);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+}
+
+.bookTitle {
+  font-size: var(--text-2xl);
+  font-weight: 300;
+  color: var(--green);
+}
+
+.bookDesc {
+  font-size: var(--text-md);
+  color: var(--ink-soft);
+  line-height: 1.78;
+  max-width: 52ch;
+}
+
+.bookNote {
+  font-size: var(--text-sm);
+  color: var(--ink-soft);
+  margin-top: auto;
+  line-height: 1.7;
+}
+
+.emailLink {
+  color: var(--brown);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--t-fast);
+}
+
+.emailLink:hover {
+  color: var(--ink);
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: 1fr; }
+}

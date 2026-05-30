@@ -1,0 +1,12 @@
+.mark {
+  display: block;
+  flex-shrink: 0;
+}
+
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float { animation: none; }
+}

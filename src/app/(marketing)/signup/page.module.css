@@ -1,0 +1,13 @@
+.wider {
+  max-width: 560px !important;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 480px) {
+  .row { grid-template-columns: 1fr; }
+}

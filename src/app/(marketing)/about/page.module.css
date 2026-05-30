@@ -1,0 +1,150 @@
+.hero { padding-top: 10rem; padding-bottom: 2rem; }
+
+.heroInner { max-width: 800px; }
+
+.heroHeadline {
+  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
+  font-weight: 200;
+  color: var(--green);
+  margin-top: 0.75rem;
+  line-height: 1.08;
+}
+
+/* Story */
+.storySection {}
+
+.storyGrid {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 4rem;
+}
+
+.storyLeft {
+  padding-top: 0.25rem;
+}
+
+.storyRight {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.storyLead {
+  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
+  font-size: var(--text-xl);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--bone);
+  line-height: 1.5;
+}
+
+.storyBody {
+  font-size: var(--text-md);
+  color: rgba(240,234,218,0.82);
+  line-height: 1.82;
+  max-width: 68ch;
+}
+
+.storySig {
+  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
+  font-size: var(--text-lg);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--gold-2);
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(240,234,218,0.15);
+  line-height: 1.6;
+}
+
+.storySigTitle {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: rgba(240,234,218,0.5);
+  display: block;
+  margin-top: 0.375rem;
+}
+
+/* Mission */
+.missionSection {}
+
+.mission {
+  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
+  font-size: clamp(var(--text-xl), 2.5vw, var(--text-3xl));
+  font-weight: 300;
+  font-style: italic;
+  color: var(--green);
+  line-height: 1.4;
+  max-width: 54ch;
+  padding-left: 2rem;
+  border-left: 2px solid var(--gold);
+  margin-top: 1.5rem;
+}
+
+/* Values */
+.valuesSection { background: var(--panel); }
+
+.valuesHeadline {
+  font-size: clamp(var(--text-2xl), 3vw, var(--text-3xl));
+  font-weight: 300;
+  margin-top: 0.75rem;
+  margin-bottom: 3rem;
+  max-width: 32ch;
+}
+
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--linec);
+}
+
+.valueCard {
+  background: var(--panel);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-top: 2px solid var(--green);
+  transition: border-top-color var(--t-base);
+}
+
+.valueCard:hover { border-top-color: var(--gold); }
+
+.valueTitle {
+  font-size: var(--text-xl);
+  font-weight: 300;
+  color: var(--green);
+}
+
+.valueDesc {
+  font-size: var(--text-base);
+  color: var(--ink-soft);
+  line-height: 1.78;
+}
+
+/* CTA */
+.cta { text-align: center; }
+
+.ctaHeadline {
+  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
+  font-weight: 200;
+  color: var(--bone);
+  margin-bottom: 1.25rem;
+}
+
+.ctaBody {
+  font-size: var(--text-lg);
+  color: rgba(240,234,218,0.75);
+  max-width: 52ch;
+  margin: 0 auto 2.5rem;
+  line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+  .storyGrid { grid-template-columns: 1fr; gap: 2rem; }
+  .valuesGrid { grid-template-columns: 1fr; }
+}
