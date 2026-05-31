@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 }
 
 const agenda = [
-  'Current bottleneck analysis',
-  'Missed call and lead recovery strategy',
-  'Automation implementation roadmap',
-  'ROI estimation for your specific practice',
+  'A look at where your time is actually going',
+  'Which tasks are good candidates for automation',
+  'An honest view of whether AI can help your business',
+  'A clear picture of what working together would look like',
 ]
 
 export default function ContactPage() {
@@ -21,34 +21,31 @@ export default function ContactPage() {
 
   return (
     <>
-      {/* Hero */}
-      <section className={`section section-bone ${styles.hero}`}>
+      <section className={styles.hero}>
         <div className="container">
           <Reveal>
             <span className="label">Book a Call</span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className={styles.heroHeadline}>
-              Let us optimise your service workflow.
+            <h1 className={styles.heroH1}>
+              Fifteen minutes. <span className={styles.accent}>Honest answers.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.16}>
+          <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              A free, no-commitment 15-minute conversation. We will look honestly at
-              your practice, identify where time and revenue are being lost, and tell
-              you whether automation is the right answer. No pitch, no pressure.
+              A free, no-pressure conversation. We look at your business, identify
+              where time and revenue are being lost, and tell you plainly whether
+              automation is the right answer.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Booking card */}
-      <section className="section section-bone" style={{ paddingTop: 0 }}>
+      <section className={styles.bodySection}>
         <div className="container">
           <div className={styles.grid}>
-            {/* What we cover */}
             <Reveal>
-              <div className={`section-green ${styles.agendaCard}`}>
+              <div className={styles.agendaCard}>
                 <span className="label">What we will cover</span>
                 <ul className={styles.agendaList}>
                   {agenda.map(item => (
@@ -58,23 +55,20 @@ export default function ContactPage() {
                     </li>
                   ))}
                 </ul>
-                <div className={styles.agendaNote}>
-                  <p>
-                    Fifteen minutes. Honest assessment. You will leave knowing exactly
-                    whether Telos AI is right for your practice.
-                  </p>
-                </div>
+                <p className={styles.agendaNote}>
+                  No pitch. No pressure. You leave knowing exactly whether Telos AI
+                  is right for your business.
+                </p>
               </div>
             </Reveal>
 
-            {/* Booking action */}
             <Reveal delay={0.1}>
               <div className={styles.bookCard}>
-                <span className="label" style={{ color: 'var(--brown)' }}>Book your slot</span>
+                <span className="label">Book your slot</span>
                 <h2 className={styles.bookTitle}>Free 15-minute consultation</h2>
                 <p className={styles.bookDesc}>
-                  Select a time that works for you. The call takes place over Google Meet.
-                  You will receive a confirmation and a calendar invite immediately.
+                  Select a time that works for you. The call takes place over Google
+                  Meet. You will receive a confirmation and a calendar invite straight away.
                 </p>
                 <AnimatedButton
                   href={bookingUrl}

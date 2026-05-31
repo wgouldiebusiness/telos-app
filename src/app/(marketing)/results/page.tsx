@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
-import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -24,25 +24,24 @@ const metrics = [
   },
   {
     area: 'Return',
-    desc: 'Revenue recovered from missed calls, lapsed clients, and unconverted leads. Most clients see their automations pay for themselves within the first quarter.',
+    desc: 'Revenue recovered from missed calls, lapsed clients, and unconverted leads. We track what changed so you can see the difference clearly.',
   },
 ]
 
 export default function ResultsPage() {
   return (
     <>
-      {/* Hero */}
-      <section className={`section section-green ${styles.hero}`}>
+      <section className={styles.hero}>
         <div className="container">
           <Reveal>
             <span className="label">Results</span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className={styles.heroHeadline}>
-              Real results.<br />Coming soon.
+            <h1 className={styles.heroH1}>
+              Real results. <span className={styles.accent}>Coming soon.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.16}>
+          <Reveal delay={0.14}>
             <p className={styles.heroSub}>
               We are in our early client phase. Case studies and measured outcomes
               are being documented. In the meantime, here is what we track and why
@@ -52,14 +51,13 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* What we measure */}
-      <section className="section section-bone">
+      <section className={styles.metricsSection}>
         <div className="container">
           <Reveal>
             <span className="label">What we track</span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className={styles.sectionHeadline}>
+            <h2 className={styles.sectionH2}>
               Four areas that actually matter.
             </h2>
           </Reveal>
@@ -76,8 +74,7 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* Honest note */}
-      <section className={`section section-panel ${styles.honestSection}`}>
+      <section className={styles.honestSection}>
         <div className="container">
           <Reveal>
             <div className={styles.honestInner}>
@@ -93,20 +90,24 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={`section section-green ${styles.cta}`}>
+      <section className={styles.cta}>
         <div className="container">
           <Reveal>
-            <h2 className={styles.ctaHeadline}>Be our next success story.</h2>
+            <span className="label">Get started</span>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className={styles.ctaBody}>
-              We are building our case study library one client at a time. If you work with us now,
-              you get our best attention and we get your story. That is a fair exchange.
+          <Reveal delay={0.08}>
+            <h2 className={styles.ctaH2}>
+              Be our next <span className={styles.accent}>success story.</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.14}>
+            <p className={styles.ctaSub}>
+              We are building our case study library one client at a time. If you work
+              with us now, you get our best attention and we get your story.
             </p>
           </Reveal>
-          <Reveal delay={0.18}>
-            <AnimatedButton href="/contact" variant="secondary">Book a Free Call</AnimatedButton>
+          <Reveal delay={0.2}>
+            <Link href="/contact" className={styles.btnPri}>Book a Free Call</Link>
           </Reveal>
         </div>
       </section>
