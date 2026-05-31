@@ -1,6 +1,6 @@
 /* Shared legal page styles */
 .page {
-  background: var(--bone);
+  background: var(--bg);
   padding-top: 7rem;
   padding-bottom: var(--section-y);
 }
@@ -12,44 +12,39 @@
 }
 
 .warning {
-  background: rgba(92, 58, 32, 0.08);
-  border-left: 3px solid var(--brown);
+  background: rgba(200, 145, 58, 0.08);
+  border-left: 2px solid var(--gold);
   padding: 1rem 1.25rem;
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-sm);
-  color: var(--brown);
+  font-size: 13px;
+  color: var(--gold);
   line-height: 1.65;
   margin-bottom: 2.5rem;
 }
 
 .title {
-  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
-  font-weight: 300;
-  color: var(--green);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 600;
+  color: var(--text);
   margin-bottom: 0.5rem;
 }
 
 .meta {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  color: var(--softer);
   letter-spacing: 0.04em;
   margin-bottom: 0.25rem;
 }
 
-.meta + .h2,
-.title + .meta {
-  margin-top: 0.25rem;
-}
-
 .h2 {
-  font-size: var(--text-xl);
-  font-weight: 300;
-  color: var(--green);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
   margin-top: 2.5rem;
   margin-bottom: 0.875rem;
   padding-top: 2rem;
-  border-top: 1px solid var(--linec);
+  border-top: 1px solid var(--border);
 }
 
 .title + .meta + .h2,
@@ -60,16 +55,16 @@
 }
 
 .h3 {
-  font-size: var(--text-lg);
-  font-weight: 400;
-  color: var(--green);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
 }
 
 .inner p {
-  font-size: var(--text-base);
-  color: var(--ink);
+  font-size: 16px;
+  color: var(--soft);
   line-height: 1.82;
   margin-bottom: 1rem;
 }
@@ -84,8 +79,8 @@
 }
 
 .list li {
-  font-size: var(--text-base);
-  color: var(--ink);
+  font-size: 16px;
+  color: var(--soft);
   line-height: 1.75;
 }
 
@@ -98,8 +93,8 @@
 }
 
 .defList li {
-  font-size: var(--text-base);
-  color: var(--ink);
+  font-size: 16px;
+  color: var(--soft);
   line-height: 1.7;
   padding-left: 0;
 }
@@ -113,27 +108,27 @@
 .table {
   width: 100%;
   border-collapse: collapse;
-  font-size: var(--text-sm);
+  font-size: 13px;
 }
 
 .table th {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  font-weight: 500;
+  font-size: 0.6875rem;
+  font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--green);
+  color: var(--soft);
   text-align: left;
   padding: 0.75rem 1rem;
-  background: var(--panel);
-  border-bottom: 2px solid var(--linec);
+  background: var(--s1);
+  border-bottom: 1px solid var(--border-hi);
   white-space: nowrap;
 }
 
 .table td {
   padding: 0.75rem 1rem;
-  border-bottom: 1px solid var(--linec);
-  color: var(--ink);
+  border-bottom: 1px solid var(--border);
+  color: var(--soft);
   line-height: 1.65;
   vertical-align: top;
 }
@@ -143,11 +138,12 @@
 }
 
 .inner a {
-  color: var(--brown);
+  color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 3px;
+  transition: color var(--t-fast);
 }
 
 .inner a:hover {
-  color: var(--ink);
+  color: var(--gold-2);
 }

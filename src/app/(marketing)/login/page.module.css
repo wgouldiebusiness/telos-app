@@ -1,6 +1,6 @@
 .page {
   min-height: 100svh;
-  background: var(--bone);
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -10,8 +10,8 @@
 .card {
   width: 100%;
   max-width: 440px;
-  background: var(--panel);
-  border: 1px solid var(--linec);
+  background: var(--card);
+  border: 1px solid var(--border);
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
@@ -27,15 +27,15 @@
 }
 
 .title {
-  font-size: var(--text-2xl);
-  font-weight: 300;
-  color: var(--green);
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 600;
+  color: var(--text);
   margin: 0;
 }
 
 .sub {
-  font-size: var(--text-base);
-  color: var(--ink-soft);
+  font-size: 15px;
+  color: var(--soft);
 }
 
 .form {
@@ -58,59 +58,59 @@
 
 .label {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
+  font-size: 0.6875rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-soft);
+  color: var(--softer);
 }
 
 .forgotLink {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  color: var(--brown);
+  font-size: 0.6875rem;
+  color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color var(--t-fast);
 }
 
-.forgotLink:hover { color: var(--ink); }
+.forgotLink:hover { color: var(--gold-2); }
 
 .input {
   width: 100%;
   padding: 0.75rem 1rem;
-  background: var(--bone);
-  border: 1px solid var(--linec);
-  color: var(--ink);
-  font-family: var(--font-garamond, 'EB Garamond'), Georgia, serif;
-  font-size: var(--text-md);
+  background: var(--s1);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 15px;
   outline: none;
   transition: border-color var(--t-fast);
 }
 
 .input::placeholder {
-  color: rgba(35,39,30,0.35);
+  color: var(--softer);
 }
 
 .input:focus {
-  border-color: var(--green);
+  border-color: var(--gold);
 }
 
 .submitBtn {
   position: relative;
   overflow: hidden;
   padding: 0.9rem;
-  background: var(--green);
-  color: var(--bone);
+  background: var(--gold);
+  color: #0A0A0B;
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  font-weight: 500;
+  font-size: 0.6875rem;
+  font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   cursor: pointer;
   border: none;
   width: 100%;
-  transition: color var(--t-base);
+  transition: background var(--t-base);
 }
 
 .submitBtn span {
@@ -118,46 +118,38 @@
   z-index: 1;
 }
 
-.submitBtn::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--gold);
-  transform: translateX(-101%);
-  transition: transform 400ms cubic-bezier(0.2,0.7,0.2,1);
-}
-
-.submitBtn:hover::after {
-  transform: translateX(0);
-}
+.submitBtn:hover { background: var(--gold-2); }
 
 .footer {
   text-align: center;
-  font-size: var(--text-sm);
-  color: var(--ink-soft);
+  font-size: 13px;
+  color: var(--soft);
 }
 
 .link {
-  color: var(--brown);
+  color: var(--gold);
   text-decoration: underline;
   text-underline-offset: 2px;
   transition: color var(--t-fast);
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
 }
 
-.link:hover { color: var(--ink); }
+.link:hover { color: var(--gold-2); }
 
 .errorMsg {
-  font-size: var(--text-sm);
-  color: #b91c1c;
+  font-size: 13px;
+  color: #f87171;
   padding: 0.6rem 0.75rem;
-  background: rgba(185,28,28,0.06);
-  border-left: 3px solid #b91c1c;
+  background: rgba(248, 113, 113, 0.08);
+  border-left: 2px solid #f87171;
 }
 
 .submitBtn:disabled {
-  opacity: 0.6;
+  opacity: 0.5;
   cursor: not-allowed;
-}
-.submitBtn:disabled::after {
-  display: none;
 }
