@@ -113,6 +113,34 @@
   border-top: 1px solid var(--border);
 }
 
+.bizInfo {
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.25rem;
+}
+
+.bizName {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bizPlan {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
 .backLink {
   display: block;
   padding: 0.5rem 1.5rem;

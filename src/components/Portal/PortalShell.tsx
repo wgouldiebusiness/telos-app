@@ -10,22 +10,34 @@ import styles from './PortalShell.module.css'
 
 const navItems = [
   { label: 'Dashboard',          href: '/portal',              icon: '◈' },
-  { label: 'Performance Report', href: '/portal/performance',  icon: '▲' },
+  { label: 'Performance Report', href: '/portal/report',       icon: '▲' },
   { label: 'Sales',              href: '/portal/sales',        icon: '◉' },
-  { label: 'Request Changes',    href: '/portal/requests',     icon: '◇' },
+  { label: 'Request a Change',   href: '/portal/request',      icon: '◇' },
   { label: 'Book a Meeting',     href: '/portal/meetings',     icon: '◎' },
   { label: 'Billing',            href: '/portal/billing',      icon: '◻' },
 ]
 
-interface PortalShellProps {
-  children: React.ReactNode
-  businessName?: string
-  userName?: string
+const PLAN_LABELS: Record<string, string> = {
+  starter: 'Starter',
+  growth:  'Growth',
+  bespoke: 'Bespoke',
 }
 
-export default function PortalShell({ children, businessName = 'Your Portal', userName = '' }: PortalShellProps) {
+interface PortalShellProps {
+  children:      React.ReactNode
+  businessName?: string
+  userName?:     string
+  plan?:         string
+}
+
+export default function PortalShell({
+  children,
+  businessName = 'Your Portal',
+  userName     = '',
+  plan         = 'starter',
+}: PortalShellProps) {
   const pathname = usePathname()
-  const router = useRouter()
+  const router   = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
 
   async function handleLogout() {
@@ -37,17 +49,12 @@ export default function PortalShell({ children, businessName = 'Your Portal', us
 
   return (
     <div className={styles.shell}>
-      {/* Sidebar */}
       <aside className={`${styles.sidebar} ${mobileOpen ? styles.sidebarOpen : ''}`}>
         <div className={styles.sidebarHead}>
           <Link href="/" className={styles.brand}>
             <Logo size="sm" dark />
-            <span className={styles.wordmark}>TELOS</span>
+            <span className={styles.wordmark}>Telos</span>
           </Link>
-        </div>
-
-        <div className={styles.bizName}>
-          <span className={styles.bizLabel}>{businessName}</span>
         </div>
 
         <nav className={styles.nav}>
@@ -73,21 +80,21 @@ export default function PortalShell({ children, businessName = 'Your Portal', us
             <span className={styles.navIcon}>◆</span>
             <span className={styles.navLabel}>WhatsApp Support</span>
           </Link>
-          <Link href="/" className={styles.backLink}>
-            Back to website
-          </Link>
-          <button className={styles.logoutBtn} onClick={handleLogout}>
-            Log out
-          </button>
+
+          <div className={styles.bizInfo}>
+            <span className={styles.bizName}>{businessName}</span>
+            <span className={styles.bizPlan}>{PLAN_LABELS[plan] ?? plan}</span>
+          </div>
+
+          <Link href="/" className={styles.backLink}>Back to website</Link>
+          <button className={styles.logoutBtn} onClick={handleLogout}>Log out</button>
         </div>
       </aside>
 
-      {/* Mobile overlay */}
       {mobileOpen && (
         <div className={styles.overlay} onClick={() => setMobileOpen(false)} />
       )}
 
-      {/* Main content */}
       <div className={styles.main}>
         <header className={styles.topBar}>
           <button

@@ -2,69 +2,151 @@
 
 .pageHead {
   padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--linec);
+  border-bottom: 1px solid var(--border);
 }
 
 .pageTitle {
-  font-size: var(--text-3xl);
-  font-weight: 300;
-  color: var(--green);
-  margin-bottom: 0.5rem;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.375rem;
 }
 
 .pageSub {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
+  font-size: 0.8125rem;
+  color: var(--soft);
 }
 
-.section {
+/* Stat grid */
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+
+.statTile {
+  background: var(--card);
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
+  gap: 0.375rem;
 }
 
-.sectionTitle {
-  font-size: var(--text-xl);
-  font-weight: 300;
-  color: var(--green);
+.statLabel {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--softer);
 }
 
-.sectionSub {
-  font-size: var(--text-base);
-  color: var(--ink-soft);
-  line-height: 1.7;
-  max-width: 60ch;
+.statValue {
+  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
 }
 
+/* Section */
+.section { display: flex; flex-direction: column; gap: 1rem; }
+
+/* Table */
+.tableWrap { overflow-x: auto; }
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--softer);
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: var(--s1);
+  border-bottom: 1px solid var(--border-hi);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--soft);
+  vertical-align: middle;
+}
+
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--s1); }
+
+.tdBold { color: var(--text); font-weight: 500; }
+.tdMuted { color: var(--softer); font-size: 13px; }
+
+.statusBadge {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  white-space: nowrap;
+}
+
+.status_active     { background: rgba(74,222,128,.1);    color: #4ade80; }
+.status_onboarding { background: rgba(200,145,58,.15);   color: var(--gold); }
+.status_paused     { background: rgba(255,255,255,0.06); color: var(--soft); }
+
+.viewLink {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.viewLink:hover { color: var(--gold-2); }
+
+/* Empty state */
 .emptyCard {
-  background: var(--panel);
-  border: 1px solid var(--linec);
-  padding: 2rem;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--gold);
+  padding: 2.5rem 2rem;
   max-width: 560px;
 }
 
 .emptyText {
-  font-size: var(--text-base);
-  color: var(--ink-soft);
+  font-size: 15px;
+  color: var(--soft);
   line-height: 1.75;
 }
 
+/* Modules grid (used in modules page) */
 .modulesGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--linec);
+  gap: 2px;
+  background: var(--border);
 }
 
 .moduleCard {
-  background: var(--panel);
+  background: var(--card);
   padding: 1.5rem 1.25rem;
   display: flex;
   flex-direction: column;
-  gap: 0.375rem;
-  border-top: 2px solid var(--green);
+  gap: 0.5rem;
+  border-top: 2px solid var(--border-hi);
   transition: border-top-color var(--t-fast);
 }
 
@@ -72,25 +154,37 @@
 
 .moduleKey {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  color: var(--brown);
+  font-size: 0.6875rem;
+  color: var(--softer);
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
 .moduleName {
-  font-size: var(--text-base);
-  font-weight: 400;
-  color: var(--green);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
   line-height: 1.4;
 }
 
-.moduleNote {
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  color: var(--ink-soft);
-  letter-spacing: 0.04em;
+.moduleDesc {
+  font-size: 13px;
+  color: var(--soft);
+  line-height: 1.6;
 }
 
-@media (max-width: 1024px) { .modulesGrid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px)  { .modulesGrid { grid-template-columns: 1fr; } }
+.moduleCount {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  color: var(--gold);
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 1024px) {
+  .modulesGrid { grid-template-columns: repeat(2, 1fr); }
+  .statGrid    { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px) {
+  .modulesGrid { grid-template-columns: 1fr; }
+  .statGrid    { grid-template-columns: 1fr 1fr; }
+}

@@ -8,10 +8,10 @@ import { createClient } from '@/lib/supabase/client'
 import styles from './page.module.css'
 
 export default function LoginPage() {
-  const [email, setEmail] = useState('')
+  const [email, setEmail]       = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
+  const [error, setError]       = useState('')
+  const [loading, setLoading]   = useState(false)
   const router = useRouter()
 
   async function handleSubmit(e: React.FormEvent) {
@@ -28,6 +28,7 @@ export default function LoginPage() {
       return
     }
 
+    // Proxy redirects master users to /admin automatically
     router.push('/portal')
     router.refresh()
   }
@@ -37,8 +38,8 @@ export default function LoginPage() {
       <div className={styles.card}>
         <div className={styles.cardHead}>
           <Logo size="lg" />
-          <h1 className={styles.title}>Welcome back</h1>
-          <p className={styles.sub}>Log in to your Telos AI portal</p>
+          <h1 className={styles.title}>The Members Room</h1>
+          <p className={styles.sub}>Sign in to view your dashboard, reports, and requests.</p>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
@@ -75,12 +76,12 @@ export default function LoginPage() {
           </div>
           {error && <p className={styles.errorMsg}>{error}</p>}
           <button type="submit" className={styles.submitBtn} disabled={loading}>
-            <span>{loading ? 'Logging in...' : 'Log in'}</span>
+            <span>{loading ? 'Entering...' : 'Enter the Portal'}</span>
           </button>
         </form>
 
         <p className={styles.footer}>
-          Do not have an account?{' '}
+          No account yet?{' '}
           <Link href="/signup" className={styles.link}>Create one</Link>
         </p>
       </div>

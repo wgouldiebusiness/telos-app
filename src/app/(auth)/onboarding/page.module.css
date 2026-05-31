@@ -150,6 +150,23 @@
   color: var(--text);
 }
 
+.textArea {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  background: var(--s1);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  outline: none;
+  resize: vertical;
+  transition: border-color var(--t-fast);
+}
+
+.textArea::placeholder { color: var(--softer); }
+.textArea:focus { border-color: var(--gold); }
+
 .btnRow {
   display: flex;
   gap: 0.75rem;

@@ -1,6 +1,13 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
 
+function getMasterEmails(): string[] {
+  return (process.env.MASTER_EMAILS ?? '')
+    .split(',')
+    .map(e => e.trim().toLowerCase())
+    .filter(Boolean)
+}
+
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
@@ -26,25 +33,35 @@ export async function proxy(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
 
   const { pathname } = request.nextUrl
+  const masterEmails = getMasterEmails()
+  const isMaster = masterEmails.includes(user?.email?.toLowerCase() ?? '')
 
-  // Protect portal and admin routes — must be logged in
-  if ((pathname.startsWith('/portal') || pathname.startsWith('/admin')) && !user) {
-    return NextResponse.redirect(new URL('/login', request.url))
-  }
-
-  // Restrict /admin to authorised emails only
-  if (pathname.startsWith('/admin') && user) {
-    const masterEmails = (process.env.MASTER_EMAILS ?? '')
-      .split(',')
-      .map(e => e.trim().toLowerCase())
-    if (!masterEmails.includes(user.email?.toLowerCase() ?? '')) {
-      return NextResponse.redirect(new URL('/portal', request.url))
+  // Unauthenticated: protect portal, admin, and onboarding
+  if (!user) {
+    if (
+      pathname.startsWith('/portal') ||
+      pathname.startsWith('/admin') ||
+      pathname.startsWith('/onboarding')
+    ) {
+      return NextResponse.redirect(new URL('/login', request.url))
     }
+    return supabaseResponse
   }
 
-  // Redirect logged-in users away from auth pages
-  if ((pathname === '/login' || pathname === '/signup') && user) {
+  // Authenticated master accessing /portal -> send to /admin
+  if (isMaster && pathname.startsWith('/portal')) {
+    return NextResponse.redirect(new URL('/admin', request.url))
+  }
+
+  // Non-master accessing /admin -> send to /portal
+  if (!isMaster && pathname.startsWith('/admin')) {
     return NextResponse.redirect(new URL('/portal', request.url))
+  }
+
+  // Already logged in: redirect away from auth pages
+  if (pathname === '/login' || pathname === '/signup') {
+    const dest = isMaster ? '/admin' : '/portal'
+    return NextResponse.redirect(new URL(dest, request.url))
   }
 
   return supabaseResponse

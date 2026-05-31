@@ -16,56 +16,37 @@ const INDUSTRIES = [
   'Other',
 ]
 
-const SIZES = [
-  'Just me (solo)',
-  '2 to 5 people',
-  '6 to 20 people',
-  '21 or more',
-]
-
-const GOAL_OPTIONS = [
-  { value: 'admin',      label: 'Admin and scheduling' },
-  { value: 'sales',      label: 'Lead capture and sales' },
-  { value: 'customer',   label: 'Customer queries and support' },
-  { value: 'reporting',  label: 'Reporting and analytics' },
-  { value: 'invoicing',  label: 'Invoicing and payments' },
-  { value: 'reviews',    label: 'Getting more reviews' },
+const HEARD_OPTIONS = [
+  'Google or web search',
+  'Social media',
+  'Referral from someone I know',
+  'LinkedIn',
+  'Word of mouth',
+  'Other',
 ]
 
 export default function OnboardingPage() {
-  const [step, setStep] = useState(1)
-  const [industry, setIndustry] = useState('')
-  const [size, setSize] = useState('')
-  const [goals, setGoals] = useState<string[]>([])
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(false)
-
-  function toggleGoal(value: string) {
-    setGoals(prev =>
-      prev.includes(value) ? prev.filter(g => g !== value) : [...prev, value]
-    )
-  }
+  const [step, setStep]           = useState(1)
+  const [industry, setIndustry]   = useState('')
+  const [painPoint, setPainPoint] = useState('')
+  const [heard, setHeard]         = useState('')
+  const [error, setError]         = useState('')
+  const [loading, setLoading]     = useState(false)
 
   async function handleFinish() {
-    if (goals.length === 0) {
-      setError('Please select at least one goal.')
+    if (!heard) {
+      setError('Please tell us how you found us.')
       return
     }
     setError('')
     setLoading(true)
 
-    const result = await completeOnboarding({
-      businessName: '',
-      industry,
-      size,
-      goals,
-    })
+    const result = await completeOnboarding({ industry, painPoint, heard })
 
     if (result?.error) {
       setError(result.error)
       setLoading(false)
     }
-    // On success, the server action redirects to /portal
   }
 
   return (
@@ -108,26 +89,21 @@ export default function OnboardingPage() {
 
         {step === 2 && (
           <div className={styles.section}>
-            <h1 className={styles.title}>How big is your team?</h1>
-            <p className={styles.sub}>We scale the approach to fit your operation.</p>
-            <div className={styles.grid}>
-              {SIZES.map(s => (
-                <button
-                  key={s}
-                  type="button"
-                  className={`${styles.pill} ${size === s ? styles.pillActive : ''}`}
-                  onClick={() => setSize(s)}
-                >
-                  {s}
-                </button>
-              ))}
-            </div>
+            <h1 className={styles.title}>What is your biggest time drain?</h1>
+            <p className={styles.sub}>Be specific. Even a single sentence helps us build the right solution.</p>
+            <textarea
+              className={styles.textArea}
+              rows={5}
+              placeholder="For example: I spend two hours a day on appointment reminders and chasing unpaid invoices."
+              value={painPoint}
+              onChange={e => setPainPoint(e.target.value)}
+            />
             <div className={styles.btnRow}>
               <button className={styles.backBtn} type="button" onClick={() => setStep(1)}>Back</button>
               <button
                 className={styles.nextBtn}
-                onClick={() => { if (size) setStep(3) }}
-                disabled={!size}
+                onClick={() => { if (painPoint.trim()) setStep(3) }}
+                disabled={!painPoint.trim()}
               >
                 <span>Continue</span>
               </button>
@@ -137,20 +113,18 @@ export default function OnboardingPage() {
 
         {step === 3 && (
           <div className={styles.section}>
-            <h1 className={styles.title}>What do you want to automate first?</h1>
-            <p className={styles.sub}>Select everything that applies. You can change this later.</p>
-            <div className={styles.checkGrid}>
-              {GOAL_OPTIONS.map(opt => (
-                <label key={opt.value} className={`${styles.checkItem} ${goals.includes(opt.value) ? styles.checkActive : ''}`}>
-                  <input
-                    type="checkbox"
-                    checked={goals.includes(opt.value)}
-                    onChange={() => toggleGoal(opt.value)}
-                    className={styles.checkInput}
-                  />
-                  <span className={styles.checkMark}>{goals.includes(opt.value) ? '✓' : ''}</span>
-                  <span className={styles.checkLabel}>{opt.label}</span>
-                </label>
+            <h1 className={styles.title}>How did you find us?</h1>
+            <p className={styles.sub}>Helps us understand where our clients come from.</p>
+            <div className={styles.grid}>
+              {HEARD_OPTIONS.map(opt => (
+                <button
+                  key={opt}
+                  type="button"
+                  className={`${styles.pill} ${heard === opt ? styles.pillActive : ''}`}
+                  onClick={() => setHeard(opt)}
+                >
+                  {opt}
+                </button>
               ))}
             </div>
             {error && <p className={styles.errorMsg}>{error}</p>}

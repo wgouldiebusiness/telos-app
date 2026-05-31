@@ -1,194 +1,176 @@
--- Telos AI — Supabase Schema
--- Run this entire file in the Supabase SQL editor (Database > SQL Editor > New query)
-
 -- ============================================================
--- TABLES
--- ============================================================
-
--- Businesses (one per client account)
-CREATE TABLE IF NOT EXISTS public.businesses (
-  id              UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  name            TEXT NOT NULL,
-  industry        TEXT,
-  size            TEXT,
-  goals           TEXT,
-  plan            TEXT NOT NULL DEFAULT 'starter' CHECK (plan IN ('starter', 'growth', 'pro')),
-  status          TEXT NOT NULL DEFAULT 'active'  CHECK (status IN ('active', 'paused', 'cancelled')),
-  stripe_customer_id TEXT,
-  created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- Profiles (extends auth.users — one row per user)
-CREATE TABLE IF NOT EXISTS public.profiles (
-  id                  UUID REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
-  email               TEXT NOT NULL,
-  full_name           TEXT,
-  phone               TEXT,
-  role                TEXT NOT NULL DEFAULT 'client' CHECK (role IN ('client', 'admin')),
-  business_id         UUID REFERENCES public.businesses(id) ON DELETE SET NULL,
-  onboarding_complete BOOLEAN NOT NULL DEFAULT false,
-  created_at          TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- Modules (master list of automation modules)
-CREATE TABLE IF NOT EXISTS public.modules (
-  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  name        TEXT NOT NULL,
-  description TEXT,
-  category    TEXT,
-  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- Business modules (which modules are assigned to which business)
-CREATE TABLE IF NOT EXISTS public.business_modules (
-  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  business_id UUID NOT NULL REFERENCES public.businesses(id) ON DELETE CASCADE,
-  module_id   UUID NOT NULL REFERENCES public.modules(id)   ON DELETE CASCADE,
-  status      TEXT NOT NULL DEFAULT 'active' CHECK (status IN ('active', 'paused')),
-  assigned_at TIMESTAMPTZ NOT NULL DEFAULT now(),
-  UNIQUE(business_id, module_id)
-);
-
--- Metrics (performance data per business)
-CREATE TABLE IF NOT EXISTS public.metrics (
-  id           UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  business_id  UUID NOT NULL REFERENCES public.businesses(id) ON DELETE CASCADE,
-  metric_name  TEXT NOT NULL,
-  metric_value NUMERIC,
-  metric_label TEXT,
-  recorded_at  TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- Leads (sales pipeline entries per business)
-CREATE TABLE IF NOT EXISTS public.leads (
-  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  business_id UUID NOT NULL REFERENCES public.businesses(id) ON DELETE CASCADE,
-  name        TEXT,
-  source      TEXT,
-  status      TEXT,
-  value       NUMERIC,
-  created_at  TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- Requests (client change requests / support tickets)
-CREATE TABLE IF NOT EXISTS public.requests (
-  id          UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  business_id UUID NOT NULL REFERENCES public.businesses(id) ON DELETE CASCADE,
-  title       TEXT NOT NULL,
-  description TEXT,
-  status      TEXT NOT NULL DEFAULT 'open'   CHECK (status IN ('open', 'in_progress', 'resolved')),
-  priority    TEXT NOT NULL DEFAULT 'normal' CHECK (priority IN ('low', 'normal', 'high')),
-  created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
-  updated_at  TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
--- Invoices
-CREATE TABLE IF NOT EXISTS public.invoices (
-  id                UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  business_id       UUID NOT NULL REFERENCES public.businesses(id) ON DELETE CASCADE,
-  amount            NUMERIC NOT NULL,
-  currency          TEXT NOT NULL DEFAULT 'GBP',
-  status            TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'paid', 'overdue')),
-  due_date          DATE,
-  stripe_invoice_id TEXT,
-  created_at        TIMESTAMPTZ NOT NULL DEFAULT now()
-);
-
-
--- ============================================================
--- TRIGGER: auto-create profile row when a new user signs up
+-- TELOS AI — DATABASE SCHEMA
+-- Run in Supabase SQL Editor (Dashboard > SQL Editor > New query)
+-- Safe to run multiple times: uses CREATE IF NOT EXISTS + ON CONFLICT
 -- ============================================================
 
-CREATE OR REPLACE FUNCTION public.handle_new_user()
-RETURNS TRIGGER
-LANGUAGE plpgsql
-SECURITY DEFINER
-SET search_path = public
-AS $$
-BEGIN
-  INSERT INTO public.profiles (id, email, full_name, phone)
-  VALUES (
-    NEW.id,
-    NEW.email,
-    NEW.raw_user_meta_data->>'full_name',
-    NEW.raw_user_meta_data->>'phone'
-  );
-  RETURN NEW;
-END;
-$$;
+-- Profiles (one row per auth user, created automatically by trigger)
+create table if not exists profiles (
+  id          uuid primary key default gen_random_uuid(),
+  user_id     uuid references auth.users(id) on delete cascade unique not null,
+  email       text not null,
+  full_name   text,
+  role        text not null default 'client',
+  created_at  timestamptz default now()
+);
 
-DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
-CREATE TRIGGER on_auth_user_created
-  AFTER INSERT ON auth.users
-  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
+-- Businesses (one per client, created during onboarding)
+create table if not exists businesses (
+  id            uuid primary key default gen_random_uuid(),
+  owner_id      uuid references profiles(id) on delete cascade,
+  name          text not null,
+  plan          text default 'starter',
+  status        text default 'onboarding',
+  industry      text,
+  contact_name  text,
+  pain_point    text,
+  heard_about   text,
+  created_at    timestamptz default now()
+);
 
+-- Module catalogue
+create table if not exists modules (
+  id          uuid primary key default gen_random_uuid(),
+  name        text not null,
+  description text,
+  sort_order  integer default 0
+);
+
+-- Modules assigned to each business
+create table if not exists business_modules (
+  id          uuid primary key default gen_random_uuid(),
+  business_id uuid references businesses(id) on delete cascade,
+  module_id   uuid references modules(id),
+  active      boolean default true,
+  created_at  timestamptz default now(),
+  unique(business_id, module_id)
+);
+
+-- Monthly metrics per business
+create table if not exists metrics (
+  id                  uuid primary key default gen_random_uuid(),
+  business_id         uuid references businesses(id) on delete cascade,
+  month               date not null,
+  leads_captured      integer default 0,
+  admin_hours_saved   integer default 0,
+  sales_recovered     numeric(10,2) default 0,
+  website_visits      integer default 0,
+  unique(business_id, month)
+);
+
+-- Activity log
+create table if not exists activity_log (
+  id          uuid primary key default gen_random_uuid(),
+  business_id uuid references businesses(id) on delete cascade,
+  type        text,
+  description text,
+  created_at  timestamptz default now()
+);
+
+-- Change requests from clients
+create table if not exists change_requests (
+  id          uuid primary key default gen_random_uuid(),
+  business_id uuid references businesses(id) on delete cascade,
+  description text not null,
+  status      text default 'open',
+  created_at  timestamptz default now()
+);
+
+-- ============================================================
+-- TRIGGER: auto-create profile when auth user signs up
+-- ============================================================
+
+create or replace function public.handle_new_user()
+returns trigger as $$
+begin
+  insert into public.profiles (user_id, email, full_name, role)
+  values (
+    new.id,
+    new.email,
+    coalesce(new.raw_user_meta_data->>'full_name', ''),
+    'client'
+  )
+  on conflict (user_id) do nothing;
+  return new;
+end;
+$$ language plpgsql security definer;
+
+drop trigger if exists on_auth_user_created on auth.users;
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();
 
 -- ============================================================
 -- ROW LEVEL SECURITY
 -- ============================================================
 
-ALTER TABLE public.profiles        ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.businesses      ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.business_modules ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.modules         ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.metrics         ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.leads           ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.requests        ENABLE ROW LEVEL SECURITY;
-ALTER TABLE public.invoices        ENABLE ROW LEVEL SECURITY;
+alter table profiles         enable row level security;
+alter table businesses       enable row level security;
+alter table metrics          enable row level security;
+alter table activity_log     enable row level security;
+alter table change_requests  enable row level security;
+alter table business_modules enable row level security;
+alter table modules          enable row level security;
 
--- Profiles: each user manages their own row only
-CREATE POLICY "own profile select" ON public.profiles FOR SELECT USING (auth.uid() = id);
-CREATE POLICY "own profile update" ON public.profiles FOR UPDATE USING (auth.uid() = id);
-CREATE POLICY "own profile insert" ON public.profiles FOR INSERT WITH CHECK (auth.uid() = id);
+drop policy if exists "clients see own profile"      on profiles;
+drop policy if exists "clients see own business"     on businesses;
+drop policy if exists "clients see own metrics"      on metrics;
+drop policy if exists "clients see own activity"     on activity_log;
+drop policy if exists "clients manage own requests"  on change_requests;
+drop policy if exists "clients see own modules"      on business_modules;
+drop policy if exists "anyone reads modules"         on modules;
 
--- Businesses: user can select/update if their profile points to this business
-CREATE POLICY "own business select" ON public.businesses FOR SELECT USING (
-  id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
-CREATE POLICY "own business insert" ON public.businesses FOR INSERT WITH CHECK (true);
-CREATE POLICY "own business update" ON public.businesses FOR UPDATE USING (
-  id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
+create policy "clients see own profile"
+  on profiles for all
+  using (auth.uid() = user_id);
 
--- Modules: readable by all authenticated users
-CREATE POLICY "modules readable" ON public.modules FOR SELECT USING (auth.uid() IS NOT NULL);
+create policy "clients see own business"
+  on businesses for all
+  using (owner_id = (select id from profiles where user_id = auth.uid()));
 
--- Business modules, metrics, leads, requests, invoices: own business only
-CREATE POLICY "own business_modules" ON public.business_modules FOR SELECT USING (
-  business_id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
+create policy "clients see own metrics"
+  on metrics for select
+  using (business_id in (
+    select id from businesses
+    where owner_id = (select id from profiles where user_id = auth.uid())
+  ));
 
-CREATE POLICY "own metrics" ON public.metrics FOR SELECT USING (
-  business_id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
+create policy "clients see own activity"
+  on activity_log for select
+  using (business_id in (
+    select id from businesses
+    where owner_id = (select id from profiles where user_id = auth.uid())
+  ));
 
-CREATE POLICY "own leads" ON public.leads FOR SELECT USING (
-  business_id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
+create policy "clients manage own requests"
+  on change_requests for all
+  using (business_id in (
+    select id from businesses
+    where owner_id = (select id from profiles where user_id = auth.uid())
+  ));
 
-CREATE POLICY "own requests select" ON public.requests FOR SELECT USING (
-  business_id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
-CREATE POLICY "own requests insert" ON public.requests FOR INSERT WITH CHECK (
-  business_id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
+create policy "clients see own modules"
+  on business_modules for select
+  using (business_id in (
+    select id from businesses
+    where owner_id = (select id from profiles where user_id = auth.uid())
+  ));
 
-CREATE POLICY "own invoices" ON public.invoices FOR SELECT USING (
-  business_id IN (SELECT business_id FROM public.profiles WHERE id = auth.uid())
-);
-
+create policy "anyone reads modules"
+  on modules for select
+  using (true);
 
 -- ============================================================
--- SEED: module library
+-- MODULE SEED DATA
 -- ============================================================
 
-INSERT INTO public.modules (name, description, category) VALUES
-  ('Lead Capture Automation',     'Automatically capture and qualify inbound leads from your website and social channels.', 'Sales'),
-  ('Appointment Scheduling',      'Automated booking system that syncs with your calendar and sends confirmations.', 'Admin'),
-  ('Client Onboarding Flow',      'Step-by-step onboarding sequences delivered automatically after sign-up or purchase.', 'Admin'),
-  ('Invoice and Payment Chasing', 'Automated reminders for outstanding invoices, reducing time chasing payments.', 'Finance'),
-  ('Review Request Sequence',     'Post-service sequences that request Google or Trustpilot reviews at the right moment.', 'Marketing'),
-  ('AI Receptionist',             'Handles inbound enquiries by phone or web chat, qualifies leads, and routes them.', 'Sales'),
-  ('Reporting Dashboard',         'Weekly automated performance reports delivered to your inbox.', 'Analytics'),
-  ('Email Follow-Up Sequences',   'Multi-step nurture sequences for leads who have not yet converted.', 'Sales')
-ON CONFLICT DO NOTHING;
+insert into modules (name, description, sort_order) values
+  ('AI Receptionist',        'Answers calls, takes messages, books appointments, and handles common queries 24/7.',                         1),
+  ('Chat Assistant',         'A smart chat widget for your website. Answers questions and captures leads automatically.',                   2),
+  ('Pipeline and Follow-Up', 'Keeps your sales pipeline moving. Sends reminders, follow-up messages, and re-engagement sequences.',        3),
+  ('Missed-Call Recovery',   'Every missed call triggers an automated SMS or WhatsApp reply to capture the lead.',                         4),
+  ('Lead Generation',        'Automated outreach and lead capture across channels. Feeds new enquiries straight into your pipeline.',      5),
+  ('Data and Insights',      'Monthly performance reports, KPI tracking, and plain-English summaries of what your automations are doing.', 6),
+  ('Conversion Website',     'A fast, conversion-focused website built and maintained for you. Includes SEO and analytics.',                7),
+  ('Content and Social',     'Regular social posts and content generated from your business voice and published on your behalf.',           8)
+on conflict do nothing;

@@ -4,6 +4,11 @@ import { usePathname } from 'next/navigation'
 import Logo from '@/components/Logo/Logo'
 import styles from './AdminShell.module.css'
 
+const navItems = [
+  { label: 'Client Accounts', href: '/admin',         icon: '◈' },
+  { label: 'Module Library',  href: '/admin/modules', icon: '▦' },
+]
+
 export default function AdminShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
@@ -13,26 +18,22 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         <div className={styles.sidebarHead}>
           <Link href="/" className={styles.brand}>
             <Logo size="sm" dark />
-            <span className={styles.wordmark}>TELOS</span>
+            <span className={styles.wordmark}>Telos</span>
           </Link>
           <span className={styles.adminBadge}>Admin</span>
         </div>
 
         <nav className={styles.nav}>
-          <Link
-            href="/admin"
-            className={`${styles.navItem} ${pathname === '/admin' ? styles.active : ''}`}
-          >
-            <span className={styles.navIcon}>◈</span>
-            All Clients
-          </Link>
-          <Link
-            href="/admin"
-            className={styles.navItem}
-          >
-            <span className={styles.navIcon}>▦</span>
-            Module Library
-          </Link>
+          {navItems.map(item => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`${styles.navItem} ${pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href)) ? styles.active : ''}`}
+            >
+              <span className={styles.navIcon}>{item.icon}</span>
+              {item.label}
+            </Link>
+          ))}
         </nav>
 
         <div className={styles.sidebarFoot}>

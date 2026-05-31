@@ -9,14 +9,13 @@ import signupStyles from './page.module.css'
 
 export default function SignupPage() {
   const [form, setForm] = useState({
+    fullName:     '',
     businessName: '',
-    contactName: '',
-    phone: '',
-    email: '',
-    password: '',
-    confirm: '',
+    email:        '',
+    password:     '',
+    confirm:      '',
   })
-  const [error, setError] = useState('')
+  const [error, setError]     = useState('')
   const [success, setSuccess] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -46,9 +45,8 @@ export default function SignupPage() {
       password: form.password,
       options: {
         data: {
-          full_name: form.contactName,
+          full_name:     form.fullName,
           business_name: form.businessName,
-          phone: form.phone,
         },
         emailRedirectTo: `${window.location.origin}/auth/callback?next=/onboarding`,
       },
@@ -61,12 +59,10 @@ export default function SignupPage() {
     }
 
     if (data.session) {
-      // Email confirmation disabled: go straight to onboarding
       window.location.href = '/onboarding'
       return
     }
 
-    // Email confirmation required: show success message
     setSuccess(true)
     setLoading(false)
   }
@@ -79,17 +75,13 @@ export default function SignupPage() {
             <Logo size="lg" />
             <h1 className={styles.title}>Check your email</h1>
             <p className={styles.sub}>
-              We have sent a confirmation link to <strong>{form.email}</strong>.
-              Click the link to confirm your account and complete setup.
+              We sent a confirmation link to <strong>{form.email}</strong>.
+              Click it to confirm your account and complete setup.
             </p>
           </div>
           <p className={styles.footer}>
             Wrong email?{' '}
-            <button
-              className={styles.link}
-              style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
-              onClick={() => setSuccess(false)}
-            >
+            <button className={styles.link} onClick={() => setSuccess(false)}>
               Go back
             </button>
           </p>
@@ -103,37 +95,58 @@ export default function SignupPage() {
       <div className={`${styles.card} ${signupStyles.wider}`}>
         <div className={styles.cardHead}>
           <Logo size="lg" />
-          <h1 className={styles.title}>Create a business account</h1>
+          <h1 className={styles.title}>Create your account</h1>
           <p className={styles.sub}>Get access to your Telos AI client portal</p>
         </div>
 
         <form className={styles.form} onSubmit={handleSubmit}>
           <div className={signupStyles.row}>
             <div className={styles.field}>
-              <label className={styles.label} htmlFor="businessName">Business name</label>
-              <input id="businessName" name="businessName" type="text" required className={styles.input} placeholder="Your Business Ltd" value={form.businessName} onChange={update('businessName')} />
+              <label className={styles.label} htmlFor="fullName">Your name</label>
+              <input
+                id="fullName" name="fullName" type="text"
+                autoComplete="name" required
+                className={styles.input} placeholder="Full name"
+                value={form.fullName} onChange={update('fullName')}
+              />
             </div>
             <div className={styles.field}>
-              <label className={styles.label} htmlFor="contactName">Your name</label>
-              <input id="contactName" name="contactName" type="text" autoComplete="name" required className={styles.input} placeholder="Full name" value={form.contactName} onChange={update('contactName')} />
+              <label className={styles.label} htmlFor="businessName">Business name</label>
+              <input
+                id="businessName" name="businessName" type="text"
+                required
+                className={styles.input} placeholder="Your Business Ltd"
+                value={form.businessName} onChange={update('businessName')}
+              />
             </div>
-          </div>
-          <div className={styles.field}>
-            <label className={styles.label} htmlFor="phone">Phone number</label>
-            <input id="phone" name="phone" type="tel" autoComplete="tel" required className={styles.input} placeholder="+44 7700 000000" value={form.phone} onChange={update('phone')} />
           </div>
           <div className={styles.field}>
             <label className={styles.label} htmlFor="email">Business email</label>
-            <input id="email" name="email" type="email" autoComplete="email" required className={styles.input} placeholder="you@yourbusiness.co.uk" value={form.email} onChange={update('email')} />
+            <input
+              id="email" name="email" type="email"
+              autoComplete="email" required
+              className={styles.input} placeholder="you@yourbusiness.co.uk"
+              value={form.email} onChange={update('email')}
+            />
           </div>
           <div className={signupStyles.row}>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="password">Password</label>
-              <input id="password" name="password" type="password" autoComplete="new-password" required className={styles.input} placeholder="Min. 8 characters" value={form.password} onChange={update('password')} />
+              <input
+                id="password" name="password" type="password"
+                autoComplete="new-password" required
+                className={styles.input} placeholder="Min. 8 characters"
+                value={form.password} onChange={update('password')}
+              />
             </div>
             <div className={styles.field}>
               <label className={styles.label} htmlFor="confirm">Confirm password</label>
-              <input id="confirm" name="confirm" type="password" autoComplete="new-password" required className={styles.input} placeholder="Repeat password" value={form.confirm} onChange={update('confirm')} />
+              <input
+                id="confirm" name="confirm" type="password"
+                autoComplete="new-password" required
+                className={styles.input} placeholder="Repeat password"
+                value={form.confirm} onChange={update('confirm')}
+              />
             </div>
           </div>
           {error && <p className={styles.errorMsg}>{error}</p>}

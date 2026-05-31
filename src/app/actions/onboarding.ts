@@ -5,10 +5,9 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { redirect } from 'next/navigation'
 
 export async function completeOnboarding(formData: {
-  businessName: string
-  industry: string
-  size: string
-  goals: string[]
+  industry:   string
+  painPoint:  string
+  heard:      string
 }) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
@@ -17,33 +16,64 @@ export async function completeOnboarding(formData: {
 
   const admin = createAdminClient()
 
-  // Create the business record
-  const { data: business, error: bizError } = await admin
-    .from('businesses')
-    .insert({
-      name: formData.businessName,
-      industry: formData.industry,
-      size: formData.size,
-      goals: formData.goals.join(', '),
-    })
-    .select('id')
+  // Get the profile created by the DB trigger
+  const { data: profile, error: profileErr } = await admin
+    .from('profiles')
+    .select('id, full_name')
+    .eq('user_id', user.id)
     .single()
 
-  if (bizError || !business) {
-    return { error: 'Could not create your business profile. Please try again.' }
+  if (profileErr || !profile) {
+    // Trigger may not have fired yet — create the profile manually
+    const { data: newProfile, error: createErr } = await admin
+      .from('profiles')
+      .insert({
+        user_id:   user.id,
+        email:     user.email ?? '',
+        full_name: user.user_metadata?.full_name ?? '',
+        role:      'client',
+      })
+      .select('id, full_name')
+      .single()
+
+    if (createErr || !newProfile) {
+      return { error: 'Could not create your profile. Please try again.' }
+    }
+
+    return finishOnboarding(admin, newProfile, user, formData)
   }
 
-  // Update the profile with business_id and mark onboarding complete
-  const { error: profileError } = await admin
-    .from('profiles')
-    .update({
-      business_id: business.id,
-      onboarding_complete: true,
-    })
-    .eq('id', user.id)
+  return finishOnboarding(admin, profile, user, formData)
+}
 
-  if (profileError) {
-    return { error: 'Could not update your profile. Please try again.' }
+async function finishOnboarding(
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  admin: any,
+  profile: { id: string; full_name: string | null },
+  user: { user_metadata?: Record<string, string> },
+  formData: { industry: string; painPoint: string; heard: string }
+) {
+  const businessName = (user as { user_metadata?: { business_name?: string } })
+    .user_metadata?.business_name ?? 'My Business'
+
+  const { error: bizError } = await admin
+    .from('businesses')
+    .upsert(
+      {
+        owner_id:     profile.id,
+        name:         businessName,
+        contact_name: profile.full_name ?? '',
+        industry:     formData.industry,
+        pain_point:   formData.painPoint,
+        heard_about:  formData.heard,
+        status:       'active',
+        plan:         'starter',
+      },
+      { onConflict: 'owner_id' }
+    )
+
+  if (bizError) {
+    return { error: 'Could not complete setup. Please try again.' }
   }
 
   redirect('/portal')

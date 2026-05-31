@@ -1,0 +1,74 @@
+.pageHead {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.pageTitle {
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 600;
+  color: var(--text);
+}
+
+.pageSub {
+  font-size: 14px;
+  color: var(--soft);
+  line-height: 1.65;
+  max-width: 60ch;
+}
+
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+
+.moduleCard {
+  background: var(--card);
+  padding: 1.75rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 2px solid var(--border-hi);
+  transition: border-top-color var(--t-fast);
+}
+
+.moduleCard:hover { border-top-color: var(--gold); }
+
+.moduleNum {
+  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gold);
+  opacity: 0.7;
+}
+
+.moduleName {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+.moduleDesc {
+  font-size: 13px;
+  color: var(--soft);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.moduleCount {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--softer);
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1024px) { .modulesGrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px)  { .modulesGrid { grid-template-columns: 1fr; } }
