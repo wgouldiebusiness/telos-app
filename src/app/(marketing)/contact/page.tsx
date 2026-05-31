@@ -6,14 +6,14 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Book a Call',
   description:
-    'Book a free 15-minute consultation with Telos AI. We will map your workflow, identify where automation will help, and tell you honestly whether we can add value.',
+    'A focused diagnostic, not a sales call. We look at your business, identify where automation will make a real difference, and tell you exactly what it would cost.',
 }
 
 const agenda = [
-  'A look at where your time is actually going',
-  'Which tasks are good candidates for automation',
-  'An honest view of whether AI can help your business',
-  'A clear picture of what working together would look like',
+  'A precise look at where time and revenue are being lost',
+  'Which problems are the right candidates for automation',
+  'What a bespoke system for your business would look like',
+  'The full cost and timeline before you commit to anything',
 ]
 
 export default function ContactPage() {
@@ -28,14 +28,16 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              Fifteen minutes. <span className={styles.accent}>Honest answers.</span>
+              A focused diagnostic.{' '}
+              <span className={styles.accent}>Not a sales call.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              A free, no-pressure conversation. We look at your business, identify
-              where time and revenue are being lost, and tell you plainly whether
-              automation is the right answer.
+              We look at your business, identify precisely where AI will make a
+              real difference, and tell you what it would cost. You leave with
+              clarity either way. We take on a small number of new clients at any
+              one time, so availability is limited.
             </p>
           </Reveal>
         </div>
@@ -46,7 +48,7 @@ export default function ContactPage() {
           <div className={styles.grid}>
             <Reveal>
               <div className={styles.agendaCard}>
-                <span className="label">What we will cover</span>
+                <span className="label">What we cover</span>
                 <ul className={styles.agendaList}>
                   {agenda.map(item => (
                     <li key={item} className={styles.agendaItem}>
@@ -56,19 +58,20 @@ export default function ContactPage() {
                   ))}
                 </ul>
                 <p className={styles.agendaNote}>
-                  No pitch. No pressure. You leave knowing exactly whether Telos AI
-                  is right for your business.
+                  Thirty minutes. You walk away knowing exactly what is possible,
+                  what it costs, and whether working together makes sense.
                 </p>
               </div>
             </Reveal>
 
             <Reveal delay={0.1}>
               <div className={styles.bookCard}>
-                <span className="label">Book your slot</span>
-                <h2 className={styles.bookTitle}>Free 15-minute consultation</h2>
+                <span className="label">Reserve your slot</span>
+                <h2 className={styles.bookTitle}>Discovery call</h2>
                 <p className={styles.bookDesc}>
-                  Select a time that works for you. The call takes place over Google
-                  Meet. You will receive a confirmation and a calendar invite straight away.
+                  Select a time below. The call takes place over Google Meet and
+                  runs to thirty minutes. You will receive a confirmation and a
+                  calendar invite immediately.
                 </p>
                 <AnimatedButton
                   href={bookingUrl}
@@ -78,7 +81,7 @@ export default function ContactPage() {
                   Book via Google Meet
                 </AnimatedButton>
                 <p className={styles.bookNote}>
-                  Prefer email first? Reach us at{' '}
+                  Prefer to reach out by email first?{' '}
                   <a href="mailto:william.gouldsmith@telosai.co.uk" className={styles.emailLink}>
                     william.gouldsmith@telosai.co.uk
                   </a>

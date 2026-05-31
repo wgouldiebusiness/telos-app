@@ -6,22 +6,22 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'One monthly fee, no lock-in, no surprises. Starter from £100/mo, Growth from £250/mo, or a fully bespoke build from £1,000/mo.',
+    'A fixed monthly fee. Scope agreed upfront. No lock-in. The right plan depends on your business and is confirmed on your call.',
 }
 
 const tiers = [
   {
     key: 'starter',
     name: 'Starter',
-    desc: 'One AI agent, built and managed for you.',
+    desc: 'One precision-built AI agent, fully managed.',
     price: '£100',
     period: '/mo',
-    best: 'Best for solo owners',
+    best: 'Solo operators and focused builds',
     features: [
       'One custom AI agent',
-      'Built around your main pain point',
-      'Connected to your existing tools',
-      'Monthly performance summary',
+      'Built around your highest-value problem',
+      'Wired into your existing tools',
+      'Monthly performance report',
       'Email support',
     ],
     featured: false,
@@ -29,13 +29,13 @@ const tiers = [
   {
     key: 'growth',
     name: 'Growth',
-    desc: 'Several agents working together to capture and convert.',
+    desc: 'A coordinated system of agents that captures, qualifies, and converts.',
     price: '£250',
     period: '/mo',
-    best: 'Best for small teams',
+    best: 'The most chosen plan',
     features: [
-      'Multiple AI agents and integrations',
-      'Pipeline and follow-up automation',
+      'Multiple AI agents working together',
+      'Pipeline, follow-up, and lead recovery',
       'Live client dashboard',
       'Monthly and annual reporting',
       'Priority support',
@@ -45,16 +45,16 @@ const tiers = [
   {
     key: 'bespoke',
     name: 'Bespoke',
-    desc: 'A full, tailored AI system for a growing business.',
+    desc: 'A complete AI infrastructure built around the full scope of your business.',
     price: '£1k',
     period: '+/mo',
-    best: 'Priced to your business',
+    best: 'Scoped to your requirements',
     features: [
-      'A complete, custom AI build',
+      'Full custom AI architecture',
       'Unlimited agents and integrations',
-      'Conversion website if needed',
-      'Content, data and insights',
-      'Dedicated support',
+      'Conversion website if required',
+      'Content, data and intelligence layer',
+      'Dedicated partnership',
     ],
     featured: false,
   },
@@ -62,20 +62,24 @@ const tiers = [
 
 const faqs = [
   {
-    q: 'Is there a long contract?',
-    a: 'No. Plans are rolling monthly. You can change or cancel with reasonable notice. We earn your business every month.',
+    q: 'Is there a minimum contract term?',
+    a: 'No. Plans run monthly. You can change plan or cancel with reasonable notice. We earn your continued business by delivering results, not by locking you in.',
   },
   {
-    q: 'What about the setup fee?',
-    a: 'Most builds include a one-off setup, scoped on the call so you know the full number upfront before anything is agreed.',
+    q: 'What does setup cost?',
+    a: 'Every build includes a one-off setup fee. The exact figure is scoped on your call so you know the full number before you agree to anything. No surprises.',
   },
   {
-    q: 'Not sure which plan you need?',
-    a: 'That is what the call is for. We will tell you honestly what would help and what would not.',
+    q: 'How do I know which plan is right?',
+    a: 'The call resolves that. We look at what you need and tell you plainly which plan fits, or whether a bespoke scope makes more sense. We will not upsell you into something you do not need.',
   },
   {
-    q: 'Do you guarantee results?',
-    a: 'We build with real skill and care. We are honest that results depend on your business too, so we never make guarantees we cannot keep.',
+    q: 'Do you guarantee specific results?',
+    a: 'We build with precision and we care about performance deeply. We will not make claims we cannot substantiate. What we will guarantee is that if something underperforms, we investigate and fix it.',
+  },
+  {
+    q: 'What kind of business is this for?',
+    a: 'UK-based service businesses that are serious about growth: clinics, agencies, trades, professional services, coaches, and anyone who has more work running the business than they should. If you are still managing leads by hand, this is for you.',
   },
 ]
 
@@ -87,13 +91,14 @@ export default function PricingPage() {
           <Reveal><span className="label">Pricing</span></Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              Plans that <span className={styles.accent}>pay for themselves.</span>
+              An investment that <span className={styles.accent}>earns back.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              One monthly fee, no lock-in, no surprises. The right plan depends on your
-              business and gets agreed on your call.
+              A fixed monthly fee with no lock-in and no hidden costs. The question
+              is not whether you can afford this. It is what continuing without it
+              is costing you.
             </p>
           </Reveal>
         </div>
@@ -105,7 +110,7 @@ export default function PricingPage() {
             {tiers.map((tier, i) => (
               <Reveal key={tier.key} delay={i * 0.1}>
                 <div className={`${styles.tier} ${tier.featured ? styles.featured : ''}`}>
-                  {tier.featured && <div className={styles.ribbon}>Most popular</div>}
+                  {tier.featured && <div className={styles.ribbon}>Most chosen</div>}
                   <div className={styles.tierName}>{tier.name}</div>
                   <div className={styles.tierDesc}>{tier.desc}</div>
                   <div className={styles.tierPrice}>
@@ -126,7 +131,8 @@ export default function PricingPage() {
           </div>
           <Reveal delay={0.3}>
             <p className={styles.note}>
-              Setup is scoped on your call so you know the exact cost upfront. No hidden fees.
+              Setup is scoped on your call so you know the full cost before you commit.
+              We keep our client base deliberately small. Every build gets our full attention.
             </p>
           </Reveal>
         </div>
@@ -135,7 +141,7 @@ export default function PricingPage() {
       <section className={styles.faqSection}>
         <div className="container">
           <Reveal>
-            <h2 className={styles.faqH2}>Common questions</h2>
+            <h2 className={styles.faqH2}>Questions worth answering directly</h2>
           </Reveal>
           {faqs.map((faq, i) => (
             <Reveal key={faq.q} delay={i * 0.06}>

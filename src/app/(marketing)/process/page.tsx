@@ -6,29 +6,29 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'How It Works',
   description:
-    'Four clear steps from first call to a running AI system. Built around your business, approved by you at every stage.',
+    'Four clear steps from first conversation to a running AI system. You see the full picture before you commit to anything.',
 }
 
 const steps = [
   {
     n: '01',
-    title: 'A quick call',
-    body: 'A short, no-pressure conversation to understand your business and where the time really goes.',
+    title: 'A focused conversation',
+    body: 'Thirty minutes. We learn your business, map where the time and money are leaking, and identify which problems AI can solve cleanly. You leave with a clear picture of what is possible, regardless of whether you proceed.',
   },
   {
     n: '02',
-    title: 'We map it out',
-    body: 'We look at how you work and pinpoint exactly where AI will make the biggest difference.',
+    title: 'We design the system',
+    body: 'We translate what we heard into a precise technical plan: what we will build, what it connects to, how it behaves, and what it costs in full. Nothing is vague. You approve everything before we touch a line of code.',
   },
   {
     n: '03',
-    title: 'We build and connect it',
-    body: 'We build your custom agents and wire them into the tools you already use. You approve everything before it goes live.',
+    title: 'We build and install it',
+    body: 'We build your agents, integrate them with your existing tools, and test every edge case. The system goes through a proper review before it goes anywhere near your business. You sign off before it goes live.',
   },
   {
     n: '04',
-    title: 'We keep improving it',
-    body: 'We monitor, refine, and adjust as your business grows. You get the results, we handle the upkeep.',
+    title: 'We manage and improve it',
+    body: 'The system is not set and forgotten. We monitor it, catch anything that needs adjusting, and develop it as your business evolves. You own the results. We do the upkeep.',
   },
 ]
 
@@ -40,13 +40,13 @@ export default function ProcessPage() {
           <Reveal><span className="label">How it works</span></Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              Four steps. <span className={styles.accent}>Dead simple.</span>
+              Four steps. <span className={styles.accent}>No surprises.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              From first conversation to a running system. Clear, and entirely in your
-              control at every stage.
+              From first conversation to a running system. You see the full picture,
+              approve every stage, and know the exact cost before you commit.
             </p>
           </Reveal>
         </div>
@@ -72,16 +72,17 @@ export default function ProcessPage() {
 
       <section className={styles.cta}>
         <div className="container">
-          <Reveal><span className="label">Get started</span></Reveal>
+          <Reveal><span className="label">Start here</span></Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
-              Start with <span className={styles.accent}>a quick call.</span>
+              Step one costs you <span className={styles.accent}>nothing.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              Fifteen minutes is all it takes to find out whether AI can help your business,
-              and where it would make the most difference.
+              A short call to understand your business and what AI could do for it.
+              You leave with a clear view of what is possible. No pitch, no
+              obligation, no wasted time.
             </p>
           </Reveal>
           <Reveal delay={0.2}>

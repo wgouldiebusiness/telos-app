@@ -49,6 +49,14 @@
   padding: clamp(70px, 9vw, 110px) 0;
 }
 
+.beliefSub {
+  max-width: 600px;
+  font-size: 18px;
+  color: var(--soft);
+  line-height: 1.65;
+  margin-top: 20px;
+}
+
 .beliefH2 {
   font-size: clamp(28px, 4vw, 52px);
   font-weight: 600;

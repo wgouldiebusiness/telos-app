@@ -4,23 +4,23 @@ import Reveal from '@/components/motion/RevealOnScroll'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos AI — Less admin. More of what you do best.',
+  title: 'Telos AI — AI systems for ambitious service businesses.',
   description:
-    'Custom AI agents and integrations for UK service businesses. We build automations that quietly run the busywork so you stay focused on your clients.',
+    'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Managed by us. Improving every month.',
 }
 
 const problems = [
   {
     word: 'Missed',
-    body: 'Every unanswered call is a client who rang the next business on the list.',
+    body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.',
   },
   {
-    word: 'Lost',
-    body: 'Hours disappear each week into follow-up and admin nobody needs to do by hand.',
+    word: 'Wasted',
+    body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.',
   },
   {
-    word: 'Slipped',
-    body: 'The follow-up that wins the job is the first thing to fall through when you are busy.',
+    word: 'Leaked',
+    body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.',
   },
 ]
 
@@ -38,23 +38,23 @@ const tags = [
 const steps = [
   {
     n: '01',
-    title: 'A quick call',
-    body: 'A short, no-pressure conversation to understand your business and where the time really goes.',
+    title: 'A focused conversation',
+    body: 'Thirty minutes to understand your business, where the bottlenecks are, and what the right system would actually look like.',
   },
   {
     n: '02',
-    title: 'We map it out',
-    body: 'We look at how you work and pinpoint exactly where AI will make the biggest difference.',
+    title: 'We design the system',
+    body: 'A precise map of what we will build, what it connects to, and exactly what it will do. You see the full picture before anything is agreed.',
   },
   {
     n: '03',
-    title: 'We build and connect it',
-    body: 'We build your custom agents and wire them into the tools you already use. You approve everything before it goes live.',
+    title: 'We build and install it',
+    body: 'We build your agents, wire them into your existing tools, and test everything thoroughly. Nothing goes live until you have approved it.',
   },
   {
     n: '04',
-    title: 'We keep improving it',
-    body: 'We monitor, refine, and adjust as your business grows. You get the results, we handle the upkeep.',
+    title: 'We manage and improve it',
+    body: 'We monitor performance, refine what needs adjusting, and develop the system as your business grows. You own the results. We handle the work.',
   },
 ]
 
@@ -65,23 +65,25 @@ export default function HomePage() {
       <section className={styles.hero}>
         <div className={`container ${styles.heroInner}`}>
           <Reveal>
-            <span className="label">AI built for service businesses</span>
+            <span className="label">AI systems for ambitious service businesses</span>
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              Less admin. More of <span className={styles.accent}>what you do best.</span>
+              The gap between busy and building{' '}
+              <span className={styles.accent}>is not effort. It is systems.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
             <p className={styles.heroSub}>
-              We build custom AI agents and integrations that quietly run the busywork
-              behind your business, so you stay focused on your clients.
+              We engineer the AI infrastructure that handles your admin, captures your
+              leads, and keeps your pipeline moving. Custom-built for your business.
+              Fully managed by us. Compounding in value every month.
             </p>
           </Reveal>
           <Reveal delay={0.24}>
             <div className={styles.heroBtns}>
-              <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
-              <Link href="/process" className={styles.btnSec}>See How It Works</Link>
+              <Link href="/contact" className={styles.btnPri}>Start the Conversation</Link>
+              <Link href="/process" className={styles.btnSec}>How It Works</Link>
             </div>
           </Reveal>
         </div>
@@ -91,11 +93,12 @@ export default function HomePage() {
       <section className={styles.problem}>
         <div className="container">
           <Reveal>
-            <span className="label">The cost of doing it all yourself</span>
+            <span className="label">What it is costing you right now</span>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.problemH2}>
-              The work running your business is quietly <span className={styles.accent}>draining it.</span>
+              Running everything manually is not just exhausting.{' '}
+              <span className={styles.accent}>It is expensive.</span>
             </h2>
           </Reveal>
           <div className={styles.problemGrid}>
@@ -120,13 +123,15 @@ export default function HomePage() {
             </Reveal>
             <Reveal delay={0.08}>
               <h2 className={styles.whatH2}>
-                We are AI experts. You stay the <span className={styles.accent}>expert in your business.</span>
+                Not a subscription. A{' '}
+                <span className={styles.accent}>technical partnership.</span>
               </h2>
             </Reveal>
             <Reveal delay={0.14}>
               <p className={styles.whatSub}>
-                We do not sell a fixed product. We learn how your business works and build
-                agents and integrations that fit it. Things like:
+                We do not hand you a tool and wish you luck. We build your system,
+                connect it to everything you already use, and manage it for you. Things
+                we build include:
               </p>
             </Reveal>
           </div>
@@ -139,7 +144,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.24}>
             <p className={styles.whatCloser}>
-              <strong>Tell us what slows you down.</strong> We will tailor the rest.
+              <strong>If you can describe the problem, we can build the solution.</strong>
             </p>
           </Reveal>
         </div>
@@ -153,7 +158,7 @@ export default function HomePage() {
               <span className="label">How it works</span>
             </Reveal>
             <Reveal delay={0.08}>
-              <h2 className={styles.howH2}>Four steps. Dead simple.</h2>
+              <h2 className={styles.howH2}>Four steps. No surprises.</h2>
             </Reveal>
           </div>
           <div className={styles.steps}>
@@ -176,17 +181,18 @@ export default function HomePage() {
       <section className={styles.cta}>
         <div className={`container ${styles.ctaInner}`}>
           <Reveal>
-            <span className="label">Get started</span>
+            <span className="label">Limited availability</span>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
-              Ready to win back <span className={styles.accent}>your time?</span>
+              We take on a small number of new clients{' '}
+              <span className={styles.accent}>at any one time.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              A free 15-minute call to find out honestly whether AI can help your
-              business, and how.
+              Every build gets our full attention. If you are ready to stop running
+              your business manually, the first step is a short conversation.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
