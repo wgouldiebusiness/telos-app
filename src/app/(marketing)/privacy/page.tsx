@@ -11,14 +11,8 @@ export default function PrivacyPage() {
   return (
     <div className={styles.page}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.warning}>
-          <strong>Template only.</strong> Have this reviewed by a UK-qualified solicitor or data
-          protection specialist before publishing. Ensure it accurately reflects your actual data
-          practices at the time of launch.
-        </div>
-
         <h1 className={styles.title}>Privacy Policy</h1>
-        <p className={styles.meta}>Last updated: [DATE]</p>
+        <p className={styles.meta}>Last updated: 31 May 2026</p>
         <p className={styles.meta}>ICO Registration Number: [ADD ONCE REGISTERED AT ico.org.uk]</p>
 
         <h2 className={styles.h2}>Who we are</h2>
@@ -38,8 +32,8 @@ export default function PrivacyPage() {
           <li>Your email address and phone number</li>
           <li>Your job title or role</li>
           <li>The content of any message, enquiry, or form submission</li>
-          <li>Any information you provide when creating a portal account (business name, contact name, phone, email, password)</li>
-          <li>Information provided during onboarding (business details, current tools, operational challenges, service preferences)</li>
+          <li>Any information you provide when creating a portal account (business name, contact name, email, and password)</li>
+          <li>Information provided during onboarding (business details, operational challenges, and service preferences)</li>
         </ul>
         <h3 className={styles.h3}>Information collected automatically when you visit our website</h3>
         <ul className={styles.list}>

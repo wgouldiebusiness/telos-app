@@ -27,7 +27,7 @@ export default function Footer() {
           <div className={styles.brand}>
             <span className={styles.wordmark}>Telos&nbsp;AI</span>
             <p className={styles.tagline}>
-              Custom AI agents and integrations for small service businesses.
+              AI systems built for service businesses that are serious about growth.
             </p>
           </div>
 

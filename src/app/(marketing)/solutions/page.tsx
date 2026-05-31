@@ -52,6 +52,50 @@ const examples = [
   },
 ]
 
+const demos = [
+  {
+    key: 'receptionist',
+    label: 'AI Receptionist',
+    scenario: 'Inbound call, 9.47pm',
+    note: 'Your phones answered after hours, on weekends, and when you are with a client.',
+    messages: [
+      { from: 'caller',  text: "Hi, I need to book an appointment. Is it too late to call?" },
+      { from: 'agent',   text: "Not at all. Are you an existing client or is this your first visit with us?" },
+      { from: 'caller',  text: "First time. I've got a knee injury I need looking at." },
+      { from: 'agent',   text: "Happy to help. We have availability tomorrow at 11am or Thursday at 2pm. Which works better for you?" },
+      { from: 'caller',  text: "Tomorrow at 11 would be great." },
+      { from: 'agent',   text: "Perfect. Booked you in for tomorrow at 11am. You will receive a confirmation text shortly with the address and what to bring." },
+    ],
+  },
+  {
+    key: 'chat',
+    label: 'Chat Assistant',
+    scenario: 'Website visitor, Saturday morning',
+    note: 'Qualifies leads and books appointments while you are away from the desk.',
+    messages: [
+      { from: 'caller',  text: "Do you treat sports injuries?" },
+      { from: 'agent',   text: "Yes, we specialise in sports and running injuries. A first appointment includes a full assessment, diagnosis, and a personalised treatment plan. Would you like to book one?" },
+      { from: 'caller',  text: "How long is the first session?" },
+      { from: 'agent',   text: "60 minutes for the initial assessment. Follow-up sessions are typically 45 minutes. I can check availability for you right now if you like?" },
+      { from: 'caller',  text: "Yes please." },
+      { from: 'agent',   text: "We have Tuesday at 3pm or Friday at 10am available this week. Which would suit you?" },
+    ],
+  },
+  {
+    key: 'recovery',
+    label: 'Missed-Call Recovery',
+    scenario: 'Automated SMS, sent within 60 seconds of a missed call',
+    note: 'Every unanswered call triggers an immediate, intelligent follow-up.',
+    messages: [
+      { from: 'agent',   text: "Hi, it is Oak Physiotherapy. We just missed your call. Can we help? Reply here, call us back on 0330 000 0000, or click the link to book online: [booking link]. We are available until 6pm today." },
+      { from: 'caller',  text: "Hi, yes I was trying to book an appointment for my shoulder." },
+      { from: 'agent',   text: "Of course. What days and times generally work best for you? I will check what we have available." },
+      { from: 'caller',  text: "Mornings are best, before 10." },
+      { from: 'agent',   text: "We have Wednesday at 8.30am or Friday at 9am this week. Either of those work for you?" },
+    ],
+  },
+]
+
 export default function SolutionsPage() {
   return (
     <>
@@ -90,6 +134,62 @@ export default function SolutionsPage() {
               wraps around it.
             </p>
           </Reveal>
+        </div>
+      </section>
+
+      {/* Agent demos */}
+      <section className={styles.demos}>
+        <div className="container">
+          <div className={styles.demosHead}>
+            <Reveal><span className="label">See it working</span></Reveal>
+            <Reveal delay={0.08}>
+              <h2 className={styles.demosH2}>
+                This is what your agents actually sound like.
+              </h2>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <p className={styles.demosSub}>
+                Every conversation is written in your voice and tuned to your business.
+                The examples below use a physiotherapy clinic as the scenario. Yours
+                would be built around your clients, your services, and how you speak.
+              </p>
+            </Reveal>
+          </div>
+
+          <div className={styles.demosGrid}>
+            {demos.map((demo, i) => (
+              <Reveal key={demo.key} delay={i * 0.1}>
+                <div className={styles.demoCard}>
+                  <div className={styles.demoHeader}>
+                    <div className={styles.demoMeta}>
+                      <span className={styles.demoLabel}>{demo.label}</span>
+                      <span className={styles.demoScenario}>{demo.scenario}</span>
+                    </div>
+                    <span className={styles.demoDot} />
+                  </div>
+
+                  <div className={styles.conversation}>
+                    {demo.messages.map((msg, j) => (
+                      <div
+                        key={j}
+                        className={`${styles.bubble} ${msg.from === 'agent' ? styles.bubbleAgent : styles.bubbleCaller}`}
+                      >
+                        {msg.from === 'caller' && (
+                          <span className={styles.bubbleFrom}>Client</span>
+                        )}
+                        {msg.from === 'agent' && (
+                          <span className={styles.bubbleFrom}>Agent</span>
+                        )}
+                        <p className={styles.bubbleText}>{msg.text}</p>
+                      </div>
+                    ))}
+                  </div>
+
+                  <p className={styles.demoNote}>{demo.note}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 

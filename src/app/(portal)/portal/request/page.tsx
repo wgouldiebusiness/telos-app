@@ -112,6 +112,7 @@ export default function RequestPage() {
               id="reqMsg"
               className={styles.textarea}
               rows={6}
+              maxLength={2000}
               placeholder="Describe what you would like changed or added..."
               value={text}
               onChange={e => setText(e.target.value)}

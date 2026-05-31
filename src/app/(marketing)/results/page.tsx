@@ -6,25 +6,25 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Results',
   description:
-    'Telos AI tracks the real impact of every automation: efficiency, growth, scalability, and return. Real results coming soon.',
+    'We track the real impact of every automation we build: hours recovered, leads captured, revenue returned. Case studies coming as our clients give permission to share.',
 }
 
 const metrics = [
   {
-    area: 'Efficiency',
-    desc: 'Hours of admin returned to the business every week. Calls answered, appointments booked, and follow-ups sent without a single manual action.',
+    area: 'Time recovered',
+    desc: 'Hours of admin, scheduling, and follow-up returned to the business every week. Not redistributed. Eliminated.',
   },
   {
-    area: 'Growth',
-    desc: 'Leads captured that would otherwise have been missed. Lapsed clients re-engaged. Pipelines that run themselves while you focus on delivery.',
+    area: 'Revenue captured',
+    desc: 'Leads recovered from missed calls, slow replies, and lapsed pipelines. Money that was leaving the business before the system existed.',
   },
   {
-    area: 'Scalability',
-    desc: 'Systems that grow with the business. Adding capacity without adding headcount. Consistent service quality regardless of how busy things get.',
+    area: 'Capacity added',
+    desc: 'Businesses handling more enquiries, more clients, and more complexity, without hiring additional staff to manage the operational layer.',
   },
   {
-    area: 'Return',
-    desc: 'Revenue recovered from missed calls, lapsed clients, and unconverted leads. We track what changed so you can see the difference clearly.',
+    area: 'Consistency delivered',
+    desc: 'Every lead followed up. Every missed call acknowledged. Every client touched at the right moment. Regardless of how busy things get.',
   },
 ]
 
@@ -38,14 +38,15 @@ export default function ResultsPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              Real results. <span className={styles.accent}>Coming soon.</span>
+              What changes when the <span className={styles.accent}>system runs properly.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              We are in our early client phase. Case studies and measured outcomes
-              are being documented. In the meantime, here is what we track and why
-              it matters.
+              We are in our early client phase and building our documented case study
+              library. We will share real results with real numbers, with client
+              permission, as they come in. In the meantime, here is what we build
+              towards in every engagement.
             </p>
           </Reveal>
         </div>
@@ -54,11 +55,11 @@ export default function ResultsPage() {
       <section className={styles.metricsSection}>
         <div className="container">
           <Reveal>
-            <span className="label">What we track</span>
+            <span className="label">What we measure</span>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.sectionH2}>
-              Four areas that actually matter.
+              The four things that actually matter.
             </h2>
           </Reveal>
           <div className={styles.metricsGrid}>
@@ -78,12 +79,13 @@ export default function ResultsPage() {
         <div className="container">
           <Reveal>
             <div className={styles.honestInner}>
-              <span className="label">A note on honesty</span>
+              <span className="label">Our position on case studies</span>
               <p className={styles.honestText}>
-                We will not publish made-up numbers or fictional case studies to look
-                more established than we are. When we have real results from real
-                clients, we will share them here with their permission and in full
-                detail. That is the standard we hold ourselves to.
+                We will not fabricate numbers, invent client names, or publish
+                results we cannot verify. When we have documented outcomes from
+                real businesses who have agreed to share them, we will publish
+                them here in full. That standard matters to us and it should
+                matter to you when evaluating anyone in this space.
               </p>
             </div>
           </Reveal>
@@ -93,21 +95,24 @@ export default function ResultsPage() {
       <section className={styles.cta}>
         <div className="container">
           <Reveal>
-            <span className="label">Get started</span>
+            <span className="label">Early clients</span>
           </Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
-              Be our next <span className={styles.accent}>success story.</span>
+              The businesses that move now{' '}
+              <span className={styles.accent}>get our best work.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              We are building our case study library one client at a time. If you work
-              with us now, you get our best attention and we get your story.
+              Early clients get the full weight of our attention and become the
+              case studies that demonstrate what is possible. If you are ready to
+              have a serious conversation about what your business could look like
+              with the right system behind it, start here.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a Free Call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
           </Reveal>
         </div>
       </section>

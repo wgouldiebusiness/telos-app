@@ -11,14 +11,8 @@ export default function CookiesPage() {
   return (
     <div className={styles.page}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.warning}>
-          <strong>Template only.</strong> Review before publishing. Ensure this accurately reflects
-          the cookies your live site actually sets. Update the cookie table when you add or remove
-          any third-party tool.
-        </div>
-
         <h1 className={styles.title}>Cookie Policy</h1>
-        <p className={styles.meta}>Last updated: [DATE]</p>
+        <p className={styles.meta}>Last updated: 31 May 2026</p>
 
         <h2 className={styles.h2}>What are cookies?</h2>
         <p>Cookies are small text files that a website places on your device when you visit. They are widely used to make websites work correctly, to remember your preferences, and to give us information about how the site is being used.</p>
@@ -38,7 +32,7 @@ export default function CookiesPage() {
                 <td>sb-[ref]-auth-token</td>
                 <td>Supabase</td>
                 <td>Keeps you logged in to the client portal securely. Without this cookie, the portal cannot function.</td>
-                <td>Session or up to 1 week (configurable)</td>
+                <td>Session or up to 1 week</td>
               </tr>
               <tr>
                 <td>__vercel_live_token</td>
@@ -84,10 +78,10 @@ export default function CookiesPage() {
             </thead>
             <tbody>
               <tr>
-                <td>[Add any preference cookies here]</td>
+                <td>telos-cookie-consent</td>
                 <td>Telos AI</td>
-                <td>[Purpose]</td>
-                <td>[Duration]</td>
+                <td>Remembers whether you have accepted or declined analytics cookies.</td>
+                <td>12 months</td>
               </tr>
             </tbody>
           </table>

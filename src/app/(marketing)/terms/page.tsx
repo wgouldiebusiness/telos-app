@@ -11,15 +11,8 @@ export default function TermsPage() {
   return (
     <div className={styles.page}>
       <div className={`container ${styles.inner}`}>
-        <div className={styles.warning}>
-          <strong>Template only.</strong> These are website terms of use, covering your public
-          website and client portal. They are separate from the Client Services Agreement, which
-          governs the delivery of paid services. Have both reviewed by a UK-qualified solicitor
-          before use.
-        </div>
-
         <h1 className={styles.title}>Terms of Service</h1>
-        <p className={styles.meta}>Last updated: [DATE]</p>
+        <p className={styles.meta}>Last updated: 31 May 2026</p>
 
         <h2 className={styles.h2}>1. Who we are and what these terms cover</h2>
         <p>These terms govern your use of the Telos AI website at telosai.co.uk and the associated client portal. Telos AI is the trading name of William Robert Gouldsmith, a sole trader based in England.</p>
