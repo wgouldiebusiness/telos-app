@@ -4,18 +4,19 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.875rem 2rem;
+  padding: 1rem 1.75rem;
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.12em;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   overflow: hidden;
   cursor: pointer;
   border: none;
   text-decoration: none;
   white-space: nowrap;
-  transition: color var(--t-base), border-color var(--t-base);
+  border-radius: 3px;
+  transition: background var(--t-base), color var(--t-fast), border-color var(--t-base), transform 300ms var(--ease), box-shadow 300ms var(--ease);
 }
 
 .label {
@@ -23,73 +24,57 @@
   z-index: 1;
 }
 
-/* Primary: dark green, gold fill on hover */
+/* Primary: gold background, dark text */
 .primary {
-  background: var(--green);
-  color: var(--bone);
-}
-
-.primary::after {
-  content: '';
-  position: absolute;
-  inset: 0;
   background: var(--gold);
-  transform: translateX(-101%);
-  transition: transform 400ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  z-index: 0;
+  color: #0A0A0B;
+  border: 1px solid transparent;
 }
 
-.primary:hover::after {
-  transform: translateX(0);
+.primary:hover {
+  background: var(--gold-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(200,145,58,.28);
 }
 
-/* Secondary: transparent with bone border, on dark backgrounds */
+/* Secondary: transparent with border, light text */
 .secondary {
   background: transparent;
-  color: var(--bone);
-  border: 1px solid rgba(240, 234, 218, 0.28);
+  color: var(--text);
+  border: 1px solid var(--border-hi);
 }
 
 .secondary:hover {
-  border-color: var(--gold-2);
-  color: var(--gold-2);
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
 }
 
-/* Outline: transparent with ink border, on light backgrounds */
+/* Outline: same as secondary */
 .outline {
   background: transparent;
-  color: var(--green);
-  border: 1px solid var(--linec);
-}
-
-.outline::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(22, 62, 43, 0.06);
-  transform: translateX(-101%);
-  transition: transform 380ms cubic-bezier(0.2, 0.7, 0.2, 1);
-  z-index: 0;
-}
-
-.outline:hover::after {
-  transform: translateX(0);
+  color: var(--text);
+  border: 1px solid var(--border-hi);
 }
 
 .outline:hover {
-  border-color: rgba(22, 62, 43, 0.3);
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-dim);
 }
 
-/* Ghost: for plain text link style */
+/* Ghost */
 .ghost {
   background: transparent;
-  color: var(--ink-soft);
+  color: var(--soft);
   padding-left: 0;
   padding-right: 0;
+  border: none;
+  border-radius: 0;
 }
 
 .ghost:hover {
-  color: var(--ink);
+  color: var(--text);
 }
 
 /* Disabled */

@@ -1,175 +1,150 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
-import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Pricing',
   description:
-    'Three tiers designed for UK service businesses: Starter, Growth, and Pro. Transparent pricing, no hidden fees.',
+    'One monthly fee, no lock-in, no surprises. Starter from £100/mo, Growth from £250/mo, or a fully bespoke build from £1,000/mo.',
 }
 
 const tiers = [
   {
     key: 'starter',
     name: 'Starter',
-    tagline: 'For practices ready to stop missing calls and leads.',
-    price: 'From £497',
-    period: 'build fee',
-    retainer: '+ £197/mo',
+    desc: 'One AI agent, built and managed for you.',
+    price: '£100',
+    period: '/mo',
+    best: 'Best for solo owners',
     features: [
-      'One core automation (AI Receptionist or Chat Assistant)',
-      'Initial setup and integration',
-      'One round of amendments after delivery',
-      'Monthly performance report',
+      'One custom AI agent',
+      'Built around your main pain point',
+      'Connected to your existing tools',
+      'Monthly performance summary',
       'Email support',
     ],
-    cta: 'Get started',
-    stripeKey: 'NEXT_PUBLIC_STRIPE_LINK_STARTER',
     featured: false,
   },
   {
     key: 'growth',
     name: 'Growth',
-    tagline: 'For practices ready to build a full automation stack.',
-    price: 'From £1,197',
-    period: 'build fee',
-    retainer: '+ £397/mo',
+    desc: 'Several agents working together to capture and convert.',
+    price: '£250',
+    period: '/mo',
+    best: 'Best for small teams',
     features: [
-      'Up to three automations from our full solution library',
-      'Full setup, integration, and testing',
-      'Ongoing monitoring and refinement',
-      'Monthly performance reports with written insights',
-      'Priority support and quarterly strategy review',
+      'Multiple AI agents and integrations',
+      'Pipeline and follow-up automation',
+      'Live client dashboard',
+      'Monthly and annual reporting',
+      'Priority support',
     ],
-    cta: 'Get started',
-    stripeKey: 'NEXT_PUBLIC_STRIPE_LINK_GROWTH',
     featured: true,
   },
   {
-    key: 'pro',
-    name: 'Pro',
-    tagline: 'For practices that want the complete system.',
-    price: 'From £2,497',
-    period: 'build fee',
-    retainer: '+ £697/mo',
+    key: 'bespoke',
+    name: 'Bespoke',
+    desc: 'A full, tailored AI system for a growing business.',
+    price: '£1k',
+    period: '+/mo',
+    best: 'Priced to your business',
     features: [
-      'Full automation stack: all relevant solutions',
-      'Conversion website included',
-      'Social media and content management',
-      'Custom reporting and data insights dashboard',
-      'Dedicated support and monthly strategy sessions',
+      'A complete, custom AI build',
+      'Unlimited agents and integrations',
+      'Conversion website if needed',
+      'Content, data and insights',
+      'Dedicated support',
     ],
-    cta: 'Get started',
-    stripeKey: 'NEXT_PUBLIC_STRIPE_LINK_PRO',
     featured: false,
   },
 ]
 
+const faqs = [
+  {
+    q: 'Is there a long contract?',
+    a: 'No. Plans are rolling monthly. You can change or cancel with reasonable notice. We earn your business every month.',
+  },
+  {
+    q: 'What about the setup fee?',
+    a: 'Most builds include a one-off setup, scoped on the call so you know the full number upfront before anything is agreed.',
+  },
+  {
+    q: 'Not sure which plan you need?',
+    a: 'That is what the call is for. We will tell you honestly what would help and what would not.',
+  },
+  {
+    q: 'Do you guarantee results?',
+    a: 'We build with real skill and care. We are honest that results depend on your business too, so we never make guarantees we cannot keep.',
+  },
+]
+
 export default function PricingPage() {
-  const starterLink  = process.env.NEXT_PUBLIC_STRIPE_LINK_STARTER  || '/contact'
-  const growthLink   = process.env.NEXT_PUBLIC_STRIPE_LINK_GROWTH   || '/contact'
-  const proLink      = process.env.NEXT_PUBLIC_STRIPE_LINK_PRO      || '/contact'
-
-  const links: Record<string, string> = {
-    starter: starterLink,
-    growth:  growthLink,
-    pro:     proLink,
-  }
-
   return (
     <>
-      {/* Hero */}
-      <section className={`section section-green ${styles.hero}`}>
+      <section className={styles.hero}>
         <div className="container">
-          <Reveal>
-            <span className="label">Pricing</span>
-          </Reveal>
+          <Reveal><span className="label">Pricing</span></Reveal>
           <Reveal delay={0.08}>
-            <h1 className={styles.heroHeadline}>
-              Transparent pricing.<br />No surprises.
+            <h1 className={styles.heroH1}>
+              Plans that <span className={styles.accent}>pay for themselves.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.16}>
+          <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              Three tiers built around how service businesses actually grow. A build
-              fee covers the setup; a monthly retainer keeps everything running and
-              improving. All prices are illustrative until confirmed in your Statement
-              of Work.
+              One monthly fee, no lock-in, no surprises. The right plan depends on your
+              business and gets agreed on your call.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Pricing cards */}
-      <section className="section section-bone">
+      <section className={styles.tiersSection}>
         <div className="container">
           <div className={styles.tiersGrid}>
             {tiers.map((tier, i) => (
-              <Reveal key={tier.key} delay={i * 0.08}>
-                <div className={`${styles.tierCard} ${tier.featured ? styles.featured : ''}`}>
-                  {tier.featured && (
-                    <div className={styles.ribbon}>Most popular</div>
-                  )}
-                  <div className={styles.tierHead}>
-                    <span className="label">{tier.name}</span>
-                    <p className={styles.tierTagline}>{tier.tagline}</p>
-                    <div className={styles.tierPrice}>
-                      <span className={styles.priceMain}>{tier.price}</span>
-                      <span className={styles.pricePeriod}>{tier.period}</span>
-                    </div>
-                    <div className={styles.retainer}>{tier.retainer} retainer</div>
+              <Reveal key={tier.key} delay={i * 0.1}>
+                <div className={`${styles.tier} ${tier.featured ? styles.featured : ''}`}>
+                  {tier.featured && <div className={styles.ribbon}>Most popular</div>}
+                  <div className={styles.tierName}>{tier.name}</div>
+                  <div className={styles.tierDesc}>{tier.desc}</div>
+                  <div className={styles.tierPrice}>
+                    {tier.price}<small>{tier.period}</small>
                   </div>
-                  <ul className={styles.featureList}>
+                  <div className={styles.tierBest}>{tier.best}</div>
+                  <ul className={styles.features}>
                     {tier.features.map(f => (
-                      <li key={f} className={styles.feature}>
-                        <span className={styles.featureMark}>+</span>
-                        {f}
-                      </li>
+                      <li key={f} className={styles.feature}>{f}</li>
                     ))}
                   </ul>
-                  <div className={styles.tierCta}>
-                    <AnimatedButton
-                      href={links[tier.key]}
-                      variant={tier.featured ? 'primary' : 'outline'}
-                    >
-                      {tier.cta}
-                    </AnimatedButton>
-                  </div>
+                  <Link href="/contact" className={`${styles.tierBtn} ${tier.featured ? styles.tierBtnFeatured : ''}`}>
+                    Book a Call
+                  </Link>
                 </div>
               </Reveal>
             ))}
           </div>
           <Reveal delay={0.3}>
-            <p className={styles.disclaimer}>
-              All prices are illustrative and will be confirmed in a signed Statement of Work
-              before any work begins. Prices exclude VAT if applicable.
+            <p className={styles.note}>
+              Setup is scoped on your call so you know the exact cost upfront. No hidden fees.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Bespoke band */}
-      <section className={`section section-brown ${styles.bespoke}`}>
+      <section className={styles.faqSection}>
         <div className="container">
           <Reveal>
-            <span className="label">Not sure which tier fits?</span>
+            <h2 className={styles.faqH2}>Common questions</h2>
           </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.bespokeHeadline}>
-              Every engagement starts with a conversation.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.16}>
-            <p className={styles.bespokeBody}>
-              The tiers above are a starting point. In practice, every build is scoped
-              specifically for the client. Book a free call and we will recommend the
-              right approach for your practice.
-            </p>
-          </Reveal>
-          <Reveal delay={0.22}>
-            <AnimatedButton href="/contact" variant="secondary">Book a Free Call</AnimatedButton>
-          </Reveal>
+          {faqs.map((faq, i) => (
+            <Reveal key={faq.q} delay={i * 0.06}>
+              <div className={styles.qa}>
+                <h3 className={styles.qaQ}>{faq.q}</h3>
+                <p className={styles.qaA}>{faq.a}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </section>
     </>

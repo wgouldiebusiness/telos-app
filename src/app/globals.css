@@ -2,20 +2,31 @@
    TELOS AI — GLOBAL DESIGN TOKENS + BASE STYLES
    ============================================================ */
 
-/* 1. Design tokens */
 :root {
-  /* Colour palette */
+  /* Dark system — marketing pages */
+  --bg:        #09090B;
+  --s1:        #111114;
+  --s2:        #18181C;
+  --card:      #202024;
+  --border:    rgba(255,255,255,.09);
+  --border-hi: rgba(255,255,255,.16);
+  --text:      #EEEEE9;
+  --soft:      #888880;
+  --softer:    #555550;
+  --gold-dim:  rgba(200,145,58,.15);
+
+  /* Shared accent tokens */
+  --gold:   #C8913A;
+  --gold-2: #E0A84A;
+
+  /* Legacy tokens — kept for portal and auth components */
   --bone:     #F0EADA;
-  --bone-2:   #E7DEC9;
   --panel:    #F5F0E3;
   --ink:      #23271E;
   --ink-soft: #6C6B5C;
   --green:    #163E2B;
-  --green-2:  #1E4A34;
   --brown:    #5C3A20;
-  --gold:     #A8884E;
-  --gold-2:   #BE9F63;
-  --linec:    rgba(35, 39, 30, 0.13);
+  --linec:    rgba(35,39,30,0.13);
 
   /* Layout */
   --max-w:     1200px;
@@ -42,7 +53,7 @@
   --text-6xl:  6.75rem;
 }
 
-/* 2. Reset */
+/* Reset */
 *,
 *::before,
 *::after {
@@ -55,42 +66,31 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
-/* 3. Body */
+/* Body */
 body {
-  background: var(--bone);
-  color: var(--ink);
-  font-family: var(--font-garamond, 'EB Garamond'), Georgia, serif;
-  font-size: var(--text-md);
-  line-height: 1.78;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
   overflow-x: hidden;
 }
 
-/* Film grain overlay */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  opacity: 0.028;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
-/* 4. Typography defaults */
+/* Headings */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
-  font-weight: 300;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  color: var(--green);
+  font-weight: 600;
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--text);
 }
 
 p {
   font-size: var(--text-md);
-  line-height: 1.8;
+  line-height: 1.7;
 }
 
 a {
@@ -117,103 +117,50 @@ ol {
   list-style: none;
 }
 
-/* 5. Text selection */
+/* Selection */
 ::selection {
-  background: rgba(22, 62, 43, 0.14);
-  color: var(--ink);
+  background: rgba(200, 145, 58, 0.25);
+  color: var(--text);
 }
 
-/* 6. Focus ring */
+/* Focus ring */
 :focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 3px;
-  border-radius: 3px;
+  border-radius: 2px;
 }
 
-/* 7. Scrollbar */
+/* Scrollbar */
 @media (min-width: 768px) {
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bone); }
-  ::-webkit-scrollbar-thumb { background: rgba(35, 39, 30, 0.18); border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
   ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
 }
 
-/* 8. Layout utilities */
+/* Layout utilities */
 .container {
   width: 100%;
-  max-width: var(--max-w);
+  max-width: 1160px;
   margin: 0 auto;
   padding-left: var(--side-pad);
   padding-right: var(--side-pad);
 }
 
-/* Type utilities */
+/* Label utility — gold uppercase caps */
 .label {
   font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: var(--text-xs);
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--brown);
+  color: var(--gold);
   display: block;
 }
 
-/* Rules */
-.rule {
-  border: none;
-  border-top: 1px solid var(--linec);
-}
-
-.rule-gold {
-  border: none;
-  border-top: 1px solid rgba(168, 136, 78, 0.35);
-}
-
-/* 9. Section helpers */
-.section {
-  padding: var(--section-y) 0;
-}
-
-.section-bone  { background: var(--bone); }
-.section-panel { background: var(--panel); }
-
-.section-green {
-  background: var(--green);
-  color: var(--bone);
-}
-.section-green h1,
-.section-green h2,
-.section-green h3,
-.section-green h4 {
-  color: var(--bone);
-}
-.section-green p {
-  color: rgba(240, 234, 218, 0.82);
-}
-.section-green .label {
-  color: var(--gold-2);
-}
-
-.section-brown {
-  background: var(--brown);
-  color: var(--bone);
-}
-.section-brown h1,
-.section-brown h2,
-.section-brown h3,
-.section-brown h4 {
-  color: var(--bone);
-}
-.section-brown p {
-  color: rgba(240, 234, 218, 0.85);
-}
-.section-brown .label {
-  color: var(--gold-2);
-}
-
-/* 10. Keyframes */
+/* Keyframes */
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
+  0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-10px); }
 }
 
@@ -222,7 +169,7 @@ ol {
   50%       { opacity: 0.55; transform: scale(1.2); }
 }
 
-/* 11. Reduced motion */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -233,3 +180,16 @@ ol {
     scroll-behavior: auto !important;
   }
 }
+
+/* Portal and auth legacy helpers — do not remove */
+.section { padding: var(--section-y) 0; }
+.section-bone  { background: var(--bone); }
+.section-panel { background: var(--panel); }
+.section-green { background: var(--green); color: var(--bone); }
+.section-green h1, .section-green h2, .section-green h3, .section-green h4 { color: var(--bone); }
+.section-green p { color: rgba(240,234,218,0.82); }
+.section-green .label { color: var(--gold-2); }
+.section-brown { background: var(--brown); color: var(--bone); }
+.section-brown h1, .section-brown h2, .section-brown h3, .section-brown h4 { color: var(--bone); }
+.section-brown p { color: rgba(240,234,218,0.85); }
+.section-brown .label { color: var(--gold-2); }

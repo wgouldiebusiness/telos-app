@@ -7,12 +7,12 @@ import Logo from '@/components/Logo/Logo'
 import styles from './Header.module.css'
 
 const navLinks = [
-  { label: 'Home',      href: '/' },
-  { label: 'Solutions', href: '/solutions' },
-  { label: 'Process',   href: '/process' },
-  { label: 'Results',   href: '/results' },
-  { label: 'About',     href: '/about' },
-  { label: 'Log In',    href: '/login' },
+  { label: 'Home',          href: '/' },
+  { label: 'What We Do',    href: '/solutions' },
+  { label: 'How It Works',  href: '/process' },
+  { label: 'Pricing',       href: '/pricing' },
+  { label: 'About',         href: '/about' },
+  { label: 'Log In',        href: '/login' },
 ]
 
 export default function Header() {
@@ -21,14 +21,12 @@ export default function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48)
+    const onScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  useEffect(() => {
-    setMenuOpen(false)
-  }, [pathname])
+  useEffect(() => { setMenuOpen(false) }, [pathname])
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
@@ -41,7 +39,7 @@ export default function Header() {
         <div className={styles.inner}>
           <Link href="/" className={styles.brand} aria-label="Telos AI home">
             <Logo size="sm" />
-            <span className={styles.wordmark}>TELOS</span>
+            <span className={styles.wordmark}>Telos</span>
           </Link>
 
           <nav className={styles.nav} aria-label="Primary navigation">
@@ -55,7 +53,7 @@ export default function Header() {
               </Link>
             ))}
             <Link href="/contact" className={styles.ctaBtn}>
-              <span>Book a Call</span>
+              Book a Call
             </Link>
           </nav>
 

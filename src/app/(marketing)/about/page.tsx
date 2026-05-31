@@ -1,26 +1,29 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
-import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'William Gouldsmith is a Chartered Physiotherapist who built Telos AI by automating his own practice. This is the story of why.',
+    'Telos AI was built by a Chartered Physiotherapist who automated his own practice and then helped others do the same.',
 }
 
 const values = [
   {
-    title: 'Efficiency First',
-    desc: 'Every automation we build is designed to return time to the people running the business. If it does not save meaningful effort, we do not build it.',
+    n: '01',
+    title: 'Honest always',
+    desc: 'We tell you what AI can and cannot do. We do not oversell, and we never promise outcomes we cannot deliver.',
   },
   {
-    title: 'Built for Results',
-    desc: 'We measure the impact of everything we deploy. If a system is not performing, we fix it. We are not interested in delivering work that looks good on paper but does not move the needle.',
+    n: '02',
+    title: 'Built for your business',
+    desc: 'Every build starts from your specific business and your specific problems. No copy-paste solutions.',
   },
   {
-    title: 'Human-Centric',
-    desc: 'Automation should make client relationships stronger, not replace them. Every system we build is designed to give people more time for the work that actually requires a human.',
+    n: '03',
+    title: 'In it for the long term',
+    desc: 'We are not after a quick setup fee. We earn your business every month by making sure the work keeps paying off.',
   },
 ]
 
@@ -28,132 +31,106 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className={`section section-bone ${styles.hero}`}>
+      <section className={styles.hero}>
         <div className="container">
-          <div className={styles.heroInner}>
-            <Reveal>
-              <span className="label">About Telos AI</span>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h1 className={styles.heroHeadline}>
-                Built by a practitioner,<br />for practitioners.
-              </h1>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Story — green band */}
-      <section className={`section section-green ${styles.storySection}`}>
-        <div className="container">
-          <div className={styles.storyGrid}>
-            <div className={styles.storyLeft}>
-              <Reveal>
-                <span className="label">The story</span>
-              </Reveal>
-            </div>
-            <div className={styles.storyRight}>
-              <Reveal delay={0.06}>
-                <p className={styles.storyLead}>
-                  I am a Chartered Physiotherapist. For years I ran my own
-                  practice and spent more time on admin than I did on anything else.
-                </p>
-              </Reveal>
-              <Reveal delay={0.12}>
-                <p className={styles.storyBody}>
-                  Missed calls. Unanswered messages. Leads that went nowhere because
-                  follow-up fell through the cracks. Clients who did not rebook because
-                  nobody reminded them. Reports that existed somewhere in a spreadsheet
-                  I never had time to look at. It was not a lack of effort. It was a
-                  structural problem.
-                </p>
-              </Reveal>
-              <Reveal delay={0.18}>
-                <p className={styles.storyBody}>
-                  I started automating my own workflows out of necessity. AI receptionist
-                  for out-of-hours calls. Automated follow-up sequences for people who
-                  enquired but did not book. A simple system to re-engage clients who
-                  had not been in for a while. The results were immediate and measurable.
-                </p>
-              </Reveal>
-              <Reveal delay={0.24}>
-                <p className={styles.storyBody}>
-                  What I built for my practice works for any service business. The
-                  problems are the same: too much admin, too many missed opportunities,
-                  not enough time. Telos AI exists to solve exactly those problems, for
-                  businesses run by people who are too busy doing the work to also be
-                  managing the systems.
-                </p>
-              </Reveal>
-              <Reveal delay={0.3}>
-                <p className={styles.storyBody}>
-                  I know what it is like to run a service business. I know what actually
-                  matters and what is just noise. That is the lens through which every
-                  Telos automation is designed.
-                </p>
-              </Reveal>
-              <Reveal delay={0.36}>
-                <p className={styles.storySig}>William Gouldsmith<br />
-                  <span className={styles.storySigTitle}>Chartered Physiotherapist, Founder of Telos AI</span>
-                </p>
-              </Reveal>
-            </div>
-          </div>
+          <Reveal><span className="label">About Telos</span></Reveal>
+          <Reveal delay={0.08}>
+            <h1 className={styles.heroH1}>
+              Built to back <span className={styles.accent}>small businesses.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.14}>
+            <p className={styles.heroSub}>
+              We help service businesses automate the busywork, protect their time, and grow
+              with confidence, without ever losing the human touch.
+            </p>
+          </Reveal>
         </div>
       </section>
 
       {/* Mission */}
-      <section className={`section section-bone ${styles.missionSection}`}>
+      <section className={styles.mission}>
         <div className="container">
-          <Reveal>
-            <span className="label">Our mission</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <blockquote className={styles.mission}>
-              To give service businesses back the time they are losing to admin,
-              by building automations that are honest, practical, and built around
-              how the business actually works.
-            </blockquote>
-          </Reveal>
+          <div className={styles.missionTwo}>
+            <Reveal><span className="label">Our mission</span></Reveal>
+            <div>
+              <Reveal delay={0.06}>
+                <p className={styles.missionLead}>
+                  Owners should spend their time doing what they built their business to do.
+                  Not chasing invoices, managing bookings, or remembering to follow up.
+                </p>
+              </Reveal>
+              <div className={styles.vals}>
+                {values.map((v, i) => (
+                  <Reveal key={v.n} delay={i * 0.08}>
+                    <div className={styles.val}>
+                      <div className={styles.valN}>{v.n}</div>
+                      <h3 className={styles.valTitle}>{v.title}</h3>
+                      <p className={styles.valDesc}>{v.desc}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* Values */}
-      <section className={`section section-panel ${styles.valuesSection}`}>
+      {/* Story */}
+      <section className={styles.story}>
         <div className="container">
-          <Reveal>
-            <span className="label">What we stand for</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.valuesHeadline}>Three things that guide every decision.</h2>
-          </Reveal>
-          <div className={styles.valuesGrid}>
-            {values.map((v, i) => (
-              <Reveal key={v.title} delay={i * 0.1}>
-                <div className={styles.valueCard}>
-                  <h3 className={styles.valueTitle}>{v.title}</h3>
-                  <p className={styles.valueDesc}>{v.desc}</p>
-                </div>
+          <div className={styles.storyInner}>
+            <div>
+              <Reveal><span className="label">The story</span></Reveal>
+            </div>
+            <div className={styles.storyContent}>
+              <Reveal delay={0.06}>
+                <h2 className={styles.storyH2}>
+                  Will Gouldsmith. <span className={styles.accent}>Chartered Physiotherapist.</span>
+                </h2>
               </Reveal>
-            ))}
+              <Reveal delay={0.1}>
+                <p className={styles.storyP}>
+                  Will ran his own clinic and spent years buried in the admin that comes with
+                  it. Booking systems, follow-ups, reminders, reports. Work that had nothing
+                  to do with treating patients but took real time away from it.
+                </p>
+              </Reveal>
+              <Reveal delay={0.14}>
+                <p className={styles.storyP}>
+                  He started learning AI and automation to fix his own practice first. When
+                  it worked, colleagues and other business owners started asking how. Telos AI
+                  is the result.
+                </p>
+              </Reveal>
+              <Reveal delay={0.18}>
+                <p className={styles.storyP}>
+                  A small, specialist team built around one idea: that running a service
+                  business should not mean drowning in the work around it.
+                </p>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
       {/* CTA */}
-      <section className={`section section-green ${styles.cta}`}>
+      <section className={styles.cta}>
         <div className="container">
-          <Reveal>
-            <h2 className={styles.ctaHeadline}>Let us have a conversation.</h2>
+          <Reveal><span className="label">Get started</span></Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.ctaH2}>
+              Let us give you <span className={styles.accent}>your time back.</span>
+            </h2>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className={styles.ctaBody}>
-              Fifteen minutes to understand your practice and whether we can help.
-              No pitch, no pressure, no commitment.
+          <Reveal delay={0.14}>
+            <p className={styles.ctaSub}>
+              Fifteen minutes to understand your business and whether we can help. No pitch,
+              no pressure, no commitment.
             </p>
           </Reveal>
-          <Reveal delay={0.18}>
-            <AnimatedButton href="/contact" variant="secondary">Book a Free Call</AnimatedButton>
+          <Reveal delay={0.2}>
+            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
           </Reveal>
         </div>
       </section>

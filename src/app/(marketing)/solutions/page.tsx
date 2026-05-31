@@ -1,176 +1,101 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
-import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Solutions',
+  title: 'What We Do',
   description:
-    'Eight AI automations for UK service businesses: AI receptionist, chat assistant, pipeline follow-up, missed-client recovery, data insights, inbox campaigns, conversion websites, and social media.',
+    'We are not a software product with a fixed list of features. We are AI experts who learn your business, then build the agents and integrations that actually fit how you work.',
 }
 
-const solutions = [
-  {
-    key: 'receptionist',
-    title: 'AI Receptionist',
-    desc: 'Your practice never stops answering. Our AI receptionist handles inbound calls and messages, books appointments, answers common questions, and captures every lead, even when you are busy with clients.',
-    benefits: [
-      'Never miss a call or a booking again',
-      'Responds instantly, at any hour',
-      'Captures and logs every lead automatically',
-    ],
-    outcome: 'Fewer missed appointments, more revenue captured with no extra effort from you.',
-  },
-  {
-    key: 'chat',
-    title: 'Website and Chat Assistant',
-    desc: 'A trained AI assistant built into your website that answers questions, qualifies leads, and books consultations, all without you lifting a finger. It knows your services, your pricing, and your availability.',
-    benefits: [
-      'Converts website visitors into booked clients',
-      'Answers questions accurately, 24 hours a day',
-      'Hands off warm leads directly to your diary',
-    ],
-    outcome: 'Your website becomes your best salesperson, working every hour of every day.',
-  },
-  {
-    key: 'pipeline',
-    title: 'Pipeline and Follow-Up',
-    desc: 'Most leads need more than one touch before they book. Our pipeline automation sends the right message at the right time: personalised, well-timed, and completely hands-off for you.',
-    benefits: [
-      'Consistent follow-up that does not feel like spam',
-      'Automatically sequences across email, SMS, or both',
-      'Stops when a lead books, escalates when they do not',
-    ],
-    outcome: 'More conversions from the leads you already have, without any manual chasing.',
-  },
-  {
-    key: 'recovery',
-    title: 'Missed-Client Recovery',
-    desc: 'Clients lapse. Life gets busy. Our recovery system quietly and consistently re-engages people who have not returned, with messages that feel personal and timely rather than automated.',
-    benefits: [
-      'Reaches lapsed clients before they forget you',
-      'Personalised outreach that feels genuinely human',
-      'Requires no manual effort once it is set up',
-    ],
-    outcome: 'A steady stream of returning clients from people who would otherwise have drifted away.',
-  },
-  {
-    key: 'data',
-    title: 'Data and Insights',
-    desc: 'Your practice already generates valuable data. We turn it into clear, useful reports that tell you which services are growing, where clients come from, which team members are performing, and where revenue is leaking.',
-    benefits: [
-      'Plain-English reports, not raw spreadsheets',
-      'Weekly or monthly delivery, however you prefer',
-      'Decisions become faster and more confident',
-    ],
-    outcome: 'You run your business on facts rather than gut feeling.',
-  },
-  {
-    key: 'inbox',
-    title: 'Inbox Campaigns',
-    desc: 'Opted-in only. Genuine value only. We build email campaigns that keep your clients informed, engaged, and coming back: appointment reminders, seasonal offers, educational content, and service updates.',
-    benefits: [
-      'Strictly opted-in, UK GDPR compliant',
-      'Content that clients actually want to receive',
-      'Automated and scheduled to save your time',
-    ],
-    outcome: 'Stronger client relationships and repeat bookings without writing a single email yourself.',
-  },
-  {
-    key: 'website',
-    title: 'Conversion Websites',
-    desc: 'A fast, beautiful website designed to do one thing: turn visitors into enquiries. Built around your service and your clients, optimised for search, and connected to your booking and lead systems from day one.',
-    benefits: [
-      'Designed to convert, not just to look good',
-      'Mobile-first, fast-loading, SEO-ready',
-      'Integrated with your automations from the start',
-    ],
-    outcome: 'A website that works as hard as you do.',
-  },
-  {
-    key: 'social',
-    title: 'Social Media and Content',
-    desc: 'AI-assisted social media posts, captions, and content calendars. Branded marketing visuals for social media, flyers, brochures, and promotional graphics. Digital marketing campaign support. A consistent, professional presence without the time drain.',
-    benefits: [
-      'Regular, on-brand content without the hours',
-      'Visuals that look professionally made',
-      'Campaign support from planning to execution',
-    ],
-    outcome: 'A steady, professional online presence your clients will notice.',
-  },
+const examples = [
+  { n: '01', title: 'AI receptionists',             desc: 'An agent that answers calls and enquiries day and night, books appointments, and never lets a lead go cold.' },
+  { n: '02', title: 'Chatbots and assistants',       desc: 'Smart assistants on your website that answer questions, qualify leads, and guide people to book, in your voice.' },
+  { n: '03', title: 'CRM and pipeline automation',   desc: 'Every lead captured, tracked, and followed up automatically, so nothing slips through the cracks.' },
+  { n: '04', title: 'Missed-call and lead recovery', desc: 'The moment a call is missed, an automatic follow-up goes out, turning lost calls back into booked work.' },
+  { n: '05', title: 'Lead generation',               desc: 'Systems that find and reach the right prospects for your business, consistently and on autopilot.' },
+  { n: '06', title: 'Data and insights',             desc: 'Plain-English reporting that shows what is working, what is not, and where the next opportunity is.' },
+  { n: '07', title: 'Conversion websites',           desc: 'A fast, refined site built for one job: turning visitors into booked clients, wired into your agents.' },
+  { n: '08', title: 'Content and social',            desc: 'On-brand posts, graphics, and campaigns produced and scheduled for you, so your presence never goes quiet.' },
 ]
 
 export default function SolutionsPage() {
   return (
     <>
-      {/* Hero band */}
-      <section className={`section section-green ${styles.hero}`}>
+      <section className={styles.hero}>
         <div className="container">
-          <Reveal>
-            <span className="label">Our Solutions</span>
-          </Reveal>
+          <Reveal><span className="label">What we do</span></Reveal>
           <Reveal delay={0.08}>
-            <h1 className={styles.heroHeadline}>
-              Eight automations.<br />One consistent system.
+            <h1 className={styles.heroH1}>
+              We build custom AI, <span className={styles.accent}>tailored to you.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.16}>
+          <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              Each solution is built and configured specifically for your business.
-              Take one, combine several, or let us recommend a stack that fits
-              your practice.
+              We are not a software product with a fixed list of features. We are AI experts
+              who learn your business, then build the agents and integrations that actually fit
+              how you work.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* Solutions list */}
-      <section className="section section-bone">
+      <section className={styles.belief}>
         <div className="container">
+          <Reveal><span className="label">Our approach</span></Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.beliefH2}>
+              Most automation is sold in boxes.{' '}
+              <span className={styles.accent}>Your business does not work in boxes.</span>
+            </h2>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className={styles.examples}>
+        <div className="container">
+          <div className={styles.exHead}>
+            <Reveal><span className="label">A few things we build</span></Reveal>
+            <Reveal delay={0.08}><h2 className={styles.exH2}>Examples, not a menu.</h2></Reveal>
+            <Reveal delay={0.14}>
+              <p className={styles.exSub}>
+                These are some of the most common builds. If what you need is not here,
+                that is fine. We start from your problem, not from a product list.
+              </p>
+            </Reveal>
+          </div>
           <div className={styles.grid}>
-            {solutions.map((s, i) => (
-              <Reveal key={s.key} delay={(i % 2) * 0.08}>
-                <article className={styles.card}>
-                  <div className={styles.cardHead}>
-                    <span className="label">{String(i + 1).padStart(2, '0')}</span>
-                    <h2 className={styles.cardTitle}>{s.title}</h2>
-                    <p className={styles.cardDesc}>{s.desc}</p>
-                  </div>
-                  <div className={styles.cardBody}>
-                    <ul className={styles.benefits}>
-                      {s.benefits.map(b => (
-                        <li key={b} className={styles.benefit}>
-                          <span className={styles.benefitDot} />
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className={styles.outcome}>
-                      <span className="label" style={{ color: 'var(--gold)' }}>Outcome</span>
-                      <p className={styles.outcomeText}>{s.outcome}</p>
-                    </div>
-                  </div>
-                </article>
+            {examples.map((ex, i) => (
+              <Reveal key={ex.n} delay={(i % 2) * 0.08}>
+                <div className={styles.card}>
+                  <div className={styles.cardNum}>{ex.n}</div>
+                  <h3 className={styles.cardTitle}>{ex.title}</h3>
+                  <p className={styles.cardDesc}>{ex.desc}</p>
+                </div>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className={`section section-brown ${styles.cta}`}>
+      <section className={styles.tailorBand}>
         <div className="container">
-          <Reveal>
-            <h2 className={styles.ctaHeadline}>Not sure which solutions you need?</h2>
+          <Reveal><span className="label">The point</span></Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.tailorH2}>
+              Tell us what slows you down.{' '}
+              <span className={styles.accent}>We will build the rest.</span>
+            </h2>
           </Reveal>
-          <Reveal delay={0.1}>
-            <p className={styles.ctaBody}>
-              Book a free 15-minute call and we will map out exactly which automations
-              would make the most difference to your practice.
+          <Reveal delay={0.14}>
+            <p className={styles.tailorSub}>
+              One short call is all it takes to find out what AI could do for your business.
+              No pressure, and an honest answer either way.
             </p>
           </Reveal>
-          <Reveal delay={0.18}>
-            <AnimatedButton href="/contact" variant="secondary">Book a Free Call</AnimatedButton>
+          <Reveal delay={0.2}>
+            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
           </Reveal>
         </div>
       </section>

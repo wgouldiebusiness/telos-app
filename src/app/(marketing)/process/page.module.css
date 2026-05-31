@@ -1,112 +1,135 @@
-.hero { padding-top: 8rem; }
+.accent { color: var(--gold); }
 
-.heroHeadline {
-  font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl));
-  font-weight: 200;
-  color: var(--bone);
-  margin-top: 0.75rem;
-  margin-bottom: 1.5rem;
-  max-width: 18ch;
+.btnPri {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 1rem 1.75rem;
+  text-decoration: none;
+  border-radius: 3px;
+  background: var(--gold);
+  color: #0A0A0B;
+  transition: background var(--t-base), transform 300ms var(--ease);
+}
+
+.btnPri:hover {
+  background: var(--gold-2);
+  transform: translateY(-2px);
+}
+
+.hero {
+  padding: 175px 0 80px;
+}
+
+.heroH1 {
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 18px 0 28px;
 }
 
 .heroSub {
-  font-size: var(--text-lg);
-  color: rgba(240,234,218,0.78);
-  max-width: 52ch;
-  line-height: 1.75;
+  max-width: 560px;
+  font-size: 20px;
+  color: var(--soft);
+  line-height: 1.65;
 }
 
-/* Steps */
+.stepsSection {
+  background: var(--s1);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: clamp(80px, 10vw, 130px) 0;
+}
+
 .steps {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .step {
   display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 3rem;
-  padding: 3.5rem 0;
-  border-bottom: 1px solid var(--linec);
+  grid-template-columns: 120px 1fr;
+  gap: 40px;
+  padding: 48px 0;
+  border-top: 1px solid var(--border);
+  align-items: start;
+  transition: background var(--t-base), padding var(--t-base), margin var(--t-base);
 }
 
-.step:first-child {
-  border-top: 1px solid var(--linec);
+.step:last-child {
+  border-bottom: 1px solid var(--border);
 }
 
-.stepLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 0.25rem;
+.step:hover {
+  background: var(--s2);
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
 }
 
 .stepNum {
   font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
-  font-size: var(--text-6xl);
-  font-weight: 200;
-  color: rgba(22,62,43,0.1);
-  line-height: 1;
-}
-
-.stepRight {
-  display: flex;
-  flex-direction: column;
-  gap: 0.875rem;
-}
-
-.stepMeta {
-  margin-bottom: 0.25rem;
+  font-weight: 600;
+  font-size: 64px;
+  color: var(--gold);
+  line-height: 0.85;
+  opacity: 0.7;
 }
 
 .stepTitle {
-  font-size: var(--text-2xl);
-  font-weight: 300;
-  color: var(--green);
+  font-size: 32px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
-.stepDesc {
-  font-size: var(--text-md);
-  color: var(--ink);
-  line-height: 1.8;
-  max-width: 68ch;
+.stepBody {
+  font-size: 18px;
+  color: var(--soft);
+  max-width: 600px;
+  line-height: 1.65;
 }
 
-.stepDetail {
-  font-family: var(--font-garamond, 'EB Garamond'), Georgia, serif;
-  font-size: var(--text-md);
-  font-style: italic;
-  color: var(--ink-soft);
-  line-height: 1.75;
-  max-width: 62ch;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--linec);
-  margin-top: 0.25rem;
+.cta {
+  background: var(--s1);
+  border-top: 1px solid var(--border);
+  padding: clamp(90px, 12vw, 150px) 0;
+  text-align: center;
 }
 
-/* CTA */
-.cta { text-align: center; }
-
-.ctaHeadline {
-  font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl));
-  font-weight: 200;
-  color: var(--bone);
-  margin-bottom: 1.25rem;
+.cta .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ctaBody {
-  font-size: var(--text-lg);
-  color: rgba(240,234,218,0.75);
-  max-width: 54ch;
-  margin: 0 auto 2.5rem;
-  line-height: 1.75;
+.ctaH2 {
+  font-size: clamp(36px, 5.5vw, 72px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 18px 0 22px;
 }
 
-@media (max-width: 768px) {
-  .step {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .stepNum { font-size: var(--text-4xl); }
+.ctaSub {
+  font-size: 19px;
+  color: var(--soft);
+  max-width: 480px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+@media (max-width: 880px) {
+  .hero { padding: 130px 0 60px; }
+  .step { grid-template-columns: 1fr; gap: 12px; }
+  .step:hover { margin: 0; padding: 48px 0; }
+  .stepNum { font-size: 48px; }
 }

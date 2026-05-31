@@ -1,62 +1,61 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import Logo from '@/components/Logo/Logo'
 import Reveal from '@/components/motion/RevealOnScroll'
-import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos AI — Intelligence, applied with intent.',
+  title: 'Telos AI — Less admin. More of what you do best.',
   description:
-    'AI automation built for UK service businesses. Streamline admin, recover missed clients, and grow your pipeline.',
+    'Custom AI agents and integrations for UK service businesses. We build automations that quietly run the busywork so you stay focused on your clients.',
 }
 
-const coreServices = [
+const problems = [
   {
-    title: 'AI Receptionist',
-    desc: 'Handles inbound calls and messages, books appointments, and captures leads, even when you are with a client.',
-    href: '/solutions',
+    word: 'Missed',
+    body: 'Every unanswered call is a client who rang the next business on the list.',
   },
   {
-    title: 'Website and Chat Assistant',
-    desc: 'A trained AI assistant on your website that qualifies leads and books consultations around the clock.',
-    href: '/solutions',
+    word: 'Lost',
+    body: 'Hours disappear each week into follow-up and admin nobody needs to do by hand.',
   },
   {
-    title: 'Pipeline and Follow-Up',
-    desc: 'Automated follow-up sequences for leads who do not book immediately. Consistent outreach without manual effort.',
-    href: '/solutions',
+    word: 'Slipped',
+    body: 'The follow-up that wins the job is the first thing to fall through when you are busy.',
   },
-  {
-    title: 'Missed-Client Recovery',
-    desc: 'A quiet, consistent system that re-engages lapsed clients and brings them back without manual chasing.',
-    href: '/solutions',
-  },
+]
+
+const tags = [
+  'AI receptionists',
+  'Chatbots',
+  'CRM automation',
+  'Missed-call recovery',
+  'Lead generation',
+  'Data and insights',
+  'Conversion websites',
+  'Content and social',
 ]
 
 const steps = [
   {
     n: '01',
-    title: 'Understand your workflow',
-    desc: 'A focused discovery session to map exactly where time and revenue are being lost.',
+    title: 'A quick call',
+    body: 'A short, no-pressure conversation to understand your business and where the time really goes.',
   },
   {
     n: '02',
-    title: 'Build your automations',
-    desc: 'Custom-built systems integrated directly into how you already work.',
+    title: 'We map it out',
+    body: 'We look at how you work and pinpoint exactly where AI will make the biggest difference.',
   },
   {
     n: '03',
-    title: 'Optimise and grow',
-    desc: 'Ongoing refinement so your automations improve as your business does.',
+    title: 'We build and connect it',
+    body: 'We build your custom agents and wire them into the tools you already use. You approve everything before it goes live.',
   },
-]
-
-const pillars = [
-  'Honest',
-  'Plain-spoken',
-  'Built around you',
-  'No false promises',
+  {
+    n: '04',
+    title: 'We keep improving it',
+    body: 'We monitor, refine, and adjust as your business grows. You get the results, we handle the upkeep.',
+  },
 ]
 
 export default function HomePage() {
@@ -64,151 +63,134 @@ export default function HomePage() {
     <>
       {/* Hero */}
       <section className={styles.hero}>
-        <div className="container">
-          <div className={styles.heroInner}>
-            <Reveal>
-              <Logo size="lg" float className={styles.heroLogo} />
-            </Reveal>
-            <Reveal delay={0.1}>
-              <span className="label">AI Automation for Service Businesses</span>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <h1 className={styles.heroHeadline}>
-                Intelligence,<br />applied with intent.
-              </h1>
-            </Reveal>
-            <Reveal delay={0.26}>
-              <p className={styles.heroSub}>
-                Custom automations built around your practice. Designed to save you hours,
-                recover missed revenue, and keep clients coming back.
-              </p>
-            </Reveal>
-            <Reveal delay={0.32}>
-              <div className={styles.pills}>
-                {['Streamline automation', 'Scale without hiring', 'Increase clientele'].map(p => (
-                  <span key={p} className={styles.pill}>{p}</span>
-                ))}
-              </div>
-            </Reveal>
-            <Reveal delay={0.38}>
-              <div className={styles.heroActions}>
-                <AnimatedButton href="/contact" variant="primary">Book a Consultation</AnimatedButton>
-                <AnimatedButton href="/solutions" variant="outline">See Our Solutions</AnimatedButton>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Honest strip */}
-      <section className={styles.honestStrip}>
-        <div className="container">
-          <div className={styles.stripInner}>
-            {pillars.map((item, i) => (
-              <Reveal key={item} delay={i * 0.08}>
-                <div className={styles.stripItem}>
-                  <span className={styles.stripDot} />
-                  <span className={styles.stripLabel}>{item}</span>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* What we do — green band */}
-      <section className={`section section-green ${styles.offeringSection}`}>
-        <div className="container">
+        <div className={`container ${styles.heroInner}`}>
           <Reveal>
-            <span className="label">What we actually do</span>
+            <span className="label">AI built for service businesses</span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className={styles.sectionHeadline}>
-              Built around how you actually work.
-            </h2>
+            <h1 className={styles.heroH1}>
+              Less admin. More of <span className={styles.accent}>what you do best.</span>
+            </h1>
           </Reveal>
-          <div className={styles.offeringGrid}>
-            {[
-              'We build automations that handle the admin, so you can focus on the work that matters.',
-              'We recover the clients and leads that would otherwise slip through the cracks.',
-              'We give you visibility into your business, so decisions are easier.',
-              'We create a consistent, professional presence for your business online.',
-            ].map((text, i) => (
-              <Reveal key={i} delay={i * 0.1}>
-                <div className={styles.offeringCard}>
-                  <span className={styles.offeringNum}>{String(i + 1).padStart(2, '0')}</span>
-                  <p>{text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Core solutions — bone */}
-      <section className={`section section-bone ${styles.solutionsSection}`}>
-        <div className="container">
-          <Reveal>
-            <span className="label">Our solutions</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.sectionHeadline}>
-              Automations for every part of your practice.
-            </h2>
-          </Reveal>
-          <div className={styles.solutionGrid}>
-            {coreServices.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.09}>
-                <Link href={s.href} className={styles.solutionCard}>
-                  <h3 className={styles.cardTitle}>{s.title}</h3>
-                  <p className={styles.cardDesc}>{s.desc}</p>
-                  <span className={styles.cardArrow}>See more &rarr;</span>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How it works — brown band */}
-      <section className={`section section-brown ${styles.processSection}`}>
-        <div className="container">
-          <Reveal>
-            <span className="label">How it works</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.sectionHeadline}>Three steps to a running system.</h2>
-          </Reveal>
-          <div className={styles.stepGrid}>
-            {steps.map((step, i) => (
-              <Reveal key={step.n} delay={i * 0.1}>
-                <div className={styles.step}>
-                  <span className={styles.stepNum}>{step.n}</span>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepDesc}>{step.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Closing CTA — green */}
-      <section className={`section section-green ${styles.ctaSection}`}>
-        <div className="container">
-          <Reveal>
-            <h2 className={styles.ctaHeadline}>Ready to reclaim your time?</h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className={styles.ctaBody}>
-              Start with a free 15-minute conversation. No commitment, no pitch: just a
-              clear-eyed look at what automation could do for your business.
+          <Reveal delay={0.16}>
+            <p className={styles.heroSub}>
+              We build custom AI agents and integrations that quietly run the busywork
+              behind your business, so you stay focused on your clients.
             </p>
           </Reveal>
+          <Reveal delay={0.24}>
+            <div className={styles.heroBtns}>
+              <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
+              <Link href="/process" className={styles.btnSec}>See How It Works</Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* Problem band */}
+      <section className={styles.problem}>
+        <div className="container">
+          <Reveal>
+            <span className="label">The cost of doing it all yourself</span>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.problemH2}>
+              The work running your business is quietly <span className={styles.accent}>draining it.</span>
+            </h2>
+          </Reveal>
+          <div className={styles.problemGrid}>
+            {problems.map((p, i) => (
+              <Reveal key={p.word} delay={i * 0.08}>
+                <div className={styles.problemItem}>
+                  <div className={styles.problemWord}>{p.word}</div>
+                  <p className={styles.problemBody}>{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* What we do */}
+      <section className={styles.what}>
+        <div className="container">
+          <div className={styles.whatTop}>
+            <Reveal>
+              <span className="label">What we do</span>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h2 className={styles.whatH2}>
+                We are AI experts. You stay the <span className={styles.accent}>expert in your business.</span>
+              </h2>
+            </Reveal>
+            <Reveal delay={0.14}>
+              <p className={styles.whatSub}>
+                We do not sell a fixed product. We learn how your business works and build
+                agents and integrations that fit it. Things like:
+              </p>
+            </Reveal>
+          </div>
           <Reveal delay={0.18}>
-            <AnimatedButton href="/contact" variant="secondary">
-              Book a Free Call
-            </AnimatedButton>
+            <div className={styles.tags}>
+              {tags.map(t => (
+                <span key={t} className={styles.tag}>{t}</span>
+              ))}
+            </div>
+          </Reveal>
+          <Reveal delay={0.24}>
+            <p className={styles.whatCloser}>
+              <strong>Tell us what slows you down.</strong> We will tailor the rest.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className={styles.how} id="how">
+        <div className="container">
+          <div className={styles.howHead}>
+            <Reveal>
+              <span className="label">How it works</span>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h2 className={styles.howH2}>Four steps. Dead simple.</h2>
+            </Reveal>
+          </div>
+          <div className={styles.steps}>
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08}>
+                <div className={styles.step}>
+                  <div className={styles.stepNum}>{s.n}</div>
+                  <div className={styles.stepContent}>
+                    <h3 className={styles.stepTitle}>{s.title}</h3>
+                    <p className={styles.stepBody}>{s.body}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className={styles.cta}>
+        <div className={`container ${styles.ctaInner}`}>
+          <Reveal>
+            <span className="label">Get started</span>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.ctaH2}>
+              Ready to win back <span className={styles.accent}>your time?</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.14}>
+            <p className={styles.ctaSub}>
+              A free 15-minute call to find out honestly whether AI can help your
+              business, and how.
+            </p>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
           </Reveal>
         </div>
       </section>
