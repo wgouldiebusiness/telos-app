@@ -1,8 +1,11 @@
 'use client'
+
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import Logo from '@/components/Logo/Logo'
+import { createClient } from '@/lib/supabase/client'
 import styles from './PortalShell.module.css'
 
 const navItems = [
@@ -14,9 +17,23 @@ const navItems = [
   { label: 'Billing',            href: '/portal/billing',      icon: '◻' },
 ]
 
-export default function PortalShell({ children }: { children: React.ReactNode }) {
+interface PortalShellProps {
+  children: React.ReactNode
+  businessName?: string
+  userName?: string
+}
+
+export default function PortalShell({ children, businessName = 'Your Portal', userName = '' }: PortalShellProps) {
   const pathname = usePathname()
+  const router = useRouter()
   const [mobileOpen, setMobileOpen] = useState(false)
+
+  async function handleLogout() {
+    const supabase = createClient()
+    await supabase.auth.signOut()
+    router.push('/')
+    router.refresh()
+  }
 
   return (
     <div className={styles.shell}>
@@ -30,8 +47,7 @@ export default function PortalShell({ children }: { children: React.ReactNode })
         </div>
 
         <div className={styles.bizName}>
-          {/* Replaced with real business name once Supabase is wired */}
-          <span className={styles.bizLabel}>Your Portal</span>
+          <span className={styles.bizLabel}>{businessName}</span>
         </div>
 
         <nav className={styles.nav}>
@@ -60,6 +76,9 @@ export default function PortalShell({ children }: { children: React.ReactNode })
           <Link href="/" className={styles.backLink}>
             Back to website
           </Link>
+          <button className={styles.logoutBtn} onClick={handleLogout}>
+            Log out
+          </button>
         </div>
       </aside>
 
@@ -81,6 +100,7 @@ export default function PortalShell({ children }: { children: React.ReactNode })
             <span />
           </button>
           <div className={styles.topBarRight}>
+            {userName && <span className={styles.userName}>{userName}</span>}
             <span className={styles.statusDot} aria-label="All systems operational" />
             <span className={styles.statusText}>All operational</span>
           </div>

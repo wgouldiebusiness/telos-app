@@ -125,6 +125,34 @@
   color: rgba(240,234,218,0.6);
 }
 
+.logoutBtn {
+  display: block;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  background: none;
+  border: none;
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  color: rgba(240,234,218,0.3);
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--t-fast);
+}
+
+.logoutBtn:hover {
+  color: rgba(240,234,218,0.6);
+}
+
+.userName {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: var(--text-xs);
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+  padding-right: 0.5rem;
+  border-right: 1px solid var(--linec);
+}
+
 /* Main area */
 .main {
   flex: 1;
