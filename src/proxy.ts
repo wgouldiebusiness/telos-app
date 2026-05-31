@@ -27,9 +27,19 @@ export async function proxy(request: NextRequest) {
 
   const { pathname } = request.nextUrl
 
-  // Protect portal and admin routes
+  // Protect portal and admin routes — must be logged in
   if ((pathname.startsWith('/portal') || pathname.startsWith('/admin')) && !user) {
     return NextResponse.redirect(new URL('/login', request.url))
+  }
+
+  // Restrict /admin to authorised emails only
+  if (pathname.startsWith('/admin') && user) {
+    const masterEmails = (process.env.MASTER_EMAILS ?? '')
+      .split(',')
+      .map(e => e.trim().toLowerCase())
+    if (!masterEmails.includes(user.email?.toLowerCase() ?? '')) {
+      return NextResponse.redirect(new URL('/portal', request.url))
+    }
   }
 
   // Redirect logged-in users away from auth pages
