@@ -28,6 +28,9 @@
   --brown:    #5C3A20;
   --linec:    rgba(35,39,30,0.13);
 
+  /* Announcement bar height — set by AnnouncementBar.tsx via JS */
+  --bar-h: 0px;
+
   /* Layout */
   --max-w:     1200px;
   --side-pad:  clamp(1.25rem, 5vw, 4rem);

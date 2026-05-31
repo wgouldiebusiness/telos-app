@@ -5,6 +5,7 @@ const exploreLinks = [
   { label: 'What We Do',   href: '/solutions' },
   { label: 'How It Works', href: '/process' },
   { label: 'Pricing',      href: '/pricing' },
+  { label: 'Results',      href: '/results' },
 ]
 
 const companyLinks = [

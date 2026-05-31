@@ -1,10 +1,10 @@
 .header {
   position: fixed;
-  top: 0;
+  top: var(--bar-h, 0px);
   left: 0;
   right: 0;
   z-index: 900;
-  transition: background 400ms var(--ease), border-color 400ms var(--ease);
+  transition: background 400ms var(--ease), border-color 400ms var(--ease), top 200ms ease;
   border-bottom: 1px solid transparent;
 }
 

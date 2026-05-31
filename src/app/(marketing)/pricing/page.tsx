@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
+import PricingFAQ from '@/components/PricingFAQ/PricingFAQ'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -143,14 +144,9 @@ export default function PricingPage() {
           <Reveal>
             <h2 className={styles.faqH2}>Questions worth answering directly</h2>
           </Reveal>
-          {faqs.map((faq, i) => (
-            <Reveal key={faq.q} delay={i * 0.06}>
-              <div className={styles.qa}>
-                <h3 className={styles.qaQ}>{faq.q}</h3>
-                <p className={styles.qaA}>{faq.a}</p>
-              </div>
-            </Reveal>
-          ))}
+          <Reveal delay={0.08}>
+            <PricingFAQ faqs={faqs} />
+          </Reveal>
         </div>
       </section>
     </>

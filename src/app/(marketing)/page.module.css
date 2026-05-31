@@ -108,6 +108,25 @@
   flex-wrap: wrap;
 }
 
+/* ── TRUST BADGES ── */
+.trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+}
+
+.trustBadge {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--softer);
+  border: 1px solid var(--border);
+  padding: 5px 12px;
+  border-radius: 40px;
+  letter-spacing: 0.03em;
+}
+
 /* ── PROBLEM BAND ── */
 .problem {
   border-top: 1px solid var(--border);
@@ -148,6 +167,101 @@
   font-size: 17px;
   color: var(--soft);
   line-height: 1.55;
+}
+
+/* ── BEFORE / AFTER COMPARE ── */
+.compare {
+  padding: clamp(80px, 10vw, 130px) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.compareH2 {
+  font-size: clamp(30px, 4.5vw, 58px);
+  font-weight: 600;
+  color: var(--text);
+  margin: 18px 0 52px;
+  max-width: 20ch;
+}
+
+.compareGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  background: var(--border);
+  max-width: 860px;
+}
+
+.compareCol {
+  background: var(--card);
+  padding: 0;
+  overflow: hidden;
+}
+
+.compareColAfter {
+  background: var(--s1);
+}
+
+.colLabel {
+  padding: 14px 28px;
+  background: var(--s2);
+  border-bottom: 1px solid var(--border);
+}
+
+.colLabelAfter {
+  background: var(--gold-dim);
+  border-bottom-color: rgba(200,145,58,.2);
+}
+
+.colLabelText {
+  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--softer);
+}
+
+.colLabelAfter .colLabelText {
+  color: var(--gold);
+}
+
+.compareList {
+  list-style: none;
+  padding: 8px 0;
+}
+
+.compareBefore,
+.compareAfter {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 28px;
+  font-size: 15.5px;
+  line-height: 1.45;
+  border-bottom: 1px solid var(--border);
+}
+
+.compareBefore:last-child,
+.compareAfter:last-child {
+  border-bottom: none;
+}
+
+.compareBefore { color: var(--softer); }
+.compareAfter  { color: var(--text); }
+
+.beforeMark {
+  color: var(--softer);
+  font-size: 14px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.afterMark {
+  color: var(--gold);
+  font-size: 13px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  font-weight: 700;
 }
 
 /* ── WHAT WE DO ── */
@@ -316,6 +430,7 @@
 
 /* ── RESPONSIVE ── */
 @media (max-width: 880px) {
+  .compareGrid { grid-template-columns: 1fr; }
   .hero { padding: 140px 0 70px; }
   .heroH1 { font-size: clamp(38px, 10vw, 72px); }
   .heroSub { font-size: 17px; }

@@ -49,6 +49,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       lang="en-GB"
       className={`${fraunces.variable} ${hanken.variable}`}
     >
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://eedptakfhrhxsmkfqxlc.supabase.co" />
+      </head>
       <body>
         <PageIntro />
         <SmoothScroll>{children}</SmoothScroll>

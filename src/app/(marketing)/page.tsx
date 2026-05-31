@@ -9,6 +9,29 @@ export const metadata: Metadata = {
     'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Managed by us. Improving every month.',
 }
 
+const trustBadges = [
+  'No lock-in',
+  'Scope agreed upfront',
+  'UK-based team',
+  'Cancel anytime',
+]
+
+const before = [
+  'Missed calls with no follow-up',
+  'Follow-ups sent late, or not at all',
+  'Evenings spent catching up on admin',
+  'Leads lost to whoever answered faster',
+  'Scaling means hiring more people',
+]
+
+const after = [
+  'Every call handled, day and night',
+  'Every lead followed up within minutes',
+  'Zero admin time. Everything runs itself',
+  'The fastest reply in your market',
+  'Scale without adding headcount',
+]
+
 const problems = [
   {
     word: 'Missed',
@@ -86,6 +109,13 @@ export default function HomePage() {
               <Link href="/process" className={styles.btnSec}>How It Works</Link>
             </div>
           </Reveal>
+          <Reveal delay={0.32}>
+            <div className={styles.trustRow}>
+              {trustBadges.map(b => (
+                <span key={b} className={styles.trustBadge}>{b}</span>
+              ))}
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -110,6 +140,52 @@ export default function HomePage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Before / After */}
+      <section className={styles.compare}>
+        <div className="container">
+          <Reveal>
+            <span className="label">The difference</span>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.compareH2}>
+              Same business. <span className={styles.accent}>Different infrastructure.</span>
+            </h2>
+          </Reveal>
+          <div className={styles.compareGrid}>
+            <Reveal delay={0.1}>
+              <div className={styles.compareCol}>
+                <div className={styles.colLabel}>
+                  <span className={styles.colLabelText}>Without Telos</span>
+                </div>
+                <ul className={styles.compareList}>
+                  {before.map(item => (
+                    <li key={item} className={styles.compareBefore}>
+                      <span className={styles.beforeMark}>×</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+            <Reveal delay={0.18}>
+              <div className={`${styles.compareCol} ${styles.compareColAfter}`}>
+                <div className={`${styles.colLabel} ${styles.colLabelAfter}`}>
+                  <span className={styles.colLabelText}>With Telos</span>
+                </div>
+                <ul className={styles.compareList}>
+                  {after.map(item => (
+                    <li key={item} className={styles.compareAfter}>
+                      <span className={styles.afterMark}>✓</span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           </div>
         </div>
       </section>
