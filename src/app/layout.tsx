@@ -40,6 +40,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en-GB" className={inter.variable}>
       <head>
+        <meta name="theme-color" content="#000000" />
+        {/* Inline critical CSS: prevent flash of unstyled background before JS loads */}
+        <style>{`html,body{background:#000!important}`}</style>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://eedptakfhrhxsmkfqxlc.supabase.co" />

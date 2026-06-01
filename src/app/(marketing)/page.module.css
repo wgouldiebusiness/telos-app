@@ -6,21 +6,7 @@
   min-height: 100svh;
   display: flex;
   align-items: center;
-  overflow: hidden;
-}
-
-/* Mesh grid layer */
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(120,104,230,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120,104,230,.05) 1px, transparent 1px);
-  background-size: 64px 64px;
-  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
+  /* No overflow: hidden — lets the global shader blobs show through seamlessly */
 }
 
 .blobs {
@@ -258,12 +244,12 @@
 }
 
 .problemItem {
-  background: rgba(0,0,0,.35);
-  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(0,0,0,.25);
+  border: 1px solid rgba(255,255,255,.06);
   border-radius: 16px;
   padding: 44px 36px;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
 }
 
 .problemWord {
@@ -397,7 +383,9 @@
 
 /* Callout box below build cards */
 .buildsCallout {
-  background: var(--dark);
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(120,104,230,.25);
   border-radius: 12px;
   padding: 28px 32px;

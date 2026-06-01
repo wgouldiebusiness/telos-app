@@ -9,6 +9,13 @@
   overflow: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+  /* Fade in after ~300ms so WebGL canvas is ready before it shows */
+  animation: bgFadeIn 0.6s ease forwards;
+}
+
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 /* Parallax inner — 140% tall, starts 20% above viewport */
