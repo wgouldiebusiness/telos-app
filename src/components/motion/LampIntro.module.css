@@ -1,0 +1,152 @@
+/* Full-screen overlay */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* Lamp container — holds the cones and glow */
+.lamp {
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex: 1;
+  transform: scaleY(1.25);
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+/* Shared cone base */
+.cone {
+  position: absolute;
+  inset: auto;
+  height: 14rem;
+  overflow: visible;
+}
+
+/* Left cone — purple glow from 70deg */
+.coneLeft {
+  right: 50%;
+  background-image: conic-gradient(from 70deg at center top, #7868E6, transparent, transparent);
+}
+
+/* Right cone — purple glow from 290deg */
+.coneRight {
+  left: 50%;
+  background-image: conic-gradient(from 290deg at center top, transparent, transparent, #7868E6);
+}
+
+/* Masks to clean up cone edges */
+.coneMaskBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+  background: #000;
+  -webkit-mask-image: linear-gradient(to top, white, transparent);
+  mask-image: linear-gradient(to top, white, transparent);
+  z-index: 20;
+}
+
+.coneMaskLeft {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 10rem;
+  height: 100%;
+  background: #000;
+  -webkit-mask-image: linear-gradient(to right, white, transparent);
+  mask-image: linear-gradient(to right, white, transparent);
+  z-index: 20;
+}
+
+.coneMaskRight {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10rem;
+  height: 100%;
+  background: #000;
+  -webkit-mask-image: linear-gradient(to left, white, transparent);
+  mask-image: linear-gradient(to left, white, transparent);
+  z-index: 20;
+}
+
+/* Dark band that hides cone bottoms */
+.darkBelow {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 12rem;
+  transform: translateY(3rem) scaleX(1.5);
+  background: #000;
+  filter: blur(1.5rem);
+  z-index: 50;
+}
+
+/* Glow blob at lamp source */
+.glowBlob {
+  position: absolute;
+  inset: auto;
+  z-index: 30;
+  height: 9rem;
+  transform: translateY(-6rem);
+  border-radius: 50%;
+  background: rgba(120, 104, 230, 0.55);
+  filter: blur(1.5rem);
+}
+
+/* Horizontal glowing line */
+.line {
+  position: absolute;
+  inset: auto;
+  z-index: 50;
+  height: 2px;
+  transform: translateY(-7rem);
+  background: #9B8DF5;
+  box-shadow: 0 0 12px 2px rgba(120, 104, 230, 0.8);
+}
+
+/* Top dark mask that hides above the lamp line */
+.darkTop {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 40;
+  height: 11rem;
+  transform: translateY(-13rem);
+  background: #000;
+}
+
+/* Logo + wordmark centred below the lamp */
+.brand {
+  position: relative;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transform: translateY(-10rem);
+}
+
+.wordmark {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .overlay { display: none; }
+}
