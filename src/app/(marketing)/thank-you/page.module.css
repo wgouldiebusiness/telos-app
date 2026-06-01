@@ -1,0 +1,103 @@
+.page {
+  background: transparent;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 640px;
+}
+
+.icon {
+  margin-bottom: 28px;
+  animation: popIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.heading {
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  background: linear-gradient(160deg, #ffffff 30%, rgba(255,255,255,.65) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 16px;
+  line-height: 1.04;
+}
+
+.sub {
+  font-size: 18px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.65;
+  max-width: 480px;
+  margin-bottom: 52px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-bottom: 52px;
+  width: 100%;
+}
+
+.step {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 14px;
+  padding: 24px 28px;
+}
+
+.stepN {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--purple-3);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.stepTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.stepDesc {
+  font-size: 14px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.homeBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 28px;
+  background: transparent;
+  color: rgba(255,255,255,.6);
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 980px;
+  text-decoration: none;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+.homeBtn:hover { border-color: rgba(255,255,255,.4); color: #ffffff; }

@@ -69,16 +69,16 @@ export default function ContactPage() {
                 <span className="label">Reserve your slot</span>
                 <h2 className={styles.bookTitle}>Discovery call</h2>
                 <p className={styles.bookDesc}>
-                  Select a time below. The call takes place over Google Meet and
-                  runs to thirty minutes. You will receive a confirmation and a
-                  calendar invite immediately.
+                  Select a time that works for you. The call is 15 minutes over
+                  Google Meet. You will receive a confirmation and a calendar
+                  invite immediately.
                 </p>
                 <AnimatedButton
                   href={bookingUrl}
                   variant="primary"
                   target="_blank"
                 >
-                  Book via Google Meet
+                  Book a 15-minute call
                 </AnimatedButton>
                 <p className={styles.bookNote}>
                   Prefer to reach out by email first?{' '}

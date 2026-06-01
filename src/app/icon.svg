@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 38" fill="none">
+  <!-- Crossbar: purple -->
+  <rect x="0" y="0" width="32" height="8" fill="#7868E6"/>
+  <!-- Stem: dark -->
+  <rect x="12" y="8" width="8" height="30" fill="#1D1D1F"/>
+</svg>

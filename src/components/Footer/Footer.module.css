@@ -73,9 +73,29 @@
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
   gap: 12px;
 }
+
+.bottomRight {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,.4);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color var(--t-fast);
+}
+
+.socialLink:hover { color: rgba(255,255,255,.8); }
 
 .copy {
   font-size: 13px;
