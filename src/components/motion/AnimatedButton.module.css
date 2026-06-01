@@ -4,69 +4,69 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 1rem 1.75rem;
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  padding: 14px 28px;
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
   overflow: hidden;
   cursor: pointer;
   border: none;
   text-decoration: none;
   white-space: nowrap;
-  border-radius: 3px;
-  transition: background var(--t-base), color var(--t-fast), border-color var(--t-base), transform 300ms var(--ease), box-shadow 300ms var(--ease);
+  border-radius: 980px;
+  transition: background var(--t-base), color var(--t-fast), transform 0.3s var(--ease-mag), box-shadow 0.3s ease;
 }
 
 .label {
   position: relative;
   z-index: 1;
+  color: inherit;
 }
 
-/* Primary: gold background, dark text */
+/* Primary: purple background, white text */
 .primary {
-  background: var(--gold);
-  color: #0A0A0B;
+  background: var(--purple);
+  color: #ffffff;
   border: 1px solid transparent;
 }
 
 .primary:hover {
-  background: var(--gold-2);
+  background: var(--purple-2);
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(200,145,58,.28);
+  box-shadow: 0 12px 32px rgba(120,104,230,.4);
 }
 
-/* Secondary: transparent with border, light text */
+/* Secondary: ghost with white border */
 .secondary {
   background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border-hi);
+  color: rgba(255,255,255,.75);
+  border: 1px solid rgba(255,255,255,.25);
 }
 
 .secondary:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: var(--gold-dim);
+  border-color: var(--purple);
+  color: #ffffff;
+  background: rgba(120,104,230,.12);
 }
 
 /* Outline: same as secondary */
 .outline {
   background: transparent;
-  color: var(--text);
-  border: 1px solid var(--border-hi);
+  color: rgba(255,255,255,.75);
+  border: 1px solid rgba(255,255,255,.25);
 }
 
 .outline:hover {
-  border-color: var(--gold);
-  color: var(--gold);
-  background: var(--gold-dim);
+  border-color: var(--purple);
+  color: #ffffff;
+  background: rgba(120,104,230,.12);
 }
 
 /* Ghost */
 .ghost {
   background: transparent;
-  color: var(--soft);
+  color: rgba(255,255,255,.6);
   padding-left: 0;
   padding-right: 0;
   border: none;
@@ -74,7 +74,7 @@
 }
 
 .ghost:hover {
-  color: var(--text);
+  color: #ffffff;
 }
 
 /* Disabled */

@@ -8,8 +8,8 @@
 /* Orbit container — sized square so the circle looks correct */
 .orbit {
   position: relative;
-  width: 480px;
-  height: 480px;
+  width: 560px;
+  height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,8 +18,8 @@
 /* The visible orbit ring */
 .ring {
   position: absolute;
-  width: 380px;
-  height: 380px;
+  width: 440px;
+  height: 440px;
   border-radius: 50%;
   border: 1px solid rgba(120,104,230,.2);
   top: 50%;
