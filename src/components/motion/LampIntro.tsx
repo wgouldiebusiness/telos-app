@@ -8,7 +8,6 @@ export default function LampIntro() {
   const [show, setShow] = useState(false)
 
   useEffect(() => {
-    if (typeof sessionStorage === 'undefined') return
     if (!sessionStorage.getItem('telos-intro-shown')) {
       setShow(true)
       sessionStorage.setItem('telos-intro-shown', '1')
@@ -20,71 +19,49 @@ export default function LampIntro() {
       {show && (
         <motion.div
           className={styles.overlay}
-          initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.7, ease: [0.2, 0.7, 0.2, 1], delay: 0.1 }}
+          transition={{ duration: 0.6, ease: [0.2, 0.7, 0.2, 1] }}
           onClick={() => setShow(false)}
         >
-          {/* Lamp container */}
-          <div className={styles.lamp}>
+          {/* Left cone */}
+          <motion.div
+            className={`${styles.cone} ${styles.coneLeft}`}
+            initial={{ width: '6rem', opacity: 0.4 }}
+            animate={{ width: '28rem', opacity: 1 }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
+          />
 
-            {/* Left cone */}
-            <motion.div
-              className={`${styles.cone} ${styles.coneLeft}`}
-              initial={{ width: '8rem', opacity: 0.5 }}
-              animate={{ width: '30rem', opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.9, ease: 'easeInOut' }}
-            >
-              <div className={styles.coneMaskBottom} />
-              <div className={styles.coneMaskLeft} />
-            </motion.div>
+          {/* Right cone */}
+          <motion.div
+            className={`${styles.cone} ${styles.coneRight}`}
+            initial={{ width: '6rem', opacity: 0.4 }}
+            animate={{ width: '28rem', opacity: 1 }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
+          />
 
-            {/* Right cone */}
-            <motion.div
-              className={`${styles.cone} ${styles.coneRight}`}
-              initial={{ width: '8rem', opacity: 0.5 }}
-              animate={{ width: '30rem', opacity: 1 }}
-              transition={{ delay: 0.1, duration: 0.9, ease: 'easeInOut' }}
-            >
-              <div className={styles.coneMaskBottom} />
-              <div className={styles.coneMaskRight} />
-            </motion.div>
+          {/* Glow line */}
+          <motion.div
+            className={styles.line}
+            initial={{ width: '6rem' }}
+            animate={{ width: '28rem' }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
+          />
 
-            {/* Dark overlay below cones */}
-            <div className={styles.darkBelow} />
+          {/* Dark masks */}
+          <div className={styles.maskBottom} />
+          <div className={styles.maskTop} />
 
-            {/* Centre glow blob */}
-            <motion.div
-              className={styles.glowBlob}
-              initial={{ width: '8rem' }}
-              animate={{ width: '16rem' }}
-              transition={{ delay: 0.1, duration: 0.9, ease: 'easeInOut' }}
-            />
-
-            {/* Horizontal line */}
-            <motion.div
-              className={styles.line}
-              initial={{ width: '8rem' }}
-              animate={{ width: '30rem' }}
-              transition={{ delay: 0.1, duration: 0.9, ease: 'easeInOut' }}
-            />
-
-            {/* Top dark mask */}
-            <div className={styles.darkTop} />
-          </div>
-
-          {/* Logo + wordmark */}
+          {/* Logo */}
           <motion.div
             className={styles.brand}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.45, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <Logo size="lg" dark />
             <span className={styles.wordmark}>Telos AI</span>
           </motion.div>
 
-          {/* Auto-dismiss */}
           <AutoDismiss onDismiss={() => setShow(false)} />
         </motion.div>
       )}
@@ -94,7 +71,7 @@ export default function LampIntro() {
 
 function AutoDismiss({ onDismiss }: { onDismiss: () => void }) {
   useEffect(() => {
-    const t = setTimeout(onDismiss, 1800)
+    const t = setTimeout(onDismiss, 1700)
     return () => clearTimeout(t)
   }, [onDismiss])
   return null
