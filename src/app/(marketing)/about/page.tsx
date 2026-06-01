@@ -91,33 +91,36 @@ export default function AboutPage() {
               <Reveal delay={0.1}>
                 <p className={styles.storyP}>
                   Will is a Chartered Physiotherapist with experience across the NHS,
-                  private practice, and sport. He has worked in high-performance environments
-                  and run his own clinic. He knows exactly what it is like to be the
-                  clinician, the receptionist, the scheduler, and the chaser of invoices,
-                  all at once.
+                  private practice, and elite sport. He has worked in high-performance
+                  environments and run his own clinic. He knows exactly what it is like
+                  to be the clinician, the receptionist, the scheduler, and the person
+                  chasing invoices, all at the same time.
                 </p>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className={styles.storyP}>
-                  Service businesses are still running on systems built thirty years ago.
-                  Phone calls. Paper notes. Manual follow-up. Spreadsheets. Will has seen
-                  this from the inside, and grew up using technology in ways most clinic
-                  owners have not had the time or inclination to explore.
+                  Most service businesses are still running on systems that have not
+                  changed in thirty years: phone calls, paper notes, manual follow-ups,
+                  and spreadsheets. Will experienced this first-hand, and recognised
+                  that most owners simply have not had the time or inclination to
+                  explore what technology could change.
                 </p>
               </Reveal>
               <Reveal delay={0.18}>
                 <p className={styles.storyP}>
-                  He fixed his own business first. Automated the reminders, the follow-ups,
-                  the enquiry handling, the admin that used to eat his evenings. He built the
-                  systems himself, tested them against a real business, and refined them until
+                  He solved his own business first. He automated the reminders,
+                  the follow-ups, the enquiry handling, and the admin that had
+                  previously eaten his evenings. He built the systems himself,
+                  tested them in a real clinical business, and refined them until
                   they worked properly.
                 </p>
               </Reveal>
               <Reveal delay={0.22}>
                 <p className={styles.storyP}>
-                  When colleagues and other owners started asking how, Telos AI became the
-                  answer. Built for people who have the same problem he had: a brilliant
-                  service business that is being slowed down by old-school operations.
+                  When colleagues and other owners started asking how he did it,
+                  Telos AI became the answer. Built for people who have the same
+                  problem he had: a great service business being held back by
+                  outdated operations.
                 </p>
               </Reveal>
             </div>
