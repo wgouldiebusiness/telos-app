@@ -69,11 +69,31 @@
   letter-spacing: -0.01em;
 }
 
-/* Mission — dark */
+/* Mission — dark, fades from hero black */
 .mission {
   background: var(--dark);
   padding: clamp(80px, 10vw, 130px) 0;
+  position: relative;
 }
+.mission::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--black), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.mission::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--dark-2), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.mission > * { position: relative; z-index: 1; }
 
 .missionTwo {
   display: grid;
@@ -122,13 +142,31 @@
   margin: 0;
 }
 
-/* Story — dark-2 */
+/* Story — dark-2, gradient bridges */
 .story {
   background: var(--dark-2);
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
   padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
 }
+.story::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--dark), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.story::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--black), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.story > * { position: relative; z-index: 1; }
 
 .storyInner {
   display: grid;

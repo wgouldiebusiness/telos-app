@@ -141,6 +141,8 @@ export default function HomePage() {
 
       {/* ── AI SHOWCASE ── dark, demo cards */}
       <section className={styles.showcase}>
+        <div className={styles.showcaseFadeTop} />
+        <div className={styles.showcaseFadeBot} />
         <div className="container">
           <div className={styles.showcaseHead}>
             <Reveal>

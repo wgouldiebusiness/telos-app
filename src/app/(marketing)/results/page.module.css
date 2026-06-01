@@ -68,11 +68,31 @@
   letter-spacing: -0.01em;
 }
 
-/* Metrics — dark-2 */
+/* Metrics — dark-2, gradient bridges */
 .metricsSection {
   background: var(--dark-2);
   padding: clamp(80px, 10vw, 130px) 0;
+  position: relative;
 }
+.metricsSection::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--black), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.metricsSection::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--dark), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.metricsSection > * { position: relative; z-index: 1; }
 
 .sectionH2 {
   font-size: clamp(28px, 4vw, 50px);

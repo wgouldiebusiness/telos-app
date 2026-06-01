@@ -217,11 +217,22 @@
   pointer-events: none;
 }
 
-/* ── STATEMENT ── dark */
+/* ── STATEMENT ── dark, fades in from hero black */
 .statement {
   background: var(--dark);
   padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
 }
+.statement::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--black), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.statement > * { position: relative; z-index: 1; }
 
 .statementH2 {
   font-size: clamp(32px, 5vw, 64px);
@@ -237,11 +248,31 @@
   line-height: 1.65;
 }
 
-/* ── PROBLEM BAND ── black */
+/* ── PROBLEM BAND ── black, fades in from dark */
 .problem {
   background: var(--black);
   padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
 }
+.problem::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--dark), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.problem::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--dark), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.problem > * { position: relative; z-index: 1; }
 
 .problemLabel { color: rgba(255,255,255,.4); }
 
@@ -286,7 +317,7 @@
   letter-spacing: -0.01em;
 }
 
-/* ── AI SHOWCASE ── dark */
+/* ── AI SHOWCASE ── dark, fades in/out */
 .showcase {
   background: var(--dark);
   padding: clamp(80px, 10vw, 140px) 0;
@@ -294,7 +325,7 @@
   overflow: hidden;
 }
 
-/* Subtle grid inside showcase */
+/* Mesh grid + fade-in overlay combined */
 .showcase::before {
   content: '';
   position: absolute;
@@ -305,6 +336,24 @@
   background-size: 60px 60px;
   pointer-events: none;
   opacity: 0.6;
+}
+
+.showcaseFadeTop,
+.showcaseFadeBot {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100px;
+  pointer-events: none;
+  z-index: 1;
+}
+.showcaseFadeTop {
+  top: 0;
+  background: linear-gradient(to bottom, var(--black), transparent);
+}
+.showcaseFadeBot {
+  bottom: 0;
+  background: linear-gradient(to top, var(--dark-2), transparent);
 }
 
 .showcaseHead {
@@ -376,11 +425,22 @@
   transform: translateY(-2px);
 }
 
-/* ── WHAT WE BUILD ── dark-2 */
+/* ── WHAT WE BUILD ── dark-2, gradient bridges */
 .builds {
   background: var(--dark-2);
   padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
 }
+.builds::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--dark), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.builds > * { position: relative; z-index: 1; }
 
 .buildsH2 {
   font-size: clamp(28px, 4vw, 52px);
@@ -507,11 +567,31 @@
   margin: 0;
 }
 
-/* ── HOW IT WORKS ── dark */
+/* ── HOW IT WORKS ── dark, gradient bridges */
 .how {
   background: var(--dark);
   padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
 }
+.how::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--dark-2), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.how::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 100px;
+  background: linear-gradient(to top, var(--black), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.how > * { position: relative; z-index: 1; }
 
 .howH2 {
   font-size: clamp(28px, 4vw, 52px);
