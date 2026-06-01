@@ -14,10 +14,10 @@ const tiers = [
   {
     key: 'starter',
     name: 'Starter',
-    desc: 'One precision-built AI agent, fully managed.',
+    desc: 'One custom AI agent, built and maintained for your business. From £100 per month.',
     price: '£100',
     period: '/mo',
-    best: 'Solo operators and focused builds',
+    best: 'One focused problem, solved properly',
     features: [
       'One custom AI agent',
       'Built around your highest-value problem',
@@ -30,10 +30,10 @@ const tiers = [
   {
     key: 'growth',
     name: 'Growth',
-    desc: 'A coordinated system of agents that captures, qualifies, and converts.',
+    desc: 'Two or more agents working together. More coverage, more automation. From £250 per month depending on the number of agents.',
     price: '£250',
     period: '/mo',
-    best: 'The most chosen plan',
+    best: 'Multiple problems, one coordinated system',
     features: [
       'Multiple AI agents working together',
       'Pipeline, follow-up, and lead recovery',
@@ -46,7 +46,7 @@ const tiers = [
   {
     key: 'bespoke',
     name: 'Bespoke',
-    desc: 'A complete AI infrastructure built around the full scope of your business.',
+    desc: 'Full custom AI infrastructure built from the ground up for your business. Priced on your requirements. Agreed on your call.',
     price: '£1k',
     period: '+/mo',
     best: 'Scoped to your requirements',
@@ -55,7 +55,7 @@ const tiers = [
       'Unlimited agents and integrations',
       'Conversion website if required',
       'Content, data and intelligence layer',
-      'Dedicated partnership',
+      'Dedicated build and support',
     ],
     featured: false,
   },
@@ -111,7 +111,7 @@ export default function PricingPage() {
             {tiers.map((tier, i) => (
               <Reveal key={tier.key} delay={i * 0.1}>
                 <div className={`${styles.tier} ${tier.featured ? styles.featured : ''}`}>
-                  {tier.featured && <div className={styles.ribbon}>Most chosen</div>}
+                  {/* No badge — no data to support it */}
                   <div className={styles.tierName}>{tier.name}</div>
                   <div className={styles.tierDesc}>{tier.desc}</div>
                   <div className={styles.tierPrice}>
@@ -132,8 +132,8 @@ export default function PricingPage() {
           </div>
           <Reveal delay={0.3}>
             <p className={styles.note}>
-              Setup is scoped on your call so you know the full cost before you commit.
-              We keep our client base deliberately small. Every build gets our full attention.
+              Every plan includes a one-off build, scoped and agreed before we start.
+              The monthly fee covers maintenance, monitoring, and ongoing support.
             </p>
           </Reveal>
         </div>

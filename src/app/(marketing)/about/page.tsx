@@ -90,27 +90,34 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.1}>
                 <p className={styles.storyP}>
-                  Will ran his own clinic and spent years buried in the operational
-                  layer that surrounds clinical work. Appointment reminders. Invoice
-                  chasing. Follow-up sequences. Enquiries that came in at 9pm. Work
-                  that had nothing to do with treating patients but consumed real hours
-                  every day.
+                  Will is a Chartered Physiotherapist with experience across the NHS,
+                  private practice, and sport. He has worked in high-performance environments
+                  and run his own clinic. He knows exactly what it is like to be the
+                  clinician, the receptionist, the scheduler, and the chaser of invoices,
+                  all at once.
                 </p>
               </Reveal>
               <Reveal delay={0.14}>
                 <p className={styles.storyP}>
-                  He did not hire help. He automated it. Not because he had an interest
-                  in technology for its own sake, but because he could see exactly what
-                  each piece of admin was costing him in time and opportunity. He built
-                  the systems himself, tested them against a real business, and refined
-                  them until they worked properly.
+                  Service businesses are still running on systems built thirty years ago.
+                  Phone calls. Paper notes. Manual follow-up. Spreadsheets. Will has seen
+                  this from the inside, and grew up using technology in ways most clinic
+                  owners have not had the time or inclination to explore.
                 </p>
               </Reveal>
               <Reveal delay={0.18}>
                 <p className={styles.storyP}>
-                  When colleagues and other owners started asking how, Telos AI became
-                  the answer. A small, deliberate team with one purpose: to build AI
-                  systems for service business owners who are done doing everything manually.
+                  He fixed his own business first. Automated the reminders, the follow-ups,
+                  the enquiry handling, the admin that used to eat his evenings. He built the
+                  systems himself, tested them against a real business, and refined them until
+                  they worked properly.
+                </p>
+              </Reveal>
+              <Reveal delay={0.22}>
+                <p className={styles.storyP}>
+                  When colleagues and other owners started asking how, Telos AI became the
+                  answer. Built for people who have the same problem he had: a brilliant
+                  service business that is being slowed down by old-school operations.
                 </p>
               </Reveal>
             </div>
@@ -123,17 +130,16 @@ export default function AboutPage() {
           <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>Work with us</span></Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
-              We take on a limited number of clients. Every build gets our full attention.
+              Ready to see what we can build for you?
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              If you are ready to have a serious conversation about what AI can do for
-              your business, the first step is a short call.
+              Book a meeting. No pressure, no pitch.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a meeting</Link>
           </Reveal>
         </div>
       </section>

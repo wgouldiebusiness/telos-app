@@ -31,7 +31,7 @@ export default function PageIntro() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.38, ease: [0.2, 0.7, 0.2, 1] }}
           >
-            <Logo size="lg" />
+            <Logo size="lg" dark />
           </motion.div>
         </motion.div>
       )}

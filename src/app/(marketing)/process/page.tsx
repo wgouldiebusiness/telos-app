@@ -13,22 +13,22 @@ const steps = [
   {
     n: '01',
     title: 'A focused conversation',
-    body: 'Thirty minutes. We learn your business, map where the time and money are leaking, and identify which problems AI can solve cleanly. You leave with a clear picture of what is possible, regardless of whether you proceed.',
+    body: 'A 15-minute call. We learn your business and identify where AI will make a real difference.',
   },
   {
     n: '02',
     title: 'We design the system',
-    body: 'We translate what we heard into a precise technical plan: what we will build, what it connects to, how it behaves, and what it costs in full. Nothing is vague. You approve everything before we touch a line of code.',
+    body: 'A precise plan: what we build, what it costs, and what it connects to. You approve everything before we write a line of code.',
   },
   {
     n: '03',
     title: 'We build and install it',
-    body: 'We build your agents, integrate them with your existing tools, and test every edge case. The system goes through a proper review before it goes anywhere near your business. You sign off before it goes live.',
+    body: 'Your agents are built, integrated with your tools, and tested. You sign off before anything goes live.',
   },
   {
     n: '04',
     title: 'We manage and improve it',
-    body: 'The system is not set and forgotten. We monitor it, catch anything that needs adjusting, and develop it as your business evolves. You own the results. We do the upkeep.',
+    body: 'We monitor, adjust, and develop the system as your business evolves. You own the results. We do the upkeep.',
   },
 ]
 
@@ -80,12 +80,11 @@ export default function ProcessPage() {
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              A short call to understand your business and what AI could do for it.
-              You leave with a clear view of what is possible. No pitch, no obligation.
+              Book a meeting. No pressure, no pitch.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a meeting</Link>
           </Reveal>
         </div>
       </section>

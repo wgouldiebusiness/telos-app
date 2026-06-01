@@ -15,9 +15,9 @@ export default function Logo({ size = 'sm', dark = false, float = false, classNa
   const stemW = isLarge ? 18 : 8
   const stemX = (w - stemW) / 2
 
-  // crossbar always gold, stem always warm white (works on dark and dark-green backgrounds)
-  const crossColor = '#C8913A'
-  const stemColor  = dark ? '#E0A84A' : '#EEEEE9'
+  // crossbar: always purple. stem: white on dark backgrounds, dark on light backgrounds
+  const crossColor = '#7868E6'
+  const stemColor  = dark ? '#ffffff' : '#1D1D1F'
 
   return (
     <svg

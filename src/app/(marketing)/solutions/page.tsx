@@ -11,14 +11,14 @@ export const metadata: Metadata = {
 }
 
 const examples = [
-  { n: '01', title: 'AI receptionists',             desc: 'Your phones answered, appointments booked, and common queries handled around the clock. No missed calls. No cold leads from a busy afternoon.' },
-  { n: '02', title: 'Website chat and lead capture', desc: 'An intelligent assistant on your site that converses in your voice, answers questions, and converts visitors to booked appointments.' },
-  { n: '03', title: 'CRM and pipeline automation',   desc: 'Every lead captured, categorised, and followed up automatically, at the right time, with the right message. Nothing slips. Nothing is late.' },
-  { n: '04', title: 'Missed-call recovery',          desc: 'The moment a call goes unanswered, an intelligent message goes out. Revenue recovered from jobs that would previously have gone unanswered.' },
-  { n: '05', title: 'Outbound lead generation',      desc: 'Systematic, targeted outreach built around your ideal client profile. More conversations with the right people, running in the background.' },
-  { n: '06', title: 'Reporting and intelligence',    desc: 'Plain-English monthly reporting that tells you what your system is doing, what it is returning, and where the next lever to pull is.' },
-  { n: '07', title: 'Conversion websites',           desc: 'A fast, conversion-led website built around your offer and wired into your agents from day one. Built to work, not to look impressive.' },
-  { n: '08', title: 'Content and social presence',   desc: 'Consistent, on-brand content produced in your voice and published on your behalf. Your presence stays active whether you have time or not.' },
+  { n: '01', title: 'AI Receptionist',         desc: 'Your calls answered, appointments booked, and leads qualified around the clock. No missed calls, no cold leads from a busy afternoon.' },
+  { n: '02', title: 'Website Chat Assistant',  desc: 'An intelligent assistant on your site that talks in your voice, answers questions, and converts visitors into booked clients.' },
+  { n: '03', title: 'Lead Follow-Up Pipeline', desc: 'Every lead captured and followed up at the right time with the right message. Nothing slips, nothing is late.' },
+  { n: '04', title: 'CRM Automation',          desc: 'Contacts organised, tasks triggered, and your pipeline kept moving. No manual input, no leads falling through the gaps.' },
+  { n: '05', title: 'Missed-Call Recovery',    desc: 'The moment a call goes unanswered, an intelligent message goes out immediately to recover the lead.' },
+  { n: '06', title: 'Reporting and Intelligence', desc: 'Plain-English monthly reports that tell you exactly what the system is doing and what it is returning.' },
+  { n: '07', title: 'Conversion Websites',     desc: 'A fast, focused website built around your offer and wired into your agents from day one.' },
+  { n: '08', title: 'Content and Social',      desc: 'Consistent, on-brand content produced in your voice and published on your behalf every week.' },
 ]
 
 export default function SolutionsPage() {
@@ -44,15 +44,14 @@ export default function SolutionsPage() {
 
       <section className={styles.belief}>
         <div className="container">
-          <Reveal><span className="label">The honest truth</span></Reveal>
+          <Reveal><span className="label">How we work</span></Reveal>
           <TextScanner dark={false} className={styles.beliefH2}>
-            Generic automation is built for the average business. Yours is not average.
+            We do not use off-the-shelf tools. Everything is custom coded for how your business actually works.
           </TextScanner>
           <Reveal delay={0.18}>
             <p className={styles.beliefSub}>
-              Off-the-shelf tools require you to change how you work to fit the software.
-              We work the other way. Your business stays exactly as it is. The system
-              wraps around it.
+              Off-the-shelf products require you to change how you work to fit the software.
+              We work the other way. Your business stays exactly as it is. The system wraps around it.
             </p>
           </Reveal>
         </div>
@@ -87,11 +86,10 @@ export default function SolutionsPage() {
         <div className="container">
           <div className={styles.exHead}>
             <Reveal><span className="label">What we build</span></Reveal>
-            <Reveal delay={0.08}><h2 className={styles.exH2}>Examples, not a menu.</h2></Reveal>
+            <Reveal delay={0.08}><h2 className={styles.exH2}>We build custom AI agents.</h2></Reveal>
             <Reveal delay={0.14}>
               <p className={styles.exSub}>
-                These are some of the most common builds. If what you need is not here,
-                that is fine. We start from your problem, not from a product list.
+                Every build is coded for your business specifically. Examples of what we have built:
               </p>
             </Reveal>
           </div>
@@ -114,18 +112,16 @@ export default function SolutionsPage() {
           <Reveal><span className="label">Next step</span></Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.tailorH2}>
-              Describe the problem. We will design the solution.
+              Ready to see what we can build for you?
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.tailorSub}>
-              A short call to understand your business and identify exactly where AI can
-              make a real difference. You will leave with a clear picture of what is
-              possible and what it would cost, before you commit to anything.
+              Book a meeting. No pressure, no pitch.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a meeting</Link>
           </Reveal>
         </div>
       </section>

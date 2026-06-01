@@ -5,6 +5,7 @@ import WordReveal from '@/components/motion/WordReveal'
 import TextScanner from '@/components/motion/TextScanner'
 import ChatDemo from '@/components/demos/ChatDemo'
 import PipelineDemo from '@/components/demos/PipelineDemo'
+import Logo from '@/components/Logo/Logo'
 import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
@@ -33,21 +34,18 @@ const chatConversation: ChatMessage[] = [
 ]
 
 const builds = [
-  { n: '01', title: 'AI Receptionists',          desc: 'Answers calls, books appointments, and qualifies leads around the clock.' },
-  { n: '02', title: 'Website Chat Assistants',   desc: 'Converts visitors into booked clients in your voice, day and night.' },
-  { n: '03', title: 'CRM and Pipeline Agents',   desc: 'Every lead tracked, followed up, and moved forward automatically.' },
-  { n: '04', title: 'Missed-Call Recovery',       desc: 'Every missed call triggers an immediate, intelligent follow-up.' },
-  { n: '05', title: 'Lead Generation Systems',   desc: 'Consistent, targeted outreach that feeds your pipeline without manual effort.' },
-  { n: '06', title: 'Reporting and Intelligence', desc: 'Plain-English monthly reports showing exactly what the system is doing.' },
-  { n: '07', title: 'Conversion Websites',        desc: 'Fast, focused sites built to convert, wired into your agents from day one.' },
-  { n: '08', title: 'Content and Social',         desc: 'On-brand content produced and published on your behalf every week.' },
+  { n: '01', title: 'AI Receptionist',         desc: 'Your calls answered, appointments booked, and leads qualified. Around the clock, in your voice.' },
+  { n: '02', title: 'Website Chat Assistant',  desc: 'An intelligent assistant on your site that answers questions and turns visitors into booked clients.' },
+  { n: '03', title: 'Lead Follow-Up Pipeline', desc: 'Every lead captured and followed up at the right time with the right message. Nothing slips.' },
+  { n: '04', title: 'CRM Automation',          desc: 'Contacts organised, tasks triggered, and your pipeline kept moving without manual input.' },
+  { n: '05', title: 'Missed-Call Recovery',    desc: 'The moment a call goes unanswered, an intelligent message goes out to recover the lead.' },
 ]
 
 const steps = [
-  { n: '01', title: 'A focused conversation', desc: 'Thirty minutes. We learn your business, map the bottlenecks, and show you exactly where AI will make a real difference.' },
-  { n: '02', title: 'We design the system',   desc: 'A precise plan: what we build, what it connects to, and the full cost. You see it before we write a line of code.' },
-  { n: '03', title: 'We build and install',   desc: 'We build your agents, integrate them with your tools, and test everything. You approve before anything goes live.' },
-  { n: '04', title: 'We manage and improve',  desc: 'We monitor, refine, and develop the system every month. You own the results. We do the work.' },
+  { n: '01', title: 'A focused conversation', desc: 'A 15-minute call. We learn your business.' },
+  { n: '02', title: 'We design the system',   desc: 'A precise plan: what we build, what it costs, and what it connects to. You see it before we write a line of code.' },
+  { n: '03', title: 'We build and install',   desc: 'Your agents are built, integrated, and tested. You approve before anything goes live.' },
+  { n: '04', title: 'We manage and improve',  desc: 'We monitor and develop the system every month. You own the results. We do the work.' },
 ]
 
 export default function HomePage() {
@@ -61,25 +59,29 @@ export default function HomePage() {
           <div className={styles.blob3} />
         </div>
         <div className={`container ${styles.heroInner}`}>
-          <Reveal>
+          <Reveal className={styles.heroBrand}>
+            <Logo size="lg" dark />
+            <span className={styles.heroBrandName}>Telos AI</span>
+          </Reveal>
+          <Reveal delay={0.15}>
             <span className={`label ${styles.heroLabel}`}>AI built for service businesses</span>
           </Reveal>
-          <WordReveal delay={200} className={styles.heroH1}>
+          <WordReveal delay={300} className={styles.heroH1}>
             The gap between busy and building is not effort. It is systems.
           </WordReveal>
-          <Reveal delay={0.5} className={styles.heroSubWrap}>
+          <Reveal delay={0.55} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
-              We engineer AI infrastructure that handles admin, captures leads, and
-              keeps your pipeline moving. Custom-built. Fully managed. Improving every month.
+              We build custom AI agents that handle your admin, capture your leads, and
+              keep your pipeline moving. Coded for your business. Fully managed by us.
             </p>
           </Reveal>
-          <Reveal delay={0.65} className={styles.heroBtns}>
-            <Link href="/contact" className={styles.btnPri}>Start the conversation</Link>
+          <Reveal delay={0.7} className={styles.heroBtns}>
+            <Link href="/contact" className={styles.btnPri}>Book a meeting</Link>
             <Link href="/process" className={styles.btnSec}>How it works</Link>
           </Reveal>
-          <Reveal delay={0.8}>
+          <Reveal delay={0.85}>
             <div className={styles.trustRow}>
-              {['No lock-in', 'Scope agreed upfront', 'UK-based team', 'Cancel anytime'].map(b => (
+              {['No lock-in', 'Scope agreed upfront', 'UK-based', 'Cancel anytime'].map(b => (
                 <span key={b} className={styles.trustBadge}>{b}</span>
               ))}
             </div>
@@ -88,13 +90,13 @@ export default function HomePage() {
         <div className={styles.heroFade} />
       </section>
 
-      {/* ── STATEMENT ── white, text scanner */}
+      {/* ── STATEMENT ── dark, text scanner */}
       <section className={styles.statement}>
         <div className="container">
           <Reveal>
             <span className="label">Our purpose</span>
           </Reveal>
-          <TextScanner dark={false} className={styles.statementH2}>
+          <TextScanner dark className={styles.statementH2}>
             The AI platform built for the businesses that run on people, not software.
           </TextScanner>
           <Reveal delay={0.2}>
@@ -194,17 +196,17 @@ export default function HomePage() {
             <span className="label">What we build</span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h2 className={styles.buildsH2}>Not a subscription. A technical partnership.</h2>
+            <h2 className={styles.buildsH2}>We build custom AI agents.</h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.buildsSub}>
-              We do not hand you a tool. We build your system, connect it to everything you
-              already use, and manage it. Things we build include:
+              Every build is coded for your business specifically. We do not use
+              off-the-shelf tools. Examples of what we have built:
             </p>
           </Reveal>
           <div className={styles.buildsGrid}>
             {builds.map((b, i) => (
-              <Reveal key={b.n} delay={i * 0.055}>
+              <Reveal key={b.n} delay={i * 0.07}>
                 <div className={styles.buildCard}>
                   <span className={styles.buildNum}>{b.n}</span>
                   <h3 className={styles.buildTitle}>{b.title}</h3>
@@ -213,6 +215,17 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+          <Reveal delay={0.35}>
+            <div className={styles.buildsCallout}>
+              <p className={styles.buildsCalloutText}>
+                Whatever else your business needs, we can build it. Custom code is at
+                the core of everything we do.
+              </p>
+              <Link href="/solutions" className={styles.buildsCalloutLink}>
+                See all examples
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -239,7 +252,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── CTA ── black, blur-to-sharp heading */}
+      {/* ── CTA ── black */}
       <section className={styles.cta}>
         <div className={`container ${styles.ctaInner}`}>
           <Reveal>
@@ -247,17 +260,16 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.1} className={styles.ctaHeadWrap}>
             <h2 className={styles.ctaH2}>
-              We take on a small number of new clients at any one time.
+              Ready to see what we can build for you?
             </h2>
           </Reveal>
           <Reveal delay={0.2}>
             <p className={styles.ctaSub}>
-              Every build gets our full attention. If you are ready to stop running
-              your business manually, the first step is a short conversation.
+              Book a meeting. No pressure, no pitch.
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <Link href="/contact" className={styles.btnPriCta}>Book a call</Link>
+            <Link href="/contact" className={styles.btnPriCta}>Book a meeting</Link>
           </Reveal>
         </div>
       </section>
