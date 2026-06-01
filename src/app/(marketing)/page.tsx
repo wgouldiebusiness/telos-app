@@ -51,7 +51,7 @@ const steps = [
 export default function HomePage() {
   return (
     <>
-      {/* ── HERO ── dark, blobs, word reveal */}
+      {/* ── HERO ── full screen, centred brand moment */}
       <section className={styles.hero}>
         <div className={styles.blobs}>
           <div className={styles.blob1} />
@@ -59,20 +59,21 @@ export default function HomePage() {
           <div className={styles.blob3} />
         </div>
         <div className={`container ${styles.heroInner}`}>
-          <Reveal className={styles.heroBrand}>
+          <Reveal className={styles.heroLogoMark}>
             <Logo size="lg" dark />
-            <span className={styles.heroBrandName}>Telos AI</span>
           </Reveal>
-          <Reveal delay={0.15}>
-            <span className={`label ${styles.heroLabel}`}>AI built for service businesses</span>
-          </Reveal>
-          <WordReveal delay={300} className={styles.heroH1}>
-            The gap between busy and building is not effort. It is systems.
+          <WordReveal delay={100} className={styles.heroName}>
+            Telos AI
           </WordReveal>
-          <Reveal delay={0.55} className={styles.heroSubWrap}>
+          <Reveal delay={0.4} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
-              We build custom AI agents that handle your admin, capture your leads, and
-              keep your pipeline moving. Coded for your business. Fully managed by us.
+              Custom AI agents for your business.
+            </p>
+          </Reveal>
+          <Reveal delay={0.55}>
+            <p className={styles.heroDetail}>
+              We build and manage AI systems that handle your admin, capture your leads,
+              and keep your pipeline moving. Custom coded. Fully managed.
             </p>
           </Reveal>
           <Reveal delay={0.7} className={styles.heroBtns}>
