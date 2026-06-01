@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
-  background: var(--dark);
+  background: var(--purple);
   color: var(--white);
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 15px;
@@ -19,7 +19,7 @@
 
 /* Hero — dark */
 .hero {
-  background: var(--black);
+  background: transparent;
   padding: 200px 0 100px;
   position: relative;
   overflow: hidden;
@@ -71,7 +71,7 @@
 
 /* Mission — dark, fades from hero black */
 .mission {
-  background: var(--dark);
+  background: rgba(29,29,31,.3);
   padding: clamp(80px, 10vw, 130px) 0;
   position: relative;
 }
@@ -144,7 +144,7 @@
 
 /* Story — dark-2, gradient bridges */
 .story {
-  background: var(--dark-2);
+  background: rgba(45,45,47,.3);
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
 }
@@ -190,7 +190,7 @@
 
 /* CTA — black */
 .cta {
-  background: var(--black);
+  background: transparent;
   padding: clamp(90px, 12vw, 150px) 0;
   text-align: center;
 }

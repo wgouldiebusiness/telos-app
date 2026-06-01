@@ -9,10 +9,10 @@
 }
 
 .header.scrolled {
-  background: rgba(255,255,255,.88);
+  background: rgba(0,0,0,.82);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-color: var(--grey-3);
+  border-color: rgba(255,255,255,.08);
 }
 
 .inner {
@@ -43,7 +43,7 @@
   font-size: 1.0625rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--dark);
+  color: #ffffff;
   line-height: 1;
 }
 
@@ -59,7 +59,7 @@
   font-size: 14px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--grey-2);
+  color: rgba(255,255,255,.6);
   text-decoration: none;
   transition: color var(--t-fast);
   position: relative;
@@ -77,13 +77,13 @@
   transition: width 0.25s var(--ease-out);
 }
 
-.navLink:hover { color: var(--dark); }
-.navLink.active { color: var(--dark); }
+.navLink:hover { color: #ffffff; }
+.navLink.active { color: #ffffff; }
 .navLink.active::after { width: 100%; }
 
 /* CTA */
 .ctaBtn {
-  background: var(--dark);
+  background: var(--purple);
   color: var(--white);
   padding: 9px 20px;
   border-radius: 980px;
@@ -118,7 +118,7 @@
   display: block;
   width: 100%;
   height: 1.5px;
-  background: var(--dark);
+  background: #ffffff;
   transition: transform var(--t-base), opacity var(--t-fast);
   transform-origin: center;
 }
@@ -134,8 +134,10 @@
   right: 0;
   bottom: 0;
   width: min(85vw, 320px);
-  background: var(--white);
-  border-left: 1px solid var(--grey-3);
+  background: rgba(5,2,15,.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: 1px solid rgba(120,104,230,.15);
   z-index: 950;
   padding: 5rem 2rem 3rem;
   display: flex;
@@ -153,16 +155,16 @@
   font-size: 1.375rem;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--grey);
+  color: rgba(255,255,255,.5);
   text-decoration: none;
   padding: 0.875rem 0;
-  border-bottom: 1px solid var(--grey-3);
+  border-bottom: 1px solid rgba(255,255,255,.07);
   transition: color var(--t-fast);
 }
 
 .mobileLink:hover,
 .mobileLink.active {
-  color: var(--dark);
+  color: #ffffff;
 }
 
 .mobileCta {

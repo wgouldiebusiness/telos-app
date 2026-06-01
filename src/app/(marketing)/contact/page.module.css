@@ -3,7 +3,7 @@
 
 /* Hero — dark */
 .hero {
-  background: var(--black);
+  background: transparent;
   padding: 200px 0 90px;
   position: relative;
   overflow: hidden;
@@ -53,9 +53,9 @@
   letter-spacing: -0.01em;
 }
 
-/* Body — white, two columns */
+/* Body — transparent */
 .bodySection {
-  background: var(--white);
+  background: transparent;
   padding: clamp(80px, 10vw, 130px) 0;
 }
 
@@ -68,13 +68,15 @@
 
 /* Agenda card */
 .agendaCard {
-  background: var(--light);
-  border: 1px solid var(--grey-3);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
   border-radius: 16px;
   padding: 36px 32px;
   display: flex;
   flex-direction: column;
   gap: 28px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .agendaList {
@@ -89,7 +91,7 @@
   align-items: flex-start;
   gap: 14px;
   font-size: 16px;
-  color: var(--text-body);
+  color: rgba(255,255,255,.65);
   line-height: 1.5;
   letter-spacing: -0.01em;
 }
@@ -105,35 +107,37 @@
 
 .agendaNote {
   font-size: 14px;
-  color: var(--grey);
+  color: rgba(255,255,255,.4);
   line-height: 1.65;
-  border-top: 1px solid var(--grey-3);
+  border-top: 1px solid rgba(255,255,255,.08);
   padding-top: 20px;
   margin: 0;
 }
 
 /* Book card */
 .bookCard {
-  background: var(--white);
-  border: 1px solid var(--grey-3);
+  background: rgba(120,104,230,.1);
+  border: 1px solid rgba(120,104,230,.3);
   border-radius: 16px;
   padding: 36px 32px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  box-shadow: 0 0 60px rgba(120,104,230,.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .bookTitle {
   font-size: clamp(20px, 2.8vw, 28px);
   font-weight: 700;
   letter-spacing: -0.04em;
-  color: var(--dark);
+  color: #ffffff;
 }
 
 .bookDesc {
   font-size: 16px;
-  color: var(--text-body);
+  color: rgba(255,255,255,.6);
   line-height: 1.7;
   margin: 0;
 }

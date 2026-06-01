@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
-  background: var(--dark);
+  background: var(--purple);
   color: var(--white);
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 15px;
@@ -19,7 +19,7 @@
 
 /* Hero — dark */
 .hero {
-  background: var(--black);
+  background: transparent;
   padding: 200px 0 100px;
   position: relative;
   overflow: hidden;
@@ -70,7 +70,7 @@
 
 /* Steps — dark, gradient bridges */
 .stepsSection {
-  background: var(--dark);
+  background: rgba(29,29,31,.3);
   padding: clamp(70px, 9vw, 120px) 0;
   position: relative;
 }
@@ -142,7 +142,7 @@
 
 /* CTA — black */
 .cta {
-  background: var(--black);
+  background: transparent;
   padding: clamp(90px, 12vw, 150px) 0;
   text-align: center;
 }

@@ -55,6 +55,9 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
+  /* Safari: prevent overscroll flash */
+  background: #000000;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* ── BASE ── */

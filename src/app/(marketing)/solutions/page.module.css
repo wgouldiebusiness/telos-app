@@ -5,7 +5,7 @@
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
-  background: var(--dark);
+  background: var(--purple);
   color: var(--white);
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 15px;
@@ -23,7 +23,7 @@
 
 /* Hero — dark */
 .hero {
-  background: var(--black);
+  background: transparent;
   padding: 200px 0 100px;
   position: relative;
   overflow: hidden;
@@ -75,7 +75,7 @@
 
 /* Belief band — dark, fades from hero black */
 .belief {
-  background: var(--dark);
+  background: rgba(29,29,31,.3);
   padding: clamp(80px, 10vw, 130px) 0;
   position: relative;
 }
@@ -116,7 +116,7 @@
 
 /* Demo strip */
 .demoStrip {
-  background: var(--black);
+  background: transparent;
   border-top: 1px solid rgba(255,255,255,.08);
   border-bottom: 1px solid rgba(255,255,255,.08);
   padding: clamp(60px, 7vw, 90px) 0;
@@ -148,7 +148,7 @@
 
 /* Examples grid — dark-2, gradient bridges */
 .examples {
-  background: var(--dark-2);
+  background: rgba(45,45,47,.3);
   padding: clamp(80px, 10vw, 130px) 0;
   position: relative;
 }
@@ -248,7 +248,7 @@
 
 /* Tailor CTA — black */
 .tailorBand {
-  background: var(--black);
+  background: transparent;
   padding: clamp(80px, 10vw, 130px) 0;
   text-align: center;
 }

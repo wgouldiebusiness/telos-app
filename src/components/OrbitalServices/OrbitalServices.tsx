@@ -95,6 +95,19 @@ export default function OrbitalServices() {
       </div>
 
       <p className={styles.hint}>Tap any agent to learn more</p>
+
+      {/* Mobile fallback list */}
+      <div className={styles.mobileList}>
+        {services.map(s => (
+          <div key={s.id} className={styles.mobileItem}>
+            <span className={styles.mobileIcon}>{s.icon}</span>
+            <div className={styles.mobileText}>
+              <span className={styles.mobileName}>{s.title}</span>
+              <p className={styles.mobileDesc}>{s.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

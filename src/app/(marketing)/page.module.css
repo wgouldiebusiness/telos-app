@@ -2,6 +2,7 @@
 .hero {
   position: relative;
   background: transparent;
+  min-height: 100vh; /* Safari fallback */
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -548,16 +549,23 @@
 .stepsGrid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,.08);
+  gap: 24px;
 }
 
 .stepCard {
-  background: var(--dark);
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px;
   padding: 44px 40px;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.stepCard:hover {
+  background: rgba(120,104,230,.07);
+  border-color: rgba(120,104,230,.2);
 }
 
 .stepNum {
@@ -678,17 +686,27 @@
 }
 
 @media (max-width: 880px) {
-  .heroInner   { padding: 100px 0 80px; }
-  .problemGrid { grid-template-columns: 1fr; gap: 0; }
-  .problemItem { border-bottom: 1px solid rgba(255,255,255,.08); }
-  .stepsGrid   { grid-template-columns: 1fr; }
+  .heroInner    { padding: 100px 0 80px; }
+  .problemGrid  { grid-template-columns: 1fr; gap: 0; }
+  .problemItem  { border-bottom: 1px solid rgba(255,255,255,.08); }
+  .stepsGrid    { grid-template-columns: 1fr; gap: 16px; }
   .showcaseBand { flex-direction: column; align-items: flex-start; }
   .buildsCallout { flex-direction: column; align-items: flex-start; }
+  .stepCard     { padding: 32px 28px; }
 }
 
 @media (max-width: 600px) {
-  .heroName    { font-size: clamp(60px, 18vw, 100px); }
-  .heroSub     { font-size: clamp(18px, 5vw, 26px); }
-  .buildsGrid  { grid-template-columns: 1fr; }
-  .heroBtns    { flex-direction: column; align-items: center; }
+  .heroInner    { padding: 90px 0 60px; text-align: center; }
+  .heroName     { font-size: clamp(56px, 16vw, 96px); }
+  .heroSub      { font-size: clamp(17px, 5vw, 24px); }
+  .heroDetail   { font-size: 15px; }
+  .heroBtns     { flex-direction: column; align-items: center; }
+  .buildsGrid   { grid-template-columns: 1fr; }
+  .problemWord  { font-size: clamp(36px, 10vw, 56px); }
+  .ctaH2        { font-size: clamp(28px, 8vw, 52px); }
+  .stepsGrid    { grid-template-columns: 1fr; gap: 12px; }
+  .stepCard     { padding: 28px 24px; }
+  .stepNum      { font-size: 56px; }
+  /* Disable mesh grid on iOS for performance */
+  .hero::before { display: none; }
 }

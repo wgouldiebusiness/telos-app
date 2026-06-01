@@ -1,6 +1,9 @@
 .footer {
-  background: var(--dark);
+  background: rgba(0,0,0,.6);
+  border-top: 1px solid rgba(255,255,255,.07);
   padding: 70px 0 40px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
 .inner {
