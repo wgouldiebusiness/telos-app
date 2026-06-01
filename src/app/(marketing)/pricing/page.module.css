@@ -116,31 +116,13 @@
   border-radius: 3px 3px 0 0;
 }
 
-.tier:hover { transform: translateY(-3px); background: rgba(255,255,255,.07); box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 0 1px rgba(120,104,230,.2); border-color: rgba(120,104,230,.25); }
+.tier:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.07);
+  box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 0 1px rgba(120,104,230,.2);
+  border-color: rgba(120,104,230,.25);
+}
 .tier:hover::before { width: 100%; }
-
-.tier.featured {
-  border-color: var(--purple);
-  box-shadow: 0 0 0 1px var(--purple), 0 20px 60px rgba(120,104,230,.18), 0 0 80px rgba(120,104,230,.08);
-  transform: translateY(-8px);
-}
-
-.tier.featured::before { width: 100%; }
-.tier.featured:hover { transform: translateY(-12px); box-shadow: 0 0 0 1px var(--purple-2), 0 24px 70px rgba(120,104,230,.25), 0 0 100px rgba(120,104,230,.12); }
-
-.ribbon {
-  position: absolute;
-  top: 16px;
-  right: -32px;
-  background: var(--purple);
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 5px 40px;
-  transform: rotate(45deg);
-}
 
 .tierName {
   font-size: 20px;
@@ -167,7 +149,6 @@
   margin-bottom: 4px;
 }
 
-.tier.featured .tierPrice { color: var(--purple-3); }
 
 .tierPrice small {
   font-size: 16px;
@@ -234,17 +215,6 @@
   color: #ffffff;
 }
 
-.tierBtnFeatured {
-  background: var(--purple);
-  color: #ffffff;
-  border-color: var(--purple);
-}
-
-.tierBtnFeatured:hover {
-  background: var(--purple-2);
-  color: #ffffff;
-  border-color: var(--purple-2);
-}
 
 .note {
   text-align: center;

@@ -110,8 +110,7 @@ export default function PricingPage() {
           <div className={styles.tiersGrid}>
             {tiers.map((tier, i) => (
               <Reveal key={tier.key} delay={i * 0.1}>
-                <div className={`${styles.tier} ${tier.featured ? styles.featured : ''}`}>
-                  {/* No badge — no data to support it */}
+                <div className={styles.tier}>
                   <div className={styles.tierName}>{tier.name}</div>
                   <div className={styles.tierDesc}>{tier.desc}</div>
                   <div className={styles.tierPrice}>
@@ -123,7 +122,7 @@ export default function PricingPage() {
                       <li key={f} className={styles.feature}>{f}</li>
                     ))}
                   </ul>
-                  <Link href="/contact" className={`${styles.tierBtn} ${tier.featured ? styles.tierBtnFeatured : ''}`}>
+                  <Link href="/contact" className={styles.tierBtn}>
                     Book a Call
                   </Link>
                 </div>
