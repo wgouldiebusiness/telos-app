@@ -70,28 +70,12 @@
 
 /* Steps — dark, gradient bridges */
 .stepsSection {
-  background: rgba(29,29,31,.3);
+  background: transparent;
   padding: clamp(70px, 9vw, 120px) 0;
   position: relative;
 }
-.stepsSection::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
-.stepsSection::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
+
+
 .stepsSection > * { position: relative; z-index: 1; }
 
 .steps { display: flex; flex-direction: column; }

@@ -11,8 +11,7 @@
   transform: translateZ(0);
 }
 
-/* Inner canvas is 140% tall and starts 20% above the viewport centre
-   so that scrolling down (translateY+) never reveals empty space */
+/* Parallax inner — 140% tall, starts 20% above viewport */
 .inner {
   position: absolute;
   top: -20%;
@@ -27,6 +26,85 @@
   inset: 0;
   width: 100%;
   height: 100%;
+}
+
+/* ── Fixed CSS blob glows ── */
+
+/* Top-left purple blob */
+.blob1 {
+  position: absolute;
+  top: -15vh;
+  left: -15vw;
+  width: 70vw;
+  height: 70vw;
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(120,104,230,.32) 0%, transparent 65%);
+  animation: blobDrift1 20s ease-in-out infinite alternate;
+  filter: blur(2px);
+}
+
+/* Right blue/purple blob */
+.blob2 {
+  position: absolute;
+  top: 25vh;
+  right: -10vw;
+  width: 60vw;
+  height: 60vw;
+  max-width: 700px;
+  max-height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(100,80,240,.22) 0%, transparent 65%);
+  animation: blobDrift2 25s ease-in-out infinite alternate;
+  filter: blur(2px);
+}
+
+/* Centre bottom glow */
+.blob3 {
+  position: absolute;
+  bottom: -5vh;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 35vw;
+  max-width: 900px;
+  max-height: 400px;
+  background: radial-gradient(ellipse, rgba(120,104,230,.18) 0%, transparent 70%);
+  animation: blobDrift3 18s ease-in-out infinite alternate;
+  filter: blur(4px);
+}
+
+/* Bottom-left accent */
+.blob4 {
+  position: absolute;
+  bottom: 10vh;
+  left: 10vw;
+  width: 40vw;
+  height: 40vw;
+  max-width: 500px;
+  max-height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(150,100,255,.15) 0%, transparent 65%);
+  animation: blobDrift4 28s ease-in-out infinite alternate;
+  filter: blur(3px);
+}
+
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(6vw, 5vh) scale(1.12); }
+}
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-5vw, -8vh) scale(1.08); }
+}
+@keyframes blobDrift3 {
+  from { transform: translateX(-50%) scale(1); }
+  to   { transform: translateX(-50%) scale(1.15); }
+}
+@keyframes blobDrift4 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(4vw, -6vh) scale(1.1); }
 }
 
 @media (prefers-reduced-motion: reduce) {

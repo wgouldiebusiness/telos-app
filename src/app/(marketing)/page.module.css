@@ -207,20 +207,12 @@
   backdrop-filter: blur(6px);
 }
 
-/* Fade hero → dark */
-.heroFade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 160px;
-  background: linear-gradient(to bottom, transparent, var(--dark));
-  pointer-events: none;
-}
+/* heroFade removed — no dividing line */
+.heroFade { display: none; }
 
-/* ── STATEMENT ── transparent overlay */
+/* ── STATEMENT ── fully transparent */
 .statement {
-  background: rgba(29,29,31,0.35);
+  background: transparent;
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
 }
@@ -262,13 +254,16 @@
 .problemGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,.08);
+  gap: 16px;
 }
 
 .problemItem {
-  background: var(--black);
+  background: rgba(0,0,0,.35);
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 16px;
   padding: 44px 36px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .problemWord {
@@ -291,44 +286,16 @@
   letter-spacing: -0.01em;
 }
 
-/* ── AI SHOWCASE ── subtle overlay */
+/* ── AI SHOWCASE ── transparent */
 .showcase {
-  background: rgba(45,45,47,0.3);
+  background: transparent;
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
   overflow: hidden;
 }
 
-/* Mesh grid + fade-in overlay combined */
-.showcase::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(120,104,230,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120,104,230,.04) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  opacity: 0.6;
-}
-
 .showcaseFadeTop,
-.showcaseFadeBot {
-  position: absolute;
-  left: 0;
-  right: 0;
-  height: 100px;
-  pointer-events: none;
-  z-index: 1;
-}
-.showcaseFadeTop {
-  top: 0;
-  background: linear-gradient(to bottom, var(--black), transparent);
-}
-.showcaseFadeBot {
-  bottom: 0;
-  background: linear-gradient(to top, var(--dark-2), transparent);
-}
+.showcaseFadeBot { display: none; }
 
 .showcaseHead {
   max-width: 680px;
@@ -532,9 +499,9 @@
   margin: 0;
 }
 
-/* ── HOW IT WORKS ── subtle overlay */
+/* ── HOW IT WORKS ── transparent */
 .how {
-  background: rgba(29,29,31,0.25);
+  background: transparent;
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
 }

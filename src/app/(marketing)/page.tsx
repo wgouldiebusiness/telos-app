@@ -54,11 +54,7 @@ export default function HomePage() {
     <>
       {/* ── HERO ── full screen, centred brand moment */}
       <section className={styles.hero}>
-        <div className={styles.blobs}>
-          <div className={styles.blob1} />
-          <div className={styles.blob2} />
-          <div className={styles.blob3} />
-        </div>
+        {/* Blobs now live in the global ShaderBackground fixed layer */}
         <div className={`container ${styles.heroInner}`}>
           <Reveal className={styles.heroLogoMark}>
             <Logo size="lg" dark />

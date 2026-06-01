@@ -75,28 +75,12 @@
 
 /* Belief band — dark, fades from hero black */
 .belief {
-  background: rgba(29,29,31,.3);
+  background: transparent;
   padding: clamp(80px, 10vw, 130px) 0;
   position: relative;
 }
-.belief::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
-.belief::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
+
+
 .belief > * { position: relative; z-index: 1; }
 
 .beliefH2 {
@@ -148,28 +132,12 @@
 
 /* Examples grid — dark-2, gradient bridges */
 .examples {
-  background: rgba(45,45,47,.3);
+  background: transparent;
   padding: clamp(80px, 10vw, 130px) 0;
   position: relative;
 }
-.examples::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
-.examples::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
+
+
 .examples > * { position: relative; z-index: 1; }
 
 .exHead {
