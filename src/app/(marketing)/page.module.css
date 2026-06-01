@@ -1,7 +1,7 @@
 /* ── HERO ── full-screen brand centrepiece */
 .hero {
   position: relative;
-  background: var(--black);
+  background: transparent;
   min-height: 100svh;
   display: flex;
   align-items: center;
@@ -217,20 +217,11 @@
   pointer-events: none;
 }
 
-/* ── STATEMENT ── dark, fades in from hero black */
+/* ── STATEMENT ── transparent overlay */
 .statement {
-  background: var(--dark);
+  background: rgba(29,29,31,0.35);
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
-}
-.statement::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
 }
 .statement > * { position: relative; z-index: 1; }
 
@@ -248,29 +239,11 @@
   line-height: 1.65;
 }
 
-/* ── PROBLEM BAND ── black, fades in from dark */
+/* ── PROBLEM BAND ── transparent */
 .problem {
-  background: var(--black);
+  background: transparent;
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
-}
-.problem::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--dark), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
-.problem::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--dark), transparent);
-  pointer-events: none;
-  z-index: 0;
 }
 .problem > * { position: relative; z-index: 1; }
 
@@ -317,9 +290,9 @@
   letter-spacing: -0.01em;
 }
 
-/* ── AI SHOWCASE ── dark, fades in/out */
+/* ── AI SHOWCASE ── subtle overlay */
 .showcase {
-  background: var(--dark);
+  background: rgba(45,45,47,0.3);
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
   overflow: hidden;
@@ -425,20 +398,11 @@
   transform: translateY(-2px);
 }
 
-/* ── WHAT WE BUILD ── dark-2, gradient bridges */
+/* ── WHAT WE BUILD ── transparent */
 .builds {
-  background: var(--dark-2);
+  background: transparent;
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
-}
-.builds::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--dark), transparent);
-  pointer-events: none;
-  z-index: 0;
 }
 .builds > * { position: relative; z-index: 1; }
 
@@ -567,29 +531,11 @@
   margin: 0;
 }
 
-/* ── HOW IT WORKS ── dark, gradient bridges */
+/* ── HOW IT WORKS ── subtle overlay */
 .how {
-  background: var(--dark);
+  background: rgba(29,29,31,0.25);
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
-}
-.how::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100px;
-  background: linear-gradient(to bottom, var(--dark-2), transparent);
-  pointer-events: none;
-  z-index: 0;
-}
-.how::after {
-  content: '';
-  position: absolute;
-  inset: auto 0 0 0;
-  height: 100px;
-  background: linear-gradient(to top, var(--black), transparent);
-  pointer-events: none;
-  z-index: 0;
 }
 .how > * { position: relative; z-index: 1; }
 
@@ -637,9 +583,9 @@
   margin: 0;
 }
 
-/* ── CTA ── black */
+/* ── CTA ── transparent with glow */
 .cta {
-  background: var(--black);
+  background: transparent;
   padding: clamp(90px, 12vw, 160px) 0;
   position: relative;
   overflow: hidden;

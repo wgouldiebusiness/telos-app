@@ -6,6 +6,7 @@ import TextScanner from '@/components/motion/TextScanner'
 import ChatDemo from '@/components/demos/ChatDemo'
 import PipelineDemo from '@/components/demos/PipelineDemo'
 import Logo from '@/components/Logo/Logo'
+import OrbitalServices from '@/components/OrbitalServices/OrbitalServices'
 import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
@@ -193,7 +194,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── WHAT WE BUILD ── light grey */}
+      {/* ── WHAT WE BUILD ── orbital */}
       <section className={styles.builds}>
         <div className="container">
           <Reveal>
@@ -204,22 +205,13 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.buildsSub}>
-              Every build is coded for your business specifically. We do not use
-              off-the-shelf tools. Examples of what we have built:
+              Every build is coded for your business. Click any agent to see what it does.
             </p>
           </Reveal>
-          <div className={styles.buildsGrid}>
-            {builds.map((b, i) => (
-              <Reveal key={b.n} delay={i * 0.07}>
-                <div className={styles.buildCard}>
-                  <span className={styles.buildNum}>{b.n}</span>
-                  <h3 className={styles.buildTitle}>{b.title}</h3>
-                  <p className={styles.buildDesc}>{b.desc}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <Reveal delay={0.35}>
+        </div>
+        <OrbitalServices />
+        <div className="container">
+          <Reveal delay={0.2}>
             <div className={styles.buildsCallout}>
               <p className={styles.buildsCalloutText}>
                 Whatever else your business needs, we can build it. Custom code is at

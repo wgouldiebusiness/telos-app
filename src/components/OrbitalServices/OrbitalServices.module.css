@@ -1,0 +1,177 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 0 40px;
+}
+
+/* Orbit container — sized square so the circle looks correct */
+.orbit {
+  position: relative;
+  width: 480px;
+  height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* The visible orbit ring */
+.ring {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  border: 1px solid rgba(120,104,230,.2);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Centre element */
+.centre {
+  position: absolute;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.centrePulse {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 1px solid rgba(120,104,230,.3);
+  animation: centrePulse 2.5s ease-in-out infinite;
+}
+
+@keyframes centrePulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.3; transform: scale(1.2); }
+}
+
+.centreInner {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--purple) 0%, rgba(120,104,230,.3) 100%);
+  box-shadow: 0 0 20px rgba(120,104,230,.5), 0 0 40px rgba(120,104,230,.2);
+}
+
+/* Orbital nodes */
+.node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.6s ease;
+  top: 50%;
+  left: 50%;
+  /* compensate for node size */
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+.nodeIcon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0,0,0,.6);
+  border: 1.5px solid rgba(120,104,230,.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.nodeActive .nodeIcon {
+  background: var(--purple);
+  border-color: var(--purple-2);
+  box-shadow: 0 0 20px rgba(120,104,230,.6);
+}
+
+.nodeLabel {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.65);
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.nodeActive .nodeLabel {
+  color: #ffffff;
+}
+
+/* Popup card */
+.card {
+  position: absolute;
+  top: 52px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  background: rgba(10,5,20,.92);
+  border: 1px solid rgba(120,104,230,.35);
+  border-radius: 12px;
+  padding: 16px 18px;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.6), 0 0 30px rgba(120,104,230,.15);
+  z-index: 300;
+  animation: cardIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.cardConnector {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 8px;
+  background: rgba(120,104,230,.5);
+}
+
+.cardTitle {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.cardDesc {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.hint {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.2);
+  margin-top: 8px;
+}
+
+@media (max-width: 600px) {
+  .orbit { width: 340px; height: 340px; }
+  .ring  { width: 280px; height: 280px; }
+}
