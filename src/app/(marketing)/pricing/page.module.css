@@ -77,7 +77,7 @@
   margin-bottom: 28px;
 }
 
-.tiersGrid > * { display: flex; flex-direction: column; }
+.tiersGrid > * { display: flex; flex-direction: column; height: 100%; }
 
 .tier {
   background: rgba(255,255,255,.04);

@@ -75,8 +75,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 36px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 .heroLogoWord {
@@ -98,7 +98,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 /* Tagline — large, direct */
@@ -248,6 +248,7 @@
 .problemGrid > * {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .problemItem {
@@ -255,8 +256,6 @@
   border: 1px solid rgba(255,255,255,.06);
   border-radius: 16px;
   padding: 44px 36px;
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
   height: 100%;
 }
 
@@ -391,13 +390,11 @@
   align-items: stretch;
 }
 
-.buildsGrid > * { display: flex; flex-direction: column; }
+.buildsGrid > * { display: flex; flex-direction: column; height: 100%; }
 
 /* Callout box below build cards */
 .buildsCallout {
   background: rgba(0,0,0,.45);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(120,104,230,.25);
   border-radius: 12px;
   padding: 28px 32px;
@@ -526,6 +523,7 @@
 .stepsGrid > * {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .stepCard {

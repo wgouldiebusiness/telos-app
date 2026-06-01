@@ -27,34 +27,34 @@
 
 /* ── Fixed CSS blob glows ── */
 
-/* Top-left deep violet blob */
+/* Top-left deep violet blob — no filter:blur (GPU expensive, radial-gradient is naturally soft) */
 .blob1 {
   position: absolute;
   top: -15vh;
   left: -15vw;
-  width: 70vw;
-  height: 70vw;
-  max-width: 800px;
-  max-height: 800px;
+  width: 80vw;
+  height: 80vw;
+  max-width: 900px;
+  max-height: 900px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(80,50,180,.38) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(80,50,180,.35) 0%, rgba(50,30,120,.1) 45%, transparent 70%);
   animation: blobDrift1 20s ease-in-out infinite alternate;
-  filter: blur(3px);
+  will-change: transform;
 }
 
 /* Right indigo blob */
 .blob2 {
   position: absolute;
-  top: 25vh;
+  top: 20vh;
   right: -10vw;
-  width: 60vw;
-  height: 60vw;
-  max-width: 700px;
-  max-height: 700px;
+  width: 65vw;
+  height: 65vw;
+  max-width: 750px;
+  max-height: 750px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(60,40,160,.25) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(60,40,160,.22) 0%, rgba(40,20,100,.08) 50%, transparent 70%);
   animation: blobDrift2 25s ease-in-out infinite alternate;
-  filter: blur(3px);
+  will-change: transform;
 }
 
 /* Centre bottom glow */
@@ -63,28 +63,27 @@
   bottom: -5vh;
   left: 50%;
   transform: translateX(-50%);
-  width: 80vw;
-  height: 35vw;
-  max-width: 900px;
-  max-height: 400px;
-  background: radial-gradient(ellipse, rgba(90,55,190,.2) 0%, transparent 70%);
+  width: 85vw;
+  height: 40vw;
+  max-width: 1000px;
+  max-height: 450px;
+  background: radial-gradient(ellipse, rgba(90,55,190,.18) 0%, rgba(60,30,140,.06) 50%, transparent 70%);
   animation: blobDrift3 18s ease-in-out infinite alternate;
-  filter: blur(5px);
 }
 
-/* Bottom-left deep purple accent */
+/* Bottom-left accent */
 .blob4 {
   position: absolute;
-  bottom: 10vh;
-  left: 10vw;
-  width: 40vw;
-  height: 40vw;
-  max-width: 500px;
-  max-height: 500px;
+  bottom: 5vh;
+  left: 5vw;
+  width: 45vw;
+  height: 45vw;
+  max-width: 550px;
+  max-height: 550px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100,60,200,.18) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(100,60,200,.15) 0%, transparent 65%);
   animation: blobDrift4 28s ease-in-out infinite alternate;
-  filter: blur(4px);
+  will-change: transform;
 }
 
 @keyframes blobDrift1 {
@@ -102,6 +101,11 @@
 @keyframes blobDrift4 {
   from { transform: translate(0, 0) scale(1); }
   to   { transform: translate(4vw, -6vh) scale(1.1); }
+}
+
+/* Disable WebGL layer on mobile — CSS blobs still show */
+@media (max-width: 768px) {
+  .layer { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

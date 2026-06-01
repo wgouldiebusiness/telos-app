@@ -92,7 +92,7 @@
   align-items: stretch;
 }
 
-.metricsGrid > * { display: flex; flex-direction: column; }
+.metricsGrid > * { display: flex; flex-direction: column; height: 100%; }
 
 .metricCard {
   height: 100%;

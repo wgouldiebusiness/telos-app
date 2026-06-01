@@ -217,6 +217,13 @@ ul, ol { list-style: none; }
   50%       { transform: translateY(-12px); }
 }
 
+/* ── PERFORMANCE ── */
+/* Skip rendering for off-screen sections until near-viewport */
+.section-lazy {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
+}
+
 /* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

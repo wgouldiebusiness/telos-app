@@ -165,7 +165,7 @@
   align-items: stretch;
 }
 
-.grid > * { display: flex; flex-direction: column; }
+.grid > * { display: flex; flex-direction: column; height: 100%; }
 
 .card {
   background: rgba(255,255,255,.04);
