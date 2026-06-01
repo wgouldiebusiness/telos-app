@@ -240,7 +240,14 @@
 .problemGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
   gap: 16px;
+  align-items: stretch;
+}
+
+.problemGrid > * {
+  display: flex;
+  flex-direction: column;
 }
 
 .problemItem {
@@ -250,6 +257,7 @@
   padding: 44px 36px;
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
+  height: 100%;
 }
 
 .problemWord {
@@ -377,9 +385,13 @@
 .buildsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 1fr;
   gap: 16px;
   margin-bottom: 24px;
+  align-items: stretch;
 }
+
+.buildsGrid > * { display: flex; flex-direction: column; }
 
 /* Callout box below build cards */
 .buildsCallout {
@@ -437,6 +449,7 @@
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
+  height: 100%;
   gap: 10px;
   position: relative;
   overflow: hidden;

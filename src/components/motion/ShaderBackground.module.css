@@ -27,7 +27,7 @@
 
 /* ── Fixed CSS blob glows ── */
 
-/* Top-left purple blob */
+/* Top-left deep violet blob */
 .blob1 {
   position: absolute;
   top: -15vh;
@@ -37,12 +37,12 @@
   max-width: 800px;
   max-height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(120,104,230,.32) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(80,50,180,.38) 0%, transparent 65%);
   animation: blobDrift1 20s ease-in-out infinite alternate;
-  filter: blur(2px);
+  filter: blur(3px);
 }
 
-/* Right blue/purple blob */
+/* Right indigo blob */
 .blob2 {
   position: absolute;
   top: 25vh;
@@ -52,9 +52,9 @@
   max-width: 700px;
   max-height: 700px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100,80,240,.22) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(60,40,160,.25) 0%, transparent 65%);
   animation: blobDrift2 25s ease-in-out infinite alternate;
-  filter: blur(2px);
+  filter: blur(3px);
 }
 
 /* Centre bottom glow */
@@ -67,12 +67,12 @@
   height: 35vw;
   max-width: 900px;
   max-height: 400px;
-  background: radial-gradient(ellipse, rgba(120,104,230,.18) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(90,55,190,.2) 0%, transparent 70%);
   animation: blobDrift3 18s ease-in-out infinite alternate;
-  filter: blur(4px);
+  filter: blur(5px);
 }
 
-/* Bottom-left accent */
+/* Bottom-left deep purple accent */
 .blob4 {
   position: absolute;
   bottom: 10vh;
@@ -82,9 +82,9 @@
   max-width: 500px;
   max-height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(150,100,255,.15) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba(100,60,200,.18) 0%, transparent 65%);
   animation: blobDrift4 28s ease-in-out infinite alternate;
-  filter: blur(3px);
+  filter: blur(4px);
 }
 
 @keyframes blobDrift1 {
