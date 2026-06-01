@@ -55,14 +55,14 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   scroll-behavior: smooth;
-  /* Safari: prevent overscroll flash */
+  /* Black prevents white flash during load; body is transparent so the fixed shader shows through */
   background: #000000;
   -webkit-overflow-scrolling: touch;
 }
 
 /* ── BASE ── */
 body {
-  background: #000000;
+  background: transparent;
   color: var(--text);
   font-family: var(--font-inter, var(--sans));
   font-size: 17px;

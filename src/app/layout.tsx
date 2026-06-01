@@ -41,8 +41,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-GB" className={inter.variable}>
       <head>
         <meta name="theme-color" content="#000000" />
-        {/* Inline critical CSS: prevent flash of unstyled background before JS loads */}
-        <style>{`html,body{background:#000!important}`}</style>
+        {/* html stays black so there is never a white flash; body must be transparent so the fixed shader shows through */}
+        <style>{`html{background:#000!important}body{background:transparent!important}`}</style>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://eedptakfhrhxsmkfqxlc.supabase.co" />
