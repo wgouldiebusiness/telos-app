@@ -61,6 +61,7 @@ export default function HomePage() {
         <div className={`container ${styles.heroInner}`}>
           <Reveal className={styles.heroLogoMark}>
             <Logo size="lg" dark />
+            <span className={styles.heroLogoWord}>Telos AI</span>
           </Reveal>
           <WordReveal delay={100} className={styles.heroName}>
             Telos AI

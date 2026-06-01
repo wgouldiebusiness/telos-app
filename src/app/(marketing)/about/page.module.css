@@ -69,9 +69,9 @@
   letter-spacing: -0.01em;
 }
 
-/* Mission — white */
+/* Mission — dark */
 .mission {
-  background: var(--white);
+  background: var(--dark);
   padding: clamp(80px, 10vw, 130px) 0;
 }
 
@@ -86,7 +86,7 @@
   font-size: clamp(20px, 2.8vw, 32px);
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--dark);
+  color: #ffffff;
   line-height: 1.25;
   margin-bottom: 48px;
 }
@@ -95,7 +95,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  border-top: 1px solid var(--grey-3);
+  border-top: 1px solid rgba(255,255,255,.1);
   padding-top: 40px;
 }
 
@@ -103,7 +103,7 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--purple);
+  color: var(--purple-3);
   margin-bottom: 12px;
 }
 
@@ -111,22 +111,22 @@
   font-size: 18px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--dark);
+  color: #ffffff;
   margin-bottom: 10px;
 }
 
 .valDesc {
   font-size: 15px;
-  color: var(--text-body);
+  color: rgba(255,255,255,.5);
   line-height: 1.6;
   margin: 0;
 }
 
-/* Story — light grey */
+/* Story — dark-2 */
 .story {
-  background: var(--light);
-  border-top: 1px solid var(--grey-3);
-  border-bottom: 1px solid var(--grey-3);
+  background: var(--dark-2);
+  border-top: 1px solid rgba(255,255,255,.06);
+  border-bottom: 1px solid rgba(255,255,255,.06);
   padding: clamp(80px, 10vw, 140px) 0;
 }
 
@@ -138,13 +138,13 @@
 
 .storyH2 {
   font-size: clamp(26px, 3.8vw, 44px);
-  color: var(--dark);
+  color: #ffffff;
   margin-bottom: 28px;
 }
 
 .storyP {
   font-size: 18px;
-  color: var(--text-body);
+  color: rgba(255,255,255,.6);
   line-height: 1.75;
   margin-bottom: 20px;
   max-width: 620px;

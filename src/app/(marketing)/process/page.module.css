@@ -68,9 +68,9 @@
   letter-spacing: -0.01em;
 }
 
-/* Steps — alternating */
+/* Steps — dark */
 .stepsSection {
-  background: var(--white);
+  background: var(--dark);
   padding: clamp(70px, 9vw, 120px) 0;
 }
 
@@ -81,15 +81,15 @@
   grid-template-columns: 140px 1fr;
   gap: 48px;
   padding: 52px 0;
-  border-top: 1px solid var(--grey-3);
+  border-top: 1px solid rgba(255,255,255,.08);
   align-items: start;
   transition: background 0.3s ease, padding 0.3s ease, margin 0.3s ease;
 }
 
-.step:last-child { border-bottom: 1px solid var(--grey-3); }
+.step:last-child { border-bottom: 1px solid rgba(255,255,255,.08); }
 
 .step:hover {
-  background: var(--light);
+  background: rgba(120,104,230,.06);
   margin: 0 -32px;
   padding-left: 32px;
   padding-right: 32px;
@@ -99,7 +99,7 @@
 .stepNum {
   font-weight: 900;
   font-size: 72px;
-  color: var(--grey-4);
+  color: rgba(120,104,230,.2);
   line-height: 0.85;
   letter-spacing: -0.06em;
 }
@@ -108,13 +108,13 @@
   font-size: 26px;
   font-weight: 700;
   letter-spacing: -0.04em;
-  color: var(--dark);
+  color: #ffffff;
   margin-bottom: 14px;
 }
 
 .stepBody {
   font-size: 17px;
-  color: var(--text-body);
+  color: rgba(255,255,255,.55);
   max-width: 580px;
   line-height: 1.65;
   margin: 0;
