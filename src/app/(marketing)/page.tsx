@@ -1,139 +1,130 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
+import WordReveal from '@/components/motion/WordReveal'
+import TextScanner from '@/components/motion/TextScanner'
+import ChatDemo from '@/components/demos/ChatDemo'
+import PipelineDemo from '@/components/demos/PipelineDemo'
+import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
   title: 'Telos AI — AI systems for ambitious service businesses.',
   description:
-    'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Managed by us. Improving every month.',
+    'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Fully managed. Improving every month.',
 }
 
-const trustBadges = [
-  'No lock-in',
-  'Scope agreed upfront',
-  'UK-based team',
-  'Cancel anytime',
+const receptionistConversation: ChatMessage[] = [
+  { from: 'user', text: 'Hi, I saw your website. Do you have availability this week?' },
+  { from: 'ai',   text: 'Hi there. Yes, we have a few slots available. Can I take your name and what you are looking for?', typingDelay: 1200 },
+  { from: 'user', text: "It's Sarah. I need a consultation, Tuesday if possible." },
+  { from: 'ai',   text: 'Perfect, Sarah. I have Tuesday at 2pm and 4pm free. Which works best for you?', typingDelay: 900 },
+  { from: 'user', text: '2pm please.' },
+  { from: 'ai',   text: 'Brilliant. I have booked you in for Tuesday at 2pm. You will get a confirmation shortly.', typingDelay: 700 },
 ]
 
-const before = [
-  'Missed calls with no follow-up',
-  'Follow-ups sent late, or not at all',
-  'Evenings spent catching up on admin',
-  'Leads lost to whoever answered faster',
-  'Scaling means hiring more people',
+const chatConversation: ChatMessage[] = [
+  { from: 'user', text: 'What kind of businesses do you work with?' },
+  { from: 'ai',   text: 'We work with service businesses. Clinics, trades, fitness studios, salons. Any business that relies on bookings and client relationships.', typingDelay: 1000 },
+  { from: 'user', text: 'How long does it take to set up?' },
+  { from: 'ai',   text: 'Most builds are live within two weeks. We handle everything. You just approve it before it goes live.', typingDelay: 1000 },
+  { from: 'user', text: 'What does it cost?' },
+  { from: 'ai',   text: 'Plans start from £100 a month. The right fit depends on your business, which is why we start with a short call. Want me to book one now?', typingDelay: 800 },
 ]
 
-const after = [
-  'Every call handled, day and night',
-  'Every lead followed up within minutes',
-  'Zero admin time. Everything runs itself',
-  'The fastest reply in your market',
-  'Scale without adding headcount',
-]
-
-const problems = [
-  {
-    word: 'Missed',
-    body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.',
-  },
-  {
-    word: 'Wasted',
-    body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.',
-  },
-  {
-    word: 'Leaked',
-    body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.',
-  },
-]
-
-const tags = [
-  'AI receptionists',
-  'Chatbots',
-  'CRM automation',
-  'Missed-call recovery',
-  'Lead generation',
-  'Data and insights',
-  'Conversion websites',
-  'Content and social',
+const builds = [
+  { n: '01', title: 'AI Receptionists',          desc: 'Answers calls, books appointments, and qualifies leads around the clock.' },
+  { n: '02', title: 'Website Chat Assistants',   desc: 'Converts visitors into booked clients in your voice, day and night.' },
+  { n: '03', title: 'CRM and Pipeline Agents',   desc: 'Every lead tracked, followed up, and moved forward automatically.' },
+  { n: '04', title: 'Missed-Call Recovery',       desc: 'Every missed call triggers an immediate, intelligent follow-up.' },
+  { n: '05', title: 'Lead Generation Systems',   desc: 'Consistent, targeted outreach that feeds your pipeline without manual effort.' },
+  { n: '06', title: 'Reporting and Intelligence', desc: 'Plain-English monthly reports showing exactly what the system is doing.' },
+  { n: '07', title: 'Conversion Websites',        desc: 'Fast, focused sites built to convert, wired into your agents from day one.' },
+  { n: '08', title: 'Content and Social',         desc: 'On-brand content produced and published on your behalf every week.' },
 ]
 
 const steps = [
-  {
-    n: '01',
-    title: 'A focused conversation',
-    body: 'Thirty minutes to understand your business, where the bottlenecks are, and what the right system would actually look like.',
-  },
-  {
-    n: '02',
-    title: 'We design the system',
-    body: 'A precise map of what we will build, what it connects to, and exactly what it will do. You see the full picture before anything is agreed.',
-  },
-  {
-    n: '03',
-    title: 'We build and install it',
-    body: 'We build your agents, wire them into your existing tools, and test everything thoroughly. Nothing goes live until you have approved it.',
-  },
-  {
-    n: '04',
-    title: 'We manage and improve it',
-    body: 'We monitor performance, refine what needs adjusting, and develop the system as your business grows. You own the results. We handle the work.',
-  },
+  { n: '01', title: 'A focused conversation', desc: 'Thirty minutes. We learn your business, map the bottlenecks, and show you exactly where AI will make a real difference.' },
+  { n: '02', title: 'We design the system',   desc: 'A precise plan: what we build, what it connects to, and the full cost. You see it before we write a line of code.' },
+  { n: '03', title: 'We build and install',   desc: 'We build your agents, integrate them with your tools, and test everything. You approve before anything goes live.' },
+  { n: '04', title: 'We manage and improve',  desc: 'We monitor, refine, and develop the system every month. You own the results. We do the work.' },
 ]
 
 export default function HomePage() {
   return (
     <>
-      {/* Hero */}
+      {/* ── HERO ── dark, blobs, word reveal */}
       <section className={styles.hero}>
+        <div className={styles.blobs}>
+          <div className={styles.blob1} />
+          <div className={styles.blob2} />
+          <div className={styles.blob3} />
+        </div>
         <div className={`container ${styles.heroInner}`}>
           <Reveal>
-            <span className="label">AI systems for ambitious service businesses</span>
+            <span className={`label ${styles.heroLabel}`}>AI built for service businesses</span>
           </Reveal>
-          <Reveal delay={0.08}>
-            <h1 className={styles.heroH1}>
-              The gap between busy and building{' '}
-              <span className={styles.accent}>is not effort. It is systems.</span>
-            </h1>
-          </Reveal>
-          <Reveal delay={0.16}>
+          <WordReveal delay={200} className={styles.heroH1}>
+            The gap between busy and building is not effort. It is systems.
+          </WordReveal>
+          <Reveal delay={0.5} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
-              We engineer the AI infrastructure that handles your admin, captures your
-              leads, and keeps your pipeline moving. Custom-built for your business.
-              Fully managed by us. Compounding in value every month.
+              We engineer AI infrastructure that handles admin, captures leads, and
+              keeps your pipeline moving. Custom-built. Fully managed. Improving every month.
             </p>
           </Reveal>
-          <Reveal delay={0.24}>
-            <div className={styles.heroBtns}>
-              <Link href="/contact" className={styles.btnPri}>Start the Conversation</Link>
-              <Link href="/process" className={styles.btnSec}>How It Works</Link>
-            </div>
+          <Reveal delay={0.65} className={styles.heroBtns}>
+            <Link href="/contact" className={styles.btnPri}>Start the conversation</Link>
+            <Link href="/process" className={styles.btnSec}>How it works</Link>
           </Reveal>
-          <Reveal delay={0.32}>
+          <Reveal delay={0.8}>
             <div className={styles.trustRow}>
-              {trustBadges.map(b => (
+              {['No lock-in', 'Scope agreed upfront', 'UK-based team', 'Cancel anytime'].map(b => (
                 <span key={b} className={styles.trustBadge}>{b}</span>
               ))}
             </div>
           </Reveal>
         </div>
+        <div className={styles.heroFade} />
       </section>
 
-      {/* Problem band */}
+      {/* ── STATEMENT ── white, text scanner */}
+      <section className={styles.statement}>
+        <div className="container">
+          <Reveal>
+            <span className="label">Our purpose</span>
+          </Reveal>
+          <TextScanner dark={false} className={styles.statementH2}>
+            The AI platform built for the businesses that run on people, not software.
+          </TextScanner>
+          <Reveal delay={0.2}>
+            <p className={styles.statementLead}>
+              Most AI tools are built for enterprises with technical teams. We build
+              custom systems for the owners who are too busy running their business to
+              automate it themselves. We handle everything.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── PROBLEM BAND ── black, large words */}
       <section className={styles.problem}>
         <div className="container">
           <Reveal>
-            <span className="label">What it is costing you right now</span>
+            <span className={`label ${styles.problemLabel}`}>What it costs you right now</span>
           </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal delay={0.1}>
             <h2 className={styles.problemH2}>
-              Running everything manually is not just exhausting.{' '}
-              <span className={styles.accent}>It is expensive.</span>
+              Your business is losing time<br />it will never get back.
             </h2>
           </Reveal>
           <div className={styles.problemGrid}>
-            {problems.map((p, i) => (
-              <Reveal key={p.word} delay={i * 0.08}>
+            {[
+              { word: 'Missed',  body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.' },
+              { word: 'Lost',    body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.' },
+              { word: 'Slipped', body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.' },
+            ].map((p, i) => (
+              <Reveal key={p.word} delay={i * 0.1}>
                 <div className={styles.problemItem}>
                   <div className={styles.problemWord}>{p.word}</div>
                   <p className={styles.problemBody}>{p.body}</p>
@@ -144,108 +135,80 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Before / After */}
-      <section className={styles.compare}>
+      {/* ── AI SHOWCASE ── dark, demo cards */}
+      <section className={styles.showcase}>
         <div className="container">
-          <Reveal>
-            <span className="label">The difference</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.compareH2}>
-              Same business. <span className={styles.accent}>Different infrastructure.</span>
-            </h2>
-          </Reveal>
-          <div className={styles.compareGrid}>
-            <Reveal delay={0.1}>
-              <div className={styles.compareCol}>
-                <div className={styles.colLabel}>
-                  <span className={styles.colLabelText}>Without Telos</span>
-                </div>
-                <ul className={styles.compareList}>
-                  {before.map(item => (
-                    <li key={item} className={styles.compareBefore}>
-                      <span className={styles.beforeMark}>×</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={0.18}>
-              <div className={`${styles.compareCol} ${styles.compareColAfter}`}>
-                <div className={`${styles.colLabel} ${styles.colLabelAfter}`}>
-                  <span className={styles.colLabelText}>With Telos</span>
-                </div>
-                <ul className={styles.compareList}>
-                  {after.map(item => (
-                    <li key={item} className={styles.compareAfter}>
-                      <span className={styles.afterMark}>✓</span>
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* What we do */}
-      <section className={styles.what}>
-        <div className="container">
-          <div className={styles.whatTop}>
+          <div className={styles.showcaseHead}>
             <Reveal>
-              <span className="label">What we do</span>
+              <span className={`label ${styles.showcaseLabel}`}>See it in action</span>
             </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className={styles.whatH2}>
-                Not a subscription. A{' '}
-                <span className={styles.accent}>technical partnership.</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={0.14}>
-              <p className={styles.whatSub}>
-                We do not hand you a tool and wish you luck. We build your system,
-                connect it to everything you already use, and manage it for you. Things
-                we build include:
+            <TextScanner dark className={styles.showcaseH2}>
+              This is what we build for your business.
+            </TextScanner>
+            <Reveal delay={0.2}>
+              <p className={styles.showcaseSub}>
+                Every agent is custom. These are examples of what that looks like.
               </p>
             </Reveal>
           </div>
-          <Reveal delay={0.18}>
-            <div className={styles.tags}>
-              {tags.map(t => (
-                <span key={t} className={styles.tag}>{t}</span>
-              ))}
+
+          <div className={styles.demoGrid}>
+            <Reveal delay={0.05}>
+              <ChatDemo
+                agentName="Telos Receptionist"
+                tagline="Answers every call. Qualifies every lead."
+                messages={receptionistConversation}
+              />
+            </Reveal>
+            <Reveal delay={0.15}>
+              <ChatDemo
+                agentName="Telos Chat"
+                tagline="Converts visitors. Around the clock."
+                messages={chatConversation}
+                loopPause={3500}
+              />
+            </Reveal>
+            <Reveal delay={0.25}>
+              <PipelineDemo />
+            </Reveal>
+          </div>
+
+          <Reveal delay={0.3}>
+            <div className={styles.showcaseBand}>
+              <p className={styles.showcaseBandText}>
+                These are real-world examples of what we build. Every agent is trained
+                on your business, your voice, and your clients.
+              </p>
+              <Link href="/contact" className={styles.btnPriLight}>
+                Get your own AI team
+              </Link>
             </div>
-          </Reveal>
-          <Reveal delay={0.24}>
-            <p className={styles.whatCloser}>
-              <strong>If you can describe the problem, we can build the solution.</strong>
-            </p>
           </Reveal>
         </div>
       </section>
 
-      {/* How it works */}
-      <section className={styles.how} id="how">
+      {/* ── WHAT WE BUILD ── light grey */}
+      <section className={styles.builds}>
         <div className="container">
-          <div className={styles.howHead}>
-            <Reveal>
-              <span className="label">How it works</span>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className={styles.howH2}>Four steps. No surprises.</h2>
-            </Reveal>
-          </div>
-          <div className={styles.steps}>
-            {steps.map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08}>
-                <div className={styles.step}>
-                  <div className={styles.stepNum}>{s.n}</div>
-                  <div className={styles.stepContent}>
-                    <h3 className={styles.stepTitle}>{s.title}</h3>
-                    <p className={styles.stepBody}>{s.body}</p>
-                  </div>
+          <Reveal>
+            <span className="label">What we build</span>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.buildsH2}>Not a subscription. A technical partnership.</h2>
+          </Reveal>
+          <Reveal delay={0.14}>
+            <p className={styles.buildsSub}>
+              We do not hand you a tool. We build your system, connect it to everything you
+              already use, and manage it. Things we build include:
+            </p>
+          </Reveal>
+          <div className={styles.buildsGrid}>
+            {builds.map((b, i) => (
+              <Reveal key={b.n} delay={i * 0.055}>
+                <div className={styles.buildCard}>
+                  <span className={styles.buildNum}>{b.n}</span>
+                  <h3 className={styles.buildTitle}>{b.title}</h3>
+                  <p className={styles.buildDesc}>{b.desc}</p>
                 </div>
               </Reveal>
             ))}
@@ -253,26 +216,48 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ── HOW IT WORKS ── white */}
+      <section className={styles.how}>
+        <div className="container">
+          <Reveal>
+            <span className="label">How it works</span>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.howH2}>Four steps. No surprises.</h2>
+          </Reveal>
+          <div className={styles.stepsGrid}>
+            {steps.map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.1}>
+                <div className={styles.stepCard}>
+                  <div className={styles.stepNum}>{s.n}</div>
+                  <h3 className={styles.stepTitle}>{s.title}</h3>
+                  <p className={styles.stepDesc}>{s.desc}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── black, blur-to-sharp heading */}
       <section className={styles.cta}>
         <div className={`container ${styles.ctaInner}`}>
           <Reveal>
-            <span className="label">Limited availability</span>
+            <span className={`label ${styles.ctaLabel}`}>Limited availability</span>
           </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal delay={0.1} className={styles.ctaHeadWrap}>
             <h2 className={styles.ctaH2}>
-              We take on a small number of new clients{' '}
-              <span className={styles.accent}>at any one time.</span>
+              We take on a small number of new clients at any one time.
             </h2>
           </Reveal>
-          <Reveal delay={0.14}>
+          <Reveal delay={0.2}>
             <p className={styles.ctaSub}>
               Every build gets our full attention. If you are ready to stop running
               your business manually, the first step is a short conversation.
             </p>
           </Reveal>
-          <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
+          <Reveal delay={0.3}>
+            <Link href="/contact" className={styles.btnPriCta}>Book a call</Link>
           </Reveal>
         </div>
       </section>

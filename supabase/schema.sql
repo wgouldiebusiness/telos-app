@@ -1,11 +1,25 @@
 -- ============================================================
 -- TELOS AI — DATABASE SCHEMA
 -- Run in Supabase SQL Editor (Dashboard > SQL Editor > New query)
--- Safe to run multiple times: uses CREATE IF NOT EXISTS + ON CONFLICT
+-- This script drops and recreates all tables cleanly.
+-- Safe to run on a fresh project with no client data yet.
 -- ============================================================
 
--- Profiles (one row per auth user, created automatically by trigger)
-create table if not exists profiles (
+-- Drop tables in reverse dependency order
+drop table if exists change_requests  cascade;
+drop table if exists activity_log     cascade;
+drop table if exists metrics          cascade;
+drop table if exists business_modules cascade;
+drop table if exists businesses       cascade;
+drop table if exists modules          cascade;
+drop table if exists profiles         cascade;
+
+-- ============================================================
+-- TABLES
+-- ============================================================
+
+-- Profiles: one row per auth user, created automatically by trigger
+create table profiles (
   id          uuid primary key default gen_random_uuid(),
   user_id     uuid references auth.users(id) on delete cascade unique not null,
   email       text not null,
@@ -14,8 +28,8 @@ create table if not exists profiles (
   created_at  timestamptz default now()
 );
 
--- Businesses (one per client, created during onboarding)
-create table if not exists businesses (
+-- Businesses: one per client, created during onboarding
+create table businesses (
   id            uuid primary key default gen_random_uuid(),
   owner_id      uuid references profiles(id) on delete cascade,
   name          text not null,
@@ -28,8 +42,8 @@ create table if not exists businesses (
   created_at    timestamptz default now()
 );
 
--- Module catalogue
-create table if not exists modules (
+-- Module catalogue (seeded below)
+create table modules (
   id          uuid primary key default gen_random_uuid(),
   name        text not null,
   description text,
@@ -37,7 +51,7 @@ create table if not exists modules (
 );
 
 -- Modules assigned to each business
-create table if not exists business_modules (
+create table business_modules (
   id          uuid primary key default gen_random_uuid(),
   business_id uuid references businesses(id) on delete cascade,
   module_id   uuid references modules(id),
@@ -47,7 +61,7 @@ create table if not exists business_modules (
 );
 
 -- Monthly metrics per business
-create table if not exists metrics (
+create table metrics (
   id                  uuid primary key default gen_random_uuid(),
   business_id         uuid references businesses(id) on delete cascade,
   month               date not null,
@@ -59,7 +73,7 @@ create table if not exists metrics (
 );
 
 -- Activity log
-create table if not exists activity_log (
+create table activity_log (
   id          uuid primary key default gen_random_uuid(),
   business_id uuid references businesses(id) on delete cascade,
   type        text,
@@ -68,7 +82,7 @@ create table if not exists activity_log (
 );
 
 -- Change requests from clients
-create table if not exists change_requests (
+create table change_requests (
   id          uuid primary key default gen_random_uuid(),
   business_id uuid references businesses(id) on delete cascade,
   description text not null,
@@ -77,7 +91,7 @@ create table if not exists change_requests (
 );
 
 -- ============================================================
--- TRIGGER: auto-create profile when auth user signs up
+-- TRIGGER: auto-create profile row when a new user signs up
 -- ============================================================
 
 create or replace function public.handle_new_user()
@@ -112,22 +126,17 @@ alter table change_requests  enable row level security;
 alter table business_modules enable row level security;
 alter table modules          enable row level security;
 
-drop policy if exists "clients see own profile"      on profiles;
-drop policy if exists "clients see own business"     on businesses;
-drop policy if exists "clients see own metrics"      on metrics;
-drop policy if exists "clients see own activity"     on activity_log;
-drop policy if exists "clients manage own requests"  on change_requests;
-drop policy if exists "clients see own modules"      on business_modules;
-drop policy if exists "anyone reads modules"         on modules;
-
+-- Profiles: users can read and update their own row
 create policy "clients see own profile"
   on profiles for all
   using (auth.uid() = user_id);
 
+-- Businesses: clients can only see their own business
 create policy "clients see own business"
   on businesses for all
   using (owner_id = (select id from profiles where user_id = auth.uid()));
 
+-- Metrics: clients can only read their own business metrics
 create policy "clients see own metrics"
   on metrics for select
   using (business_id in (
@@ -135,6 +144,7 @@ create policy "clients see own metrics"
     where owner_id = (select id from profiles where user_id = auth.uid())
   ));
 
+-- Activity log: read-only for the owning client
 create policy "clients see own activity"
   on activity_log for select
   using (business_id in (
@@ -142,6 +152,7 @@ create policy "clients see own activity"
     where owner_id = (select id from profiles where user_id = auth.uid())
   ));
 
+-- Change requests: clients can read and create for their own business
 create policy "clients manage own requests"
   on change_requests for all
   using (business_id in (
@@ -149,6 +160,7 @@ create policy "clients manage own requests"
     where owner_id = (select id from profiles where user_id = auth.uid())
   ));
 
+-- Business modules: clients can see which modules are assigned
 create policy "clients see own modules"
   on business_modules for select
   using (business_id in (
@@ -156,6 +168,7 @@ create policy "clients see own modules"
     where owner_id = (select id from profiles where user_id = auth.uid())
   ));
 
+-- Modules catalogue: anyone authenticated can read
 create policy "anyone reads modules"
   on modules for select
   using (true);
@@ -172,5 +185,4 @@ insert into modules (name, description, sort_order) values
   ('Lead Generation',        'Automated outreach and lead capture across channels. Feeds new enquiries straight into your pipeline.',      5),
   ('Data and Insights',      'Monthly performance reports, KPI tracking, and plain-English summaries of what your automations are doing.', 6),
   ('Conversion Website',     'A fast, conversion-focused website built and maintained for you. Includes SEO and analytics.',                7),
-  ('Content and Social',     'Regular social posts and content generated from your business voice and published on your behalf.',           8)
-on conflict do nothing;
+  ('Content and Social',     'Regular social posts and content generated from your business voice and published on your behalf.',           8);

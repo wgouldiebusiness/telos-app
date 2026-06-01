@@ -1,7 +1,7 @@
 .shell {
   display: flex;
   min-height: 100svh;
-  background: var(--bg);
+  background: var(--light);
 }
 
 .sidebar {
@@ -10,8 +10,8 @@
   left: 0;
   bottom: 0;
   width: 240px;
-  background: var(--s1);
-  border-right: 1px solid var(--border);
+  background: #0A1628;
+  border-right: 1px solid rgba(255,255,255,.06);
   display: flex;
   flex-direction: column;
   z-index: 100;
@@ -19,7 +19,7 @@
 
 .sidebarHead {
   padding: 1.75rem 1.5rem 1rem;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(255,255,255,.07);
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -33,22 +33,23 @@
 }
 
 .wordmark {
-  font-family: var(--font-fraunces, 'Fraunces'), Georgia, serif;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  color: var(--text);
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #ffffff;
 }
 
 .adminBadge {
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: 0.625rem;
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  background: var(--gold);
-  color: #0A0A0B;
-  padding: 0.2rem 0.5rem;
+  background: var(--purple);
+  color: #ffffff;
+  padding: 3px 10px;
+  border-radius: 980px;
   width: fit-content;
 }
 
@@ -62,34 +63,38 @@
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.5rem;
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: 0.8125rem;
-  color: var(--soft);
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.5);
   text-decoration: none;
-  transition: background var(--t-fast), color var(--t-fast);
+  transition: background 0.2s ease, color 0.2s ease, border-left-color 0.2s ease;
+  border-left: 2px solid transparent;
 }
 
-.navItem:hover { background: var(--s2); color: var(--text); }
-.navItem.active { background: var(--s2); color: var(--text); border-right: 2px solid var(--gold); }
+.navItem:hover { background: rgba(255,255,255,.06); color: #ffffff; }
+.navItem.active { background: rgba(120,104,230,.15); color: #ffffff; border-left-color: var(--purple); }
 
-.navIcon { font-size: 0.7rem; opacity: 0.6; }
+.navIcon { font-size: 0.75rem; opacity: 0.6; }
 
 .sidebarFoot {
   padding: 1rem 0 1.5rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(255,255,255,.07);
 }
 
 .backLink {
   display: block;
   padding: 0.5rem 1.5rem;
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  color: var(--softer);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255,255,255,.28);
   text-decoration: none;
-  transition: color var(--t-fast);
+  transition: color 0.2s ease;
 }
 
-.backLink:hover { color: var(--soft); }
+.backLink:hover { color: rgba(255,255,255,.55); }
 
 .main {
   flex: 1;
@@ -102,9 +107,9 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(9, 9, 11, 0.88);
+  background: rgba(255,255,255,.92);
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--grey-3);
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -112,12 +117,12 @@
 }
 
 .topBarLabel {
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: 0.6875rem;
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 12px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--purple);
 }
 
 .topBarRight {
@@ -128,27 +133,30 @@
 
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
+  50%       { opacity: 0.35; }
 }
 
 .statusDot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #4ade80;
+  background: #22c55e;
   animation: pulse-dot 2.5s ease-in-out infinite;
 }
 
 .statusText {
-  font-family: var(--font-hanken, 'Hanken Grotesk'), system-ui, sans-serif;
-  font-size: 0.6875rem;
-  color: var(--softer);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--grey);
 }
 
 .content {
   flex: 1;
   padding: 2.5rem 2rem 4rem;
   max-width: 1100px;
+  background: var(--white);
+  min-height: calc(100vh - 57px);
 }
 
 @media (max-width: 900px) {

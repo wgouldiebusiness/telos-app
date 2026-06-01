@@ -6,7 +6,7 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Results',
   description:
-    'We track the real impact of every automation we build: hours recovered, leads captured, revenue returned. Case studies coming as our clients give permission to share.',
+    'We track the real impact of every automation we build. Case studies coming as our clients give permission to share.',
 }
 
 const metrics = [
@@ -33,20 +33,17 @@ export default function ResultsPage() {
     <>
       <section className={styles.hero}>
         <div className="container">
-          <Reveal>
-            <span className="label">Results</span>
-          </Reveal>
-          <Reveal delay={0.08}>
+          <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>Results</span></Reveal>
+          <Reveal delay={0.1}>
             <h1 className={styles.heroH1}>
               What changes when the <span className={styles.accent}>system runs properly.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.14}>
+          <Reveal delay={0.18}>
             <p className={styles.heroSub}>
               We are in our early client phase and building our documented case study
               library. We will share real results with real numbers, with client
-              permission, as they come in. In the meantime, here is what we build
-              towards in every engagement.
+              permission, as they come in.
             </p>
           </Reveal>
         </div>
@@ -54,13 +51,9 @@ export default function ResultsPage() {
 
       <section className={styles.metricsSection}>
         <div className="container">
-          <Reveal>
-            <span className="label">What we measure</span>
-          </Reveal>
+          <Reveal><span className="label">What we measure</span></Reveal>
           <Reveal delay={0.08}>
-            <h2 className={styles.sectionH2}>
-              The four things that actually matter.
-            </h2>
+            <h2 className={styles.sectionH2}>The four things that actually matter.</h2>
           </Reveal>
           <div className={styles.metricsGrid}>
             {metrics.map((m, i) => (
@@ -81,11 +74,9 @@ export default function ResultsPage() {
             <div className={styles.honestInner}>
               <span className="label">Our position on case studies</span>
               <p className={styles.honestText}>
-                We will not fabricate numbers, invent client names, or publish
-                results we cannot verify. When we have documented outcomes from
-                real businesses who have agreed to share them, we will publish
-                them here in full. That standard matters to us and it should
-                matter to you when evaluating anyone in this space.
+                We will not fabricate numbers, invent client names, or publish results
+                we cannot verify. When we have documented outcomes from real businesses
+                who have agreed to share them, we will publish them here in full.
               </p>
             </div>
           </Reveal>
@@ -94,25 +85,20 @@ export default function ResultsPage() {
 
       <section className={styles.cta}>
         <div className="container">
-          <Reveal>
-            <span className="label">Early clients</span>
-          </Reveal>
+          <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>Early clients</span></Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
-              The businesses that move now{' '}
-              <span className={styles.accent}>get our best work.</span>
+              The businesses that move now <span className={styles.accent}>get our best work.</span>
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              Early clients get the full weight of our attention and become the
-              case studies that demonstrate what is possible. If you are ready to
-              have a serious conversation about what your business could look like
-              with the right system behind it, start here.
+              Early clients get the full weight of our attention and become the case
+              studies that demonstrate what is possible.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a call</Link>
           </Reveal>
         </div>
       </section>

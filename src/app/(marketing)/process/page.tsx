@@ -37,13 +37,13 @@ export default function ProcessPage() {
     <>
       <section className={styles.hero}>
         <div className="container">
-          <Reveal><span className="label">How it works</span></Reveal>
-          <Reveal delay={0.08}>
+          <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>How it works</span></Reveal>
+          <Reveal delay={0.1}>
             <h1 className={styles.heroH1}>
               Four steps. <span className={styles.accent}>No surprises.</span>
             </h1>
           </Reveal>
-          <Reveal delay={0.14}>
+          <Reveal delay={0.18}>
             <p className={styles.heroSub}>
               From first conversation to a running system. You see the full picture,
               approve every stage, and know the exact cost before you commit.
@@ -59,7 +59,7 @@ export default function ProcessPage() {
               <Reveal key={s.n} delay={i * 0.08}>
                 <div className={styles.step}>
                   <div className={styles.stepNum}>{s.n}</div>
-                  <div className={styles.stepContent}>
+                  <div>
                     <h2 className={styles.stepTitle}>{s.title}</h2>
                     <p className={styles.stepBody}>{s.body}</p>
                   </div>
@@ -72,7 +72,7 @@ export default function ProcessPage() {
 
       <section className={styles.cta}>
         <div className="container">
-          <Reveal><span className="label">Start here</span></Reveal>
+          <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>Start here</span></Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
               Step one costs you <span className={styles.accent}>nothing.</span>
@@ -81,12 +81,11 @@ export default function ProcessPage() {
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
               A short call to understand your business and what AI could do for it.
-              You leave with a clear view of what is possible. No pitch, no
-              obligation, no wasted time.
+              You leave with a clear view of what is possible. No pitch, no obligation.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a call</Link>
           </Reveal>
         </div>
       </section>

@@ -30,17 +30,15 @@ const values = [
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
       <section className={styles.hero}>
         <div className="container">
-          <Reveal><span className="label">About Telos</span></Reveal>
-          <Reveal delay={0.08}>
+          <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>About Telos</span></Reveal>
+          <Reveal delay={0.1}>
             <h1 className={styles.heroH1}>
-              Built for people who are serious{' '}
-              <span className={styles.accent}>about their business.</span>
+              Built for people who are serious about their business.
             </h1>
           </Reveal>
-          <Reveal delay={0.14}>
+          <Reveal delay={0.18}>
             <p className={styles.heroSub}>
               We work with owners who are not looking for a shortcut. They want a
               properly built system that runs correctly, improves over time, and
@@ -50,7 +48,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Mission */}
       <section className={styles.mission}>
         <div className="container">
           <div className={styles.missionTwo}>
@@ -66,7 +63,7 @@ export default function AboutPage() {
               <div className={styles.vals}>
                 {values.map((v, i) => (
                   <Reveal key={v.n} delay={i * 0.08}>
-                    <div className={styles.val}>
+                    <div>
                       <div className={styles.valN}>{v.n}</div>
                       <h3 className={styles.valTitle}>{v.title}</h3>
                       <p className={styles.valDesc}>{v.desc}</p>
@@ -79,18 +76,16 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Story */}
       <section className={styles.story}>
         <div className="container">
           <div className={styles.storyInner}>
             <div>
               <Reveal><span className="label">The founder</span></Reveal>
             </div>
-            <div className={styles.storyContent}>
+            <div>
               <Reveal delay={0.06}>
                 <h2 className={styles.storyH2}>
-                  Will Gouldsmith.{' '}
-                  <span className={styles.accent}>Chartered Physiotherapist.</span>
+                  Will Gouldsmith. <span className={styles.accent}>Chartered Physiotherapist.</span>
                 </h2>
               </Reveal>
               <Reveal delay={0.1}>
@@ -104,19 +99,18 @@ export default function AboutPage() {
               </Reveal>
               <Reveal delay={0.14}>
                 <p className={styles.storyP}>
-                  He did not hire help. He automated it. Not because he had an
-                  interest in technology for its own sake, but because he could see
-                  exactly what each piece of admin was costing him in time and
-                  opportunity. He built the systems himself, tested them against a
-                  real business, and refined them until they worked properly.
+                  He did not hire help. He automated it. Not because he had an interest
+                  in technology for its own sake, but because he could see exactly what
+                  each piece of admin was costing him in time and opportunity. He built
+                  the systems himself, tested them against a real business, and refined
+                  them until they worked properly.
                 </p>
               </Reveal>
               <Reveal delay={0.18}>
                 <p className={styles.storyP}>
-                  When colleagues and other owners started asking how, Telos AI
-                  became the answer. A small, deliberate team with one purpose: to
-                  build AI systems for service business owners who are done doing
-                  everything manually.
+                  When colleagues and other owners started asking how, Telos AI became
+                  the answer. A small, deliberate team with one purpose: to build AI
+                  systems for service business owners who are done doing everything manually.
                 </p>
               </Reveal>
             </div>
@@ -124,24 +118,22 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className={styles.cta}>
         <div className="container">
-          <Reveal><span className="label">Work with us</span></Reveal>
+          <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>Work with us</span></Reveal>
           <Reveal delay={0.08}>
             <h2 className={styles.ctaH2}>
-              We take on a limited number of clients.{' '}
-              <span className={styles.accent}>Every build gets our full attention.</span>
+              We take on a limited number of clients. Every build gets our full attention.
             </h2>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.ctaSub}>
-              If you are ready to have a serious conversation about what AI can do
-              for your business, the first step is a short call.
+              If you are ready to have a serious conversation about what AI can do for
+              your business, the first step is a short call.
             </p>
           </Reveal>
           <Reveal delay={0.2}>
-            <Link href="/contact" className={styles.btnPri}>Book a Call</Link>
+            <Link href="/contact" className={styles.btnPri}>Book a call</Link>
           </Reveal>
         </div>
       </section>
