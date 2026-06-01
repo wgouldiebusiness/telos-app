@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
-import WordReveal from '@/components/motion/WordReveal'
 import TextScanner from '@/components/motion/TextScanner'
 import ChatDemo from '@/components/demos/ChatDemo'
 import PipelineDemo from '@/components/demos/PipelineDemo'
@@ -60,10 +59,7 @@ export default function HomePage() {
             <Logo size="lg" dark />
             <span className={styles.heroLogoWord}>Telos AI</span>
           </Reveal>
-          <WordReveal delay={100} className={styles.heroName}>
-            Telos AI
-          </WordReveal>
-          <Reveal delay={0.4} className={styles.heroSubWrap}>
+          <Reveal delay={0.25} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
               Custom AI agents for your business.
             </p>
