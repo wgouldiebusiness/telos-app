@@ -6,7 +6,7 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'Book a Call',
   description:
-    'A focused diagnostic, not a sales call. We look at your business, identify where automation will make a real difference, and tell you exactly what it would cost.',
+    'Free for a quick chat. Book a 15-minute call and we will look at your business, identify where AI can make a real difference, and tell you exactly what it would cost.',
 }
 
 const agenda = [
@@ -32,8 +32,8 @@ export default function ContactPage() {
           </Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              A focused diagnostic.{' '}
-              <span className={styles.accent}>Not a sales call.</span>
+              Free for a quick chat.{' '}
+              <span className={styles.accent}>Book a 15-minute call.</span>
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
