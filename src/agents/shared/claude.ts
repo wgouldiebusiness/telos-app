@@ -1,0 +1,69 @@
+// ─────────────────────────────────────────────────────────────
+// Shared Claude API wrapper — every agent imports askClaude from here.
+//
+// Env vars:
+//   ANTHROPIC_API_KEY   (required)
+//
+// The model lives in ONE place (CLAUDE_MODEL) so every agent can be
+// upgraded by changing a single line. The build spec named
+// claude-sonnet-4-20250514 (now deprecated); we use the current Sonnet.
+// ─────────────────────────────────────────────────────────────
+
+import Anthropic from '@anthropic-ai/sdk'
+
+// Current Sonnet — fast and cost-effective, ideal for chat-style agents.
+// Swap to 'claude-opus-4-8' here if an agent needs maximum capability.
+export const CLAUDE_MODEL = 'claude-sonnet-4-6'
+
+// The SDK auto-retries 429 and 5xx with exponential backoff.
+const anthropic = new Anthropic({
+  apiKey: process.env.ANTHROPIC_API_KEY,
+  maxRetries: 3,
+})
+
+export interface ChatTurn {
+  role: 'user' | 'assistant'
+  content: string
+}
+
+interface AskClaudeOptions {
+  /** The system prompt. Cached automatically to cut cost on repeat calls. */
+  system: string
+  /** Full conversation history, oldest first. Must start with a user turn. */
+  messages: ChatTurn[]
+  /** Max output tokens. Keep low for chat (fast, cheap). Default 512. */
+  maxTokens?: number
+}
+
+/**
+ * Send a conversation to Claude and return the assistant's text reply.
+ * Errors are logged clearly and re-thrown so the caller can respond gracefully.
+ */
+export async function askClaude({
+  system,
+  messages,
+  maxTokens = 512,
+}: AskClaudeOptions): Promise<string> {
+  try {
+    const response = await anthropic.messages.create({
+      model: CLAUDE_MODEL,
+      max_tokens: maxTokens,
+      // cache_control caches the (stable) system prompt for ~5 minutes,
+      // so repeat requests pay ~0.1x for it instead of full price.
+      system: [
+        { type: 'text', text: system, cache_control: { type: 'ephemeral' } },
+      ],
+      messages: messages.map(m => ({ role: m.role, content: m.content })),
+    })
+
+    const block = response.content.find(b => b.type === 'text')
+    return block && block.type === 'text' ? block.text : ''
+  } catch (err) {
+    if (err instanceof Anthropic.APIError) {
+      console.error(`[claude] API error ${err.status}: ${err.message}`)
+    } else {
+      console.error('[claude] Unexpected error:', err)
+    }
+    throw err
+  }
+}
