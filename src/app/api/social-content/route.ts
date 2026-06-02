@@ -1,0 +1,80 @@
+// ─────────────────────────────────────────────────────────────
+// POST /api/social-content — generate a week of social posts.
+//
+// Body: { businessName, industry, tone, topic, platforms: string[] }
+// Returns: { posts: SocialPost[] }  (Monday to Friday)
+//
+// Rate limit: 10 generations per IP per hour.
+// ─────────────────────────────────────────────────────────────
+
+import { NextRequest, NextResponse } from 'next/server'
+import { askClaude } from '@/agents/shared/claude'
+import { rateLimit } from '@/agents/shared/rateLimiter'
+import type { SocialPost } from '@/agents/social-content/types'
+
+export async function POST(req: NextRequest) {
+  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
+
+  if (!rateLimit(`social:${ip}`, 10, 60 * 60 * 1000)) {
+    return NextResponse.json({ error: 'Please wait a little while before generating more.' }, { status: 429 })
+  }
+
+  if (!process.env.ANTHROPIC_API_KEY) {
+    return NextResponse.json({ error: 'The generator is not available right now.' }, { status: 503 })
+  }
+
+  let body: {
+    businessName?: string
+    industry?: string
+    tone?: string
+    topic?: string
+    platforms?: string[]
+  }
+  try {
+    body = await req.json()
+  } catch {
+    return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
+  }
+
+  const { businessName, industry, tone, topic } = body
+  const platforms =
+    Array.isArray(body.platforms) && body.platforms.length ? body.platforms : ['Instagram', 'Facebook']
+
+  if (!businessName || !topic) {
+    return NextResponse.json({ error: 'Business name and topic are required.' }, { status: 400 })
+  }
+
+  const system = `You write social media content for small businesses. You write in the business owner's voice: warm, genuine, and never salesy or full of buzzwords. British English. No em dashes. Never invent statistics or make promises of specific results.
+
+You return ONLY valid JSON, no other text, in exactly this shape:
+{"posts":[{"day":"Monday","caption":"...","hashtags":["tag1","tag2","tag3"],"bestTime":"..."}]}
+Exactly 5 posts, Monday to Friday. Each caption is 2 to 4 sentences. Exactly 3 hashtags per post (no # symbol). bestTime is a short suggestion like "Tuesday 12pm".`
+
+  const prompt = `Business: ${businessName}
+Industry: ${industry || 'service business'}
+Tone of voice: ${tone || 'friendly and professional'}
+Topic or service to promote this week: ${topic}
+Platforms: ${platforms.join(', ')}
+
+Write the 5 posts now as JSON.`
+
+  try {
+    const raw = await askClaude({
+      system,
+      messages: [{ role: 'user', content: prompt }],
+      maxTokens: 1500,
+    })
+
+    // Defensively extract the JSON object from the reply.
+    const start = raw.indexOf('{')
+    const end = raw.lastIndexOf('}')
+    if (start === -1 || end === -1) throw new Error('No JSON in response')
+    const parsed = JSON.parse(raw.slice(start, end + 1)) as { posts: SocialPost[] }
+
+    if (!Array.isArray(parsed.posts)) throw new Error('Malformed posts')
+    return NextResponse.json({ posts: parsed.posts })
+  } catch (err) {
+    console.error('[social-content] generation failed:', err)
+    return NextResponse.json({ error: 'Could not generate posts. Please try again.' }, { status: 500 })
+  }
+}

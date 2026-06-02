@@ -12,6 +12,7 @@ const navItems = [
   { label: 'Dashboard',          href: '/portal',              icon: '◈' },
   { label: 'Performance Report', href: '/portal/report',       icon: '▲' },
   { label: 'Sales',              href: '/portal/sales',        icon: '◉' },
+  { label: 'Content Studio',     href: '/portal/content',      icon: '✎' },
   { label: 'Request a Change',   href: '/portal/request',      icon: '◇' },
   { label: 'Book a Meeting',     href: '/portal/meetings',     icon: '◎' },
   { label: 'Billing',            href: '/portal/billing',      icon: '◻' },
