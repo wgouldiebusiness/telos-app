@@ -1,0 +1,8 @@
+{
+  "crons": [
+    { "path": "/api/cron/quote-followup", "schedule": "0 9 * * *" },
+    { "path": "/api/cron/invoice-chaser", "schedule": "0 9 * * *" },
+    { "path": "/api/cron/monthly-report", "schedule": "0 8 1 * *" },
+    { "path": "/api/cron/weekly-digest", "schedule": "0 7 * * 1" }
+  ]
+}

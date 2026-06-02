@@ -174,6 +174,61 @@ create policy "anyone reads modules"
   using (true);
 
 -- ============================================================
+-- AGENT TABLES (quote follow-up, invoice chaser, onboarding bot)
+-- These are written/read by server-side agents using the service role
+-- key, so they do not need client-facing RLS policies. RLS is enabled
+-- with no policy = no anon/auth access, service role only.
+-- ============================================================
+
+-- Quotes (used by the Quote Follow-Up agent)
+create table quotes (
+  id                  uuid primary key default gen_random_uuid(),
+  business_id         uuid references businesses(id) on delete cascade,
+  client_name         text,
+  client_phone        text,
+  client_email        text,
+  amount              numeric(10,2),
+  status              text default 'sent',  -- sent | responded | accepted | cold
+  sent_at             timestamptz default now(),
+  follow_up_1_sent_at timestamptz,
+  follow_up_2_sent_at timestamptz
+);
+
+-- Invoices (used by the Invoice Chaser agent)
+create table invoices (
+  id                   uuid primary key default gen_random_uuid(),
+  business_id          uuid references businesses(id) on delete cascade,
+  client_name          text,
+  client_email         text,
+  amount               numeric(10,2),
+  due_date             date,
+  status               text default 'unpaid',  -- unpaid | paid | escalated
+  reminder_1_sent_at   timestamptz,
+  reminder_2_sent_at   timestamptz,
+  final_notice_sent_at timestamptz
+);
+
+-- Client briefs (produced by the Onboarding Bot)
+create table client_briefs (
+  id           uuid primary key default gen_random_uuid(),
+  business_id  uuid references businesses(id) on delete cascade,
+  brief        jsonb not null,
+  created_at   timestamptz default now()
+);
+
+alter table quotes        enable row level security;
+alter table invoices      enable row level security;
+alter table client_briefs enable row level security;
+
+-- Clients may read their own briefs (server agents use the service role).
+create policy "clients see own briefs"
+  on client_briefs for select
+  using (business_id in (
+    select id from businesses
+    where owner_id = (select id from profiles where user_id = auth.uid())
+  ));
+
+-- ============================================================
 -- MODULE SEED DATA
 -- ============================================================
 
