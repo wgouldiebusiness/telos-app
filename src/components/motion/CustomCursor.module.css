@@ -4,18 +4,19 @@
   left: 0;
   width: 8px;
   height: 8px;
-  background: #000;
+  background: #ffffff;
   border-radius: 50%;
   pointer-events: none;
   z-index: 99999;
-  mix-blend-mode: difference;
-  transition: width 0.2s ease, height 0.2s ease;
+  transition: width 0.15s ease, height 0.15s ease;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .dotHover {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
+  background: var(--purple);
 }
 
 .ring {
@@ -24,17 +25,18 @@
   left: 0;
   width: 36px;
   height: 36px;
-  border: 1.5px solid rgba(0,0,0,0.4);
+  border: 1.5px solid rgba(255,255,255,0.3);
   border-radius: 50%;
   pointer-events: none;
   z-index: 99998;
-  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease;
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease;
   will-change: transform;
+  transform: translateZ(0);
 }
 
 .ringHover {
-  width: 52px;
-  height: 52px;
+  width: 48px;
+  height: 48px;
   border-color: var(--purple);
 }
 

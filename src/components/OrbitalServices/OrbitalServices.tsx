@@ -1,5 +1,5 @@
 'use client'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import styles from './OrbitalServices.module.css'
 
 interface Service {
@@ -20,66 +20,75 @@ const services: Service[] = [
   { id: 8, title: 'Content & Social',       desc: 'On-brand content produced in your voice and published on your behalf every week.',                  icon: '✍️' },
 ]
 
+const R = 220
+
 export default function OrbitalServices() {
-  const [rotation, setRotation] = useState(0)
   const [activeId, setActiveId] = useState<number | null>(null)
-  const [autoRotate, setAutoRotate] = useState(true)
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const nodeRefs = useRef<(HTMLDivElement | null)[]>([])
+  const rotRef   = useRef(0)
+  const rafRef   = useRef<number>(0)
+  const pausedRef = useRef(false)
+  const lastTs   = useRef<number>(0)
+
+  const animate = useCallback((ts: number) => {
+    if (!pausedRef.current) {
+      const delta = lastTs.current ? ts - lastTs.current : 16
+      lastTs.current = ts
+      // ~0.9 degrees per second — equivalent to the old setInterval but smooth
+      rotRef.current = (rotRef.current + delta * 0.018) % 360
+
+      nodeRefs.current.forEach((el, i) => {
+        if (!el) return
+        const angle = ((i / services.length) * 360 + rotRef.current) * (Math.PI / 180)
+        const x = R * Math.cos(angle)
+        const y = R * Math.sin(angle)
+        const depth = Math.sin(angle)
+        const opacity = Math.max(0.35, 0.35 + 0.65 * ((1 + depth) / 2))
+        const scale  = Math.max(0.7,  0.7  + 0.3  * ((1 + depth) / 2))
+        el.style.transform = `translate(${x}px, ${y}px) scale(${scale})`
+        el.style.opacity   = String(opacity)
+        el.style.zIndex    = String(Math.round(100 + 50 * depth))
+      })
+    } else {
+      lastTs.current = 0
+    }
+
+    rafRef.current = requestAnimationFrame(animate)
+  }, [])
 
   useEffect(() => {
-    if (!autoRotate) return
-    timerRef.current = setInterval(() => {
-      setRotation(r => (r + 0.25) % 360)
-    }, 50)
-    return () => { if (timerRef.current) clearInterval(timerRef.current) }
-  }, [autoRotate])
+    rafRef.current = requestAnimationFrame(animate)
+    return () => cancelAnimationFrame(rafRef.current)
+  }, [animate])
 
   function handleClick(id: number) {
     if (activeId === id) {
       setActiveId(null)
-      setAutoRotate(true)
+      pausedRef.current = false
     } else {
       setActiveId(id)
-      setAutoRotate(false)
+      pausedRef.current = true
     }
-  }
-
-  function nodePosition(index: number) {
-    const angle = ((index / services.length) * 360 + rotation) * (Math.PI / 180)
-    const r = 220
-    const x = r * Math.cos(angle)
-    const y = r * Math.sin(angle)
-    const depth = Math.sin(angle)
-    const opacity = Math.max(0.35, 0.35 + 0.65 * ((1 + depth) / 2))
-    const scale = Math.max(0.7, 0.7 + 0.3 * ((1 + depth) / 2))
-    const zIndex = Math.round(100 + 50 * depth)
-    return { x, y, opacity, scale, zIndex }
   }
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.orbit}>
-        {/* Orbit ring */}
         <div className={styles.ring} />
 
-        {/* Centre pulse */}
         <div className={styles.centre}>
           <div className={styles.centrePulse} />
           <div className={styles.centreInner} />
         </div>
 
         {services.map((s, i) => {
-          const pos = nodePosition(i)
           const isActive = activeId === s.id
           return (
             <div
               key={s.id}
+              ref={el => { nodeRefs.current[i] = el }}
               className={`${styles.node} ${isActive ? styles.nodeActive : ''}`}
-              style={{
-                transform: `translate(${pos.x}px, ${pos.y}px) scale(${isActive ? 1.3 : pos.scale})`,
-                opacity: isActive ? 1 : pos.opacity,
-                zIndex: isActive ? 200 : pos.zIndex,
-              }}
+              style={isActive ? { transform: 'scale(1.3)', opacity: '1', zIndex: 200 } : undefined}
               onClick={() => handleClick(s.id)}
             >
               <div className={styles.nodeIcon}>{s.icon}</div>
@@ -99,7 +108,6 @@ export default function OrbitalServices() {
 
       <p className={styles.hint}>Tap any agent to learn more</p>
 
-      {/* Mobile fallback list */}
       <div className={styles.mobileList}>
         {services.map(s => (
           <div key={s.id} className={styles.mobileItem}>

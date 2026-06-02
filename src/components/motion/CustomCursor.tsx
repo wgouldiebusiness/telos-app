@@ -33,16 +33,16 @@ export default function CustomCursor() {
     }
 
     function animate() {
-      ring.current.x += (mouse.current.x - ring.current.x) * 0.12
-      ring.current.y += (mouse.current.y - ring.current.y) * 0.12
+      ring.current.x += (mouse.current.x - ring.current.x) * 0.18
+      ring.current.y += (mouse.current.y - ring.current.y) * 0.18
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ring.current.x - 18}px, ${ring.current.y - 18}px)`
       }
       raf.current = requestAnimationFrame(animate)
     }
 
-    document.addEventListener('mousemove', onMove)
-    document.addEventListener('mouseover', onOver)
+    document.addEventListener('mousemove', onMove, { passive: true })
+    document.addEventListener('mouseover', onOver, { passive: true })
     raf.current = requestAnimationFrame(animate)
 
     return () => {

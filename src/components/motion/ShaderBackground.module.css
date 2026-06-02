@@ -25,82 +25,46 @@
   height: 100%;
 }
 
-/* ── Fixed CSS blob glows ── */
+/* ── Fixed CSS blob glows (2 blobs for performance) ── */
 
-/* Top-left deep violet blob — no filter:blur (GPU expensive, radial-gradient is naturally soft) */
 .blob1 {
   position: absolute;
-  top: -15vh;
-  left: -15vw;
-  width: 80vw;
-  height: 80vw;
-  max-width: 900px;
-  max-height: 900px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(80,50,180,.35) 0%, rgba(50,30,120,.1) 45%, transparent 70%);
-  animation: blobDrift1 20s ease-in-out infinite alternate;
-  will-change: transform;
-}
-
-/* Right indigo blob */
-.blob2 {
-  position: absolute;
-  top: 20vh;
-  right: -10vw;
+  top: -10vh;
+  left: -10vw;
   width: 65vw;
   height: 65vw;
-  max-width: 750px;
-  max-height: 750px;
+  max-width: 720px;
+  max-height: 720px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(60,40,160,.22) 0%, rgba(40,20,100,.08) 50%, transparent 70%);
-  animation: blobDrift2 25s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(80,50,180,.3) 0%, rgba(50,30,120,.08) 50%, transparent 70%);
+  animation: blobDrift1 22s ease-in-out infinite alternate;
   will-change: transform;
 }
 
-/* Centre bottom glow */
-.blob3 {
+.blob2 {
   position: absolute;
   bottom: -5vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 85vw;
-  height: 40vw;
-  max-width: 1000px;
-  max-height: 450px;
-  background: radial-gradient(ellipse, rgba(90,55,190,.18) 0%, rgba(60,30,140,.06) 50%, transparent 70%);
-  animation: blobDrift3 18s ease-in-out infinite alternate;
-}
-
-/* Bottom-left accent */
-.blob4 {
-  position: absolute;
-  bottom: 5vh;
-  left: 5vw;
-  width: 45vw;
-  height: 45vw;
-  max-width: 550px;
-  max-height: 550px;
+  right: -8vw;
+  width: 55vw;
+  height: 55vw;
+  max-width: 640px;
+  max-height: 640px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(100,60,200,.15) 0%, transparent 65%);
-  animation: blobDrift4 28s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(60,40,160,.2) 0%, rgba(40,20,100,.06) 50%, transparent 70%);
+  animation: blobDrift2 28s ease-in-out infinite alternate;
   will-change: transform;
 }
+
+/* blob3 and blob4 removed — covered by WebGL layer on desktop */
+.blob3, .blob4 { display: none; }
 
 @keyframes blobDrift1 {
   from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(6vw, 5vh) scale(1.12); }
+  to   { transform: translate(4vw, 4vh) scale(1.1); }
 }
 @keyframes blobDrift2 {
   from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(-5vw, -8vh) scale(1.08); }
-}
-@keyframes blobDrift3 {
-  from { transform: translateX(-50%) scale(1); }
-  to   { transform: translateX(-50%) scale(1.15); }
-}
-@keyframes blobDrift4 {
-  from { transform: translate(0, 0) scale(1); }
-  to   { transform: translate(4vw, -6vh) scale(1.1); }
+  to   { transform: translate(-4vw, -5vh) scale(1.08); }
 }
 
 /* Disable WebGL layer on mobile — CSS blobs still show */
