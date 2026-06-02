@@ -4,21 +4,16 @@ import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '@/components/Logo/Logo'
-import styles from './Header.module.css'
+import styles from './WebsitesHeader.module.css'
 
 const navLinks = [
-  { label: 'Home',             href: '/',          badge: false },
-  { label: 'What We Do',       href: '/solutions', badge: false },
-  { label: 'How It Works',     href: '/process',   badge: false },
-  { label: 'Pricing',          href: '/pricing',   badge: false },
-  { label: 'About',            href: '/about',     badge: false },
-  { label: 'Telos Websites',   href: '/websites',  badge: true  },
-  { label: 'Log In',           href: '/login',     badge: false },
+  { label: 'What We Build', href: '/websites/what-we-build' },
+  { label: 'Pricing',       href: '/websites/pricing' },
 ]
 
-export default function Header() {
-  const [scrolled, setScrolled] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+export default function WebsitesHeader() {
+  const [scrolled, setScrolled]   = useState(false)
+  const [menuOpen, setMenuOpen]   = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -38,21 +33,22 @@ export default function Header() {
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <Link href="/" className={styles.brand} aria-label="Telos AI home">
-            <Logo size="sm" />
-            <span className={styles.wordmark}>Telos</span>
-          </Link>
+          <div className={styles.brandGroup}>
+            <Link href="/" className={styles.backPill} title="Back to Telos AI">
+              ← Telos AI
+            </Link>
+            <Link href="/websites" className={styles.brand} aria-label="Telos Websites home">
+              <Logo size="sm" />
+              <span className={styles.wordmark}>Telos Websites</span>
+            </Link>
+          </div>
 
-          <nav className={styles.nav} aria-label="Primary navigation">
+          <nav className={styles.nav} aria-label="Websites navigation">
             {navLinks.map(link => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={
-                  link.badge
-                    ? styles.navBadge
-                    : `${styles.navLink} ${pathname === link.href ? styles.active : ''}`
-                }
+                className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
               >
                 {link.label}
               </Link>
@@ -85,20 +81,23 @@ export default function Header() {
             transition={{ duration: 0.38, ease: [0.2, 0.7, 0.2, 1] }}
           >
             <nav className={styles.mobileNav}>
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+              >
+                <Link href="/" className={styles.mobileBack}>← Back to Telos AI</Link>
+              </motion.div>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                  transition={{ delay: (i + 1) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
                 >
                   <Link
                     href={link.href}
-                    className={
-                      link.badge
-                        ? `${styles.mobileLink} ${styles.mobileLinkBadge}`
-                        : `${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`
-                    }
+                    className={`${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`}
                   >
                     {link.label}
                   </Link>
@@ -107,7 +106,7 @@ export default function Header() {
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                transition={{ delay: (navLinks.length + 1) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <Link href="/contact" className={styles.mobileCta}>
                   Book a Call

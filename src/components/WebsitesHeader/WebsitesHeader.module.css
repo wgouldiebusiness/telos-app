@@ -1,10 +1,10 @@
 .header {
   position: fixed;
-  top: var(--bar-h, 0px);
+  top: 0;
   left: 0;
   right: 0;
   z-index: 900;
-  transition: background 400ms ease, border-color 400ms ease, top 200ms ease;
+  transition: background 400ms ease, border-color 400ms ease;
   border-bottom: 1px solid transparent;
 }
 
@@ -30,7 +30,33 @@
   padding-bottom: 0.875rem;
 }
 
-/* Brand */
+/* Brand group — back pill + logo */
+.brandGroup {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.backPill {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  text-decoration: none;
+  padding: 4px 10px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 980px;
+  transition: color var(--t-fast), border-color var(--t-fast);
+  white-space: nowrap;
+}
+
+.backPill:hover {
+  color: rgba(255,255,255,.8);
+  border-color: rgba(255,255,255,.3);
+}
+
 .brand {
   display: flex;
   align-items: center;
@@ -77,30 +103,10 @@
   transition: width 0.25s var(--ease-out);
 }
 
-.navLink:hover { color: #ffffff; }
+.navLink:hover  { color: #ffffff; }
 .navLink.active { color: #ffffff; }
 .navLink.active::after { width: 100%; }
 
-/* Cross-site badge link */
-.navBadge {
-  font-family: var(--font-inter, 'Inter'), sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  color: var(--purple);
-  text-decoration: none;
-  padding: 5px 12px;
-  border: 1px solid rgba(120,104,230,.35);
-  border-radius: 980px;
-  transition: background var(--t-fast), border-color var(--t-fast);
-}
-
-.navBadge:hover {
-  background: rgba(120,104,230,.1);
-  border-color: var(--purple);
-}
-
-/* CTA */
 .ctaBtn {
   background: var(--purple);
   color: var(--white);
@@ -115,7 +121,7 @@
 }
 
 .ctaBtn:hover {
-  background: var(--purple);
+  background: var(--purple-2);
   transform: translateY(-1px);
 }
 
@@ -168,6 +174,21 @@
   flex-direction: column;
 }
 
+.mobileBack {
+  display: block;
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.35);
+  text-decoration: none;
+  padding: 0.6rem 0 1rem;
+  transition: color var(--t-fast);
+}
+
+.mobileBack:hover { color: rgba(255,255,255,.7); }
+
 .mobileLink {
   display: block;
   font-family: var(--font-inter, 'Inter'), sans-serif;
@@ -182,15 +203,13 @@
 }
 
 .mobileLink:hover,
-.mobileLink.active {
-  color: #ffffff;
-}
+.mobileLink.active { color: #ffffff; }
 
 .mobileCta {
   display: inline-block;
   margin-top: 2rem;
   padding: 14px 28px;
-  background: var(--dark);
+  background: var(--purple);
   color: var(--white);
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 14px;
@@ -201,12 +220,7 @@
   transition: background var(--t-base);
 }
 
-.mobileCta:hover { background: var(--purple); }
-
-.mobileLinkBadge {
-  color: var(--purple) !important;
-}
-.mobileLinkBadge:hover { color: var(--purple) !important; }
+.mobileCta:hover { background: var(--purple-2); }
 
 @media (max-width: 900px) {
   .nav     { display: none; }
