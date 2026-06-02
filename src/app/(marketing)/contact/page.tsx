@@ -18,6 +18,10 @@ const agenda = [
 
 export default function ContactPage() {
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL || '#'
+  // The embeddable Google appointment-schedule URL (ends with ?gv=true).
+  // When set, an interactive calendar is shown inline; otherwise we fall
+  // back to the booking button.
+  const embedUrl = process.env.NEXT_PUBLIC_BOOKING_EMBED_URL || ''
 
   return (
     <>
@@ -58,7 +62,7 @@ export default function ContactPage() {
                   ))}
                 </ul>
                 <p className={styles.agendaNote}>
-                  Thirty minutes. You walk away knowing exactly what is possible,
+                  Fifteen minutes. You walk away knowing exactly what is possible,
                   what it costs, and whether working together makes sense.
                 </p>
               </div>
@@ -69,17 +73,26 @@ export default function ContactPage() {
                 <span className="label">Reserve your slot</span>
                 <h2 className={styles.bookTitle}>Discovery call</h2>
                 <p className={styles.bookDesc}>
-                  Select a time that works for you. The call is 15 minutes over
-                  Google Meet. You will receive a confirmation and a calendar
-                  invite immediately.
+                  Pick a time that suits you. The call is 15 minutes over Google
+                  Meet, and you will get a confirmation and calendar invite
+                  straight away.
                 </p>
-                <AnimatedButton
-                  href={bookingUrl}
-                  variant="primary"
-                  target="_blank"
-                >
-                  Book a 15-minute call
-                </AnimatedButton>
+
+                {embedUrl ? (
+                  <div className={styles.calendarWrap}>
+                    <iframe
+                      src={embedUrl}
+                      className={styles.calendarFrame}
+                      title="Book a meeting with Telos AI"
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                  <AnimatedButton href={bookingUrl} variant="primary" target="_blank">
+                    Book a 15-minute call
+                  </AnimatedButton>
+                )}
+
                 <p className={styles.bookNote}>
                   Prefer to reach out by email first?{' '}
                   <a href="mailto:william.gouldsmith@telosai.co.uk" className={styles.emailLink}>
