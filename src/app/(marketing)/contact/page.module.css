@@ -138,19 +138,24 @@
   margin: 0;
 }
 
-/* Embedded interactive calendar */
-.calendarWrap {
-  background: #ffffff;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,.12);
-  box-shadow: 0 12px 40px rgba(0,0,0,.3);
-}
-.calendarFrame {
+/* Booking CTA button */
+.bookBtn {
   display: block;
   width: 100%;
-  height: 640px;
-  border: 0;
+  padding: 18px 24px;
+  background: var(--purple);
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 12px;
+  transition: background 0.18s ease, transform 0.18s ease;
+}
+.bookBtn:hover {
+  background: var(--purple-2);
+  transform: translateY(-2px);
 }
 
 .bookNote {

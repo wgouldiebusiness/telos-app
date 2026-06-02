@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import Reveal from '@/components/motion/RevealOnScroll'
-import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -18,10 +17,6 @@ const agenda = [
 
 export default function ContactPage() {
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL || '#'
-  // The embeddable Google appointment-schedule URL (ends with ?gv=true).
-  // When set, an interactive calendar is shown inline; otherwise we fall
-  // back to the booking button.
-  const embedUrl = process.env.NEXT_PUBLIC_BOOKING_EMBED_URL || ''
 
   return (
     <>
@@ -78,20 +73,14 @@ export default function ContactPage() {
                   straight away.
                 </p>
 
-                {embedUrl ? (
-                  <div className={styles.calendarWrap}>
-                    <iframe
-                      src={embedUrl}
-                      className={styles.calendarFrame}
-                      title="Book a meeting with Telos AI"
-                      loading="lazy"
-                    />
-                  </div>
-                ) : (
-                  <AnimatedButton href={bookingUrl} variant="primary" target="_blank">
-                    Book a 15-minute call
-                  </AnimatedButton>
-                )}
+                <a
+                  href={bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.bookBtn}
+                >
+                  Book a 15-minute call
+                </a>
 
                 <p className={styles.bookNote}>
                   Prefer to reach out by email first?{' '}
