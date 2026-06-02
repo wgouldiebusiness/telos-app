@@ -12,18 +12,18 @@ export const metadata: Metadata = {
 const values = [
   {
     n: '01',
-    title: 'Straight talking',
-    desc: 'We tell you exactly what AI can do for your business and what it cannot. We will not oversell the technology or dress up a limitation as a feature.',
+    title: 'Businesses that scale are efficient',
+    desc: 'They are run by people who believe in what they do and have removed the noise around it. We help you get there without building a management layer on top of your work.',
   },
   {
     n: '02',
-    title: 'Built to your specification',
-    desc: 'There are no templates here. Everything is designed around how your business actually works. If it does not fit, we do not use it.',
+    title: 'In it for the long term',
+    desc: 'We keep our client base small on purpose. Every business we work with gets proper attention. We earn the monthly fee by continuing to deliver.',
   },
   {
     n: '03',
-    title: 'In it for the long term',
-    desc: 'We keep our client base small on purpose. Every business we work with gets proper attention. We earn the monthly fee by continuing to deliver.',
+    title: 'Straight talking',
+    desc: 'We tell you exactly what AI can do for your business and what it cannot. We will not oversell the technology or dress up a limitation as a feature.',
   },
 ]
 
@@ -35,14 +35,12 @@ export default function AboutPage() {
           <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>About Telos</span></Reveal>
           <Reveal delay={0.1}>
             <h1 className={styles.heroH1}>
-              Built for people who are serious about their business.
+              Built for People Who Want to Focus on Their Business
             </h1>
           </Reveal>
           <Reveal delay={0.18}>
             <p className={styles.heroSub}>
-              We work with owners who are not looking for a shortcut. They want a
-              properly built system that runs correctly, improves over time, and
-              frees them to focus on the work that actually grows their business.
+              We work with owners and businesses to give them back their time.
             </p>
           </Reveal>
         </div>
@@ -71,6 +69,11 @@ export default function AboutPage() {
                   </Reveal>
                 ))}
               </div>
+              <Reveal delay={0.32}>
+                <p className={styles.missionLead} style={{ marginTop: '2rem' }}>
+                  We want to take away the noise, so you can get back to doing the work that matters.
+                </p>
+              </Reveal>
             </div>
           </div>
         </div>

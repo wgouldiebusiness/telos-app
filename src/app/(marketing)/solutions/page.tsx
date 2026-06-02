@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
-import TextScanner from '@/components/motion/TextScanner'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -29,29 +28,20 @@ export default function SolutionsPage() {
           <Reveal><span className="label" style={{ color: 'rgba(255,255,255,.4)' }}>What we do</span></Reveal>
           <Reveal delay={0.1}>
             <h1 className={styles.heroH1}>
-              Not off the shelf. Built for how your business works.
+              Purpose-Built for You
             </h1>
           </Reveal>
           <Reveal delay={0.18}>
             <p className={styles.heroSub}>
-              We are not a SaaS product with a fixed feature set. We are the technical
-              partner who learns your operation, identifies where AI will make a real
-              difference, and builds the system that delivers it.
+              Everything we build is purposely built around your business — not repurposed
+              from a generic tool.
             </p>
           </Reveal>
-        </div>
-      </section>
-
-      <section className={styles.belief}>
-        <div className="container">
-          <Reveal><span className="label">How we work</span></Reveal>
-          <TextScanner dark={false} className={styles.beliefH2}>
-            We do not use off-the-shelf tools. Everything is custom coded for how your business actually works.
-          </TextScanner>
-          <Reveal delay={0.18}>
-            <p className={styles.beliefSub}>
+          <Reveal delay={0.26}>
+            <p className={styles.heroSub} style={{ color: '#ffffff', marginTop: '1.25rem' }}>
               Off-the-shelf products require you to change how you work to fit the software.
-              We work the other way. Your business stays exactly as it is. The system wraps around it.
+              We work the other way. We learn your operation, identify where AI makes a real
+              difference, and build a system that wraps around exactly how you already operate.
             </p>
           </Reveal>
         </div>
@@ -86,10 +76,10 @@ export default function SolutionsPage() {
         <div className="container">
           <div className={styles.exHead}>
             <Reveal><span className="label">What we build</span></Reveal>
-            <Reveal delay={0.08}><h2 className={styles.exH2}>We build custom AI agents.</h2></Reveal>
+            <Reveal delay={0.08}><h2 className={styles.exH2}>Examples of What We Can Build for You</h2></Reveal>
             <Reveal delay={0.14}>
               <p className={styles.exSub}>
-                Every build is coded for your business specifically. Examples of what we have built:
+                Every build is coded for your business specifically. Here are examples of what that looks like:
               </p>
             </Reveal>
           </div>

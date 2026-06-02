@@ -92,14 +92,15 @@ export default function PricingPage() {
           <Reveal><span className="label">Pricing</span></Reveal>
           <Reveal delay={0.08}>
             <h1 className={styles.heroH1}>
-              An investment that <span className={styles.accent}>earns back.</span>
+              An Investment Back Into Your Time
             </h1>
           </Reveal>
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              A fixed monthly fee with no lock-in and no hidden costs. The question
-              is not whether you can afford this. It is what continuing without it
-              is costing you.
+              A fixed monthly fee with no hidden costs. Every plan is designed to
+              reduce the admin burden on your business — freeing up skilled hours,
+              cutting the cost of manual work, and giving you time back to focus
+              on what you actually do.
             </p>
           </Reveal>
         </div>
@@ -141,7 +142,7 @@ export default function PricingPage() {
       <section className={styles.faqSection}>
         <div className="container">
           <Reveal>
-            <h2 className={styles.faqH2}>Questions worth answering directly</h2>
+            <h2 className={styles.faqH2}>FAQs</h2>
           </Reveal>
           <Reveal delay={0.08}>
             <PricingFAQ faqs={faqs} />

@@ -61,13 +61,13 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.25} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
-              Custom AI agents for your business.
+              Customising Technology for Your Business
             </p>
           </Reveal>
           <Reveal delay={0.55}>
             <p className={styles.heroDetail}>
-              We build and manage AI systems that handle your admin, capture your leads,
-              and keep your pipeline moving. Custom coded. Fully managed.
+              We build and manage AI systems and agents that handle your admin, capture
+              leads, and keep you focused on your actual work.
             </p>
           </Reveal>
           <Reveal delay={0.7} className={styles.heroBtns}>
@@ -76,50 +76,34 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.85}>
             <div className={styles.trustRow}>
-              {['No lock-in', 'Scope agreed upfront', 'UK-based', 'Cancel anytime'].map(b => (
-                <span key={b} className={styles.trustBadge}>{b}</span>
-              ))}
+              <span className={styles.trustBadge}>Fully Managed by Telos</span>
             </div>
           </Reveal>
         </div>
         <div className={styles.heroFade} />
       </section>
 
-      {/* ── STATEMENT ── dark, text scanner */}
+      {/* ── STATEMENT + PROBLEM ── combined */}
       <section className={styles.statement}>
         <div className="container">
           <Reveal>
             <span className="label">Our purpose</span>
           </Reveal>
           <TextScanner dark className={styles.statementH2}>
-            The AI platform built for the businesses that run on people, not software.
+            The AI platform built to let businesses focus on what they do best.
           </TextScanner>
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
-              Most AI tools are built for enterprises with technical teams. We build
-              custom systems for the owners who are too busy running their business to
-              automate it themselves. We handle everything.
+              Most AI tools are generalised — not built for your business. We are a
+              technical team that creates individual, purpose-built agents tailored
+              specifically to how your business operates.
             </p>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ── PROBLEM BAND ── black, large words */}
-      <section className={styles.problem}>
-        <div className="container">
-          <Reveal>
-            <span className={`label ${styles.problemLabel}`}>What it costs you right now</span>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h2 className={styles.problemH2}>
-              Your business is losing time<br />it will never get back.
-            </h2>
           </Reveal>
           <div className={styles.problemGrid}>
             {[
-              { word: 'Missed',  body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.' },
-              { word: 'Lost',    body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.' },
-              { word: 'Slipped', body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.' },
+              { word: 'Missed Calls',           body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.' },
+              { word: 'Lost Time',              body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.' },
+              { word: 'Leads Slipping Through', body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.' },
             ].map((p, i) => (
               <Reveal key={p.word} delay={i * 0.1}>
                 <div className={styles.problemItem}>
