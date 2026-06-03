@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Artisanal Coffee Co. | Slow Cup. Craft Roast.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:wght@400;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={theme:{extend:{
+  colors:{"terracotta":"#BF5A36","sand":"#DCA57D","espresso":"#2C1B18","sage":"#6B705C","cream":"#F9F6F0","background":"#fcf9f3","surface":"#fcf9f3","on-surface":"#1c1c18","on-surface-variant":"#4f4442","surface-container-low":"#f6f3ed","surface-container":"#f0eee8"},
+  fontFamily:{"body-md":["Hanken Grotesk"],"display-lg":["Anton"],"body-lg":["Hanken Grotesk"],"headline-md":["Anton"],"headline-lg":["Anton"],"label-md":["Space Grotesk"],"label-caps":["Space Grotesk"]},
+  fontSize:{"body-md":["16px",{"lineHeight":"24px"}],"display-lg":["72px",{"lineHeight":"76px","letterSpacing":"0.02em"}],"body-lg":["18px",{"lineHeight":"28px"}],"headline-md":["32px",{"lineHeight":"36px"}],"headline-lg":["48px",{"lineHeight":"52px","letterSpacing":"0.01em"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"500"}],"label-caps":["14px",{"lineHeight":"20px","letterSpacing":"0.1em","fontWeight":"600"}]}
+}}}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.grain{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.03;background-image:url("https://www.transparenttextures.com/patterns/p6.png")}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s cubic-bezier(0.22,1,0.36,1),transform 0.9s cubic-bezier(0.22,1,0.36,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+#mobile-drawer{transition:transform 0.3s ease-in-out}
+</style>
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+<div class="grain"></div>
+
+<div class="fixed inset-y-0 left-0 w-64 bg-cream z-[60] -translate-x-full shadow-2xl" id="mobile-drawer">
+  <div class="flex flex-col h-full p-6">
+    <div class="flex justify-between items-center mb-12">
+      <span class="font-display-lg text-headline-md tracking-tighter text-espresso">CO.</span>
+      <button class="material-symbols-outlined text-espresso" onclick="toggleDrawer()">close</button>
+    </div>
+    <nav class="flex flex-col gap-6">
+      <a class="font-label-caps text-label-caps text-espresso font-bold" href="./index.html">Home</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant" href="./menu.html">Menu</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant" href="./story.html">Story</a>
+    </nav>
+  </div>
+</div>
+<div class="fixed inset-0 bg-black/40 z-[55] hidden" id="drawer-overlay" onclick="toggleDrawer()"></div>
+
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-16 h-16 bg-surface/90 backdrop-blur-sm border-b border-sand/20">
+  <div class="flex items-center gap-4">
+    <button class="material-symbols-outlined text-espresso hover:opacity-80 transition-opacity" onclick="toggleDrawer()">menu</button>
+    <span class="font-display-lg text-headline-md tracking-tighter text-espresso">COFFEE CO.</span>
+  </div>
+  <nav class="hidden md:flex gap-8">
+    <a class="font-label-caps text-label-caps text-espresso font-bold" href="./index.html">Home</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-espresso transition-colors" href="./menu.html">Menu</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-espresso transition-colors" href="./story.html">Story</a>
+  </nav>
+  <button class="font-label-caps text-label-caps bg-espresso text-cream px-6 py-2.5 rounded hover:bg-terracotta transition-colors">Order Now</button>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-end pb-20 overflow-hidden bg-espresso">
+    <img alt="Coffee shop ambience" class="absolute inset-0 w-full h-full object-cover opacity-50" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuacQL2bL1hQeMn89282Rr4h9P7VoRF02_fOB6LtczzqrXR_gNRInzRXtkWxdXBtYbF5bG_EJaJ4yhFbo67-RPHW4lSw3VNMljs8dPWJzA-wCnS94t3ZUFER1gQJd4JZ-k-K2M3aoEb67dPq1EhG8tduonHHb94oV8BFByNp_uCaYXh2leQWqdtzcE1IDcMMlx9d1W1z1LbxWI506Mgi0ikpFRD7gbDPqiombKc6lKoZIlIypxGBuy1J6j9eaSqWL-ttaFA7hJBqtD"/>
+    <div class="absolute inset-0 bg-gradient-to-t from-espresso via-espresso/30 to-transparent"></div>
+    <div class="relative z-10 max-w-[1280px] mx-auto px-4 md:px-16 w-full">
+      <div class="max-w-3xl reveal" id="h1">
+        <span class="font-label-caps text-label-caps text-sand mb-4 block tracking-[0.3em] uppercase">Est. 2024 — Neighbourhood Roastery</span>
+        <h1 class="font-display-lg text-[clamp(56px,10vw,96px)] leading-[0.92] text-cream uppercase mb-8">Slow Cup.<br/>Craft Roast.</h1>
+        <p class="font-body-lg text-body-lg text-cream/75 max-w-xl mb-10">Small-batch beans, 48-hour fermentation, and drinks made with the kind of intention the morning deserves.</p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a class="font-label-caps text-label-caps bg-sand text-espresso px-10 py-4 tracking-widest hover:bg-cream transition-all uppercase" href="./menu.html">View Menu</a>
+          <a class="font-label-caps text-label-caps border border-cream text-cream px-10 py-4 tracking-widest hover:bg-cream hover:text-espresso transition-all uppercase" href="./story.html">Our Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Daily specials strip -->
+  <section class="bg-terracotta text-cream py-5 overflow-hidden">
+    <div class="flex gap-12 whitespace-nowrap animate-[marquee_20s_linear_infinite]" style="animation:marquee 20s linear infinite">
+      <span class="font-label-caps text-label-caps tracking-widest">COLD BREW &nbsp;&bull;&nbsp; CEREMONIAL MATCHA &nbsp;&bull;&nbsp; SINGLE ORIGIN POUR-OVER &nbsp;&bull;&nbsp; SEASONAL CHAI &nbsp;&bull;&nbsp; COLD BREW &nbsp;&bull;&nbsp; CEREMONIAL MATCHA &nbsp;&bull;&nbsp; SINGLE ORIGIN POUR-OVER &nbsp;&bull;&nbsp; SEASONAL CHAI &nbsp;&bull;</span>
+    </div>
+  </section>
+
+  <!-- Menu preview -->
+  <section class="py-28 px-4 md:px-16 reveal">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div>
+          <span class="font-label-caps text-label-caps text-terracotta mb-2 block">FROM THE BAR</span>
+          <h2 class="font-headline-lg text-headline-lg text-espresso uppercase">Today's Favourites</h2>
+        </div>
+        <a class="font-label-caps text-label-caps text-espresso border-b border-espresso pb-1 hover:text-terracotta hover:border-terracotta transition-colors" href="./menu.html">FULL MENU →</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="group cursor-pointer">
+          <div class="aspect-square overflow-hidden mb-5 rounded">
+            <img alt="Cold brew" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQpnhtWrPoiLrqERh4ye6UIWIvcWs5whBddD1PcPPYOaamVJ3eE_aHRU0zvbMmQtjWxHLonXi5TSRlS4WZxd8A6ivHPqEBgTTgBKtH5QBRqDSyMpyY9wqaC3UMwHd6XGyJioC0IofIG6H2tY7F75OGI70_g5LR_pwyVhsbmKTs__Bn9c6GWM_HtVaCBvf-leMp1TqSuYMeWKANPxOwhNAZZisQQK5Qw1UoaXSCQM250hM5ZI03iXGODN65InCFCwOj0mLJnP2T4moN"/>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">House Cold Brew</h3>
+              <p class="font-body-md text-on-surface-variant">18-hour steep, sea salt foam.</p>
+            </div>
+            <span class="font-headline-md text-headline-md text-terracotta">£3.00</span>
+          </div>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="aspect-square overflow-hidden mb-5 rounded">
+            <img alt="Espresso" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxWwhy4U1-hBA3xeS9hXZQg6T8QfcU16wWBY8UzXH-f7zj4GX3sn8dt0shCzn-3sD5lNIoGtapIuX5cT_MpLLm8yyWMRQsBOWSEVlfy8KAN7_FS0fZD75StGKqGFbW01D2DLAiQOuyIE4WP72BjmcOMKcfNR8rHb-F9e4BcGkUHuL10BB5LyL-ztxsKWNk2u-nRWGuqLKXecOD4ftdLkWRyU6qdqNdmU4jZ_GaRh9l2AgmzC9EJ2cvZ__UqGGkfs7Yd9xZymmz4nZW"/>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Cappuccino</h3>
+              <p class="font-body-md text-on-surface-variant">Heritage blend, steamed to order.</p>
+            </div>
+            <span class="font-headline-md text-headline-md text-terracotta">£4.00</span>
+          </div>
+        </div>
+        <div class="group cursor-pointer">
+          <div class="aspect-square overflow-hidden mb-5 rounded">
+            <img alt="Cinnamon latte" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmtNOsA55yID-RCG0BqWvlLMibYZKLuAPbt9wOJF9CAxjjUxzPy450i0ih8l4DIlrX5-Bgit-ZNQpT1FQGLZSLMwViCIpvgiLGxa3IaLUL4OpbcLFxV2qnKwRtT7TMrebPdMTQIYfvg-koMtKKT77Cpm0rSytpg5zqiKLdK7uH3uEEXmT1csyN5VzbspiXnTaJTnDB1i97V7J5FHng1LNBaLqW1ReMOqWdmNxm85ZnSa5myerPJPM7iB_MzszRNcmEwLFtTlTdlgbd"/>
+          </div>
+          <div class="flex justify-between items-center">
+            <div>
+              <h3 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Cinnamon Latte</h3>
+              <p class="font-body-md text-on-surface-variant">Ceylon cinnamon, raw honey.</p>
+            </div>
+            <span class="font-headline-md text-headline-md text-terracotta">£4.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story strip -->
+  <section class="bg-espresso text-cream py-28 px-4 md:px-16 reveal">
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="font-label-caps text-label-caps text-sand mb-4 block tracking-widest uppercase">Our Philosophy</span>
+        <h2 class="font-headline-lg text-headline-lg mb-8 uppercase">Coffee should slow you down.</h2>
+        <p class="font-body-lg text-body-lg text-cream/70 mb-10 leading-relaxed">We started with a moka pot and an obsession. Every bean we roast, every drink we pour, is built around that same patience. The world moves fast. We do not.</p>
+        <a class="font-label-caps text-label-caps border-b border-sand text-sand pb-1 hover:border-cream hover:text-cream transition-colors" href="./story.html">READ OUR STORY →</a>
+      </div>
+      <div class="aspect-[4/3] overflow-hidden">
+        <img alt="Coffee beans roasting" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtGEBJvq-Hcd2TOLz7Nh6paZoXyIUkEPsdJqSVSF2jqVmSzRskm4q8K04adEYoA5pRYr2KGxfCPt36hgAUpKQA7vTnVc6nPOCGaelPq9UJRfSp5H2SEw39nRYCKCsG9ir1CtbgezpFn0lRToj-dEdE3io_du83MPeivPyVuDQzoxIrwA4eNqLL62ExrEICOjAzl4aX8rnq4YcvoZVzIbvuHFxlzA0rDvp7PWHnESBUD2QBs25o1PkH-n2ij6gnnUzbvmXB0kVMBlDq"/>
+      </div>
+    </div>
+  </section>
+
+  <!-- Visit -->
+  <section class="py-28 px-4 md:px-16 reveal">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="bg-surface-container rounded-xl p-10 md:p-16 flex flex-col md:flex-row items-center justify-between gap-10">
+        <div>
+          <span class="font-label-caps text-label-caps text-terracotta mb-3 block uppercase">Find the Shop</span>
+          <h2 class="font-headline-lg text-headline-lg text-espresso mb-4 uppercase">Come in for a cup.</h2>
+          <p class="font-body-md text-on-surface-variant">123 Anywhere Street, Any City<br/>Monday – Friday 07:00 – 18:00 &nbsp;&bull;&nbsp; Weekend 08:00 – 17:00</p>
+        </div>
+        <div class="flex flex-col gap-4 min-w-[200px]">
+          <a class="font-label-caps text-label-caps bg-espresso text-cream px-8 py-4 text-center hover:bg-terracotta transition-colors rounded" href="./menu.html">View Menu</a>
+          <a class="font-label-caps text-label-caps border border-espresso text-espresso px-8 py-4 text-center hover:bg-espresso hover:text-cream transition-all rounded" href="#">Get Directions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-sand/20 shadow-sm">
+  <a class="flex flex-col items-center text-terracotta font-bold p-2" href="./index.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">home</span><span class="font-label-md text-[10px] uppercase">Home</span></a>
+  <a class="flex flex-col items-center text-on-surface-variant hover:text-terracotta transition-colors p-2" href="./menu.html"><span class="material-symbols-outlined">coffee_maker</span><span class="font-label-md text-[10px] uppercase">Menu</span></a>
+  <a class="flex flex-col items-center text-on-surface-variant hover:text-terracotta transition-colors p-2" href="./index.html"><span class="material-symbols-outlined">location_on</span><span class="font-label-md text-[10px] uppercase">Find Us</span></a>
+  <a class="flex flex-col items-center text-on-surface-variant hover:text-terracotta transition-colors p-2" href="./story.html"><span class="material-symbols-outlined">auto_stories</span><span class="font-label-md text-[10px] uppercase">Story</span></a>
+</nav>
+
+<style>@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}</style>
+<script>
+function toggleDrawer(){const d=document.getElementById('mobile-drawer'),o=document.getElementById('drawer-overlay'),open=d.classList.contains('translate-x-0');if(open){d.classList.remove('translate-x-0');d.classList.add('-translate-x-full');o.classList.add('hidden');}else{d.classList.add('translate-x-0');d.classList.remove('-translate-x-full');o.classList.remove('hidden');}}
+const obs=new IntersectionObserver(e=>e.forEach(e=>e.isIntersecting&&e.target.classList.add('active')),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+setTimeout(()=>document.getElementById('h1')?.classList.add('active'),150);
+</script>
+</body>
+</html>

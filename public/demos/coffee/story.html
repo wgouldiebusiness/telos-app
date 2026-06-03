@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Story | Artisanal Coffee Co.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{
+  colors:{"charcoal":"#1A1A1A","terracotta":"#BF5A36","sand":"#DCA57D","espresso":"#2C1B18","sage":"#6B705C","cream":"#F9F6F0","background":"#fcf9f3","surface":"#fcf9f3","on-surface":"#1c1c18","on-surface-variant":"#4f4442","surface-container":"#f0eee8","secondary-container":"#fdc399"},
+  fontFamily:{"body-md":["Hanken Grotesk"],"display-lg":["Anton"],"body-lg":["Hanken Grotesk"],"headline-md":["Anton"],"headline-lg":["Anton"],"label-md":["Space Grotesk"],"label-caps":["Space Grotesk"]},
+  fontSize:{"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"display-lg":["72px",{"lineHeight":"76px","letterSpacing":"0.02em","fontWeight":"400"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-md":["32px",{"lineHeight":"36px","fontWeight":"400"}],"headline-lg":["48px",{"lineHeight":"52px","letterSpacing":"0.01em","fontWeight":"400"}],"label-md":["14px",{"lineHeight":"20px","fontWeight":"500"}],"label-caps":["14px",{"lineHeight":"20px","letterSpacing":"0.1em","fontWeight":"600"}]}
+}}}
+</script>
+<style>
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.grain-overlay{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;opacity:0.04;background-image:url("https://www.transparenttextures.com/patterns/p6.png")}
+.fade-in-section{opacity:0;transform:translateY(30px);transition:opacity 1s cubic-bezier(0.22,1,0.36,1),transform 1s cubic-bezier(0.22,1,0.36,1)}
+.fade-in-section.visible{opacity:1;transform:translateY(0)}
+.moka-mask{mask-image:linear-gradient(to bottom,black 80%,transparent)}
+@keyframes pulse-soft{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(191,90,54,0)}50%{transform:scale(1.02);box-shadow:0 0 20px 0 rgba(191,90,54,0.2)}}
+.animate-pulse-soft{animation:pulse-soft 3s ease-in-out infinite}
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<div class="grain-overlay"></div>
+
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 md:px-16 h-16 bg-surface border-b border-sand/30">
+  <button class="text-espresso hover:opacity-80 transition-opacity" id="drawer-trigger"><span class="material-symbols-outlined">menu</span></button>
+  <span class="font-display-lg text-headline-md tracking-tighter text-espresso uppercase">ARTISANAL COFFEE CO.</span>
+  <button class="text-espresso hover:opacity-80 transition-opacity"><span class="material-symbols-outlined">shopping_bag</span></button>
+</header>
+
+<div class="fixed inset-0 bg-espresso/40 z-[55] hidden backdrop-blur-sm" id="drawer-overlay"></div>
+<aside class="fixed inset-y-0 left-0 z-[60] w-80 bg-cream shadow-xl transform -translate-x-full transition-transform duration-300 p-4 flex flex-col" id="nav-drawer">
+  <div class="flex justify-between items-center mb-8">
+    <span class="font-display-lg text-headline-md text-espresso">Coffee Co.</span>
+    <button class="text-espresso" id="drawer-close"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <nav class="flex flex-col gap-2 divide-y divide-sand/20">
+    <a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 px-2 transition-colors" href="./index.html">Home</a>
+    <a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 px-2 transition-colors" href="./menu.html">Menu</a>
+    <a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 px-2 transition-colors" href="./index.html">Find Us</a>
+    <a class="py-4 font-headline-md text-headline-md text-terracotta font-bold px-2" href="./story.html">Our Story</a>
+  </nav>
+</aside>
+
+<main class="pt-16 pb-24 md:pb-0">
+
+  <!-- Hero -->
+  <section class="relative min-h-[95vh] flex flex-col items-center justify-center overflow-hidden bg-espresso py-12">
+    <img alt="Coffee shop atmosphere" class="absolute inset-0 w-full h-full object-cover opacity-60" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGHIhnx1vw_OHAE6gYdKMzQW4aLj1DroHB-p5N2JM41DU3i2Dn7kDyvFNHEAYfcTyaENTgdAUO5ivKnv1wYfM2UUOxdSv99jnXNpKAqZgdbqBAAFkxKt0anHR3Bk8UJXS67R5V2ynDgBjwqxQSeba0ikbPLYxeZEk9HTZ864cwbMOa6U-2eByHYTv79qMLgyoPZt_NOaWAqc0LkwtA3Dzc4s_HEzMlzmtReaJl6GBnsF4-wbz-QBbmckgVh-uvnkKMf3aO2WXA45YD"/>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-espresso/20 to-espresso/80"></div>
+    <div class="relative z-10 w-full flex flex-col items-center fade-in-section">
+      <div class="text-center px-4 max-w-4xl">
+        <span class="font-label-caps text-label-caps text-sand mb-4 block tracking-[0.2em] uppercase">The Art of Stillness</span>
+        <h2 class="font-display-lg text-[clamp(56px,10vw,100px)] leading-[0.9] text-cream uppercase mb-8">.slow cup</h2>
+        <p class="font-body-lg text-cream/90 max-w-2xl mx-auto leading-relaxed">In a world that prizes speed, we choose the deliberate. The Slow Cup is our commitment to the ritual of the morning, the patience of the roast, and the quiet joy of a perfectly pulled shot.</p>
+      </div>
+    </div>
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+      <span class="material-symbols-outlined text-cream">arrow_downward</span>
+    </div>
+  </section>
+
+  <!-- Heritage -->
+  <section class="py-28 bg-surface px-4 md:px-16 fade-in-section">
+    <div class="max-w-[1280px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+      <div class="md:col-span-5">
+        <span class="font-label-caps text-label-caps text-terracotta mb-4 block uppercase">Our Method</span>
+        <h2 class="font-headline-lg text-headline-lg text-espresso mb-6 uppercase">Honoring the Heritage</h2>
+        <p class="font-body-md text-on-surface-variant mb-8 leading-relaxed">Our journey began with the iconic moka pot. It taught us that coffee is not just a beverage — it is a mechanical dance of pressure and heat. Every bean we roast is profiled specifically to honour these traditional brewing methods, ensuring a rich, syrupy body that reminds you of home.</p>
+        <div class="border-l-2 border-sand pl-6 italic font-body-lg text-espresso">"The sound of a moka pot gurgling is the first heartbeat of the day."</div>
+      </div>
+      <div class="md:col-span-7 flex justify-center mt-12 md:mt-0">
+        <div class="relative w-full max-w-md bg-cream p-8 border border-sand/30">
+          <img alt="Coffee preparation" class="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700 moka-mask" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtGEBJvq-Hcd2TOLz7Nh6paZoXyIUkEPsdJqSVSF2jqVmSzRskm4q8K04adEYoA5pRYr2KGxfCPt36hgAUpKQA7vTnVc6nPOCGaelPq9UJRfSp5H2SEw39nRYCKCsG9ir1CtbgezpFn0lRToj-dEdE3io_du83MPeivPyVuDQzoxIrwA4eNqLL62ExrEICOjAzl4aX8rnq4YcvoZVzIbvuHFxlzA0rDvp7PWHnESBUD2QBs25o1PkH-n2ij6gnnUzbvmXB0kVMBlDq"/>
+          <div class="absolute -bottom-6 -right-6 bg-terracotta text-cream p-6 w-48 h-48 flex flex-col justify-center items-center text-center shadow-lg animate-pulse-soft">
+            <span class="font-display-lg text-headline-md">1952</span>
+            <span class="font-label-caps text-[10px] tracking-widest">FOUNDATION YEAR</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roasted with intention -->
+  <section class="py-28 bg-cream px-4 md:px-16 fade-in-section">
+    <div class="max-w-[1280px] mx-auto">
+      <div class="text-center mb-16">
+        <h2 class="font-headline-lg text-headline-lg text-espresso mb-4 uppercase">Roasted With Intention</h2>
+        <p class="font-body-md text-on-surface-variant max-w-xl mx-auto">From high-altitude premium global farms to our small-batch roastery in the neighbourhood, every step is a labour of love.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-6 h-auto md:h-[800px]">
+        <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-espresso">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuacQL2bL1hQeMn89282Rr4h9P7VoRF02_fOB6LtczzqrXR_gNRInzRXtkWxdXBtYbF5bG_EJaJ4yhFbo67-RPHW4lSw3VNMljs8dPWJzA-wCnS94t3ZUFER1gQJd4JZ-k-K2M3aoEb67dPq1EhG8tduonHHb94oV8BFByNp_uCaYXh2leQWqdtzcE1IDcMMlx9d1W1z1LbxWI506Mgi0ikpFRD7gbDPqiombKc6lKoZIlIypxGBuy1J6j9eaSqWL-ttaFA7hJBqtD" alt="Coffee roasting"/>
+          <div class="absolute inset-0 bg-espresso/30 group-hover:bg-espresso/10 transition-colors"></div>
+          <div class="absolute bottom-0 left-0 p-8 text-cream">
+            <h3 class="font-headline-md text-headline-md mb-2 uppercase">The Roast Profile</h3>
+            <p class="font-body-md max-w-xs text-cream/80">Developing deep caramels and bright citrus notes through 14-minute precise roast cycles.</p>
+          </div>
+        </div>
+        <div class="md:col-span-2 relative group overflow-hidden bg-sand/20">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDn21WzQ_lC7q158kL7L74pUaDQg94uiPiDyeaT9EBd7mt2ne5Xtp4ASTyp-ptPawuOc8Z1MBzfz9J0CmGQLCvuFXeMME0234DyVlzhI3bdTF4A1pRBK3fnyy8qxdBbd39fp7rHcj5pK-fOALAs6MlCn0vPXD3WztIKE1D9r0wYK5KOj00wn68CWbKWIxEvnHGrhVXFiFCoUIk_R0gghEwWnIuTLKG3Wsgnl2VwbgOcevBFHbRocgnTJgOnR10mk1ZrrWzG8QGW2Q5N" alt="Milk pour"/>
+          <div class="absolute top-0 right-0 p-6"><span class="bg-cream/90 backdrop-blur px-3 py-1 font-label-caps text-espresso text-[12px] uppercase">The Pour</span></div>
+        </div>
+        <div class="relative group overflow-hidden bg-sage/20">
+          <div class="p-8 h-full flex flex-col justify-end bg-sage/10 hover:bg-sage/20 transition-colors">
+            <span class="material-symbols-outlined text-espresso text-4xl mb-4">eco</span>
+            <h4 class="font-headline-md text-[24px] text-espresso mb-2 uppercase">Direct Trade</h4>
+            <p class="font-body-md text-on-surface-variant text-sm">Eliminating middlemen to ensure farmers get paid fairly from global farms.</p>
+          </div>
+        </div>
+        <div class="relative group overflow-hidden bg-terracotta/20">
+          <img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2CthrHTF1EOcmAW2ptVhcioohcpINsHpQZTogKYgfazblit-IbiY4-iB5PCMT2ZWRhJ2t6HRB-vfrP-NbNHSfHRNSnjXNUCHqbLgwJ3Hm9syx9V4gQseZjYlwrtoO9aqsB8kt51rAgPAqPR3JR9g4JY-059xN5TEx-Gf" alt="Pastries"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-28 bg-espresso text-cream px-4 md:px-16 overflow-hidden relative fade-in-section">
+    <div class="absolute top-0 right-0 opacity-10 translate-x-1/4 -translate-y-1/4">
+      <h2 class="font-display-lg text-[200px] leading-none uppercase text-sand select-none">STORY</h2>
+    </div>
+    <div class="max-w-[1280px] mx-auto text-center relative z-10">
+      <h2 class="font-headline-lg text-headline-lg mb-8 uppercase max-w-3xl mx-auto">Brew your own story at home.</h2>
+      <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <a href="./menu.html" class="bg-sand text-espresso px-10 py-5 font-label-caps text-label-caps hover:bg-cream transition-colors duration-300 uppercase tracking-widest">Explore our Menu</a>
+        <a href="./index.html" class="border border-sand text-sand px-10 py-5 font-label-caps text-label-caps hover:bg-sand hover:text-espresso transition-all duration-300 uppercase tracking-widest">Find the Shop</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-surface flex justify-around items-center px-4 py-2 border-t border-sand/30 shadow-sm">
+  <a class="flex flex-col items-center text-on-surface-variant hover:text-terracotta transition-colors py-1" href="./index.html"><span class="material-symbols-outlined">home</span><span class="font-label-md text-label-md">Home</span></a>
+  <a class="flex flex-col items-center text-on-surface-variant hover:text-terracotta transition-colors py-1" href="./menu.html"><span class="material-symbols-outlined">coffee_maker</span><span class="font-label-md text-label-md">Menu</span></a>
+  <a class="flex flex-col items-center text-on-surface-variant hover:text-terracotta transition-colors py-1" href="./index.html"><span class="material-symbols-outlined">location_on</span><span class="font-label-md text-label-md">Find Us</span></a>
+  <a class="flex flex-col items-center text-terracotta font-bold py-1" href="./story.html"><span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">auto_stories</span><span class="font-label-md text-label-md">Story</span></a>
+</nav>
+
+<footer class="hidden md:block bg-surface py-16 px-16 border-t border-sand/30">
+  <div class="max-w-[1280px] mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+    <div>
+      <h3 class="font-display-lg text-headline-md text-espresso mb-4 uppercase">Artisanal Coffee Co.</h3>
+      <p class="font-body-md text-on-surface-variant max-w-xs">A neighbourhood roastery dedicated to the art of the slow cup.</p>
+    </div>
+    <div class="grid grid-cols-2 gap-16">
+      <div>
+        <h4 class="font-label-caps text-label-caps text-terracotta mb-6 uppercase">Navigate</h4>
+        <ul class="flex flex-col gap-3">
+          <li><a class="font-body-md text-espresso hover:text-sand transition-colors" href="./menu.html">Our Menu</a></li>
+          <li><a class="font-body-md text-espresso hover:text-sand transition-colors" href="./story.html">Our Story</a></li>
+          <li><a class="font-body-md text-espresso hover:text-sand transition-colors" href="#">Brewing Gear</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-label-caps text-label-caps text-terracotta mb-6 uppercase">Connect</h4>
+        <ul class="flex flex-col gap-3">
+          <li><a class="font-body-md text-espresso hover:text-sand transition-colors" href="#">Instagram</a></li>
+          <li><a class="font-body-md text-espresso hover:text-sand transition-colors" href="#">Newsletter</a></li>
+          <li><a class="font-body-md text-espresso hover:text-sand transition-colors" href="#">Careers</a></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <h4 class="font-label-caps text-label-caps text-terracotta mb-6 uppercase">Find Us</h4>
+      <p class="font-body-md text-espresso mb-1">Our Neighbourhood Roastery</p>
+      <p class="font-body-md text-espresso">Open Daily 07:00 — 18:00</p>
+    </div>
+  </div>
+  <div class="max-w-[1280px] mx-auto mt-16 pt-8 border-t border-sand/10 flex justify-between items-center text-[12px] font-label-md text-on-surface-variant/60">
+    <p>&copy; 2026 ARTISANAL COFFEE CO.</p><p>EST. IN THE NEIGHBOURHOOD</p>
+  </div>
+</footer>
+
+<script>
+const drawer=document.getElementById('nav-drawer'),overlay=document.getElementById('drawer-overlay'),trigger=document.getElementById('drawer-trigger'),closeBtn=document.getElementById('drawer-close');
+function openDrawer(){drawer.classList.remove('-translate-x-full');overlay.classList.remove('hidden');document.body.classList.add('overflow-hidden');}
+function closeDrawer(){drawer.classList.add('-translate-x-full');overlay.classList.add('hidden');document.body.classList.remove('overflow-hidden');}
+trigger.addEventListener('click',openDrawer);closeBtn.addEventListener('click',closeDrawer);overlay.addEventListener('click',closeDrawer);
+const obs=new IntersectionObserver(e=>e.forEach(e=>e.isIntersecting&&e.target.classList.add('visible')),{threshold:0.15,rootMargin:"0px 0px -50px 0px"});
+document.querySelectorAll('.fade-in-section').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>

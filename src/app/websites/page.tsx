@@ -31,6 +31,15 @@ const showcaseItems: ShowcaseItem[] = [
     demoHref: '/demos/pizza/index.html',
   },
   {
+    title: 'Artisanal Coffee Co.',
+    category: 'Coffee Shop',
+    desc: 'Warm, editorial sites with menus, story pages, and a tone that matches your craft.',
+    gradient: 'linear-gradient(145deg, #2c1b18 0%, #4a2a1e 50%, #bf5a36 100%)',
+    accent: '#bf5a36',
+    imageSrc: '',
+    demoHref: '/demos/coffee/index.html',
+  },
+  {
     title: 'The Barber Collective',
     category: 'Grooming',
     desc: 'Sharp, minimal design focused on your portfolio and booking flow.',
