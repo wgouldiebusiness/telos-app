@@ -10,7 +10,17 @@ export const metadata: Metadata = {
     'We design and build websites for service businesses. Fast, focused, and wired into your AI agents from day one.',
 }
 
-const showcaseItems = [
+interface ShowcaseItem {
+  title: string
+  category: string
+  desc: string
+  gradient: string
+  accent: string
+  imageSrc: string
+  demoHref?: string
+}
+
+const showcaseItems: ShowcaseItem[] = [
   {
     title: 'Rustic Pizza Co.',
     category: 'Restaurant',
@@ -18,6 +28,7 @@ const showcaseItems = [
     gradient: 'linear-gradient(145deg, #1a0a04 0%, #4a1a06 45%, #8b3a10 100%)',
     accent: '#c45a1a',
     imageSrc: '',
+    demoHref: '/demos/pizza/index.html',
   },
   {
     title: 'The Barber Collective',
@@ -170,6 +181,16 @@ export default function WebsitesHomePage() {
                   <div className={styles.cardBody}>
                     <h3 className={styles.cardTitle}>{item.title}</h3>
                     <p className={styles.cardDesc}>{item.desc}</p>
+                    {item.demoHref && (
+                      <a
+                        href={item.demoHref}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.cardDemo}
+                      >
+                        View demo →
+                      </a>
+                    )}
                   </div>
                 </div>
               </Reveal>

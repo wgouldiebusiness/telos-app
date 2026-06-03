@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Pizza Place | Authentic Wood-Fired Pizza</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,700&family=Libre+Franklin:wght@400;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{
+  colors:{"primary":"#7e0000","basil-green":"#1B3022","on-primary":"#ffffff","paper-white":"#FCF7EF","background":"#fef9f1","surface":"#fef9f1","ink-black":"#1A1A1A","checkerboard-red":"#CD212A","on-surface":"#1d1c17","on-surface-variant":"#5a413d","surface-container-high":"#ece8e0","surface-container-low":"#f8f3eb","secondary":"#4d6453","tertiary-fixed-dim":"#e9c349"},
+  borderRadius:{"DEFAULT":"0.25rem","full":"9999px"},
+  spacing:{"margin-mobile":"16px","max-width":"1280px","margin-desktop":"64px","gutter":"24px"},
+  fontFamily:{"body-md":["Libre Franklin"],"label-caps":["Space Grotesk"],"headline-lg":["Playfair Display"],"headline-md":["Playfair Display"],"display-lg":["Playfair Display"],"body-lg":["Libre Franklin"]},
+  fontSize:{"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["14px",{"lineHeight":"20px","letterSpacing":"0.1em","fontWeight":"600"}],"headline-lg":["48px",{"lineHeight":"56px","fontWeight":"700"}],"headline-md":["32px",{"lineHeight":"40px","fontWeight":"600"}],"display-lg":["72px",{"lineHeight":"80px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"700"}]}
+}}}
+</script>
+<style>
+@keyframes pan{from{background-position:0 0,0 8px,8px -8px,-8px 0px}to{background-position:32px 0,32px 8px,40px -8px,24px 0px}}
+.checkerboard-band{background-image:linear-gradient(45deg,#CD212A 25%,transparent 25%),linear-gradient(-45deg,#CD212A 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#CD212A 75%),linear-gradient(-45deg,transparent 75%,#CD212A 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0px;background-color:#fff}
+.panning{animation:pan 2s linear infinite}
+.parchment{background-image:url("https://www.transparenttextures.com/patterns/natural-paper.png")}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.fade-in{opacity:0;transform:translateY(24px);transition:opacity 0.9s ease,transform 0.9s ease}
+.fade-in.active{opacity:1;transform:translateY(0)}
+.slide-up{opacity:0;transform:translateY(40px);transition:opacity 0.8s cubic-bezier(0.25,0.46,0.45,0.94),transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
+.slide-up.active{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body class="bg-paper-white text-on-surface font-body-md selection:bg-primary selection:text-white overflow-x-hidden parchment">
+
+<header class="bg-surface/95 text-primary sticky top-0 z-50 border-b border-primary/20 shadow-sm flex justify-between items-center px-4 md:px-16 h-20 w-full backdrop-blur-md">
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-primary cursor-pointer hover:rotate-90 transition-transform duration-300">menu</span>
+    <a class="font-headline-md text-headline-md font-bold text-primary tracking-tight" href="./index.html">Pizza Place</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-8">
+    <a class="font-label-caps text-label-caps text-primary font-bold" href="./index.html">Menu</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Order</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Locations</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./story.html">Story</a>
+  </nav>
+  <button class="font-label-caps text-label-caps bg-primary text-on-primary px-6 py-3 rounded-none uppercase tracking-widest hover:bg-ink-black transition-all active:scale-95">Book Now</button>
+</header>
+
+<main>
+  <!-- Hero -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-basil-green">
+    <div class="absolute inset-0">
+      <img alt="Wood-fired pizza" class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida/AP1WRLs5CeNt8yqRsypfw_AJ91lOq-OC3NjGIYtTRPBUnykPO5DBbbpWcc4LTsqXtd9nRSUH0QlvX-lfxV3pZb5jRTE9qrex1FbVTitu6b0uTEUWwsBIDBx8_SsOPDjG2U6OOeaDDfWnyDw5MTi0CDp97cuLWniGZ9xnX1LAzD_nHMWx9hbXdLlruGwfwLPQyA2zSjUVPR4tB7i7JCiDqqBa_HQCoQakdPo-By0xHIKtjFdW7CeH-BsQYeRSZYtU"/>
+    </div>
+    <div class="relative z-10 text-center max-w-4xl px-4">
+      <span class="font-label-caps text-label-caps text-tertiary-fixed-dim mb-6 block tracking-[0.4em] fade-in" id="h1">TRATTORIA &amp; DELI</span>
+      <h1 class="font-display-lg text-[clamp(48px,10vw,96px)] leading-none text-paper-white mb-8 italic fade-in" id="h2">Wood-Fired.<br/>Hand-Made.</h1>
+      <p class="font-body-lg text-body-lg text-paper-white/75 max-w-xl mx-auto mb-10 fade-in" id="h3">Authentic Italian pizza, made with long-fermented dough, seasonal ingredients, and the fire of a real wood oven.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center fade-in" id="h4">
+        <a class="font-label-caps text-label-caps bg-primary text-on-primary px-10 py-4 tracking-widest hover:bg-ink-black transition-all active:scale-95 uppercase" href="#">View Menu</a>
+        <a class="font-label-caps text-label-caps border-2 border-paper-white text-paper-white px-10 py-4 tracking-widest hover:bg-paper-white hover:text-basil-green transition-all active:scale-95 uppercase" href="./locations.html">Find Us</a>
+      </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-paper-white to-transparent"></div>
+  </section>
+
+  <!-- Divider -->
+  <div class="checkerboard-band panning h-12 w-full border-y border-ink-black/10"></div>
+
+  <!-- Featured -->
+  <section class="max-w-[1280px] mx-auto px-4 md:px-16 py-24">
+    <div class="text-center mb-16 slide-up">
+      <span class="font-label-caps text-label-caps text-primary mb-2 block">FROM THE OVEN</span>
+      <h2 class="font-headline-lg text-[clamp(36px,5vw,56px)] text-basil-green">Our Signature Pizzas</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="group border border-basil-green/20 overflow-hidden hover:border-primary transition-all duration-500 slide-up">
+        <div class="aspect-square overflow-hidden">
+          <img alt="Margherita pizza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLsdjI9bUCY_QEePXTS2LaLGWCDrOrunipiPlp2LS985jPQouXwxefW4QaHTOHV8Oj0_h6WDMHQOWx-5kFoXWBy5ZFf3o6hGF5WWC9ifzLIJm5H4_RGNhlRA9QIxmXpLZzhxjeK2xuPSWY5L1xYOl3cwaOwPlRkrp4xtrhzr9bXLL01JTNFqRYk11XryiEDEDMrkc1QO9bsHL9TQz3Etqa9Fw-ShTjz1Vc4nEkqhdTHl39wSh9AnbrImo3I"/>
+        </div>
+        <div class="p-6 bg-paper-white">
+          <h3 class="font-headline-md text-headline-md mb-2">Margherita Classica</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-4">San Marzano tomatoes, fior di latte, fresh basil, extra virgin olive oil.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-label-caps text-label-caps text-primary">£12.50</span>
+            <button class="font-label-caps text-label-caps text-primary border border-primary px-4 py-2 hover:bg-primary hover:text-on-primary transition-all">ADD</button>
+          </div>
+        </div>
+      </div>
+      <div class="group border border-basil-green/20 overflow-hidden hover:border-primary transition-all duration-500 slide-up" style="transition-delay:0.1s">
+        <div class="aspect-square overflow-hidden">
+          <img alt="Diavola pizza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLsOi0D6d4z7jPPP4LMIjOlSKuCPJmqzz--_asl-w_85_3Eaus8VkRlPsjJMD7JqG1ZzSOn2dWKafT3NNcCiRyGSr4SDfm-73D5YCalaPjquPS-Cii8R8BTkKKeSm3lJ8tTKbP3KlL2KMljoeRhYLxVgTzC_O5W0lF3T3S--VwM5k_FrUIvXeB9wVJ1_C_qFEPsF12p7fj15bWrg8Kry1ib1NT4HmXx7aOGekQEmKx9Mrse9O8iPydrM8Xk"/>
+        </div>
+        <div class="p-6 bg-paper-white">
+          <h3 class="font-headline-md text-headline-md mb-2">Diavola</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-4">Spiced tomato, nduja, fresh chilli, smoked provola, rocket.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-label-caps text-label-caps text-primary">£14.50</span>
+            <button class="font-label-caps text-label-caps text-primary border border-primary px-4 py-2 hover:bg-primary hover:text-on-primary transition-all">ADD</button>
+          </div>
+        </div>
+      </div>
+      <div class="group border border-basil-green/20 overflow-hidden hover:border-primary transition-all duration-500 slide-up" style="transition-delay:0.2s">
+        <div class="aspect-square overflow-hidden">
+          <img alt="Truffle pizza" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida/AP1WRLs_PLH4zUlKh5OGz9oy4PVa1G6pDVRnq58qRtZ2JjnX3KDY-YHXLB5RkGQ0mmpOcw0syvRqbKrRejJjUM8D3xdBj_53tBqIuLKjBhg1URbzh48uW5ZR2RMxVg86DvAcI0_GJf1rCtsvXRIqc7NH6pHnwnHWnRaPrEliXRzjgCSYAAdkTwHY8SdW8DWt8w3TLql9tWPwIkgtQcZu4r8Vja9CAJJfOorg8YQbpOwPTGTPL64uYrjyWmJIe78"/>
+        </div>
+        <div class="p-6 bg-paper-white">
+          <h3 class="font-headline-md text-headline-md mb-2">Tartufo Bianco</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-4">White base, truffle cream, mushroom, taleggio, fresh truffle shavings.</p>
+          <div class="flex justify-between items-center">
+            <span class="font-label-caps text-label-caps text-primary">£18.00</span>
+            <button class="font-label-caps text-label-caps text-primary border border-primary px-4 py-2 hover:bg-primary hover:text-on-primary transition-all">ADD</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-12 slide-up">
+      <a class="font-label-caps text-label-caps border-2 border-basil-green text-basil-green px-10 py-4 inline-block hover:bg-basil-green hover:text-paper-white transition-all uppercase tracking-widest" href="#">View Full Menu</a>
+    </div>
+  </section>
+
+  <!-- Promise Band -->
+  <section class="bg-basil-green text-paper-white py-20">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-16 grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+      <div class="slide-up">
+        <span class="material-symbols-outlined text-4xl mb-4 text-tertiary-fixed-dim block">local_fire_department</span>
+        <h3 class="font-headline-md text-headline-md mb-3">Wood-Fired Ovens</h3>
+        <p class="font-body-md text-body-md text-paper-white/70">Reaching over 450°C for a perfect char and crisp crust every time.</p>
+      </div>
+      <div class="slide-up" style="transition-delay:0.1s">
+        <span class="material-symbols-outlined text-4xl mb-4 text-tertiary-fixed-dim block">eco</span>
+        <h3 class="font-headline-md text-headline-md mb-3">Seasonal Ingredients</h3>
+        <p class="font-body-md text-body-md text-paper-white/70">Sourced fresh from trusted suppliers across the UK and Italy.</p>
+      </div>
+      <div class="slide-up" style="transition-delay:0.2s">
+        <span class="material-symbols-outlined text-4xl mb-4 text-tertiary-fixed-dim block">hourglass_bottom</span>
+        <h3 class="font-headline-md text-headline-md mb-3">48-Hour Dough</h3>
+        <p class="font-body-md text-body-md text-paper-white/70">Long fermentation for depth of flavour and easier digestion.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Locations CTA -->
+  <section class="max-w-[1280px] mx-auto px-4 md:px-16 py-24 text-center slide-up">
+    <span class="font-label-caps text-label-caps text-primary mb-2 block">FOUR LOCATIONS</span>
+    <h2 class="font-headline-lg text-[clamp(32px,5vw,48px)] text-basil-green mb-6">Find Your Nearest Pizza Place</h2>
+    <p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mx-auto mb-10">Whether you are booking a table or picking up an order, we have a location near you.</p>
+    <a class="font-label-caps text-label-caps bg-primary text-on-primary px-10 py-4 inline-block uppercase tracking-widest hover:bg-ink-black transition-all active:scale-95" href="./locations.html">View All Locations</a>
+  </section>
+
+  <!-- Divider -->
+  <div class="checkerboard-band panning h-12 w-full border-y border-ink-black/10"></div>
+
+  <!-- Story Strip -->
+  <section class="max-w-[1280px] mx-auto px-4 md:px-16 py-24 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+    <div class="slide-up">
+      <img alt="Pizzeria interior" class="w-full aspect-[4/3] object-cover border border-basil-green" src="https://lh3.googleusercontent.com/aida/AP1WRLsdjI9bUCY_QEePXTS2LaLGWCDrOrunipiPlp2LS985jPQouXwxefW4QaHTOHV8Oj0_h6WDMHQOWx-5kFoXWBy5ZFf3o6hGF5WWC9ifzLIJm5H4_RGNhlRA9QIxmXpLZzhxjeK2xuPSWY5L1xYOl3cwaOwPlRkrp4xtrhzr9bXLL01JTNFqRYk11XryiEDEDMrkc1QO9bsHL9TQz3Etqa9Fw-ShTjz1Vc4nEkqhdTHl39wSh9AnbrImo3I"/>
+    </div>
+    <div class="slide-up" style="transition-delay:0.1s">
+      <span class="font-label-caps text-label-caps text-primary mb-2 block">OUR STORY</span>
+      <h2 class="font-headline-lg text-[clamp(32px,4vw,48px)] text-basil-green mb-6 italic">Born from a love of the craft.</h2>
+      <p class="font-body-lg text-body-lg text-on-surface-variant mb-8">We started with one obsession: the perfect charred crust. That obsession took us to the heartlands of Italian cooking, and brought us back with recipes, techniques, and a fire we have never stopped tending.</p>
+      <a class="font-label-caps text-label-caps text-primary border-b-2 border-primary pb-1 hover:border-ink-black hover:text-ink-black transition-all" href="./story.html">READ OUR FULL STORY</a>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-paper-white block w-full pt-12 pb-24 border-t-[32px] border-checkerboard-red">
+  <div class="max-w-[1280px] mx-auto px-4 flex flex-col items-center text-center">
+    <h2 class="font-headline-lg text-[clamp(36px,5vw,48px)] text-primary mb-8">Pizza Place</h2>
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Locations</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./story.html">Our Story</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant/60 uppercase tracking-widest">&copy; 2026 PIZZA PLACE TRATTORIA &amp; DELI</p>
+  </div>
+</footer>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-basil-green text-paper-white z-50 rounded-t-xl border-t-4 border-checkerboard-red shadow-lg">
+  <a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-lg py-1 px-3 scale-110" href="./index.html">
+    <span class="material-symbols-outlined">restaurant_menu</span><span class="font-label-caps text-[10px] uppercase mt-1">Menu</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="#">
+    <span class="material-symbols-outlined">shopping_cart</span><span class="font-label-caps text-[10px] uppercase mt-1">Order</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./locations.html">
+    <span class="material-symbols-outlined">location_on</span><span class="font-label-caps text-[10px] uppercase mt-1">Locations</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./story.html">
+    <span class="material-symbols-outlined">history_edu</span><span class="font-label-caps text-[10px] uppercase mt-1">Story</span>
+  </a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  ['h1','h2','h3','h4'].forEach((id,i)=>setTimeout(()=>document.getElementById(id)?.classList.add('active'),100+i*200));
+  const obs=new IntersectionObserver(e=>e.forEach(e=>e.isIntersecting&&e.target.classList.add('active')),{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.slide-up').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>

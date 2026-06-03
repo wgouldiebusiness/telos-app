@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Locations | Pizza Place Trattoria &amp; Deli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600&family=Playfair+Display:wght@600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode:"class",
+  theme:{extend:{
+    colors:{
+      "primary":"#7e0000","basil-green":"#1B3022","on-primary":"#ffffff",
+      "paper-white":"#FCF7EF","background":"#fef9f1","surface":"#fef9f1",
+      "ink-black":"#1A1A1A","checkerboard-red":"#CD212A",
+      "on-surface":"#1d1c17","on-surface-variant":"#5a413d",
+      "surface-container-high":"#ece8e0","outline-variant":"#e2beb9",
+      "secondary-fixed":"#d0e9d4","on-primary-fixed":"#410000",
+      "surface-container":"#f2ede5","primary-container":"#a11d12",
+      "on-primary-container":"#ffb3a7","on-secondary-container":"#516857"
+    },
+    borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},
+    spacing:{"margin-mobile":"16px","max-width":"1280px","margin-desktop":"64px","gutter":"24px"},
+    fontFamily:{
+      "body-md":["Libre Franklin"],"label-caps":["Space Grotesk"],
+      "headline-lg":["Playfair Display"],"headline-md":["Playfair Display"],
+      "display-lg":["Playfair Display"],"body-lg":["Libre Franklin"]
+    },
+    fontSize:{
+      "body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],
+      "label-caps":["14px",{"lineHeight":"20px","letterSpacing":"0.1em","fontWeight":"600"}],
+      "headline-lg":["48px",{"lineHeight":"56px","fontWeight":"700"}],
+      "headline-md":["32px",{"lineHeight":"40px","fontWeight":"600"}],
+      "display-lg":["72px",{"lineHeight":"80px","letterSpacing":"-0.02em","fontWeight":"700"}],
+      "body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],
+      "headline-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"700"}]
+    }
+  }}
+}
+</script>
+<style>
+@keyframes pan{from{background-position:0 0,0 8px,8px -8px,-8px 0px}to{background-position:32px 0,32px 8px,40px -8px,24px 0px}}
+.checkerboard-band{background-image:linear-gradient(45deg,#CD212A 25%,transparent 25%),linear-gradient(-45deg,#CD212A 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#CD212A 75%),linear-gradient(-45deg,transparent 75%,#CD212A 75%);background-size:16px 16px;background-position:0 0,0 8px,8px -8px,-8px 0px;background-color:#ffffff}
+.panning-checkerboard{animation:pan 2s linear infinite}
+.parchment-texture{background-image:url("https://www.transparenttextures.com/patterns/sandpaper.png")}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.reveal-text{clip-path:polygon(0 0,100% 0,100% 0,0 0);transform:translateY(20px);opacity:0;transition:clip-path 1.2s cubic-bezier(0.77,0,0.175,1),transform 1.2s cubic-bezier(0.77,0,0.175,1),opacity 1.2s}
+.reveal-text.active{clip-path:polygon(0 0,100% 0,100% 100%,0 100%);transform:translateY(0);opacity:1}
+.slide-in-left{transform:translateX(-50px);opacity:0;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.8s}
+.slide-in-right{transform:translateX(50px);opacity:0;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94),opacity 0.8s}
+.slide-in-left.visible,.slide-in-right.visible{transform:translateX(0);opacity:1}
+</style>
+</head>
+<body class="bg-paper-white text-on-background font-body-md selection:bg-primary selection:text-white parchment-texture">
+
+<header class="bg-surface/95 text-primary sticky top-0 z-50 border-b border-primary/20 shadow-sm flex justify-between items-center px-4 h-20 w-full md:px-16">
+  <div class="flex items-center gap-4">
+    <span class="material-symbols-outlined text-primary cursor-pointer hover:rotate-90 transition-transform duration-300">menu</span>
+    <a class="font-headline-md text-headline-md font-bold text-primary tracking-tight" href="./index.html">Pizza Place</a>
+  </div>
+  <nav class="hidden md:flex items-center gap-8">
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-primary/5 transition-colors px-2 py-1" href="./index.html">Menu</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-primary/5 transition-colors px-2 py-1" href="./index.html">Order</a>
+    <a class="font-label-caps text-label-caps text-primary font-bold hover:bg-primary/5 transition-colors px-2 py-1" href="./locations.html">Locations</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:bg-primary/5 transition-colors px-2 py-1" href="./story.html">Story</a>
+  </nav>
+  <button class="font-label-caps text-label-caps bg-primary text-on-primary px-6 py-3 rounded-none uppercase tracking-widest hover:bg-ink-black transition-all active:scale-95">Book Now</button>
+</header>
+
+<main class="min-h-screen">
+  <section class="relative bg-basil-green text-paper-white py-24 md:py-32 overflow-hidden">
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <div class="checkerboard-band h-full w-full"></div>
+    </div>
+    <div class="max-w-[1280px] mx-auto px-4 md:px-16 relative z-10 text-center">
+      <span class="font-label-caps text-label-caps text-secondary-fixed mb-4 block uppercase tracking-[0.3em] reveal-text" id="hero-label">Trattoria &amp; Deli</span>
+      <h1 class="font-display-lg text-[clamp(40px,8vw,72px)] leading-tight mb-6 reveal-text" id="hero-title">Our Locations</h1>
+      <p class="max-w-2xl mx-auto font-body-lg text-body-lg text-paper-white/80 reveal-text" id="hero-desc">Bringing the true spirit of traditional Italian cuisine to your neighbourhood, with fresh ingredients and authentic recipes.</p>
+    </div>
+  </section>
+
+  <div class="checkerboard-band panning-checkerboard h-12 w-full border-y border-ink-black/10"></div>
+
+  <section class="max-w-[1280px] mx-auto px-4 md:px-16 py-20 overflow-hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+      <div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-left">
+        <div class="aspect-square md:aspect-video relative overflow-hidden">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLs5CeNt8yqRsypfw_AJ91lOq-OC3NjGIYtTRPBUnykPO5DBbbpWcc4LTsqXtd9nRSUH0QlvX-lfxV3pZb5jRTE9qrex1FbVTitu6b0uTEUWwsBIDBx8_SsOPDjG2U6OOeaDDfWnyDw5MTi0CDp97cuLWniGZ9xnX1LAzD_nHMWx9hbXdLlruGwfwLPQyA2zSjUVPR4tB7i7JCiDqqBa_HQCoQakdPo-By0xHIKtjFdW7CeH-BsQYeRSZYtU" alt="Rustic Italian pizzeria interior"/>
+          <div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">LOCATION 1</div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-headline-md text-headline-md mb-2">Smith Road</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">123 Smith Road, AB1 2CD</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:scale-[0.98]">BOOK A TABLE</button>
+            <button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">location_on</span> DIRECTIONS
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-right">
+        <div class="aspect-square md:aspect-video relative overflow-hidden">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLsOi0D6d4z7jPPP4LMIjOlSKuCPJmqzz--_asl-w_85_3Eaus8VkRlPsjJMD7JqG1ZzSOn2dWKafT3NNcCiRyGSr4SDfm-73D5YCalaPjquPS-Cii8R8BTkKKeSm3lJ8tTKbP3KlL2KMljoeRhYLxVgTzC_O5W0lF3T3S--VwM5k_FrUIvXeB9wVJ1_C_qFEPsF12p7fj15bWrg8Kry1ib1NT4HmXx7aOGekQEmKx9Mrse9O8iPydrM8Xk" alt="Pizzeria storefront"/>
+          <div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">LOCATION 2</div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-headline-md text-headline-md mb-2">Main Street</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">456 Main Street, EF3 4GH</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:scale-[0.98]">BOOK A TABLE</button>
+            <button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">location_on</span> DIRECTIONS
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-left">
+        <div class="aspect-square md:aspect-video relative overflow-hidden">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLsdjI9bUCY_QEePXTS2LaLGWCDrOrunipiPlp2LS985jPQouXwxefW4QaHTOHV8Oj0_h6WDMHQOWx-5kFoXWBy5ZFf3o6hGF5WWC9ifzLIJm5H4_RGNhlRA9QIxmXpLZzhxjeK2xuPSWY5L1xYOl3cwaOwPlRkrp4xtrhzr9bXLL01JTNFqRYk11XryiEDEDMrkc1QO9bsHL9TQz3Etqa9Fw-ShTjz1Vc4nEkqhdTHl39wSh9AnbrImo3I" alt="Park Avenue location"/>
+          <div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">LOCATION 3</div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-headline-md text-headline-md mb-2">Park Avenue</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">789 Park Avenue, IJ5 6KL</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:scale-[0.98]">BOOK A TABLE</button>
+            <button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">location_on</span> DIRECTIONS
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-right">
+        <div class="aspect-square md:aspect-video relative overflow-hidden">
+          <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLs_PLH4zUlKh5OGz9oy4PVa1G6pDVRnq58qRtZ2JjnX3KDY-YHXLB5RkGQ0mmpOcw0syvRqbKrRejJjUM8D3xdBj_53tBqIuLKjBhg1URbzh48uW5ZR2RMxVg86DvAcI0_GJf1rCtsvXRIqc7NH6pHnwnHWnRaPrEliXRzjgCSYAAdkTwHY8SdW8DWt8w3TLql9tWPwIkgtQcZu4r8Vja9CAJJfOorg8YQbpOwPTGTPL64uYrjyWmJIe78" alt="Market Square dining"/>
+          <div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">LOCATION 4</div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-headline-md text-headline-md mb-2">Market Square</h3>
+          <p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">101 Market Square, MN7 8OP</p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:scale-[0.98]">BOOK A TABLE</button>
+            <button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:scale-[0.98] flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined text-[18px]">location_on</span> DIRECTIONS
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="bg-surface-container-high py-20 border-y border-basil-green/10">
+    <div class="max-w-md mx-auto px-4 text-center">
+      <h2 class="font-headline-md text-headline-md mb-4 text-primary">Join Our Mailing List</h2>
+      <p class="font-body-md text-body-md mb-8 text-on-surface-variant">Stay updated with our latest seasonal menus, exclusive events, and limited-time offers.</p>
+      <form class="flex flex-col gap-4" onsubmit="return false">
+        <input class="bg-paper-white border border-outline-variant p-4 font-body-md focus:border-primary focus:ring-0 outline-none" placeholder="Your Email Address" type="email"/>
+        <button class="bg-ink-black text-paper-white font-label-caps text-label-caps py-4 tracking-[0.2em] hover:bg-primary transition-all active:scale-95" type="submit">SIGN UP</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-paper-white block w-full pt-12 pb-24 border-t-[32px] border-checkerboard-red">
+  <div class="max-w-[1280px] mx-auto px-4 flex flex-col items-center text-center">
+    <h2 class="font-headline-lg text-headline-lg text-primary mb-8">Pizza Place</h2>
+    <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Location 1</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Location 2</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Location 3</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Location 4</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant/60 uppercase tracking-widest">&copy; 2026 PIZZA PLACE TRATTORIA &amp; DELI</p>
+  </div>
+</footer>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-basil-green text-paper-white z-50 rounded-t-xl border-t-4 border-checkerboard-red shadow-lg">
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./index.html">
+    <span class="material-symbols-outlined">restaurant_menu</span>
+    <span class="font-label-caps text-[10px] uppercase mt-1">Menu</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./index.html">
+    <span class="material-symbols-outlined">shopping_cart</span>
+    <span class="font-label-caps text-[10px] uppercase mt-1">Order</span>
+  </a>
+  <a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-lg py-1 px-3 scale-110" href="./locations.html">
+    <span class="material-symbols-outlined">location_on</span>
+    <span class="font-label-caps text-[10px] uppercase mt-1">Locations</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./story.html">
+    <span class="material-symbols-outlined">history_edu</span>
+    <span class="font-label-caps text-[10px] uppercase mt-1">Story</span>
+  </a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  setTimeout(()=>document.getElementById('hero-label').classList.add('active'),100);
+  setTimeout(()=>document.getElementById('hero-title').classList.add('active'),300);
+  setTimeout(()=>document.getElementById('hero-desc').classList.add('active'),500);
+  const obs=new IntersectionObserver((e)=>e.forEach(e=>e.isIntersecting&&e.target.classList.add('visible')),{threshold:0.15,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.slide-in-left,.slide-in-right').forEach(el=>obs.observe(el));
+});
+</script>
+</body>
+</html>

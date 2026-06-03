@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Our Story | Pizza Place</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config={darkMode:"class",theme:{extend:{
+  colors:{"primary":"#7e0000","basil-green":"#1B3022","on-primary":"#ffffff","paper-white":"#FCF7EF","background":"#fef9f1","surface":"#fef9f1","ink-black":"#1A1A1A","checkerboard-red":"#CD212A","on-surface":"#1d1c17","on-surface-variant":"#5a413d","surface-container-low":"#f8f3eb","secondary-fixed":"#d0e9d4"},
+  borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},
+  spacing:{"margin-mobile":"16px","max-width":"1280px","margin-desktop":"64px","gutter":"24px"},
+  fontFamily:{"body-md":["Libre Franklin"],"label-caps":["Space Grotesk"],"headline-lg":["Playfair Display"],"headline-md":["Playfair Display"],"display-lg":["Playfair Display"],"body-lg":["Libre Franklin"]},
+  fontSize:{"body-md":["16px",{"lineHeight":"24px","fontWeight":"400"}],"label-caps":["14px",{"lineHeight":"20px","letterSpacing":"0.1em","fontWeight":"600"}],"headline-lg":["48px",{"lineHeight":"56px","fontWeight":"700"}],"headline-md":["32px",{"lineHeight":"40px","fontWeight":"600"}],"display-lg":["72px",{"lineHeight":"80px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["18px",{"lineHeight":"28px","fontWeight":"400"}],"headline-lg-mobile":["36px",{"lineHeight":"44px","fontWeight":"700"}]}
+}}}
+</script>
+<style>
+@keyframes pan-checkerboard{from{background-position:0 0,0 10px,10px -10px,-10px 0px}to{background-position:40px 0,40px 10px,50px -10px,30px 0px}}
+.checkerboard-pattern{background-image:linear-gradient(45deg,#CD212A 25%,transparent 25%),linear-gradient(-45deg,#CD212A 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#CD212A 75%),linear-gradient(-45deg,transparent 75%,#CD212A 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0px;animation:pan-checkerboard 10s linear infinite}
+.parchment-texture{background-image:url("https://www.transparenttextures.com/patterns/natural-paper.png")}
+.material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24}
+.parallax-bg{transform:translateY(calc(var(--scroll-y,0) * 0.4px))}
+.reveal-on-scroll{opacity:0;transform:translateY(30px);transition:opacity 1.2s cubic-bezier(0.2,0.8,0.2,1),transform 1.2s cubic-bezier(0.2,0.8,0.2,1)}
+.reveal-on-scroll.active{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body class="bg-paper-white text-on-surface font-body-md selection:bg-primary selection:text-white overflow-x-hidden parchment-texture">
+
+<header class="bg-surface/95 text-primary sticky top-0 z-50 border-b border-primary/20 shadow-sm flex justify-between items-center px-4 md:px-16 h-20 w-full backdrop-blur-md">
+  <div class="flex items-center gap-4">
+    <button class="material-symbols-outlined text-[32px] hover:bg-primary/5 transition-colors p-2 rounded-lg">menu</button>
+    <a href="./index.html"><span class="font-headline-md text-headline-md font-bold text-primary tracking-tight">Pizza Place</span></a>
+  </div>
+  <nav class="hidden md:flex items-center gap-8">
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./index.html">Menu</a>
+    <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Locations</a>
+    <a class="font-label-caps text-label-caps text-primary font-bold" href="./story.html">Story</a>
+  </nav>
+  <button class="font-label-caps text-label-caps bg-primary text-on-primary px-6 py-3 rounded-none active:opacity-80 active:scale-95 transition-all shadow-sm">Book Now</button>
+</header>
+
+<main class="w-full">
+  <section class="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden bg-basil-green">
+    <div class="absolute inset-0 z-0 opacity-40">
+      <img alt="Wood-fired oven" class="w-full h-full object-cover scale-110 grayscale brightness-50 parallax-bg" src="https://lh3.googleusercontent.com/aida/AP1WRLvGO1q8iFN9nsocJ4Pqp5wz4raUBYbhmHNSm0lIRl0CkSb6lH59LFoUuH4gQHZtfyHybKOVmWj4IsgNGfe_kR7aH1uUweCQrCm5YrtE5nDnd3CblJVj_mZmA5e4obgs6DyaqTuoIqoX42nvtP-Q3HV5axzzdx6qSEKSIHf7DvucaCg_vfD22rle9MMbr0RaA-2Y-MP9RDvUSIM72L_Wi7UqOIyoYeC056sPuxkLoEfj_4pREkA2a3T_mQYb"/>
+    </div>
+    <div class="relative z-10 text-center max-w-4xl px-4">
+      <span class="font-label-caps text-label-caps text-paper-white mb-4 block tracking-[0.3em]">ESTABLISHED 2024</span>
+      <h2 class="font-display-lg text-[clamp(40px,8vw,72px)] leading-none italic text-paper-white mb-6">The Craft of the Crust</h2>
+      <div class="w-24 h-1 bg-checkerboard-red mx-auto"></div>
+    </div>
+  </section>
+
+  <div class="h-12 w-full checkerboard-pattern border-y border-ink-black/10"></div>
+
+  <section class="max-w-[1280px] mx-auto py-24 px-4 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center reveal-on-scroll" id="heritage">
+    <div class="order-2 md:order-1">
+      <div class="relative group">
+        <div class="absolute -inset-4 border border-basil-green/20 -z-10 group-hover:inset-0 transition-all duration-700"></div>
+        <img alt="Pizza dough preparation" class="w-full aspect-[4/5] object-cover border border-basil-green" src="https://lh3.googleusercontent.com/aida/AP1WRLvGO1q8iFN9nsocJ4Pqp5wz4raUBYbhmHNSm0lIRl0CkSb6lH59LFoUuH4gQHZtfyHybKOVmWj4IsgNGfe_kR7aH1uUweCQrCm5YrtE5nDnd3CblJVj_mZmA5e4obgs6DyaqTuoIqoX42nvtP-Q3HV5axzzdx6qSEKSIHf7DvucaCg_vfD22rle9MMbr0RaA-2Y-MP9RDvUSIM72L_Wi7UqOIyoYeC056sPuxkLoEfj_4pREkA2a3T_mQYb"/>
+        <div class="absolute -bottom-6 -right-6 bg-paper-white p-6 border border-basil-green hidden md:block shadow-md">
+          <p class="font-label-caps text-label-caps text-primary">Authentic Style</p>
+          <p class="font-body-md text-on-surface">Long-fermentation dough</p>
+        </div>
+      </div>
+    </div>
+    <div class="order-1 md:order-2 flex flex-col justify-center">
+      <span class="font-label-caps text-label-caps text-primary mb-2">HERITAGE</span>
+      <h3 class="font-headline-lg text-[clamp(36px,5vw,48px)] mb-8 text-basil-green">Born in Our Home City, Inspired by Italy.</h3>
+      <p class="font-body-lg text-body-lg mb-6 text-on-surface-variant italic">"We treat this as our guiding principle, translating the spirit of traditional dining with every location we open and every dish we serve."</p>
+      <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">Our journey began with a simple obsession: the perfect charred crust. We spent months travelling through culinary heartlands, learning from masters who have kept the fire burning for generations. Today, we bring that same fire to our community, using carefully selected ingredients to honour time-tested techniques.</p>
+    </div>
+  </section>
+
+  <section class="bg-surface-container-low py-24 reveal-on-scroll">
+    <div class="max-w-[1280px] mx-auto px-4 md:px-16">
+      <div class="text-center mb-16">
+        <h3 class="font-headline-lg text-[clamp(36px,5vw,48px)] mb-4">Our Philosophy</h3>
+        <p class="font-label-caps text-label-caps text-on-surface-variant">THE THREE PILLARS OF PIZZA PLACE</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-paper-white p-8 border border-basil-green flex flex-col items-center text-center group hover:bg-basil-green hover:text-paper-white hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer">
+          <span class="material-symbols-outlined text-4xl mb-6 text-primary group-hover:text-paper-white">local_fire_department</span>
+          <h4 class="font-headline-md text-headline-md mb-4">The Flame</h4>
+          <p class="font-body-md text-body-md opacity-80">Our ovens reach intense temperatures, blistering the crust in seconds to lock in moisture and flavour.</p>
+        </div>
+        <div class="bg-paper-white p-8 border border-basil-green flex flex-col items-center text-center group hover:bg-basil-green hover:text-paper-white hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer">
+          <span class="material-symbols-outlined text-4xl mb-6 text-primary group-hover:text-paper-white">eco</span>
+          <h4 class="font-headline-md text-headline-md mb-4">The Soil</h4>
+          <p class="font-body-md text-body-md opacity-80">From sun-ripened tomatoes to fresh local dairy, we source only the most vibrant seasonal produce.</p>
+        </div>
+        <div class="bg-paper-white p-8 border border-basil-green flex flex-col items-center text-center group hover:bg-basil-green hover:text-paper-white hover:-translate-y-2 hover:shadow-xl transition-all duration-500 cursor-pointer">
+          <span class="material-symbols-outlined text-4xl mb-6 text-primary group-hover:text-paper-white">volunteer_activism</span>
+          <h4 class="font-headline-md text-headline-md mb-4">The Soul</h4>
+          <p class="font-body-md text-body-md opacity-80">Great dining is about connection. We build spaces where community and conversation thrive over shared plates.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w-full bg-basil-green text-paper-white py-20 px-4 overflow-hidden relative">
+    <div class="absolute top-0 left-0 w-24 h-full checkerboard-pattern opacity-10"></div>
+    <div class="absolute top-0 right-0 w-24 h-full checkerboard-pattern opacity-10"></div>
+    <div class="max-w-xl mx-auto text-center relative z-10">
+      <h3 class="font-headline-md text-headline-md mb-4">Let's keep this going</h3>
+      <p class="font-body-md text-body-md mb-8 opacity-80">Join our mailing list to receive updates, events, and offers.</p>
+      <form class="flex flex-col md:flex-row gap-4" onsubmit="return false">
+        <input class="flex-grow bg-transparent border-b-2 border-paper-white/30 focus:border-paper-white outline-none py-3 px-2 font-label-caps text-label-caps placeholder:text-paper-white/50 transition-all" placeholder="YOUR EMAIL ADDRESS" type="email"/>
+        <button class="bg-checkerboard-red hover:bg-primary text-paper-white font-label-caps text-label-caps px-8 py-4 transition-all uppercase tracking-widest active:scale-95" type="submit">Sign Up</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="bg-paper-white block w-full pt-12 pb-24 border-t-[32px] border-checkerboard-red relative z-10">
+  <div class="max-w-[1280px] mx-auto px-4 flex flex-col items-center text-center">
+    <h2 class="font-headline-lg text-[clamp(36px,5vw,48px)] text-primary mb-8">Pizza Place</h2>
+    <div class="grid grid-cols-2 md:grid-cols-6 gap-8 w-full mb-12">
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">Downtown</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">East Side</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">West End</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="./locations.html">South Park</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+      <a class="font-label-caps text-label-caps text-on-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+    </div>
+    <p class="font-body-md text-body-md text-on-surface-variant/60">&copy; 2026 PIZZA PLACE TRATTORIA &amp; DELI</p>
+  </div>
+</footer>
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 bg-basil-green text-paper-white z-50 rounded-t-xl border-t-4 border-checkerboard-red shadow-lg">
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./index.html">
+    <span class="material-symbols-outlined">restaurant_menu</span><span class="font-label-caps text-[10px]">MENU</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./index.html">
+    <span class="material-symbols-outlined">shopping_cart</span><span class="font-label-caps text-[10px]">ORDER</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all" href="./locations.html">
+    <span class="material-symbols-outlined">location_on</span><span class="font-label-caps text-[10px]">LOCATIONS</span>
+  </a>
+  <a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-lg py-1 px-3 scale-110" href="./story.html">
+    <span class="material-symbols-outlined">history_edu</span><span class="font-label-caps text-[10px]">STORY</span>
+  </a>
+</nav>
+
+<script>
+window.addEventListener('scroll',()=>document.documentElement.style.setProperty('--scroll-y',window.pageYOffset));
+const obs=new IntersectionObserver((e)=>e.forEach(e=>e.isIntersecting&&e.target.classList.add('active')),{threshold:0.15,rootMargin:"0px 0px -50px 0px"});
+document.querySelectorAll('.reveal-on-scroll').forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
