@@ -61,13 +61,13 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.25} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
-              Customising Technology for Your Business
+              Tailoring Technology for Your Business
             </p>
           </Reveal>
           <Reveal delay={0.55}>
             <p className={styles.heroDetail}>
-              We build and manage AI systems and agents that handle your admin, capture
-              leads, and keep you focused on your actual work.
+              We build and manage custom AI systems, back end infrastructure, and support systems
+              that handle your admin, capture leads, and keep you focused on your actual work.
             </p>
           </Reveal>
           <Reveal delay={0.7} className={styles.heroBtns}>
@@ -95,7 +95,7 @@ export default function HomePage() {
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
               Most AI tools are generalised. They are not built for your business. We are a
-              technical team that creates individual, purpose-built agents tailored
+              technical team tailoring custom code, back end systems, and AI agents
               specifically to how your business operates.
             </p>
           </Reveal>
@@ -109,8 +109,7 @@ export default function HomePage() {
           <Reveal delay={0.2}>
             <div className={styles.buildsCallout}>
               <p className={styles.buildsCalloutText}>
-                Whatever else your business needs, we can build it. Custom code is at
-                the core of everything we do.
+                Whatever your business needs — custom code, back end systems, or support systems — we build it from the ground up, tailored to you.
               </p>
               <Link href="/solutions" className={styles.buildsCalloutLink}>
                 See all examples

@@ -113,9 +113,10 @@ export default function AboutPage() {
                 <p className={styles.storyP}>
                   He solved his own business first. He automated the reminders,
                   the follow-ups, the enquiry handling, and the admin that had
-                  previously eaten his evenings. He built the systems himself,
-                  tested them in a real clinical business, and refined them until
-                  they worked properly.
+                  previously eaten his evenings. He built the support systems himself —
+                  creating back end systems, writing custom code, and tailoring
+                  each part to the real demands of a clinical practice — and refined
+                  them until they worked properly.
                 </p>
               </Reveal>
               <Reveal delay={0.22}>

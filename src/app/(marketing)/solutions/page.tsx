@@ -51,15 +51,16 @@ export default function SolutionsPage() {
           </Reveal>
           <Reveal delay={0.18}>
             <p className={styles.heroSub}>
-              Everything we build is purposely built around your business, not repurposed
-              from a generic tool.
+              Tailoring technology to your business — not repurposing a generic tool and
+              hoping it fits.
             </p>
           </Reveal>
           <Reveal delay={0.26}>
             <p className={styles.heroSub} style={{ color: '#ffffff', marginTop: '1.25rem' }}>
               Off-the-shelf products require you to change how you work to fit the software.
-              We work the other way. We learn your operation, identify where AI makes a real
-              difference, and build a system that wraps around exactly how you already operate.
+              We work the other way. We learn your operation, then build — custom code,
+              back end systems, support systems, and AI agents — tailored around exactly
+              how you already operate.
             </p>
           </Reveal>
         </div>
