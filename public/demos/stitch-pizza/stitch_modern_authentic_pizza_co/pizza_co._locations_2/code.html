@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Locations | Pizza Co. Trattoria &amp; Deli</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600&amp;family=Playfair+Display:wght@600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed": "#241a00",
+                        "tertiary-container": "#cca830",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#1d1c17",
+                        "outline": "#8e706b",
+                        "surface-variant": "#e7e2da",
+                        "on-secondary-container": "#516857",
+                        "surface-container-high": "#ece8e0",
+                        "primary": "#7e0000",
+                        "surface-container-lowest": "#ffffff",
+                        "on-tertiary-fixed-variant": "#574500",
+                        "on-tertiary-container": "#4f3e00",
+                        "primary-container": "#a11d12",
+                        "basil-green": "#1B3022",
+                        "on-primary-fixed": "#410000",
+                        "error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#364c3c",
+                        "secondary-fixed-dim": "#b4cdb8",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed": "#d0e9d4",
+                        "surface-bright": "#fef9f1",
+                        "paper-white": "#FCF7EF",
+                        "background": "#fef9f1",
+                        "tertiary-fixed-dim": "#e9c349",
+                        "primary-fixed": "#ffdad4",
+                        "surface-container": "#f2ede5",
+                        "checkerboard-red": "#CD212A",
+                        "ink-black": "#1A1A1A",
+                        "tertiary": "#735c00",
+                        "inverse-surface": "#32302b",
+                        "primary-fixed-dim": "#ffb4a8",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "surface-dim": "#ded9d2",
+                        "on-surface": "#1d1c17",
+                        "surface-container-low": "#f8f3eb",
+                        "inverse-on-surface": "#f5f0e8",
+                        "surface-tint": "#b22a1d",
+                        "on-secondary-fixed": "#0b2013",
+                        "inverse-primary": "#ffb4a8",
+                        "error": "#ba1a1a",
+                        "surface": "#fef9f1",
+                        "surface-container-highest": "#e7e2da",
+                        "tertiary-fixed": "#ffe088",
+                        "secondary-container": "#cde6d1",
+                        "on-primary-container": "#ffb3a7",
+                        "on-error": "#ffffff",
+                        "on-primary-fixed-variant": "#900e07",
+                        "secondary": "#4d6453",
+                        "outline-variant": "#e2beb9",
+                        "on-surface-variant": "#5a413d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "max-width": "1280px",
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Libre Franklin"],
+                        "label-caps": ["Space Grotesk"],
+                        "headline-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "display-lg": ["Playfair Display"],
+                        "body-lg": ["Libre Franklin"],
+                        "price-tag": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Playfair Display"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "56px", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                        "display-lg": ["72px", {"lineHeight": "80px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "price-tag": ["20px", {"lineHeight": "24px", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "44px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        @keyframes pan {
+            from { background-position: 0 0, 0 8px, 8px -8px, -8px 0px; }
+            to { background-position: 32px 0, 32px 8px, 40px -8px, 24px 0px; }
+        }
+        .checkerboard-band {
+            background-image: 
+                linear-gradient(45deg, #CD212A 25%, transparent 25%), 
+                linear-gradient(-45deg, #CD212A 25%, transparent 25%), 
+                linear-gradient(45deg, transparent 75%, #CD212A 75%), 
+                linear-gradient(-45deg, transparent 75%, #CD212A 75%);
+            background-size: 16px 16px;
+            background-position: 0 0, 0 8px, 8px -8px, -8px 0px;
+            background-color: #ffffff;
+        }
+        .panning-checkerboard {
+            animation: pan 2s linear infinite;
+        }
+        .parchment-texture {
+            background-image: url("https://www.transparenttextures.com/patterns/sandpaper.png");
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1), transform 1.2s cubic-bezier(0.77, 0, 0.175, 1), opacity 1.2s;
+        }
+        .reveal-text.active {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .slide-in-left {
+            transform: translateX(-50px);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s;
+        }
+        .slide-in-right {
+            transform: translateX(50px);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.8s;
+        }
+        .slide-in-left.visible, .slide-in-right.visible {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="bg-paper-white text-on-background font-body-md selection:bg-primary selection:text-white parchment-texture">
+<!-- TopAppBar -->
+<header class="bg-surface/95 dark:bg-surface-dim/95 text-primary dark:text-primary-fixed-dim docked full-width top-0 sticky z-50 border-b border-primary/20 dark:border-primary-fixed/20 shadow-sm flex justify-between items-center px-margin-mobile h-20 w-full md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:rotate-90 transition-transform duration-300">menu</span>
+<a class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim tracking-tight" href="{{DATA:SCREEN:SCREEN_18}}">Pizza Co.</a>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:bg-primary/5 transition-colors px-2 py-1" href="#">Menu</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:bg-primary/5 transition-colors px-2 py-1" href="#">Order</a>
+<a class="font-label-caps text-label-caps text-primary dark:text-primary-fixed-dim font-bold hover:bg-primary/5 transition-colors px-2 py-1" href="#">Locations</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:bg-primary/5 transition-colors px-2 py-1" href="#">Story</a>
+</nav>
+<button class="font-label-caps text-label-caps bg-primary text-on-primary px-6 py-3 rounded-none uppercase tracking-widest hover:bg-ink-black transition-all active:bg-on-primary-fixed active:scale-95">Book Now</button>
+</header>
+<main class="min-h-screen">
+<!-- Hero Section -->
+<section class="relative bg-basil-green text-paper-white py-24 md:py-32 overflow-hidden">
+<div class="absolute inset-0 opacity-20 pointer-events-none">
+<div class="checkerboard-band h-full w-full opacity-10"></div>
+</div>
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop relative z-10 text-center">
+<span class="font-label-caps text-label-caps text-secondary-fixed mb-4 block uppercase tracking-[0.3em] reveal-text" id="hero-label">Trattoria &amp; Deli</span>
+<h1 class="font-display-lg text-display-lg md:text-display-lg mb-6 leading-tight reveal-text" id="hero-title">Our Locations</h1>
+<p class="max-w-2xl mx-auto font-body-lg text-body-lg text-paper-white/80 reveal-text" id="hero-desc">From the historic streets of Bath to the vibrant heart of Cardiff, we bring the true spirit of Naples to the West Country.</p>
+</div>
+</section>
+<!-- Section Divider -->
+<div class="checkerboard-band panning-checkerboard h-12 w-full border-y border-ink-black/10"></div>
+<!-- Locations Grid -->
+<section class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-20 overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Bath Location -->
+<div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-left">
+<div class="aspect-square md:aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Rustic Italian pizzeria interior in Bath" src="https://lh3.googleusercontent.com/aida/AP1WRLs5CeNt8yqRsypfw_AJ91lOq-OC3NjGIYtTRPBUnykPO5DBbbpWcc4LTsqXtd9nRSUH0QlvX-lfxV3pZb5jRTE9qrex1FbVTitu6b0uTEUWwsBIDBx8_SsOPDjG2U6OOeaDDfWnyDw5MTi0CDp97cuLWniGZ9xnX1LAzD_nHMWx9hbXdLlruGwfwLPQyA2zSjUVPR4tB7i7JCiDqqBa_HQCoQakdPo-By0xHIKtjFdW7CeH-BsQYeRSZYtU"/>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">BATH</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Shires Yard</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">Shires Yard, BA1 1BZ</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:bg-on-primary-fixed active:scale-[0.98]">BOOK A TABLE</button>
+<button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:bg-surface-container active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                DIRECTIONS
+                            </button>
+</div>
+</div>
+</div>
+<!-- Bristol Location -->
+<div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-right">
+<div class="aspect-square md:aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Pizzeria storefront on Regent Street in Bristol" src="https://lh3.googleusercontent.com/aida/AP1WRLsOi0D6d4z7jPPP4LMIjOlSKuCPJmqzz--_asl-w_85_3Eaus8VkRlPsjJMD7JqG1ZzSOn2dWKafT3NNcCiRyGSr4SDfm-73D5YCalaPjquPS-Cii8R8BTkKKeSm3lJ8tTKbP3KlL2KMljoeRhYLxVgTzC_O5W0lF3T3S--VwM5k_FrUIvXeB9wVJ1_C_qFEPsF12p7fj15bWrg8Kry1ib1NT4HmXx7aOGekQEmKx9Mrse9O8iPydrM8Xk"/>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">BRISTOL</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Regent Street</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">29 Regent Street, BS8 4HR</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:bg-on-primary-fixed active:scale-[0.98]">BOOK A TABLE</button>
+<button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:bg-surface-container active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                DIRECTIONS
+                            </button>
+</div>
+</div>
+</div>
+<!-- Cardiff Location -->
+<div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-left">
+<div class="aspect-square md:aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida/AP1WRLsdjI9bUCY_QEePXTS2LaLGWCDrOrunipiPlp2LS985jPQouXwxefW4QaHTOHV8Oj0_h6WDMHQOWx-5kFoXWBy5ZFf3o6hGF5WWC9ifzLIJm5H4_RGNhlRA9QIxmXpLZzhxjeK2xuPSWY5L1xYOl3cwaOwPlRkrp4xtrhzr9bXLL01JTNFqRYk11XryiEDEDMrkc1QO9bsHL9TQz3Etqa9Fw-ShTjz1Vc4nEkqhdTHl39wSh9AnbrImo3I"/>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">CARDIFF</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">High Street</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">14 High Street, CF10 1AX</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:bg-on-primary-fixed active:scale-[0.98]">BOOK A TABLE</button>
+<button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:bg-surface-container active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                DIRECTIONS
+                            </button>
+</div>
+</div>
+</div>
+<!-- Cheltenham Location -->
+<div class="group bg-paper-white border border-basil-green/20 overflow-hidden transition-all hover:border-primary duration-700 slide-in-right">
+<div class="aspect-square md:aspect-video relative overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Dining scene at a Cheltenham pizzeria" src="https://lh3.googleusercontent.com/aida/AP1WRLs_PLH4zUlKh5OGz9oy4PVa1G6pDVRnq58qRtZ2JjnX3KDY-YHXLB5RkGQ0mmpOcw0syvRqbKrRejJjUM8D3xdBj_53tBqIuLKjBhg1URbzh48uW5ZR2RMxVg86DvAcI0_GJf1rCtsvXRIqc7NH6pHnwnHWnRaPrEliXRzjgCSYAAdkTwHY8SdW8DWt8w3TLql9tWPwIkgtQcZu4r8Vja9CAJJfOorg8YQbpOwPTGTPL64uYrjyWmJIe78"/>
+<div class="absolute top-6 left-6 bg-primary text-on-primary px-4 py-1 font-label-caps text-label-caps shadow-lg">CHELTENHAM</div>
+</div>
+<div class="p-8">
+<h3 class="font-headline-md text-headline-md mb-2">Imperial Gardens</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 italic">Imperial Gardens, GL50 1PZ</p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="flex-1 bg-primary text-on-primary font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black transition-all active:bg-on-primary-fixed active:scale-[0.98]">BOOK A TABLE</button>
+<button class="flex-1 border border-ink-black text-ink-black font-label-caps text-label-caps py-4 tracking-widest hover:bg-ink-black hover:text-paper-white transition-all active:bg-surface-container active:scale-[0.98] flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                                DIRECTIONS
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter Section -->
+<section class="bg-surface-container-high py-20 border-y border-basil-green/10">
+<div class="max-w-md mx-auto px-margin-mobile text-center">
+<h2 class="font-headline-md text-headline-md mb-4 text-primary">Join Our Mailing List</h2>
+<p class="font-body-md text-body-md mb-8 text-on-surface-variant">Stay updated with our latest seasonal menus, exclusive events, and limited-time offers.</p>
+<form class="flex flex-col gap-4">
+<input class="bg-paper-white border border-outline-variant p-4 font-body-md focus:border-primary focus:ring-0 outline-none" placeholder="Your Email Address" type="email"/>
+<div class="flex items-start gap-2 text-left mb-4">
+<input class="mt-1 text-primary focus:ring-primary rounded-none" id="privacy" type="checkbox"/>
+<label class="text-xs text-on-surface-variant leading-tight" for="privacy">I accept the privacy policy and terms of use for receiving marketing updates.</label>
+</div>
+<button class="bg-ink-black text-paper-white font-label-caps text-label-caps py-4 tracking-[0.2em] hover:bg-primary transition-all active:scale-95" type="submit">SIGN UP</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-paper-white dark:bg-inverse-surface block w-full pt-12 pb-24 border-t-[32px] border-checkerboard-red">
+<div class="max-w-max-width mx-auto px-margin-mobile flex flex-col items-center text-center">
+<h2 class="font-headline-lg text-headline-lg text-primary text-center mb-8">Pizza Co.</h2>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-12">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_14}}">Bath</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_14}}">Bristol</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_14}}">Cardiff</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_14}}">Cheltenham</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Careers</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors" href="#">Privacy</a>
+</div>
+<div class="flex gap-6 mb-12">
+<a class="text-primary hover:opacity-70 transition-opacity" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.947.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"></path></svg>
+</a>
+<a class="text-primary hover:opacity-70 transition-opacity" href="#">
+<svg class="w-6 h-6 fill-current" viewbox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.493-1.1-1.1s.493-1.1 1.1-1.1 1.1.493 1.1 1.1-.493 1.1-1.1 1.1zm8 6.891h-2v-3.418c0-.853-.016-1.951-1.189-1.951-1.19 0-1.372.929-1.372 1.888v3.481h-2v-6h1.92v.819h.028c.267-.506.919-1.04 1.894-1.04 2.025 0 2.399 1.332 2.399 3.064v3.117z"></path></svg>
+</a>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant/60 uppercase tracking-widest">© 2024 PIZZA CO. TRATTORIA &amp; DELI</p>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-16 pb-safe bg-basil-green text-paper-white z-50 rounded-t-xl border-t-4 border-checkerboard-red shadow-[0_-4px_10px_rgba(0,0,0,0.1)]">
+<a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all active:scale-90 duration-150" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined">restaurant_menu</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all active:scale-90 duration-150" href="{{DATA:SCREEN:SCREEN_4}}">
+<span class="material-symbols-outlined">shopping_cart</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Order</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary text-on-primary rounded-lg py-1 px-3 scale-110 active:scale-90 duration-150" href="{{DATA:SCREEN:SCREEN_14}}">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Locations</span>
+</a>
+<a class="flex flex-col items-center justify-center text-paper-white/70 hover:text-paper-white transition-all active:scale-90 duration-150" href="{{DATA:SCREEN:SCREEN_16}}">
+<span class="material-symbols-outlined">history_edu</span>
+<span class="font-label-caps text-[10px] uppercase mt-1">Story</span>
+</a>
+</nav>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Entrance Transitions for Hero Text
+            setTimeout(() => {
+                document.getElementById('hero-label').classList.add('active');
+            }, 100);
+            setTimeout(() => {
+                document.getElementById('hero-title').classList.add('active');
+            }, 300);
+            setTimeout(() => {
+                document.getElementById('hero-desc').classList.add('active');
+            }, 500);
+
+            // Reveal Animation for cards
+            const slideElements = document.querySelectorAll('.slide-in-left, .slide-in-right');
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { 
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            slideElements.forEach(el => {
+                cardObserver.observe(el);
+            });
+        });
+    </script>
+</body></html>

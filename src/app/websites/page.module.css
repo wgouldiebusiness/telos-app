@@ -76,201 +76,82 @@
   line-height: 1.7;
 }
 
-/* ── SHOWCASE ── */
+/* ── DEMO SHOWCASE ── matches Telos AI homepage dark showcase style */
 .showcase {
-  padding: clamp(80px, 10vw, 130px) 0;
   background: transparent;
+  padding: clamp(80px, 10vw, 140px) 0;
+  position: relative;
 }
 
-.showcaseH2 {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 800;
-  letter-spacing: -0.04em;
-  color: #ffffff;
-  margin: 16px 0 16px;
+.showcaseFadeTop,
+.showcaseFadeBot { display: none; }
+
+.showcaseHead {
   max-width: 680px;
-}
-
-.showcaseSub {
-  font-size: 16px;
-  color: rgba(255,255,255,.45);
-  max-width: 520px;
-  line-height: 1.6;
   margin-bottom: 56px;
 }
 
-.grid {
+.showcaseLabel { color: var(--purple-3); }
+
+.showcaseH2 {
+  font-size: clamp(32px, 5vw, 60px);
+  margin: 18px 0 22px;
+}
+
+.showcaseSub {
+  font-size: 18px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.6;
+  max-width: 540px;
+}
+
+/* 2 columns — websites need more width than chat bubbles */
+.demoGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
 }
 
-/* Website preview card */
-.card {
-  background: rgba(255,255,255,.03);
+.showcaseBand {
+  background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 16px;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(120,104,230,.3);
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
-}
-
-.cardPreview {
-  position: relative;
-  height: 220px;
-  overflow: hidden;
-}
-
-.cardImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* CSS mock website UI */
-.cardMock {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 12px;
-  gap: 8px;
-}
-
-.mockBar {
-  display: flex;
-  gap: 5px;
-  align-items: center;
-  padding: 4px 8px;
-  background: rgba(0,0,0,.3);
-  border-radius: 4px;
-}
-
-.mockDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.2);
-}
-
-.mockHero {
-  flex: 1;
-  border-radius: 6px;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  justify-content: center;
-}
-
-.mockTitle {
-  height: 10px;
-  width: 60%;
-  border-radius: 4px;
-  opacity: 0.8;
-}
-
-.mockSub {
-  height: 6px;
-  width: 80%;
-  border-radius: 3px;
-  background: rgba(255,255,255,.2);
-}
-
-.mockBtn {
-  height: 22px;
-  width: 36%;
-  border-radius: 6px;
-  margin-top: 4px;
-  opacity: 0.7;
-}
-
-.mockBody {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  padding: 8px 4px 4px;
-}
-
-.mockBlock {
-  height: 5px;
-  width: 100%;
-  background: rgba(255,255,255,.1);
-  border-radius: 3px;
-}
-
-.cardCategory {
-  position: absolute;
-  bottom: 10px;
-  left: 12px;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  background: rgba(0,0,0,.5);
-  padding: 3px 8px;
-  border-radius: 4px;
-  backdrop-filter: blur(4px);
-}
-
-.cardBody {
-  padding: 20px 22px 24px;
-}
-
-.cardTitle {
-  font-size: 17px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  color: #ffffff;
-  margin-bottom: 8px;
-}
-
-.cardDesc {
-  font-size: 14px;
-  color: rgba(255,255,255,.5);
-  line-height: 1.6;
-  margin: 0 0 12px;
-}
-
-.cardDemo {
-  display: inline-block;
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--purple);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(120,104,230,.3);
-  padding-bottom: 1px;
-  transition: border-color 0.2s ease, color 0.2s ease;
-}
-
-.cardDemo:hover {
-  color: #fff;
-  border-color: #fff;
-}
-
-.showcaseCta {
-  margin-top: 60px;
+  padding: 32px 36px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 32px 36px;
-  background: rgba(120,104,230,.08);
-  border: 1px solid rgba(120,104,230,.2);
-  border-radius: 16px;
+  margin-top: 48px;
 }
 
-.showcaseCtaText {
-  font-size: 18px;
-  color: rgba(255,255,255,.6);
+.showcaseBandText {
+  font-size: 17px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.6;
+  max-width: 520px;
   margin: 0;
-  max-width: 480px;
+}
+
+.btnPriLight {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 13px 28px;
+  background: var(--purple);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  border-radius: 980px;
+  white-space: nowrap;
+  transition: background 0.2s ease, transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btnPriLight:hover {
+  background: var(--purple-2);
+  transform: translateY(-2px);
 }
 
 /* ── AI BAND ── */
@@ -432,14 +313,16 @@
 }
 
 /* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .demoGrid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 900px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
   .stepsGrid { grid-template-columns: 1fr; }
   .aiBandInner { grid-template-columns: 1fr; }
-  .showcaseCta { flex-direction: column; align-items: flex-start; }
+  .showcaseBand { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 600px) {
-  .grid { grid-template-columns: 1fr; }
   .heroBtns { flex-direction: column; }
 }

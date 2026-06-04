@@ -1,0 +1,398 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Menu | COFFEE CO.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Hanken+Grotesk:wght@400;600&amp;family=Space+Grotesk:wght@500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#57423e",
+                        "on-surface": "#1c1c18",
+                        "on-primary-fixed": "#281714",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#848974",
+                        "terracotta": "#BF5A36",
+                        "secondary-container": "#fdc399",
+                        "sand": "#DCA57D",
+                        "outline-variant": "#d3c3c0",
+                        "surface-container": "#f0eee8",
+                        "primary-container": "#2c1b18",
+                        "on-primary-container": "#9b817c",
+                        "surface-bright": "#fcf9f3",
+                        "surface-container-low": "#f6f3ed",
+                        "inverse-primary": "#dec0bb",
+                        "cream": "#F9F6F0",
+                        "on-background": "#1c1c18",
+                        "charcoal": "#1A1A1A",
+                        "tertiary": "#050801",
+                        "outline": "#817472",
+                        "on-secondary-fixed": "#2f1400",
+                        "surface": "#fcf9f3",
+                        "tertiary-fixed": "#e0e5cc",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffdcc4",
+                        "background": "#fcf9f3",
+                        "secondary-fixed-dim": "#f4bb91",
+                        "secondary": "#805433",
+                        "tertiary-container": "#1c2112",
+                        "tertiary-fixed-dim": "#c4c9b1",
+                        "primary-fixed": "#fbdcd6",
+                        "surface-dim": "#dcdad4",
+                        "surface-tint": "#705955",
+                        "on-secondary-fixed-variant": "#653d1e",
+                        "surface-variant": "#e5e2dc",
+                        "on-surface-variant": "#4f4442",
+                        "espresso": "#2C1B18",
+                        "sage": "#6B705C",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#444937",
+                        "primary-fixed-dim": "#dec0bb",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#31312d",
+                        "on-tertiary-fixed": "#191d0e",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-container-highest": "#e5e2dc",
+                        "error": "#ba1a1a",
+                        "primary": "#100403",
+                        "on-secondary-container": "#794e2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Anton"],
+                        "label-md": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Anton"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Anton"],
+                        "headline-lg": ["Anton"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["72px", {"lineHeight": "76px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "36px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--gutter);
+        }
+        .tactile-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .tactile-card:hover {
+            background-color: #f6f3ed; /* surface-container-low */
+            transform: translateY(-4px);
+        }
+        .textured-bg {
+            background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-sand/30 overflow-x-hidden">
+<!-- Top Navigation Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface dark:bg-espresso border-b border-sand/30">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-cream hover:opacity-80 transition-opacity scale-95 duration-200" data-icon="menu">menu</button>
+<h1 class="font-display-lg text-headline-md tracking-tighter text-espresso dark:text-cream">COFFEE CO.</h1>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:opacity-80 transition-opacity" href="{{DATA:SCREEN:SCREEN_12}}">Home</a>
+<a class="font-label-caps text-label-caps text-espresso dark:text-cream font-bold hover:opacity-80 transition-opacity" href="{{DATA:SCREEN:SCREEN_10}}">Menu</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:opacity-80 transition-opacity" href="{{DATA:SCREEN:SCREEN_11}}">Find Us</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-surface-variant hover:opacity-80 transition-opacity" href="{{DATA:SCREEN:SCREEN_8}}">Story</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-cream hover:opacity-80 transition-opacity" data-icon="shopping_bag">shopping_bag</button>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Branding Section -->
+<section class="mb-section-gap text-center">
+<div class="inline-block mb-6">
+<span class="bg-sage text-white px-4 py-1 font-label-caps text-label-caps rounded-full">EST. 2024</span>
+</div>
+<h2 class="font-display-lg text-display-lg mb-4 text-espresso">DAILY CRAFT MENU</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Carefully sourced beans, roasted in small batches, and served with intention. Explore our seasonal selection of neighborhood favorites.
+            </p>
+</section>
+<!-- Menu Navigation / Quick Filters -->
+<div class="flex flex-wrap justify-center gap-4 mb-16">
+<a class="px-8 py-3 bg-espresso text-cream font-label-caps text-label-caps hover:opacity-90 transition-all" href="#coffee">COFFEE</a>
+<a class="px-8 py-3 border border-espresso text-espresso font-label-caps text-label-caps hover:bg-espresso hover:text-cream transition-all" href="#signature">SIGNATURE</a>
+<a class="px-8 py-3 border border-espresso text-espresso font-label-caps text-label-caps hover:bg-espresso hover:text-cream transition-all" href="#non-coffee">NON-COFFEE</a>
+</div>
+<div class="space-y-section-gap">
+<!-- Coffee Section -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="coffee">
+<div class="lg:col-span-4">
+<div class="sticky top-24">
+<h3 class="font-headline-lg text-headline-lg text-espresso mb-4 flex items-center gap-4">
+                            COFFEE
+                            <span class="h-px flex-grow bg-sand/30"></span>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">
+                            Classic extractions featuring our signature "Heritage Blend" – notes of dark chocolate, toasted almond, and caramel.
+                        </p>
+<div class="aspect-[4/5] bg-surface-container overflow-hidden rounded-lg">
+<img class="w-full h-full object-cover grayscale-[20%] hover:scale-105 transition-transform duration-700" data-alt="A macro close-up of a perfectly poured espresso with rich, golden crema in a minimalist ceramic cup. The background is a soft-focus wooden countertop in a warm, sunlit coffee shop. The lighting is natural and directional, highlighting the oily texture of the coffee and the matte finish of the pottery. The aesthetic is clean, modern, and artisanal with warm brown and cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxWwhy4U1-hBA3xeS9hXZQg6T8QfcU16wWBY8UzXH-f7zj4GX3sn8dt0shCzn-3sD5lNIoGtapIuX5cT_MpLLm8yyWMRQsBOWSEVlfy8KAN7_FS0fZD75StGKqGFbW01D2DLAiQOuyIE4WP72BjmcOMKcfNR8rHb-F9e4BcGkUHuL10BB5LyL-ztxsKWNk2u-nRWGuqLKXecOD4ftdLkWRyU6qdqNdmU4jZ_GaRh9l2AgmzC9EJ2cvZ__UqGGkfs7Yd9xZymmz4nZW">
+</div>
+</div>
+</div>
+<div class="lg:col-span-8 space-y-unit">
+<!-- Menu Item -->
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 hover:bg-surface-container-low transition-colors px-4 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Espresso</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Double shot of our house heritage roast.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$3.00</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 hover:bg-surface-container-low transition-colors px-4 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Americano</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Hot water poured over double espresso.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$3.50</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 hover:bg-surface-container-low transition-colors px-4 group">
+<div>
+<div class="flex items-center gap-3">
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Cappuccino</h4>
+<span class="bg-sage/10 text-sage px-2 py-0.5 font-label-caps text-[10px] rounded tracking-widest uppercase">Popular</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Equal parts espresso, steamed milk, and foam.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.00</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 hover:bg-surface-container-low transition-colors px-4 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Latte</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Espresso with silky micro-foam steamed milk.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.00</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 hover:bg-surface-container-low transition-colors px-4 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Vanilla Latte</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">House-made Madagascar vanilla bean syrup.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.50</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 hover:bg-surface-container-low transition-colors px-4 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-terracotta transition-colors">Caramel Macchiato</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Layers of vanilla, milk, and espresso with caramel drizzle.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$5.00</span>
+</div>
+</div>
+</section>
+<!-- Signature Section (Bento Style) -->
+<section class="bg-cream p-margin-mobile md:p-16 rounded-xl border border-sand/10 textured-bg" id="signature">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-terracotta mb-2 block">CRAFT SPECIALS</span>
+<h3 class="font-headline-lg text-headline-lg text-espresso leading-tight">SIGNATURE CREATIONS</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-4">Elevated recipes designed to showcase the versatility of our craft roasts through unique flavor pairings.</p>
+</div>
+<div class="material-symbols-outlined text-6xl text-sand/40 hidden md:block" data-icon="coffee_maker">coffee_maker</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Signature Item 1 -->
+<div class="group">
+<div class="relative aspect-square overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A stylish tall glass of cold brew coffee with swirling clouds of cream mixing into the dark liquid. Ice cubes clink inside the glass which sits on a minimalist concrete coaster. The scene is lit with bright, morning sunlight creating sharp artistic shadows. The color palette is dominated by deep espresso browns, creamy whites, and soft grey backgrounds, conveying a premium and refreshing summer mood." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQpnhtWrPoiLrqERh4ye6UIWIvcWs5whBddD1PcPPYOaamVJ3eE_aHRU0zvbMmQtjWxHLonXi5TSRlS4WZxd8A6ivHPqEBgTTgBKtH5QBRqDSyMpyY9wqaC3UMwHd6XGyJioC0IofIG6H2tY7F75OGI70_g5LR_pwyVhsbmKTs__Bn9c6GWM_HtVaCBvf-leMp1TqSuYMeWKANPxOwhNAZZisQQK5Qw1UoaXSCQM250hM5ZI03iXGODN65InCFCwOj0mLJnP2T4moN">
+<div class="absolute top-4 right-4 bg-terracotta text-cream font-label-caps text-[12px] px-3 py-1">MUST TRY</div>
+</div>
+<h4 class="font-headline-md text-headline-md text-espresso mb-1">Borcelle Cold Brew</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">18-hour slow steep, topped with a hint of sea salt foam.</p>
+<span class="font-display-lg text-headline-md text-terracotta">$3.00</span>
+</div>
+<!-- Signature Item 2 -->
+<div class="group">
+<div class="relative aspect-square overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A close-up of a coconut milk latte with intricate latte art of a palm leaf. Toasted coconut flakes are delicately sprinkled on the thick foam. The drink is served in a dark, textured clay mug resting on a natural linen napkin. The lighting is soft and atmospheric, highlighting the creamy textures and the organic aesthetic. The palette features sage green, cream, and deep earth tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmD5uVp3sMQFu13V_CrQHHDu325pJkvZR6Y2zX9U-eAFrJfbjwSp3tE0TZlPwwFfwfwLpov3RV1EaKBKbOhnt2UQo854oknuPw17g9am7F5nxMfzwI-HN91Q2w69y7dTwHO6kXOZk6KdmTyksBsp_bYCKXlbQau_sSypEu2UuZQHDFV6acwllaBBO3Du4MAzQoXL3-BlrvpuXkG-f3iKORl7Jelee6KCYlZs-w7jKfvtIXnJszWKiqjyB7Lr1QBApMPkxnXj8ItV5L">
+</div>
+<h4 class="font-headline-md text-headline-md text-espresso mb-1">Coconut Latte</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Creamy coconut milk balanced with a double ristretto shot.</p>
+<span class="font-display-lg text-headline-md text-terracotta">$3.50</span>
+</div>
+<!-- Signature Item 3 -->
+<div class="group">
+<div class="relative aspect-square overflow-hidden mb-6">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="A cozy, steaming cinnamon latte viewed from above. A whole cinnamon stick rests across the rim of a rustic cream-colored mug. Dustings of ground cinnamon form a decorative star on the milk foam. The setting is a warm-toned wooden table with scattered roasted coffee beans. The lighting is very warm and cozy, creating a tactile and inviting sensory experience centered on autumn flavors." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmtNOsA55yID-RCG0BqWvlLMibYZKLuAPbt9wOJF9CAxjjUxzPy450i0ih8l4DIlrX5-Bgit-ZNQpT1FQGLZSLMwViCIpvgiLGxa3IaLUL4OpbcLFxV2qnKwRtT7TMrebPdMTQIYfvg-koMtKKT77Cpm0rSytpg5zqiKLdK7uH3uEEXmT1csyN5VzbspiXnTaJTnDB1i97V7J5FHng1LNBaLqW1ReMOqWdmNxm85ZnSa5myerPJPM7iB_MzszRNcmEwLFtTlTdlgbd">
+</div>
+<h4 class="font-headline-md text-headline-md text-espresso mb-1">Cinnamon Latte</h4>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Spiced with organic Ceylon cinnamon and a touch of honey.</p>
+<span class="font-display-lg text-headline-md text-terracotta">$4.00</span>
+</div>
+</div>
+</section>
+<!-- Non-Coffee Section & Add-ons -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter" id="non-coffee">
+<div class="lg:col-span-7">
+<h3 class="font-headline-lg text-headline-lg text-espresso mb-12 flex items-center gap-4">
+                        NON-COFFEE
+                        <span class="h-px flex-grow bg-sand/30"></span>
+</h3>
+<div class="space-y-unit">
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 group">
+<div>
+<div class="flex items-center gap-3">
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-sage transition-colors">Matcha Latte</h4>
+<span class="bg-sage text-white px-2 py-0.5 font-label-caps text-[10px] rounded tracking-widest uppercase">Ceremonial Grade</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant">Pure Japanese green tea whisked with milk.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.00</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-sage transition-colors">Chai Latte</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Black tea infused with cardamom, ginger, and clove.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.50</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-sage transition-colors">Chocolate Mocha</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">70% dark cocoa melted into steamed milk (No espresso).</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.00</span>
+</div>
+<div class="flex justify-between items-baseline py-6 border-b border-sand/20 group">
+<div>
+<h4 class="font-headline-md text-headline-md text-espresso group-hover:text-sage transition-colors">Iced Lemon Tea</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Black tea shaken with fresh lemon and mint.</p>
+</div>
+<span class="font-display-lg text-headline-md text-espresso">$4.00</span>
+</div>
+</div>
+</div>
+<!-- Add-ons Floating Container -->
+<div class="lg:col-span-5">
+<div class="bg-sage text-white p-10 rounded-xl mt-8 lg:mt-24 shadow-xl">
+<div class="flex items-center gap-4 mb-8">
+<span class="material-symbols-outlined text-4xl" data-icon="coffee_beans" style="font-variation-settings: 'FILL' 1;">coffee</span>
+<h4 class="font-headline-md text-headline-md">ADD-ONS</h4>
+</div>
+<div class="space-y-6">
+<div class="flex justify-between border-b border-white/20 pb-4">
+<span class="font-body-lg text-body-lg">Extra Shot</span>
+<span class="font-label-caps text-label-caps">$0.50</span>
+</div>
+<div class="flex justify-between border-b border-white/20 pb-4">
+<span class="font-body-lg text-body-lg">Oat / Almond Milk</span>
+<span class="font-label-caps text-label-caps">$0.75</span>
+</div>
+<div class="flex justify-between border-b border-white/20 pb-4">
+<span class="font-body-lg text-body-lg">Artisanal Syrup</span>
+<span class="font-label-caps text-label-caps">$0.50</span>
+</div>
+</div>
+<p class="font-label-md text-label-md mt-10 text-cream/70 italic">
+                            All syrups are made in-house from organic cane sugar and real spices.
+                        </p>
+</div>
+</div>
+</section>
+</div>
+<!-- Footnote section -->
+<section class="mt-section-gap flex flex-col md:flex-row justify-between items-center py-12 border-t border-sand/30 gap-8">
+<div class="text-center md:text-left">
+<p class="font-label-caps text-label-caps text-espresso mb-2">VISIT THE SHOP</p>
+<p class="font-body-md text-body-md text-on-surface-variant">123 Anywhere St., Any City • 7:00 AM — 6:00 PM</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="font-label-caps text-label-caps text-espresso">@BORCELLE_COFFEE</span>
+<div class="h-10 w-px bg-sand/30"></div>
+<button class="bg-espresso text-cream px-8 py-3 font-label-caps text-label-caps hover:bg-terracotta transition-colors">ORDER NOW</button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface dark:bg-espresso border-t border-sand/30 shadow-sm">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-terracotta transition-colors" href="{{DATA:SCREEN:SCREEN_12}}">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-terracotta dark:text-sand font-bold active:scale-95 transition-transform" href="{{DATA:SCREEN:SCREEN_10}}">
+<span class="material-symbols-outlined" data-icon="coffee_maker">coffee_maker</span>
+<span class="font-label-md text-label-md">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-terracotta transition-colors" href="{{DATA:SCREEN:SCREEN_11}}">
+<span class="material-symbols-outlined" data-icon="location_on">location_on</span>
+<span class="font-label-md text-label-md">Find Us</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-terracotta transition-colors" href="{{DATA:SCREEN:SCREEN_8}}">
+<span class="material-symbols-outlined" data-icon="auto_stories">auto_stories</span>
+<span class="font-label-md text-label-md">Story</span>
+</a>
+</nav>
+<script>
+        // Smooth highlighting of active nav items based on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollPos = window.pageYOffset + 200;
+
+            sections.forEach(section => {
+                if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+                    const id = section.getAttribute('id');
+                    document.querySelectorAll('nav a[href*="#"]').forEach(link => {
+                        link.classList.remove('bg-espresso', 'text-cream');
+                        link.classList.add('border-espresso', 'text-espresso');
+                        if (link.getAttribute('href') === `#${id}`) {
+                            link.classList.remove('border-espresso', 'text-espresso');
+                            link.classList.add('bg-espresso', 'text-cream');
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+
+
+</body></html>

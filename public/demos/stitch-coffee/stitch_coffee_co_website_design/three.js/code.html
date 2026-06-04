@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_14 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_14" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_14');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
+camera.position.z = 5;
+
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+renderer.setPixelRatio(window.devicePixelRatio);
+container.appendChild(renderer.domElement);
+
+// Minimalist Moka Pot Geometry (Tier 4)
+const mokaGroup = new THREE.Group();
+
+const material = new THREE.MeshPhongMaterial({ 
+    color: 0x2c1b18, 
+    shininess: 30,
+    flatShading: true
+});
+
+const accentMaterial = new THREE.MeshPhongMaterial({ color: 0xba5e45 }); // Terracotta
+
+// Bottom chamber (Hexagonal cylinder)
+const bottomGeo = new THREE.CylinderGeometry(0.8, 1, 1.2, 6);
+const bottom = new THREE.Mesh(bottomGeo, material);
+bottom.position.y = -0.6;
+mokaGroup.add(bottom);
+
+// Top chamber
+const topGeo = new THREE.CylinderGeometry(1, 0.8, 1.2, 6);
+const topPart = new THREE.Mesh(topGeo, material);
+topPart.position.y = 0.6;
+mokaGroup.add(topPart);
+
+// Middle connector
+const midGeo = new THREE.CylinderGeometry(0.85, 0.85, 0.2, 6);
+const mid = new THREE.Mesh(midGeo, accentMaterial);
+mokaGroup.add(mid);
+
+// Handle
+const handleGeo = new THREE.BoxGeometry(0.2, 0.8, 0.1);
+const handle = new THREE.Mesh(handleGeo, material);
+handle.position.set(0.9, 0.6, 0);
+handle.rotation.z = -0.2;
+mokaGroup.add(handle);
+
+// Spout
+const spoutGeo = new THREE.ConeGeometry(0.2, 0.4, 3);
+const spout = new THREE.Mesh(spoutGeo, material);
+spout.position.set(-0.9, 0.8, 0);
+spout.rotation.z = 0.5;
+mokaGroup.add(spout);
+
+scene.add(mokaGroup);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+directionalLight.position.set(5, 5, 5);
+scene.add(directionalLight);
+
+// Animation logic
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) - 0.5;
+    mouseY = (e.clientY / window.innerHeight) - 0.5;
+});
+
+const animate = () => {
+    requestAnimationFrame(animate);
+    
+    // Gentle floating motion
+    mokaGroup.position.y = Math.sin(Date.now() * 0.001) * 0.1;
+    
+    // Mouse tracking rotation
+    mokaGroup.rotation.y += (mouseX * 0.5 - mokaGroup.rotation.y) * 0.05;
+    mokaGroup.rotation.x += (mouseY * 0.2 - mokaGroup.rotation.x) * 0.05;
+    
+    renderer.render(scene, camera);
+};
+
+animate();
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+    renderer.setSize(w, h);
+});
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_14 -->
+</body>
+</html>

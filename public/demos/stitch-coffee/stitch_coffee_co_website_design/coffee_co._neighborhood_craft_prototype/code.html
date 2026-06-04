@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>COFFEE CO. | Neighborhood Craft</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Anton:wght@100..900&amp;family=Hanken+Grotesk:wght@100..900&amp;family=Space+Grotesk:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-on-surface": "#f3f0ea",
+                        "on-secondary": "#ffffff",
+                        "on-primary-fixed-variant": "#57423e",
+                        "on-surface": "#1c1c18",
+                        "on-primary-fixed": "#281714",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#848974",
+                        "terracotta": "#BF5A36",
+                        "secondary-container": "#fdc399",
+                        "sand": "#DCA57D",
+                        "outline-variant": "#d3c3c0",
+                        "surface-container": "#f0eee8",
+                        "primary-container": "#2c1b18",
+                        "on-primary-container": "#9b817c",
+                        "surface-bright": "#fcf9f3",
+                        "surface-container-low": "#f6f3ed",
+                        "inverse-primary": "#dec0bb",
+                        "cream": "#F9F6F0",
+                        "on-background": "#1c1c18",
+                        "charcoal": "#1A1A1A",
+                        "tertiary": "#050801",
+                        "outline": "#817472",
+                        "on-secondary-fixed": "#2f1400",
+                        "surface": "#fcf9f3",
+                        "tertiary-fixed": "#e0e5cc",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed": "#ffdcc4",
+                        "background": "#fcf9f3",
+                        "secondary-fixed-dim": "#f4bb91",
+                        "secondary": "#805433",
+                        "tertiary-container": "#1c2112",
+                        "tertiary-fixed-dim": "#c4c9b1",
+                        "primary-fixed": "#fbdcd6",
+                        "surface-dim": "#dcdad4",
+                        "surface-tint": "#705955",
+                        "on-secondary-fixed-variant": "#653d1e",
+                        "surface-variant": "#e5e2dc",
+                        "on-surface-variant": "#4f4442",
+                        "espresso": "#2C1B18",
+                        "sage": "#6B705C",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#444937",
+                        "primary-fixed-dim": "#dec0bb",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#31312d",
+                        "on-tertiary-fixed": "#191d0e",
+                        "error-container": "#ffdad6",
+                        "surface-container-high": "#ebe8e2",
+                        "surface-container-highest": "#e5e2dc",
+                        "error": "#ba1a1a",
+                        "primary": "#100403",
+                        "on-secondary-container": "#794e2d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "section-gap": "120px",
+                        "gutter": "24px",
+                        "margin-desktop": "64px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Anton"],
+                        "label-md": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Anton"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "headline-md": ["Anton"],
+                        "headline-lg": ["Anton"],
+                        "label-caps": ["Space Grotesk"],
+                        "body-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["72px", {"lineHeight": "76px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["36px", {"lineHeight": "40px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "36px", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "52px", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                        "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .text-protection-gradient {
+            background: linear-gradient(to top, rgba(44, 27, 24, 0.4) 0%, rgba(44, 27, 24, 0) 100%);
+        }
+        .grainy-bg {
+            position: relative;
+        }
+        .grainy-bg::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.05;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background grainy-bg font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface border-b border-sand/30 transition-all duration-300" id="top-nav">
+<button aria-label="Menu" class="p-2 hover:opacity-80 transition-opacity" id="drawer-toggle">
+<span class="material-symbols-outlined text-espresso">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-md tracking-tighter text-espresso uppercase">COFFEE CO.</h1>
+<div class="flex items-center gap-4">
+<nav class="hidden md:flex gap-8 items-center mr-8">
+<a class="font-label-caps text-label-caps text-espresso font-bold transition-opacity hover:opacity-80" href="#">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant transition-opacity hover:opacity-80" href="#menu">Menu</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant transition-opacity hover:opacity-80" href="#locations">Find Us</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant transition-opacity hover:opacity-80" href="#story">Story</a>
+</nav>
+<button aria-label="Cart" class="p-2 hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined text-espresso">shopping_bag</span>
+</button>
+</div>
+</header>
+<!-- Navigation Drawer (Sidebar) -->
+<div class="fixed inset-0 bg-espresso/40 backdrop-blur-sm z-[55] opacity-0 pointer-events-none transition-opacity duration-300" id="drawer-overlay"></div>
+<aside class="fixed inset-y-0 left-0 z-[60] w-80 bg-cream p-margin-mobile -translate-x-full transition-transform duration-300 shadow-xl flex flex-col" id="nav-drawer">
+<div class="flex justify-between items-center mb-12">
+<span class="font-display-lg text-headline-md text-espresso">Neighborhood Craft</span>
+<button class="p-2" id="drawer-close">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex flex-col divide-y divide-sand/20">
+<a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 transition-colors flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">local_mall</span> Shop Beans
+            </a>
+<a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 transition-colors flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">menu_book</span> Brew Guides
+            </a>
+<a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 transition-colors flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">handshake</span> Wholesale
+            </a>
+<a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 transition-colors flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">work</span> Careers
+            </a>
+<a class="py-4 font-headline-md text-headline-md text-on-surface hover:bg-sand/5 transition-colors flex items-center gap-4" href="#">
+<span class="material-symbols-outlined">mail</span> Contact
+            </a>
+</nav>
+</aside>
+<main class="pt-16">
+<!-- Hero Section -->
+<section class="relative h-[795px] flex flex-col items-center justify-center text-center px-4 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover" data-alt="A macro, editorial photograph of a tall glass filled with a marbled iced latte. Swirls of dark espresso and creamy white milk are visually striking against the light-colored backdrop. Large, crystal-clear ice cubes glisten at the top. The lighting is warm and natural, highlighting the rich textures and organic swirls of the drink in a modern, sophisticated cafe aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgAfR8hVZGnMYo3VvV8uvp6U6WseSbXUA13Tc_syeSn1q7YqvbaF2aXf68UB7ToxPFv1dW9x_3SPOfpjPsB25gq6PszizRBQsXf9ecyy9KdloW7vSfoK541R1BJpZtJhuk3ZQsd7-GRMX6GRsh-h50X96lwPy-K0XGNExbdOPRPhlnyXoUaqukWDhaHbnfd0vMBV4XCk8-lGsMuj7emEa1xkpYxIN7u_kGe4NSLCGz7Vu58Urf4RZxh7v2b8hzTLvFvCMSJd3mwDRC"/>
+<div class="absolute inset-0 bg-cream/10 backdrop-brightness-95"></div>
+</div>
+<div class="relative z-10 max-w-3xl">
+<p class="font-label-caps text-label-caps text-espresso tracking-[0.2em] mb-6 animate-fade-in">COFFEE MEETS COOL — TAKE A BREATHER &amp; ENJOY A SIP</p>
+<h2 class="font-display-lg text-[80px] md:text-[120px] leading-[0.9] text-espresso uppercase mb-4 scale-95 md:scale-100">
+                    ICED<br/>LATTE
+                </h2>
+<p class="font-label-caps text-label-caps text-espresso mb-12">CREAMY • COFFEE • CHILL</p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-espresso text-cream px-10 py-4 font-label-caps text-label-caps uppercase hover:opacity-90 transition-all scale-100 active:scale-95 duration-200">
+                        Order Now
+                    </button>
+<button class="border border-espresso text-espresso px-10 py-4 font-label-caps text-label-caps uppercase hover:bg-espresso hover:text-cream transition-all duration-200">
+                        Explore Menu
+                    </button>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-espresso">keyboard_double_arrow_down</span>
+</div>
+</section>
+<!-- Intro Section: Neighborhood Craft -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto text-center" id="story">
+<div class="max-w-3xl mx-auto">
+<span class="font-label-caps text-label-caps text-terracotta mb-4 block">OUR PHILOSOPHY</span>
+<h3 class="font-headline-lg text-headline-lg md:text-[56px] text-espresso mb-8">A Neighborhood Hub for the Intentionally Crafted.</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                    At Coffee Co., we believe the best moments happen over a slow pour. We've curated a space that celebrates organic textures, local community, and the precise art of specialty coffee. Every bean is ethically sourced, and every pastry is baked fresh at dawn.
+                </p>
+</div>
+</section>
+<!-- Today's Special & Features: Bento Grid -->
+<section class="pb-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 h-auto md:h-[700px]">
+<!-- Main Special -->
+<div class="md:col-span-7 relative group overflow-hidden bg-surface-container rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close up of a freshly baked, flaky golden-brown croissant served on a simple, textured ceramic plate. The lighting is soft and directional, casting gentle shadows that emphasize the many buttery layers of the pastry. A small cup of espresso sits partially in the frame, creating a warm, cozy breakfast scene. The overall aesthetic is minimalist, organic, and premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCTGeQ6eXoIUg1o_FZLKv3FK1-mSI8gHcsj66KwfE5-cKKHxTaHthrY0hYzFBpJ8rqE1gTlPFGmu4gnMVT1JvuuKVJiWoBgEDMOpP_-D9ULvRoPknRdrzzO7sIRfSfdtZQ_Ky2GYJrQ08mmFlP_byFsYPsM-WYMto6zlj0XQ_ta5zGzyDb0AGpdR1FZyZuB4BCe_k5MPOfaUs7M42P7E6mZcjLahIO7mTKPF0Ii5nRi58ycrwX5JPFBHeYxa3Kl1cvUQfdifuuuvDza"/>
+<div class="absolute inset-0 bg-espresso/20 group-hover:bg-espresso/30 transition-colors"></div>
+<div class="absolute bottom-0 left-0 p-8 w-full text-protection-gradient text-cream">
+<span class="bg-sage px-3 py-1 text-[10px] font-bold uppercase tracking-widest rounded-full mb-4 inline-block">Today's Special</span>
+<h4 class="font-display-lg text-headline-md md:text-headline-lg mb-2">Honey Lavender Bun</h4>
+<p class="font-body-md opacity-90 max-w-md">Our signature sourdough bun infused with local honey and organic culinary lavender.</p>
+<button class="mt-6 flex items-center gap-2 font-label-caps text-label-caps hover:gap-4 transition-all">
+                            Add to Cart <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="md:col-span-5 flex flex-col gap-6">
+<div class="flex-1 relative group overflow-hidden bg-surface-container rounded-lg">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A wide shot of a modern, minimal coffee shop interior with high ceilings, exposed light wood beams, and large windows letting in natural sunlight. The space is filled with lush green plants and features a long marble counter where a barista is working. Customers are seated at communal wooden tables, creating an atmosphere of warmth and community. The design is clean, spacious, and tactile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCurvT8yD0k0XPpNyA7lPoqvjzw0JMktZ1wy1GTFMcEgrRDevyJHzfvlFDO5qeBGBoDGp-F8nPlll_OeH7KLHWgj0iZV2kL0f1jlw4QXbSGdMoXdU3pdjV-I31C6Nuv2f8BJ-elnRSa1214bVyplVGm3hoE3gV7CXVbAJwDxVvXxrmM8Wi22QWnXw1CD8zbpuzK6AVpqHjO3O3uLzU7Xq8pPE3_KeNLbwsbekQWEzJgGOyQw7BZ5xVTIVmmWkZ_cU5y1CkC9pxu4Qcy"/>
+<div class="absolute inset-0 bg-espresso/10"></div>
+<div class="absolute top-6 right-6">
+<span class="bg-cream/90 backdrop-blur-md text-espresso px-4 py-2 font-label-caps text-label-caps">OUR SPACE</span>
+</div>
+</div>
+<div class="flex-1 bg-terracotta p-8 flex flex-col justify-between rounded-lg">
+<div class="text-cream">
+<h4 class="font-headline-md text-headline-md mb-2">Sourcing Truth</h4>
+<p class="font-body-md opacity-80">Discover where our beans come from—directly from farmers in Ethiopia and Colombia.</p>
+</div>
+<a class="text-cream font-label-caps text-label-caps border-b border-cream/30 self-start pb-1 hover:border-cream transition-colors" href="#">Learn More</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Menu List -->
+<section class="py-section-gap bg-surface-container-low" id="menu">
+<div class="px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+<div>
+<span class="font-label-caps text-label-caps text-terracotta mb-2 block">CRAFT SELECTION</span>
+<h3 class="font-headline-lg text-headline-lg text-espresso">The Signature Menu</h3>
+</div>
+<button class="text-espresso font-label-caps text-label-caps border-b border-espresso/30 pb-1 hover:border-espresso transition-colors">View All Menus</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-x-20 gap-y-12">
+<!-- Menu Item -->
+<div class="flex justify-between items-start group cursor-pointer border-b border-sand/30 pb-6">
+<div class="flex-1 pr-4">
+<div class="flex items-baseline gap-2 mb-1">
+<h5 class="font-headline-md text-[24px] text-espresso uppercase">BORCELLE COLD BREW</h5>
+<span class="flex-1 border-b border-dotted border-sand/40 mx-2"></span>
+<span class="font-headline-md text-[20px] text-espresso">$4.50</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic">18-hour slow steeped, chocolatey &amp; smooth.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-terracotta">add_circle</span>
+</div>
+</div>
+<!-- Menu Item -->
+<div class="flex justify-between items-start group cursor-pointer border-b border-sand/30 pb-6">
+<div class="flex-1 pr-4">
+<div class="flex items-baseline gap-2 mb-1">
+<h5 class="font-headline-md text-[24px] text-espresso uppercase">PISTACHIO LATTE</h5>
+<span class="flex-1 border-b border-dotted border-sand/40 mx-2"></span>
+<span class="font-headline-md text-[20px] text-espresso">$5.75</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic">House-made roasted pistachio butter, double shot.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-terracotta">add_circle</span>
+</div>
+</div>
+<!-- Menu Item -->
+<div class="flex justify-between items-start group cursor-pointer border-b border-sand/30 pb-6">
+<div class="flex-1 pr-4">
+<div class="flex items-baseline gap-2 mb-1">
+<h5 class="font-headline-md text-[24px] text-espresso uppercase">OAT CORTADO</h5>
+<span class="flex-1 border-b border-dotted border-sand/40 mx-2"></span>
+<span class="font-headline-md text-[20px] text-espresso">$4.25</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic">The perfect 1:1 ratio, creamy oat milk finish.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-terracotta">add_circle</span>
+</div>
+</div>
+<!-- Menu Item -->
+<div class="flex justify-between items-start group cursor-pointer border-b border-sand/30 pb-6">
+<div class="flex-1 pr-4">
+<div class="flex items-baseline gap-2 mb-1">
+<h5 class="font-headline-md text-[24px] text-espresso uppercase">MAPLE SEA SALT</h5>
+<span class="flex-1 border-b border-dotted border-sand/40 mx-2"></span>
+<span class="font-headline-md text-[20px] text-espresso">$5.50</span>
+</div>
+<p class="font-body-md text-on-surface-variant italic">Dark maple syrup, Maldon sea salt flakes.</p>
+</div>
+<div class="opacity-0 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined text-terracotta">add_circle</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Locations / Find Us -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="locations">
+<div class="flex flex-col md:flex-row gap-16 items-center">
+<div class="w-full md:w-1/2 aspect-square relative rounded-lg overflow-hidden shadow-soft">
+<img class="w-full h-full object-cover" data-alt="A stylized, architectural photograph showing the exterior storefront of a modern cafe in a bustling urban neighborhood. The building features dark charcoal brickwork and large floor-to-ceiling glass windows that reflect the city lights. Inside, warm golden light spills out onto the sidewalk, creating an inviting glow. The overall mood is sophisticated, urban, and high-end." data-location="Brooklyn, New York" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXXmbM383umqnxiow2rtNNhz6xyw_Ntb2Y4hDBHPqVrMPPS5xhYg9DssbFzHMbFxPjr77_0HYF-sN2smvtle4pv3EXmP4xe0l6SNt4QKuu8lGVUiMNQVf32nVfXg8ezaHUdbUGqm17GWko5mffLaLL_tKAofKvQWQ7qum2CnoDUP4ovsvPYV5m0AYTQ38wAeBlaCeR6e8LyoPT3y1Ddva6ClfbaE_1GOLhykDm-wMR9ycHZOqqsULGO5-b_ddJ5LXh3teClbednwSx"/>
+<div class="absolute inset-0 bg-espresso/5"></div>
+</div>
+<div class="w-full md:w-1/2">
+<span class="font-label-caps text-label-caps text-terracotta mb-4 block">VISIT US</span>
+<h3 class="font-headline-lg text-headline-lg text-espresso mb-8">Four Neighborhoods, One Philosophy.</h3>
+<div class="space-y-8">
+<div>
+<h6 class="font-headline-md text-[20px] text-espresso mb-2">BROOKLYN HEIGHTS</h6>
+<p class="font-body-md text-on-surface-variant">123 Montague St, Brooklyn, NY 11201<br/>Open Daily 7am — 6pm</p>
+</div>
+<div>
+<h6 class="font-headline-md text-[20px] text-espresso mb-2">WILLIAMSBURG</h6>
+<p class="font-body-md text-on-surface-variant">45 Wythe Ave, Brooklyn, NY 11249<br/>Open Daily 8am — 8pm</p>
+</div>
+<div>
+<h6 class="font-headline-md text-[20px] text-espresso mb-2">SOHO CRAFT ROOM</h6>
+<p class="font-body-md text-on-surface-variant">12 Greene St, New York, NY 10013<br/>Open Daily 7am — 7pm</p>
+</div>
+</div>
+<button class="mt-12 bg-espresso text-cream px-8 py-4 font-label-caps text-label-caps uppercase hover:opacity-90 transition-opacity">
+                        Get Directions
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<footer class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 bg-surface border-t border-sand/30 shadow-sm">
+<a class="flex flex-col items-center justify-center text-terracotta font-bold scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-terracotta" href="#menu">
+<span class="material-symbols-outlined">coffee_maker</span>
+<span class="font-label-md text-label-md">Menu</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-terracotta" href="#locations">
+<span class="material-symbols-outlined">location_on</span>
+<span class="font-label-md text-label-md">Find Us</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant transition-colors hover:text-terracotta" href="#story">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-md text-label-md">Story</span>
+</a>
+</footer>
+<!-- Desktop Footer -->
+<footer class="hidden md:block py-20 bg-espresso text-cream">
+<div class="px-margin-desktop max-w-container-max mx-auto flex flex-col md:flex-row justify-between items-start">
+<div class="mb-12 md:mb-0">
+<h2 class="font-display-lg text-headline-lg tracking-tighter mb-6">COFFEE CO.</h2>
+<p class="font-body-md max-w-xs opacity-70 mb-8">Crafting specialty coffee experiences in your neighborhood since 1995.</p>
+<div class="flex gap-4">
+<a class="w-10 h-10 border border-cream/20 flex items-center justify-center hover:bg-cream hover:text-espresso transition-all" href="#">
+<span class="material-symbols-outlined">public</span>
+</a>
+<a class="w-10 h-10 border border-cream/20 flex items-center justify-center hover:bg-cream hover:text-espresso transition-all" href="#">
+<span class="material-symbols-outlined">favorite</span>
+</a>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-16">
+<div>
+<h6 class="font-label-caps text-label-caps mb-6 opacity-50">EXPLORE</h6>
+<ul class="space-y-4">
+<li><a class="hover:text-sand transition-colors" href="#">Shop Coffee</a></li>
+<li><a class="hover:text-sand transition-colors" href="#">Subscriptions</a></li>
+<li><a class="hover:text-sand transition-colors" href="#">Equipment</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label-caps text-label-caps mb-6 opacity-50">ABOUT</h6>
+<ul class="space-y-4">
+<li><a class="hover:text-sand transition-colors" href="#">Our Story</a></li>
+<li><a class="hover:text-sand transition-colors" href="#">Sustainability</a></li>
+<li><a class="hover:text-sand transition-colors" href="#">Wholesale</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label-caps text-label-caps mb-6 opacity-50">LEGAL</h6>
+<ul class="space-y-4">
+<li><a class="hover:text-sand transition-colors" href="#">Terms</a></li>
+<li><a class="hover:text-sand transition-colors" href="#">Privacy</a></li>
+<li><a class="hover:text-sand transition-colors" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="mt-20 border-t border-cream/10 pt-8 text-center px-margin-desktop">
+<p class="font-label-caps text-[12px] opacity-40">© 2024 COFFEE CO. HANDCRAFTED IN NEW YORK.</p>
+</div>
+</footer>
+<!-- FAB -->
+<button class="fixed bottom-24 right-6 md:bottom-12 md:right-12 bg-terracotta text-cream p-4 rounded-full shadow-lg z-[45] hover:scale-110 active:scale-95 transition-transform flex items-center gap-2 group">
+<span class="material-symbols-outlined">local_cafe</span>
+<span class="hidden group-hover:inline-block pr-2 font-label-caps text-label-caps transition-all">Quick Order</span>
+</button>
+<script>
+        const drawerToggle = document.getElementById('drawer-toggle');
+        const drawerClose = document.getElementById('drawer-close');
+        const drawer = document.getElementById('nav-drawer');
+        const overlay = document.getElementById('drawer-overlay');
+        const topNav = document.getElementById('top-nav');
+
+        function toggleDrawer() {
+            drawer.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+
+        drawerToggle.addEventListener('click', toggleDrawer);
+        drawerClose.addEventListener('click', toggleDrawer);
+        overlay.addEventListener('click', toggleDrawer);
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 10) {
+                topNav.classList.add('bg-surface/90', 'backdrop-blur-md', 'shadow-sm');
+            } else {
+                topNav.classList.remove('bg-surface/90', 'backdrop-blur-md', 'shadow-sm');
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,360 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Services | Lavisha Professional Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e0e3e5",
+                        "background": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "on-surface-variant": "#45464d",
+                        "surface-container": "#e5eeff",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#c8f17a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#191c1e",
+                        "tertiary-fixed-dim": "#add461",
+                        "surface-container-low": "#eff4ff",
+                        "surface-tint": "#565e74",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#76777d",
+                        "inverse-primary": "#bec6e0",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#444749",
+                        "surface": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#dce9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#131f00",
+                        "on-secondary-container": "#626567",
+                        "outline-variant": "#c6c6cd",
+                        "secondary": "#5c5f61",
+                        "on-primary-fixed": "#131b2e",
+                        "tertiary-container": "#131f00",
+                        "on-tertiary-fixed-variant": "#364e00",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e0e3e5",
+                        "on-tertiary-container": "#6c8f24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+        .scroll-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-tertiary-fixed selection:text-on-tertiary-fixed">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-4 h-16 sticky top-0 z-50 bg-surface-container-lowest border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface cursor-pointer">menu</span>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">Lavisha</span>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="{{DATA:SCREEN:SCREEN_10}}">Home</a>
+<a class="text-primary font-bold transition-colors px-2 py-1" href="{{DATA:SCREEN:SCREEN_2}}">Services</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="{{DATA:SCREEN:SCREEN_9}}">Reviews</a>
+<a class="text-on-surface-variant hover:bg-surface-container-low transition-colors px-2 py-1" href="#">Contact</a>
+</nav>
+<button class="bg-tertiary-fixed-dim hover:bg-tertiary-fixed text-on-tertiary-fixed px-6 py-2 rounded-full font-bold transition-all active:scale-95" onclick="window.location.href='{{DATA:SCREEN:SCREEN_11}}'">
+            Book Now
+        </button>
+</header>
+<main class="max-w-[1280px] mx-auto px-4 md:px-20">
+<!-- Hero/Header Section -->
+<section class="py-16 md:py-24 text-center">
+<span class="font-label-caps text-label-caps text-on-primary-container tracking-widest block mb-4">OUR EXPERTISE</span>
+<h1 class="font-headline-xl text-headline-xl mb-6 text-on-surface">Premium Cleaning Solutions</h1>
+<p class="max-w-2xl mx-auto text-on-surface-variant font-body-md">
+                Experience meticulous care and professional excellence. We provide a systematic approach to cleaning that ensures your space is not just clean, but truly restored.
+            </p>
+</section>
+<!-- Services Bento Grid -->
+<section class="mb-24">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Service 1: Home Cleaning -->
+<div class="service-card bg-surface-container-lowest border border-outline-variant p-8 transition-all hover:shadow-[0_10px_25px_-5px_rgba(15,23,42,0.05)] flex flex-col h-full">
+<div class="service-icon w-12 h-12 flex items-center justify-center bg-surface-variant rounded-full mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="home">home</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Home Cleaning</h3>
+<p class="text-on-surface-variant mb-6 font-body-sm">Our signature residential maintenance service designed for busy homeowners who value a pristine living environment.</p>
+<ul class="space-y-3 mb-8 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Dusting and vacuuming of all surfaces</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Sanitizing kitchen and bathrooms</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Floor mopping and detailing</span>
+</li>
+</ul>
+<div class="pt-6 border-t border-outline-variant flex justify-between items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-primary-container block">STARTING FROM</span>
+<span class="font-headline-lg text-headline-lg">$120</span>
+</div>
+<button class="text-primary font-bold hover:underline flex items-center gap-1">
+                            Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service 2: Deep Sanitization -->
+<div class="service-card bg-surface-container-lowest border border-outline-variant p-8 transition-all hover:shadow-[0_10px_25px_-5px_rgba(15,23,42,0.05)] flex flex-col h-full">
+<div class="service-icon w-12 h-12 flex items-center justify-center bg-surface-variant rounded-full mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="sanitizer">sanitizer</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Deep Sanitization</h3>
+<p class="text-on-surface-variant mb-6 font-body-sm">A rigorous, detailed restoration of your property's hygiene, targeting deep-seated dirt and allergens.</p>
+<ul class="space-y-3 mb-8 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">High-touch point disinfection</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Steam cleaning for upholstery</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">HVAC vent and filter dusting</span>
+</li>
+</ul>
+<div class="pt-6 border-t border-outline-variant flex justify-between items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-primary-container block">STARTING FROM</span>
+<span class="font-headline-lg text-headline-lg">$250</span>
+</div>
+<button class="text-primary font-bold hover:underline flex items-center gap-1">
+                            Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service 3: Eco-Friendly Cleaning -->
+<div class="service-card bg-surface-container-lowest border border-outline-variant p-8 transition-all hover:shadow-[0_10px_25px_-5px_rgba(15,23,42,0.05)] flex flex-col h-full">
+<div class="service-icon w-12 h-12 flex items-center justify-center bg-surface-variant rounded-full mb-6">
+<span class="material-symbols-outlined text-primary" data-icon="eco">eco</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg mb-4">Eco-Friendly</h3>
+<p class="text-on-surface-variant mb-6 font-body-sm">100% plant-based and non-toxic solutions that are safe for pets, children, and the planet.</p>
+<ul class="space-y-3 mb-8 flex-grow">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Biodegradable cleaning agents</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Zero synthetic fragrances</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-tertiary-fixed-dim text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="text-body-sm">Hypoallergenic dusting methods</span>
+</li>
+</ul>
+<div class="pt-6 border-t border-outline-variant flex justify-between items-center">
+<div>
+<span class="font-label-caps text-label-caps text-on-primary-container block">STARTING FROM</span>
+<span class="font-headline-lg text-headline-lg">$160</span>
+</div>
+<button class="text-primary font-bold hover:underline flex items-center gap-1">
+                            Details <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Before & After Gallery -->
+<section class="py-24 border-t border-outline-variant">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+<div class="max-w-xl">
+<span class="font-label-caps text-label-caps text-on-primary-container tracking-widest block mb-4">VISIBLE RESULTS</span>
+<h2 class="font-headline-lg text-headline-xl text-on-surface">Precision in Every Detail</h2>
+<p class="text-on-surface-variant mt-4 font-body-md">We don't just clean; we transform. View the results of our deep sanitization and restorative cleaning projects across residential and commercial properties.</p>
+</div>
+<div class="flex gap-4">
+<button class="p-3 border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-3 border border-outline-variant rounded-full hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Gallery Item 1 -->
+<div class="group relative overflow-hidden bg-surface-container rounded-xl aspect-[16/10]">
+<div class="flex w-full h-full">
+<div class="w-1/2 relative overflow-hidden border-r-2 border-surface-container-lowest">
+<img alt="Before deep cleaning" class="w-full h-full object-cover" data-alt="A detailed shot of a kitchen countertop covered in thick dust, stains, and clutter before a professional cleaning service. The lighting is dim and unflattering, emphasizing the neglect. The overall mood is disorganized and in need of expert attention in a modern suburban home." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfVdER8JD0Oa9hxUYhSZJctMtpQgQay_BNPWpXw891RRFGkqfuYuaLWsuxZ24joKD6xMPdkM4ZmyDPrHLl4B7WUzHmZopysTzir2iZ7W6ez0JzbT5z9dbMUIkyzWcuCcONDa3nSsnyDpgTHp4bTKOj_zdj5I6Wjoin_rUOjS59EHZs4L9L9Gg6uSvq3PKfuTYkvbt-QAjz3wBr37Q06413kIGfAhNHnBJYUZBEYOYxufvmjT5lkQDbDEfsO_tBOGSIarkCH2wMGaE">
+<div class="absolute bottom-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-caps text-[10px] rounded">BEFORE</div>
+</div>
+<div class="w-1/2 relative overflow-hidden">
+<img alt="After deep cleaning" class="w-full h-full object-cover" data-alt="A pristine, gleaming kitchen countertop after a professional cleaning service, reflecting soft, bright overhead lighting. Every surface is polished to a high-shine finish, and the minimalist decor is perfectly arranged. The atmosphere is serene, airy, and clinical, showcasing the dependable and professional expertise of the brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRtjJw2QaOlyBvxj4kHD0_dCiuKmMpdzpPQN77OAJBLnmUZdgS3U4L9xyl66X6Inq-bpCw09ofjO-UukkCRplxGwMOXsV8NwYjk5bD7jno3Mds5fIuto9WGIo0GrmHrUSDbEZ6RUhABRvFnQ_kCvRXZW9TcIeFwJOXpkj4X6nC8VR3-zrHK-Yp4XfkrqdKkIBWG5AIpjSdPeyef4_hqlPcJkdShTFjwJl8kI5MARDu6aYZUWw9VMUK5msEsu_u9HWksCRCuuGnGcM">
+<div class="absolute bottom-4 right-4 bg-tertiary-fixed-dim text-on-tertiary-fixed px-3 py-1 font-label-caps text-[10px] rounded">AFTER</div>
+</div>
+</div>
+</div>
+<!-- Gallery Item 2 -->
+<div class="group relative overflow-hidden bg-surface-container rounded-xl aspect-[16/10]">
+<div class="flex w-full h-full">
+<div class="w-1/2 relative overflow-hidden border-r-2 border-surface-container-lowest">
+<img alt="Before commercial cleaning" class="w-full h-full object-cover" data-alt="An empty office space with dirty, stained carpets and neglected windows during a sunset. The lighting creates harsh shadows that reveal piles of dust in the corners and smudges on the glass. The scene looks abandoned and unprofessional, representing a space in desperate need of commercial sanitation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCl51j65r20oopbE5ZkIJiJkzibU9hpxbS2h7uRz8SR6pj3DTlUd3pTKGL2Ex8KGJpT8DyfTJymeCn4IW5fBEPSux1R8nGWA_j_Izkb7PYsp-hnC-P0tY2kNDqN5NH8rX2vAg_QjCmZpdXcSr1MyWLaZ3tFx6xFF7__EB3fdxm10prvf7MmjYC2_u_jmWw3g7cDfG4sQXTpha6ANO-y6buPEGzrBoaVuOBcQOo_VX6Z_M49QWS_AR2jWINNdt63g3SaLAjmUuAkQFA">
+<div class="absolute bottom-4 left-4 bg-primary text-on-primary px-3 py-1 font-label-caps text-[10px] rounded">BEFORE</div>
+</div>
+<div class="w-1/2 relative overflow-hidden">
+<img alt="After commercial cleaning" class="w-full h-full object-cover" data-alt="A professional office environment after expert sanitation services, featuring sparkling windows and perfectly vacuumed, clean carpets. The room is filled with bright, natural light that highlights the organized professionalism of the workplace. The mood is corporate, minimalist, and dependable, conveying a sense of corporate relief and security." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcxUeVmKRaRYNXmUmaSAtSbqZH0RnajVal_wKTJVfYOVv7biF015zw0VI7ON3pSU5fih9XMpOUvVdHqt9D0i7XaFXllS0ivD4akQrk-VOGb56CzBnr60OCK-HTZGxl-isHn4aTUM0wzyPw8u-5GAE5spm1Iy0_HM7rtYIGbjPlHTsZuHu93H4c3QN-ipYvkqDOL_67ugFfHNSowhnWq02CKbvMujkBvBwJ10tFF-ItLGQ569ROxHhDxPmVmCK1qkM0Rwck9bDlTCk">
+<div class="absolute bottom-4 right-4 bg-tertiary-fixed-dim text-on-tertiary-fixed px-3 py-1 font-label-caps text-[10px] rounded">AFTER</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Specialized Services (Mini List) -->
+<section class="py-24 bg-surface-container-low -mx-4 md:-mx-20 px-4 md:px-20">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Additional Specialties</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+<div class="p-6 bg-surface-container-lowest border border-outline-variant flex flex-col items-center text-center transition-all hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 32px;">window</span>
+<p class="font-bold text-on-surface">Window Detail</p>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant flex flex-col items-center text-center transition-all hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 32px;">meeting_room</span>
+<p class="font-bold text-on-surface">Move-in / Out</p>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant flex flex-col items-center text-center transition-all hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 32px;">layers</span>
+<p class="font-bold text-on-surface">Carpet Steam</p>
+</div>
+<div class="p-6 bg-surface-container-lowest border border-outline-variant flex flex-col items-center text-center transition-all hover:-translate-y-1">
+<span class="material-symbols-outlined text-primary mb-4" style="font-size: 32px;">construction</span>
+<p class="font-bold text-on-surface">Post-Construction</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full px-4 py-12 flex flex-col items-center text-center gap-6 bg-primary-container text-on-primary-container mt-24">
+<span class="font-headline-lg text-headline-lg text-surface-container-lowest">Lavisha</span>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="text-on-primary-container hover:text-on-secondary transition-colors font-body-sm" href="#">Privacy Policy</a>
+<a class="text-on-primary-container hover:text-on-secondary transition-colors font-body-sm" href="#">Terms of Service</a>
+<a class="text-on-primary-container hover:text-on-secondary transition-colors font-body-sm" href="#">Service Areas</a>
+</div>
+<p class="font-body-sm text-body-sm opacity-60">© 2024 Lavisha Professional Services. Licensed &amp; Insured.</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest border-t border-outline-variant shadow-lg">
+<div class="flex flex-col items-center justify-center text-on-surface-variant font-label-caps cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_10}}'">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px]">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-label-caps cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_2}}'">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">build</span>
+<span class="text-[10px]">Services</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant font-label-caps cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_9}}'">
+<span class="material-symbols-outlined">star</span>
+<span class="text-[10px]">Reviews</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant font-label-caps cursor-pointer" onclick="window.location.href='{{DATA:SCREEN:SCREEN_11}}'">
+<span class="material-symbols-outlined">call</span>
+<span class="text-[10px]">Contact</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for gallery buttons
+        document.querySelectorAll('button').forEach(btn => {
+            btn.addEventListener('mousedown', () => {
+                btn.style.transform = 'scale(0.95)';
+            });
+            btn.addEventListener('mouseup', () => {
+                btn.style.transform = 'scale(1)';
+            });
+        });
+
+        // Hover effect enhancement for service cards
+        const cards = document.querySelectorAll('.service-card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = '#000000';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = '#c6c6cd';
+            });
+        });
+    </script>
+
+
+</body></html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Stylist Profiles | Aura &amp; Kin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#f1e0cc",
+                    "secondary-fixed-dim": "#e9c349",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "outline-variant": "#d3c3be",
+                    "inverse-primary": "#e0c0b4",
+                    "on-secondary-container": "#745c00",
+                    "on-primary-fixed": "#291710",
+                    "on-surface-variant": "#4f4441",
+                    "on-tertiary-container": "#898783",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "primary-fixed": "#fddbd0",
+                    "inverse-on-surface": "#ffeedc",
+                    "surface-container-low": "#fff1e4",
+                    "surface-dim": "#e9d7c4",
+                    "surface-bright": "#fff8f4",
+                    "primary": "#110402",
+                    "on-primary-fixed-variant": "#584239",
+                    "secondary": "#735c00",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#fed65b",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "surface": "#fff8f4",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "primary-fixed-dim": "#e0c0b4",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary": "#080806",
+                    "outline": "#817470",
+                    "tertiary-container": "#20201d",
+                    "on-background": "#231a0e",
+                    "surface-container-high": "#f7e5d1",
+                    "tertiary-fixed": "#e5e2dd",
+                    "surface-container-highest": "#f1e0cc",
+                    "on-primary-container": "#9d8177",
+                    "primary-container": "#2d1b14",
+                    "surface-container": "#fdebd7",
+                    "surface-tint": "#725950",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#231a0e",
+                    "inverse-surface": "#392f21",
+                    "on-error": "#ffffff",
+                    "background": "#fff8f4",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "24px",
+                    "section-gap": "120px",
+                    "container-max": "1280px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "300"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>body {
+    background-color: #fff8f4;
+    color: #231a0e;
+    -webkit-font-smoothing: antialiased
+    }
+.material-symbols-outlined {
+    font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24
+    }
+.editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px
+    }
+.stylist-card:nth-child(even) {
+    margin-top: 64px
+    }
+@media (max-width: 1024px) {
+    .stylist-card:nth-child(even) {
+        margin-top: 0
+        }
+    }
+.grain-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.03;
+    background-image: url(https://lh3.googleusercontent.com/aida-public/AB6AXuAPB_lIITACtkksFXN9bn8PJv16ER90gum3UpFhMA_rf5mN3oHdpXe-HHoeHDJHfp68lyNtOR2h5K_kpstbxMT0-bFT_iyqaUiiWsEpyTdS930uPe_4rg825mtpyyMsAB9LS-TS-O9fG7TKZCvbVOdCeGzMzPFl6OHDDqwEcdbiSQDn-r_F99LeBsCaQhq3NtQ1NELJfzxFDViPE6_WJacHXXNnlVasQFhP_Ffqj29D6umy8RtHgf9b7SLeyTo78EC6XXSDahG4kZ9t)
+    }</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style>
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        </style><style>
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        </style></head>
+<body class="font-body-md overflow-x-hidden">
+<div class="grain-overlay"></div>
+<!-- Navigation Drawer (SideNav) Overlay -->
+<div class="fixed inset-0 z-[100] bg-black/40 backdrop-blur-sm transition-opacity duration-500 opacity-0 pointer-events-none" id="drawer">
+<div class="absolute right-0 top-0 h-full w-80 bg-surface shadow-2xl transition-transform duration-500 translate-x-full flex flex-col p-margin-mobile gap-6">
+<div class="flex justify-between items-center mb-8">
+<span class="font-display-lg text-headline-md text-primary">LUXE STUDIO</span>
+<button class="text-primary hover:opacity-70 transition-opacity" onclick="toggleDrawer()">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<nav class="flex flex-col gap-8">
+<a class="font-body-lg text-on-surface hover:pl-4 transition-all duration-300" href="#">Our Story</a>
+<a class="font-body-lg text-secondary italic hover:pl-4 transition-all duration-300" href="#">Stylist Profiles</a>
+<a class="font-body-lg text-on-surface hover:pl-4 transition-all duration-300" href="#">Memberships</a>
+<a class="font-body-lg text-on-surface hover:pl-4 transition-all duration-300" href="#">Gift Cards</a>
+<a class="font-body-lg text-on-surface hover:pl-4 transition-all duration-300" href="#">Contact</a>
+</nav>
+</div>
+</div>
+<!-- Top App Bar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<button class="text-primary hover:opacity-70 transition-opacity scale-95 active:scale-90 transition-transform duration-300" onclick="toggleDrawer()">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-display-lg text-headline-md tracking-widest text-primary"><a href="{{DATA:SCREEN:SCREEN_2}}" class="">ÉLEVATE</a></h1>
+<div class="flex items-center gap-4">
+<button class="hidden md:block font-label-sm text-label-sm text-on-surface-variant hover:opacity-70 uppercase tracking-widest transition-opacity">Account</button>
+<button class="text-primary hover:opacity-70 transition-opacity scale-95 active:scale-90 transition-transform duration-300">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
+<!-- Hero Section -->
+<section class="mb-section-gap max-w-3xl">
+<h2 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-8 leading-tight">Masters of the Craft</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-12">Luxe Studio is a collective of visionary artisans. Each stylist brings a unique perspective, rooted in technical precision and inspired by the effortless beauty of the natural world.</p>
+</section>
+<!-- Stylist Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-y-24 md:gap-x-12 lg:gap-x-24">
+<!-- Stylist 01 -->
+<article class="stylist-card group animate-in" style="opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1);">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-fashion, editorial portrait of a master hair stylist with a sophisticated expression. The setting is a minimalist, luxury salon with warm, diffused natural lighting. The color palette features rich chocolate tones and creamy neutrals, creating an atmosphere of quiet luxury and professional excellence. The lighting highlights the stylist's technical poise and serene demeanor." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkZ8GI7aXSAX9qOnvJL-MCqntKHLlLmXKebUQUIMB4U64zCxY44JpmVQmmNEvBlmjrRMxEBPFRiUm6yOnoERTwJapU04-BEr2qxxmIOae3d0_fkvg43kQZg8OagaZji-dsZYlh5Syj1ASy_UoqRvKz80TBai2shBLPyZ6feHHKM-k-JyUKRQ5FjxsfgphllgYdEwlAccV9k1YifRcWj7MwMHfUAL6n6zeVAuQVCpjWgnu5au2qjZgCy4dysuuZjiihyC4Ph9kXPX3S">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="text-center md:text-left">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-4 block">Master Colorist</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Julian Thorne</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto md:mx-0">
+                        With 15 years in the industry, Julian specializes in seamless balayage and restorative tonal work. His philosophy balances architectural precision with effortless fluidity.
+                    </p>
+<a href="{{DATA:SCREEN:SCREEN_10}}" class="border border-outline-variant px-12 py-4 font-label-sm text-label-sm uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all duration-300 inline-block text-center">View Work</a>
+</div>
+</article>
+<!-- Stylist 02 -->
+<article class="stylist-card group animate-in" style="opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1);">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A professional portrait of a senior creative stylist in a high-end, contemporary studio space. The lighting is soft and golden, accentuating the clean minimalist lines of the surrounding furniture. The image has a warm, tactile feel with a focus on serene atmosphere and premium craftsmanship. The stylist appears approachable yet highly skilled, embodying the brand's commitment to excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjPJuSB2WNgN4bXEISc0C08IXvywcKhgQtNKlvyWlvUxCO9QMbr7LIe-QU80f9aaMaHZhieYMBAvoGwNm0VDDDKPa4GzL8c3ny42-gz_R4757I9CoYXZuuXAWJT7NZRgWua4FFziCzIFOGo5z3sagfFjWICWm07uKFFd5_b3CDxX_3N2_yImr8FWuevJBnl8_8lVxS9sWUoerDuA4Q0BWENv_9cbwmraKpfBPTV00_uZpL4u_pMl_zXUpmtjOD_vZaMKDh5rDBbRk1">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="text-center md:text-left">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-4 block">Creative Director</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Elena Rossi</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto md:mx-0">
+                        Elena’s work has been featured in international fashion editorials. Her expertise lies in high-precision cutting and structural styling that enhances natural texture.
+                    </p>
+<a href="{{DATA:SCREEN:SCREEN_10}}" class="border border-outline-variant px-12 py-4 font-label-sm text-label-sm uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all duration-300 inline-block text-center">View Work</a>
+</div>
+</article>
+<!-- Stylist 03 -->
+<article class="stylist-card group animate-in" style="opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1);">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Close-up artistic portrait of a master hair specialist in a minimalist setting. The mood is calm and focused, with soft directional lighting creating elegant shadows. The color palette is dominated by muted earth tones, taupe, and deep brown. The image captures a sense of meditative professionalism and high-fashion aesthetic, consistent with a luxury boutique salon identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_KR8NHptTK_7bFPXwS0Vv_Qeq6wx2-VMrsMpRy2C1rPtQ4STAWg2tnxaPtUDz_sOXSBiT2fwCIuVpvsuS2f-GOtPh1eUvXYNF4ScEhomMjHUN7IjC_CFQXh2VdlugculrkPsakDYa6yFIv0aX8N8mxmw4lD0CKXEdjjr1IQSrBtW9XVz7QFO3ndTzu7XXJD1yvp4lZvV_1JXVPaYVT8qalHlLYIaRGad6txAVxAG6d8GnQwKM4O1D0U0gQTxz2LRjqwhAQQbGljr2">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="text-center md:text-left">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-4 block">Texture Specialist</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Sasha Vane</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto md:mx-0">
+                        A pioneer in curl architecture, Sasha has dedicated 12 years to perfecting the art of textured hair. She focuses on health-first transformations and organic volume.
+                    </p>
+<a href="{{DATA:SCREEN:SCREEN_10}}" class="border border-outline-variant px-12 py-4 font-label-sm text-label-sm uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all duration-300 inline-block text-center">View Work</a>
+</div>
+</article>
+<!-- Stylist 04 -->
+<article class="stylist-card group animate-in" style="opacity: 0; transform: translateY(20px); transition: 0.8s cubic-bezier(0.22, 1, 0.36, 1);">
+<div class="relative overflow-hidden mb-8 aspect-[4/5] bg-surface-container">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Editorial style portrait of a male stylist with an air of sophisticated confidence. He is positioned in a sun-drenched, airy boutique space characterized by high ceilings and minimalist decor. The lighting is high-key and bright, creating a clean light-mode aesthetic. The composition uses generous negative space and a palette of warm creams and deep browns to signify luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYOe8tA3-yEQH9IuUZJlUT88IR-DR0yKgQpwSAr7UqS-_sMMBTeIYYIR587k5lWzmz9XnaWGt32Rf1MAVxmzXf96Y1NNNSBKhs8tQiqGQAiH8dpxp_mp7UXSxvDiBozl7dqPoI0rn8_5zF3-tCk_ls2IhEJxYWlxDWVDoxCUBdwHRX1xySm5pNInC-8ZTb6SBRlV9gfAkTcU1Ub8gPR_yOfRdu38Bbmfzsgt0tzZAFn_WsvHwx2wfvN43ZKndgXCtL_RXQXJqL2r2E">
+<div class="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+</div>
+<div class="text-center md:text-left">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-[0.2em] mb-4 block">Grooming Master</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Marcus Thorne</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-md mx-auto md:mx-0">
+                        Marcus combines traditional techniques with modern aesthetics. His 10-year journey across London and Paris has refined his eye for bespoke grooming and classic tailoring.
+                    </p>
+<a href="{{DATA:SCREEN:SCREEN_10}}" class="border border-outline-variant px-12 py-4 font-label-sm text-label-sm uppercase tracking-widest text-primary hover:bg-primary hover:text-white transition-all duration-300 inline-block text-center">View Work</a>
+</div>
+</article>
+</div>
+</main>
+<!-- Appointment Footer Section -->
+<section class="bg-surface-container py-24 mb-20 text-center">
+<h2 class="font-display-lg text-headline-lg text-primary mb-8 px-4">Ready for your transformation?</h2>
+<a href="{{DATA:SCREEN:SCREEN_7}}" class="bg-primary-container text-surface px-12 py-6 font-label-sm text-label-sm uppercase tracking-[0.2em] hover:opacity-90 transition-opacity scale-95 active:scale-90 transition-transform duration-300 inline-block">Book an Appointment</a>
+</section>
+<!-- Bottom Nav (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-surface/90 backdrop-blur-lg border-t border-outline-variant/30 flex justify-around items-center px-4 pb-safe z-50 rounded-t-full shadow-[0_-4px_20px_0_rgba(45,27,20,0.05)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_2}}">
+<span class="material-symbols-outlined mb-1" data-icon="home_pin">home_pin</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Studio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined mb-1" data-icon="content_cut">content_cut</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold transform -translate-y-1 transition-all duration-300" href="{{DATA:SCREEN:SCREEN_10}}">
+<span class="material-symbols-outlined mb-1" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Book</span>
+</a>
+</nav>
+<script>
+        function toggleDrawer() {
+            const drawer = document.getElementById('drawer');
+            const drawerContent = drawer.querySelector('div');
+            
+            if (drawer.classList.contains('opacity-0')) {
+                drawer.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.add('opacity-100');
+                drawerContent.classList.remove('translate-x-full');
+            } else {
+                drawer.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('opacity-100');
+                drawerContent.classList.add('translate-x-full');
+            }
+        }
+
+        // Close drawer on click outside
+        document.getElementById('drawer').addEventListener('click', function(e) {
+            if (e.target === this) toggleDrawer();
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stylist-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'all 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+            observer.observe(card);
+        });
+
+        // Simple class add for animation
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .animate-in {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+
+
+
+
+</body></html>

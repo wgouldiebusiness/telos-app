@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
 import TextScanner from '@/components/motion/TextScanner'
+import WebsiteDemo from '@/components/demos/WebsiteDemo'
+import type { DemoPage } from '@/components/demos/WebsiteDemo'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -10,74 +12,59 @@ export const metadata: Metadata = {
     'We design and build websites for service businesses. Fast, focused, and wired into your AI agents from day one.',
 }
 
-interface ShowcaseItem {
-  title: string
+const BASE = '/demos'
+
+interface SiteDemo {
+  name:     string
   category: string
-  desc: string
-  gradient: string
-  accent: string
-  imageSrc: string
-  demoHref?: string
+  url:      string
+  pages:    DemoPage[]
 }
 
-const showcaseItems: ShowcaseItem[] = [
+const siteDemos: SiteDemo[] = [
   {
-    title: 'Rustic Pizza Co.',
-    category: 'Restaurant',
-    desc: 'Warm, inviting sites built around your menu, story, and table bookings.',
-    gradient: 'linear-gradient(145deg, #1a0a04 0%, #4a1a06 45%, #8b3a10 100%)',
-    accent: '#c45a1a',
-    imageSrc: '',
-    demoHref: '/demos/pizza/index.html',
-  },
-  {
-    title: 'Artisanal Coffee Co.',
+    name:     'Artisanal Coffee Co.',
     category: 'Coffee Shop',
-    desc: 'Warm, editorial sites with menus, story pages, and a tone that matches your craft.',
-    gradient: 'linear-gradient(145deg, #2c1b18 0%, #4a2a1e 50%, #bf5a36 100%)',
-    accent: '#bf5a36',
-    imageSrc: '',
-    demoHref: '/demos/coffee/index.html',
+    url:      'coffeeco.telos.demo',
+    pages: [
+      { label: 'Home',    screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/screen.png`,     href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/code.html` },
+      { label: 'Menu',    screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/menu_coffee_co/screen.png`,         href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/menu_coffee_co/code.html` },
+      { label: 'Story',   screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/our_story_coffee_co/screen.png`,    href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/our_story_coffee_co/code.html` },
+      { label: 'Find Us', screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/find_us_coffee_co/screen.png`,      href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/find_us_coffee_co/code.html` },
+    ],
   },
   {
-    title: 'The Barber Collective',
-    category: 'Grooming',
-    desc: 'Sharp, minimal design focused on your portfolio and booking flow.',
-    gradient: 'linear-gradient(145deg, #06060e 0%, #12122a 50%, #1e1e3e 100%)',
-    accent: '#b8965a',
-    imageSrc: '',
+    name:     'Heritage Hearth Pizza',
+    category: 'Restaurant',
+    url:      'heritagehearth.telos.demo',
+    pages: [
+      { label: 'Home',      screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/screen.png`,      href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/code.html` },
+      { label: 'Locations', screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._locations_1/screen.png`, href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._locations_1/code.html` },
+      { label: 'Menu',      screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._menu_1/screen.png`,      href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._menu_1/code.html` },
+      { label: 'Story',     screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._our_story_1/screen.png`, href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._our_story_1/code.html` },
+    ],
   },
   {
-    title: 'Masters Plumbing',
-    category: 'Trades',
-    desc: 'Professional sites that get you found locally and turn visits into enquiries.',
-    gradient: 'linear-gradient(145deg, #020e1a 0%, #062840 50%, #0a3d60 100%)',
-    accent: '#2a8dd9',
-    imageSrc: '',
+    name:     'Aura Kin Salon',
+    category: 'Luxury Salon',
+    url:      'aurakin.telos.demo',
+    pages: [
+      { label: 'Home',      screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/screen.png`,      href: `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/code.html` },
+      { label: 'Stylists',  screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/our_stylists/screen.png`,       href: `${BASE}/stitch-salon/stitch_aura_kin_logo/our_stylists/code.html` },
+      { label: 'Portfolio', screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/portfolio/screen.png`,          href: `${BASE}/stitch-salon/stitch_aura_kin_logo/portfolio/code.html` },
+      { label: 'Services',  screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/services_menu/screen.png`,      href: `${BASE}/stitch-salon/stitch_aura_kin_logo/services_menu/code.html` },
+    ],
   },
   {
-    title: 'Bloom Hair Studio',
-    category: 'Salon',
-    desc: 'Portfolio-led sites that showcase your work and keep your diary full.',
-    gradient: 'linear-gradient(145deg, #140a0e 0%, #3a1020 50%, #602840 100%)',
-    accent: '#d4789a',
-    imageSrc: '',
-  },
-  {
-    title: 'Peak Physio Clinic',
-    category: 'Health & Clinic',
-    desc: 'Clean, trusted sites that convert new patient enquiries around the clock.',
-    gradient: 'linear-gradient(145deg, #031414 0%, #082828 50%, #0c3c3c 100%)',
-    accent: '#2ab8a0',
-    imageSrc: '',
-  },
-  {
-    title: 'Force Fitness',
-    category: 'Gym & Fitness',
-    desc: 'High-energy sites built around memberships, classes, and sign-ups.',
-    gradient: 'linear-gradient(145deg, #0e0404 0%, #2a0a0a 50%, #420e0e 100%)',
-    accent: '#d43030',
-    imageSrc: '',
+    name:     'Lavisha Professional Services',
+    category: 'Service Business',
+    url:      'lavisha.telos.demo',
+    pages: [
+      { label: 'Home',     screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/screen.png`,       href: `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/code.html` },
+      { label: 'Services', screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/our_services_1/screen.png`,       href: `${BASE}/stitch-services/stitch_transparent_service_hub/our_services_1/code.html` },
+      { label: 'Quote',    screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/request_a_quote_1/screen.png`,    href: `${BASE}/stitch-services/stitch_transparent_service_hub/request_a_quote_1/code.html` },
+      { label: 'About',    screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/trust_transparency_1/screen.png`, href: `${BASE}/stitch-services/stitch_transparent_service_hub/trust_transparency_1/code.html` },
+    ],
   },
 ]
 
@@ -111,7 +98,7 @@ export default function WebsitesHomePage() {
           </Reveal>
           <Reveal delay={0.3} className={styles.heroBtns}>
             <Link href="/contact" className={styles.btnPri}>Book a free call</Link>
-            <Link href="/websites/what-we-build" className={styles.btnSec}>See our work</Link>
+            <Link href="/websites/what-we-build" className={styles.btnSec}>What we build</Link>
           </Reveal>
         </div>
         <div className={styles.heroFade} />
@@ -136,83 +123,46 @@ export default function WebsitesHomePage() {
         </div>
       </section>
 
-      {/* ── SHOWCASE GRID ── */}
+      {/* ── DEMO SHOWCASE ── mirrors Telos AI homepage chat demos */}
       <section className={styles.showcase}>
+        <div className={styles.showcaseFadeTop} />
+        <div className={styles.showcaseFadeBot} />
         <div className="container">
-          <Reveal>
-            <span className="label">Examples</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.showcaseH2}>
-              Built for every kind of service business.
-            </h2>
-          </Reveal>
-          <Reveal delay={0.14}>
-            <p className={styles.showcaseSub}>
-              Below are examples of the styles and sectors we work in.
-              Real screenshots coming soon — for now, the tone of each build.
-            </p>
-          </Reveal>
+          <div className={styles.showcaseHead}>
+            <Reveal>
+              <span className={`label ${styles.showcaseLabel}`}>See it in action</span>
+            </Reveal>
+            <TextScanner dark className={styles.showcaseH2}>
+              Real examples of what we build.
+            </TextScanner>
+            <Reveal delay={0.2}>
+              <p className={styles.showcaseSub}>
+                Click any page tab to explore. Every site is fully custom — these are live demos.
+              </p>
+            </Reveal>
+          </div>
 
-          <div className={styles.grid}>
-            {showcaseItems.map((item, i) => (
-              <Reveal key={item.title} delay={Math.floor(i / 2) * 0.08}>
-                <div className={styles.card}>
-                  <div
-                    className={styles.cardPreview}
-                    style={{ background: item.gradient }}
-                  >
-                    {item.imageSrc ? (
-                      <img src={item.imageSrc} alt={item.title} className={styles.cardImg} />
-                    ) : (
-                      <div className={styles.cardMock}>
-                        <div className={styles.mockBar}>
-                          <span className={styles.mockDot} />
-                          <span className={styles.mockDot} />
-                          <span className={styles.mockDot} />
-                        </div>
-                        <div className={styles.mockHero} style={{ background: `${item.accent}22` }}>
-                          <div className={styles.mockTitle} style={{ background: item.accent }} />
-                          <div className={styles.mockSub} />
-                          <div className={styles.mockBtn} style={{ background: item.accent }} />
-                        </div>
-                        <div className={styles.mockBody}>
-                          <div className={styles.mockBlock} />
-                          <div className={styles.mockBlock} style={{ width: '70%' }} />
-                          <div className={styles.mockBlock} style={{ width: '85%' }} />
-                        </div>
-                      </div>
-                    )}
-                    <span className={styles.cardCategory} style={{ color: item.accent }}>
-                      {item.category}
-                    </span>
-                  </div>
-                  <div className={styles.cardBody}>
-                    <h3 className={styles.cardTitle}>{item.title}</h3>
-                    <p className={styles.cardDesc}>{item.desc}</p>
-                    {item.demoHref && (
-                      <a
-                        href={item.demoHref}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={styles.cardDemo}
-                      >
-                        View demo →
-                      </a>
-                    )}
-                  </div>
-                </div>
+          <div className={styles.demoGrid}>
+            {siteDemos.map((demo, i) => (
+              <Reveal key={demo.name} delay={i * 0.08}>
+                <WebsiteDemo
+                  name={demo.name}
+                  category={demo.category}
+                  url={demo.url}
+                  pages={demo.pages}
+                />
               </Reveal>
             ))}
           </div>
 
           <Reveal delay={0.3}>
-            <div className={styles.showcaseCta}>
-              <p className={styles.showcaseCtaText}>
-                Every site is custom. These are the sectors we work in most.
+            <div className={styles.showcaseBand}>
+              <p className={styles.showcaseBandText}>
+                These are real demos of what we build for service businesses.
+                Every site is designed from scratch — never a template.
               </p>
-              <Link href="/websites/what-we-build" className={styles.btnPri}>
-                See what is included
+              <Link href="/contact" className={styles.btnPriLight}>
+                Get your own website
               </Link>
             </div>
           </Reveal>
