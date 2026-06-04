@@ -18,7 +18,7 @@ export const GREETING =
   'Hi, I am Telos. Ask me anything about what we build, our pricing, how it works, or how we could help your business.'
 
 const FALLBACK =
-  `That is a great question, and the best way to get a proper answer for your business is a quick chat. You can book a free 15 minute meeting here: ${BOOKING_URL} — no pressure, no pitch.`
+  `That is a great question, and the best way to get a proper answer for your business is a quick chat. You can book a free 15 minute meeting here: ${BOOKING_URL}. No pressure, no pitch.`
 
 interface Faq {
   keywords: string[]

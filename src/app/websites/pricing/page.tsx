@@ -47,7 +47,7 @@ const tiers = [
     price: 'Bespoke',
     period: '',
     build: 'Scoped to your requirements',
-    desc: 'Full custom build for businesses with complex needs — multiple service areas, booking systems, or AI integration.',
+    desc: 'Full custom build for businesses with complex needs: multiple service areas, booking systems, or AI integration.',
     features: [
       'Unlimited pages and features',
       'Full Telos AI agent integration',
@@ -63,11 +63,11 @@ const tiers = [
 const faqs = [
   {
     q: 'What does the build fee cover?',
-    a: 'Design, development, testing, and launch. You see and approve the design before we write a line of code. The scope and cost are agreed before we start — no surprises.',
+    a: 'Design, development, testing, and launch. You see and approve the design before we write a line of code. The scope and cost are agreed before we start. No surprises.',
   },
   {
     q: 'Is there a monthly fee?',
-    a: 'Hosting and maintenance is a separate monthly fee, starting from £50. This covers your domain and hosting, security updates, and any small content changes. It is optional — you can host elsewhere if you prefer.',
+    a: 'Hosting and maintenance is a separate monthly fee, starting from £50. This covers your domain and hosting, security updates, and any small content changes. It is optional. You can host elsewhere if you prefer.',
   },
   {
     q: 'How long does it take?',
@@ -75,7 +75,7 @@ const faqs = [
   },
   {
     q: 'Can you connect it to my AI agents?',
-    a: 'Yes. Every Telos Website can be wired directly into your Telos AI system — receptionist, chat assistant, lead follow-up, and more. This is included in Business and Custom sites; we can add it to a Starter site too.',
+    a: 'Yes. Every Telos Website can be wired directly into your Telos AI system: receptionist, chat assistant, lead follow-up, and more. This is included in Business and Custom sites and can be added to a Starter site too.',
   },
   {
     q: 'Do I own the site?',

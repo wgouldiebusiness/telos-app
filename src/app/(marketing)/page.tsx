@@ -94,7 +94,7 @@ export default function HomePage() {
           </TextScanner>
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
-              Most AI tools are generalised — not built for your business. We are a
+              Most AI tools are generalised. They are not built for your business. We are a
               technical team that creates individual, purpose-built agents tailored
               specifically to how your business operates.
             </p>

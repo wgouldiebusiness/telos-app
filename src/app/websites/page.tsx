@@ -4,6 +4,8 @@ import Reveal from '@/components/motion/RevealOnScroll'
 import TextScanner from '@/components/motion/TextScanner'
 import WebsiteDemo from '@/components/demos/WebsiteDemo'
 import type { DemoPage } from '@/components/demos/WebsiteDemo'
+
+
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
@@ -27,10 +29,10 @@ const siteDemos: SiteDemo[] = [
     category: 'Coffee Shop',
     url:      'coffeeco.telos.demo',
     pages: [
-      { label: 'Home',    screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/screen.png`,     href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/code.html` },
-      { label: 'Menu',    screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/menu_coffee_co/screen.png`,         href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/menu_coffee_co/code.html` },
-      { label: 'Story',   screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/our_story_coffee_co/screen.png`,    href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/our_story_coffee_co/code.html` },
-      { label: 'Find Us', screenshot: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/find_us_coffee_co/screen.png`,      href: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/find_us_coffee_co/code.html` },
+      { label: 'Home',    path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/code.html` },
+      { label: 'Menu',    path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/menu_coffee_co/code.html` },
+      { label: 'Story',   path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/our_story_coffee_co/code.html` },
+      { label: 'Find Us', path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/find_us_coffee_co/code.html` },
     ],
   },
   {
@@ -38,10 +40,10 @@ const siteDemos: SiteDemo[] = [
     category: 'Restaurant',
     url:      'heritagehearth.telos.demo',
     pages: [
-      { label: 'Home',      screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/screen.png`,      href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/code.html` },
-      { label: 'Locations', screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._locations_1/screen.png`, href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._locations_1/code.html` },
-      { label: 'Menu',      screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._menu_1/screen.png`,      href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._menu_1/code.html` },
-      { label: 'Story',     screenshot: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._our_story_1/screen.png`, href: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._our_story_1/code.html` },
+      { label: 'Home',      path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/code.html` },
+      { label: 'Locations', path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._locations_1/code.html` },
+      { label: 'Menu',      path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._menu_1/code.html` },
+      { label: 'Story',     path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._our_story_1/code.html` },
     ],
   },
   {
@@ -49,10 +51,10 @@ const siteDemos: SiteDemo[] = [
     category: 'Luxury Salon',
     url:      'aurakin.telos.demo',
     pages: [
-      { label: 'Home',      screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/screen.png`,      href: `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/code.html` },
-      { label: 'Stylists',  screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/our_stylists/screen.png`,       href: `${BASE}/stitch-salon/stitch_aura_kin_logo/our_stylists/code.html` },
-      { label: 'Portfolio', screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/portfolio/screen.png`,          href: `${BASE}/stitch-salon/stitch_aura_kin_logo/portfolio/code.html` },
-      { label: 'Services',  screenshot: `${BASE}/stitch-salon/stitch_aura_kin_logo/services_menu/screen.png`,      href: `${BASE}/stitch-salon/stitch_aura_kin_logo/services_menu/code.html` },
+      { label: 'Home',      path: `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/code.html` },
+      { label: 'Stylists',  path: `${BASE}/stitch-salon/stitch_aura_kin_logo/our_stylists/code.html` },
+      { label: 'Portfolio', path: `${BASE}/stitch-salon/stitch_aura_kin_logo/portfolio/code.html` },
+      { label: 'Services',  path: `${BASE}/stitch-salon/stitch_aura_kin_logo/services_menu/code.html` },
     ],
   },
   {
@@ -60,10 +62,10 @@ const siteDemos: SiteDemo[] = [
     category: 'Service Business',
     url:      'lavisha.telos.demo',
     pages: [
-      { label: 'Home',     screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/screen.png`,       href: `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/code.html` },
-      { label: 'Services', screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/our_services_1/screen.png`,       href: `${BASE}/stitch-services/stitch_transparent_service_hub/our_services_1/code.html` },
-      { label: 'Quote',    screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/request_a_quote_1/screen.png`,    href: `${BASE}/stitch-services/stitch_transparent_service_hub/request_a_quote_1/code.html` },
-      { label: 'About',    screenshot: `${BASE}/stitch-services/stitch_transparent_service_hub/trust_transparency_1/screen.png`, href: `${BASE}/stitch-services/stitch_transparent_service_hub/trust_transparency_1/code.html` },
+      { label: 'Home',     path: `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/code.html` },
+      { label: 'Services', path: `${BASE}/stitch-services/stitch_transparent_service_hub/our_services_1/code.html` },
+      { label: 'Quote',    path: `${BASE}/stitch-services/stitch_transparent_service_hub/request_a_quote_1/code.html` },
+      { label: 'About',    path: `${BASE}/stitch-services/stitch_transparent_service_hub/trust_transparency_1/code.html` },
     ],
   },
 ]
@@ -92,7 +94,7 @@ export default function WebsitesHomePage() {
           <Reveal delay={0.2}>
             <p className={styles.heroSub}>
               Fast, focused, and built around exactly how your business works.
-              Every site is designed to convert visitors — and can be wired
+              Every site is designed to convert visitors and can be wired
               directly into your Telos AI agents from day one.
             </p>
           </Reveal>
@@ -137,7 +139,7 @@ export default function WebsitesHomePage() {
             </TextScanner>
             <Reveal delay={0.2}>
               <p className={styles.showcaseSub}>
-                Click any page tab to explore. Every site is fully custom — these are live demos.
+                Click any page tab to explore. Every site is fully custom. These are live demos.
               </p>
             </Reveal>
           </div>
@@ -159,7 +161,7 @@ export default function WebsitesHomePage() {
             <div className={styles.showcaseBand}>
               <p className={styles.showcaseBandText}>
                 These are real demos of what we build for service businesses.
-                Every site is designed from scratch — never a template.
+                Every site is designed from scratch. Never a template.
               </p>
               <Link href="/contact" className={styles.btnPriLight}>
                 Get your own website
@@ -186,7 +188,7 @@ export default function WebsitesHomePage() {
                 <p className={styles.aiBandSub}>
                   Every Telos Website can connect directly to your AI receptionist,
                   lead follow-up pipeline, chat assistant, and more. Your site does
-                  not just look good — it works alongside your full AI system.
+                  not just look good. It works alongside your full AI system.
                 </p>
               </Reveal>
             </div>

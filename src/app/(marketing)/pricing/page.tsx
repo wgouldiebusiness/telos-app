@@ -98,7 +98,7 @@ export default function PricingPage() {
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
               A fixed monthly fee with no hidden costs. Every plan is designed to
-              reduce the admin burden on your business — freeing up skilled hours,
+              reduce the admin burden on your business, freeing up skilled hours,
               cutting the cost of manual work, and giving you time back to focus
               on what you actually do.
             </p>

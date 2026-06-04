@@ -69,7 +69,7 @@ const websiteTypes = [
   {
     title: 'Anything else',
     icon: '🌐',
-    desc: 'If you run a service business and need a site that converts — not just one that looks the part — we can build it.',
+    desc: 'If you run a service business and need a site that converts, not just one that looks the part, we can build it.',
     includes: ['Custom scope on your call', 'Any service business type', 'Any size or complexity', 'With or without AI integration', 'Ongoing management available'],
     gradient: 'linear-gradient(145deg, #060610 0%, #0e0e22 50%, #161630 100%)',
     accent: '#7868e6',
@@ -81,7 +81,7 @@ const included = [
   { n: '02', title: 'Mobile first',        desc: 'Built to look and perform perfectly on every screen, from phone to desktop.' },
   { n: '03', title: 'Fast loading',        desc: 'Optimised for speed from day one. Slow sites lose clients before the page loads.' },
   { n: '04', title: 'SEO foundations',     desc: 'Clean code, proper metadata, and local SEO structure built in from the start.' },
-  { n: '05', title: 'AI ready',            desc: 'Designed to connect directly into Telos AI agents — receptionist, chat, and more.' },
+  { n: '05', title: 'AI ready',            desc: 'Designed to connect directly into Telos AI agents: receptionist, chat, and more.' },
   { n: '06', title: 'Managed and updated', desc: 'We handle hosting, security, and updates. You focus on running your business.' },
 ]
 

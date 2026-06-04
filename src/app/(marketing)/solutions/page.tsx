@@ -33,7 +33,7 @@ export default function SolutionsPage() {
           </Reveal>
           <Reveal delay={0.18}>
             <p className={styles.heroSub}>
-              Everything we build is purposely built around your business — not repurposed
+              Everything we build is purposely built around your business, not repurposed
               from a generic tool.
             </p>
           </Reveal>
