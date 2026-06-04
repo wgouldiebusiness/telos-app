@@ -15,7 +15,7 @@ interface Props {
 }
 
 const IFRAME_W = 390
-const IFRAME_H = 3600
+const IFRAME_H = 4700
 
 function dims(pw: number) {
   const scale     = (pw - 20) / IFRAME_W   // 20 = 2×10px horizontal bezel padding
