@@ -104,19 +104,6 @@ export default function HomePage() {
 
       {/* ── WHAT WE BUILD ── orbital — sits above the demos */}
       <section className={styles.builds}>
-        <div className="container">
-          <Reveal>
-            <span className="label">What we build</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.buildsH2}>We build custom AI agents.</h2>
-          </Reveal>
-          <Reveal delay={0.14}>
-            <p className={styles.buildsSub}>
-              Every build is coded for your business. Click any agent to see what it does.
-            </p>
-          </Reveal>
-        </div>
         <OrbitalServices />
         <div className="container">
           <Reveal delay={0.2}>
