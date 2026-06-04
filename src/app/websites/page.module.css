@@ -154,6 +154,11 @@
   transform: translateY(-2px);
 }
 
+/* ── SHOWCASE BAND (after phone showcase) ── */
+.showcaseBandSection {
+  padding: 0 0 clamp(60px, 8vw, 100px);
+}
+
 /* ── AI BAND ── */
 .aiBand {
   padding: clamp(70px, 9vw, 110px) 0;

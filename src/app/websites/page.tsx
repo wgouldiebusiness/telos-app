@@ -2,9 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
 import TextScanner from '@/components/motion/TextScanner'
-import WebsiteDemo from '@/components/demos/WebsiteDemo'
-import type { DemoPage } from '@/components/demos/WebsiteDemo'
-
+import PhoneShowcase from '@/components/demos/PhoneShowcase'
+import type { PhoneDemo } from '@/components/demos/PhoneShowcase'
 
 import styles from './page.module.css'
 
@@ -16,57 +15,26 @@ export const metadata: Metadata = {
 
 const BASE = '/demos'
 
-interface SiteDemo {
-  name:     string
-  category: string
-  url:      string
-  pages:    DemoPage[]
-}
-
-const siteDemos: SiteDemo[] = [
+const phoneShowcaseDemos: PhoneDemo[] = [
   {
     name:     'Artisanal Coffee Co.',
     category: 'Coffee Shop',
-    url:      'coffeeco.telos.demo',
-    pages: [
-      { label: 'Home',    path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/code.html` },
-      { label: 'Menu',    path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/menu_coffee_co/code.html` },
-      { label: 'Story',   path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/our_story_coffee_co/code.html` },
-      { label: 'Find Us', path: `${BASE}/stitch-coffee/stitch_coffee_co_website_design/find_us_coffee_co/code.html` },
-    ],
+    path:     `${BASE}/stitch-coffee/stitch_coffee_co_website_design/home_coffee_co._1/code.html`,
   },
   {
     name:     'Heritage Hearth Pizza',
     category: 'Restaurant',
-    url:      'heritagehearth.telos.demo',
-    pages: [
-      { label: 'Home',      path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/code.html` },
-      { label: 'Locations', path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._locations_1/code.html` },
-      { label: 'Menu',      path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._menu_1/code.html` },
-      { label: 'Story',     path: `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._our_story_1/code.html` },
-    ],
+    path:     `${BASE}/stitch-pizza/stitch_modern_authentic_pizza_co/pizza_co._home_1/code.html`,
   },
   {
     name:     'Aura Kin Salon',
     category: 'Luxury Salon',
-    url:      'aurakin.telos.demo',
-    pages: [
-      { label: 'Home',      path: `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/code.html` },
-      { label: 'Stylists',  path: `${BASE}/stitch-salon/stitch_aura_kin_logo/our_stylists/code.html` },
-      { label: 'Portfolio', path: `${BASE}/stitch-salon/stitch_aura_kin_logo/portfolio/code.html` },
-      { label: 'Services',  path: `${BASE}/stitch-salon/stitch_aura_kin_logo/services_menu/code.html` },
-    ],
+    path:     `${BASE}/stitch-salon/stitch_aura_kin_logo/aura_kin_home/code.html`,
   },
   {
     name:     'Lavisha Professional Services',
     category: 'Service Business',
-    url:      'lavisha.telos.demo',
-    pages: [
-      { label: 'Home',     path: `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/code.html` },
-      { label: 'Services', path: `${BASE}/stitch-services/stitch_transparent_service_hub/our_services_1/code.html` },
-      { label: 'Quote',    path: `${BASE}/stitch-services/stitch_transparent_service_hub/request_a_quote_1/code.html` },
-      { label: 'About',    path: `${BASE}/stitch-services/stitch_transparent_service_hub/trust_transparency_1/code.html` },
-    ],
+    path:     `${BASE}/stitch-services/stitch_transparent_service_hub/home_lavisha_1/code.html`,
   },
 ]
 
@@ -125,39 +93,13 @@ export default function WebsitesHomePage() {
         </div>
       </section>
 
-      {/* ── DEMO SHOWCASE ── mirrors Telos AI homepage chat demos */}
-      <section className={styles.showcase}>
-        <div className={styles.showcaseFadeTop} />
-        <div className={styles.showcaseFadeBot} />
+      {/* ── DEMO SHOWCASE ── iPhone portrait scroll showcase */}
+      <PhoneShowcase demos={phoneShowcaseDemos} />
+
+      {/* ── SHOWCASE BAND ── */}
+      <section className={styles.showcaseBandSection}>
         <div className="container">
-          <div className={styles.showcaseHead}>
-            <Reveal>
-              <span className={`label ${styles.showcaseLabel}`}>See it in action</span>
-            </Reveal>
-            <TextScanner dark className={styles.showcaseH2}>
-              Real examples of what we build.
-            </TextScanner>
-            <Reveal delay={0.2}>
-              <p className={styles.showcaseSub}>
-                Click any page tab to explore. Every site is fully custom. These are live demos.
-              </p>
-            </Reveal>
-          </div>
-
-          <div className={styles.demoGrid}>
-            {siteDemos.map((demo, i) => (
-              <Reveal key={demo.name} delay={i * 0.08}>
-                <WebsiteDemo
-                  name={demo.name}
-                  category={demo.category}
-                  url={demo.url}
-                  pages={demo.pages}
-                />
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={0.3}>
+          <Reveal>
             <div className={styles.showcaseBand}>
               <p className={styles.showcaseBandText}>
                 These are real demos of what we build for service businesses.
