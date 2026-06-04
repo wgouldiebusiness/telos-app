@@ -83,7 +83,7 @@ export default function HomePage() {
         <div className={styles.heroFade} />
       </section>
 
-      {/* ── STATEMENT + PROBLEM ── combined */}
+      {/* ── STATEMENT ── */}
       <section className={styles.statement}>
         <div className="container">
           <Reveal>
@@ -99,20 +99,37 @@ export default function HomePage() {
               specifically to how your business operates.
             </p>
           </Reveal>
-          <div className={styles.problemGrid}>
-            {[
-              { word: 'Missed Calls',           body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.' },
-              { word: 'Lost Time',              body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.' },
-              { word: 'Leads Slipping Through', body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.' },
-            ].map((p, i) => (
-              <Reveal key={p.word} delay={i * 0.1}>
-                <div className={styles.problemItem}>
-                  <div className={styles.problemWord}>{p.word}</div>
-                  <p className={styles.problemBody}>{p.body}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT WE BUILD ── orbital — sits above the demos */}
+      <section className={styles.builds}>
+        <div className="container">
+          <Reveal>
+            <span className="label">What we build</span>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <h2 className={styles.buildsH2}>We build custom AI agents.</h2>
+          </Reveal>
+          <Reveal delay={0.14}>
+            <p className={styles.buildsSub}>
+              Every build is coded for your business. Click any agent to see what it does.
+            </p>
+          </Reveal>
+        </div>
+        <OrbitalServices />
+        <div className="container">
+          <Reveal delay={0.2}>
+            <div className={styles.buildsCallout}>
+              <p className={styles.buildsCalloutText}>
+                Whatever else your business needs, we can build it. Custom code is at
+                the core of everything we do.
+              </p>
+              <Link href="/solutions" className={styles.buildsCalloutLink}>
+                See all examples
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 
@@ -170,34 +187,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── WHAT WE BUILD ── orbital */}
-      <section className={styles.builds}>
+      {/* ── PROBLEM ── moved below demos */}
+      <section className={styles.problem}>
         <div className="container">
-          <Reveal>
-            <span className="label">What we build</span>
-          </Reveal>
-          <Reveal delay={0.08}>
-            <h2 className={styles.buildsH2}>We build custom AI agents.</h2>
-          </Reveal>
-          <Reveal delay={0.14}>
-            <p className={styles.buildsSub}>
-              Every build is coded for your business. Click any agent to see what it does.
-            </p>
-          </Reveal>
-        </div>
-        <OrbitalServices />
-        <div className="container">
-          <Reveal delay={0.2}>
-            <div className={styles.buildsCallout}>
-              <p className={styles.buildsCalloutText}>
-                Whatever else your business needs, we can build it. Custom code is at
-                the core of everything we do.
-              </p>
-              <Link href="/solutions" className={styles.buildsCalloutLink}>
-                See all examples
-              </Link>
-            </div>
-          </Reveal>
+          <div className={styles.problemGrid}>
+            {[
+              { word: 'Missed Calls',           body: 'A missed call or slow reply does not just cost one job. It costs every referral that client would have sent.' },
+              { word: 'Lost Time',              body: 'Skilled hours spent on scheduling, chasing, and reminders are money paid to do work a system could do for pennies.' },
+              { word: 'Leads Slipping Through', body: 'Every lead without an immediate, intelligent response is a lead your competitors are closing instead.' },
+            ].map((p, i) => (
+              <Reveal key={p.word} delay={i * 0.1}>
+                <div className={styles.problemItem}>
+                  <div className={styles.problemWord}>{p.word}</div>
+                  <p className={styles.problemBody}>{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
