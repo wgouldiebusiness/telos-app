@@ -219,6 +219,48 @@
   margin: 0;
 }
 
+/* ── CATEGORY BLOCKS ── */
+.categoryBlock {
+  margin-bottom: clamp(80px, 10vw, 130px);
+}
+
+.categoryHeader {
+  max-width: 680px;
+  margin-bottom: 48px;
+}
+
+/* Card variant — backend (subtle green tint) */
+.cardAlt {
+  border-color: rgba(94,190,157,.15);
+}
+
+.cardAlt::before {
+  background: linear-gradient(90deg, var(--green), rgba(94,190,157,.6));
+}
+
+.cardAlt:hover {
+  box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 0 1px rgba(94,190,157,.25);
+  border-color: rgba(94,190,157,.3);
+}
+
+.cardAlt .cardNum { color: var(--green); }
+
+/* Card variant — marketing (gold tint) */
+.cardGreen {
+  border-color: rgba(200,168,88,.15);
+}
+
+.cardGreen::before {
+  background: linear-gradient(90deg, var(--gold), rgba(200,168,88,.6));
+}
+
+.cardGreen:hover {
+  box-shadow: 0 20px 50px rgba(0,0,0,.3), 0 0 0 1px rgba(200,168,88,.25);
+  border-color: rgba(200,168,88,.3);
+}
+
+.cardGreen .cardNum { color: var(--gold); }
+
 /* Tailor CTA — black */
 .tailorBand {
   background: transparent;
