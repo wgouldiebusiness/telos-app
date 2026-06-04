@@ -67,7 +67,7 @@ const faqs = [
   },
   {
     q: 'Is there a monthly fee?',
-    a: 'Hosting and maintenance is a separate monthly fee, starting from £50. This covers your domain and hosting, security updates, and any small content changes. It is optional. You can host elsewhere if you prefer.',
+    a: 'Yes. There is a £50/month ongoing plan that covers hosting, domain management, security updates, performance monitoring, SSL renewal, monthly backups, and small content changes. It is optional — you can host elsewhere if you prefer.',
   },
   {
     q: 'How long does it take?',
@@ -134,6 +134,27 @@ export default function WebsitesPricingPage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.25}>
+            <div className={styles.monthlyBand}>
+              <div className={styles.monthlyLeft}>
+                <span className={styles.monthlyLabel}>Ongoing plan</span>
+                <div className={styles.monthlyPrice}>£50<span className={styles.monthlyPer}>/month</span></div>
+                <p className={styles.monthlyDesc}>
+                  Every site we build comes with an optional ongoing plan covering everything
+                  it takes to keep your site fast, secure, and running.
+                </p>
+              </div>
+              <ul className={styles.monthlyFeatures}>
+                <li><span className={styles.monthlyTick}>✓</span> Hosting &amp; domain management</li>
+                <li><span className={styles.monthlyTick}>✓</span> Security updates &amp; monitoring</li>
+                <li><span className={styles.monthlyTick}>✓</span> Performance &amp; uptime monitoring</li>
+                <li><span className={styles.monthlyTick}>✓</span> Small content updates on request</li>
+                <li><span className={styles.monthlyTick}>✓</span> SSL certificate renewal</li>
+                <li><span className={styles.monthlyTick}>✓</span> Monthly backup</li>
+              </ul>
+            </div>
+          </Reveal>
 
           <Reveal delay={0.3}>
             <div className={styles.aiCallout}>

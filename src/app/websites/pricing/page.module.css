@@ -153,6 +153,91 @@
   transform: translateY(-2px);
 }
 
+/* ── MONTHLY MAINTENANCE BAND ── */
+.monthlyBand {
+  margin-top: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  padding: 40px 44px;
+  position: relative;
+  overflow: hidden;
+}
+
+.monthlyBand::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--purple), var(--green), transparent);
+  opacity: 0.6;
+}
+
+.monthlyLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.monthlyLabel {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.monthlyPrice {
+  font-size: clamp(52px, 6vw, 72px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.monthlyPer {
+  font-size: 22px;
+  font-weight: 500;
+  color: rgba(255,255,255,.45);
+  letter-spacing: -0.01em;
+}
+
+.monthlyDesc {
+  font-size: 15px;
+  color: rgba(255,255,255,.5);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 380px;
+}
+
+.monthlyFeatures {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 24px;
+}
+
+.monthlyFeatures li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+  font-weight: 500;
+}
+
+.monthlyTick {
+  color: var(--green);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
 /* ── AI CALLOUT ── */
 .aiCallout {
   margin-top: 48px;
@@ -247,4 +332,6 @@
 @media (max-width: 900px) {
   .tiersGrid { grid-template-columns: 1fr; }
   .aiCallout { flex-direction: column; align-items: flex-start; }
+  .monthlyBand { grid-template-columns: 1fr; gap: 32px; }
+  .monthlyFeatures { grid-template-columns: 1fr; }
 }
