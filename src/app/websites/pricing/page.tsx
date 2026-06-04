@@ -24,7 +24,7 @@ const tiers = [
       'SEO foundations built in',
       'Delivered in two weeks',
     ],
-    note: 'From £50/mo for hosting and maintenance',
+    note: '£50/mo ongoing — maintenance, security & running costs',
   },
   {
     name: 'Business Site',
@@ -40,7 +40,7 @@ const tiers = [
       'Google Analytics and Search Console',
       'AI agent integration ready',
     ],
-    note: 'From £100/mo for hosting, updates, and support',
+    note: '£50/mo ongoing — maintenance, security & running costs',
   },
   {
     name: 'Custom',
