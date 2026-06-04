@@ -35,8 +35,22 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/(.*)',
+        // Main app — strict security
+        source: '/((?!demos).*)',
         headers: securityHeaders,
+      },
+      {
+        // Demo pages — permissive so Stitch HTML loads CDN scripts/styles
+        // and can be iframed from our own site
+        source: '/demos/(.*)',
+        headers: [
+          { key: 'X-Frame-Options',    value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          {
+            key: 'Content-Security-Policy',
+            value: "default-src * 'unsafe-inline' 'unsafe-eval' data: blob:;",
+          },
+        ],
       },
     ]
   },
