@@ -1,6 +1,6 @@
 /* ── SCROLL SECTION ── tall enough for the iframes to travel */
 .section {
-  height: 380vh;
+  height: 520vh;
   position: relative;
 }
 
@@ -45,30 +45,32 @@
   margin: 0;
 }
 
-/* ── PHONES ROW ── 4 portrait iPhones side by side, centered */
+/* ── PHONES ROW ── 3/4 screen wide, 4 phones filling it evenly */
 .phonesRow {
   --pw: 220px;  /* JS overrides on resize via setProperty */
   display: flex;
   gap: 20px;
-  justify-content: center;
   align-items: flex-start;
+  width: 75vw;
+  max-width: 1200px;
 }
 
-/* Each phone slot — fixed portrait-ish max so they never stretch too wide */
+/* Each phone slot stretches to fill 1/4 of the row */
 .phoneWrap {
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 14px;
-  flex-shrink: 0;
 }
 
 /* ── iPHONE BODY ──
-   width / aspect-ratio controlled here; all proportional details
+   width fills flex item; all proportional details
    (button positions, island, radius) use --pw which JS keeps in sync */
 .phone {
   --pw: 220px;
-  width: var(--pw);
+  width: 100%;
   aspect-ratio: 252 / 530;
   border-radius: calc(var(--pw) * 0.175);
   background: linear-gradient(160deg, #48484a 0%, #1c1c1e 60%, #141416 100%);
@@ -198,28 +200,12 @@
   animation: scrollBounce 1.6s ease-in-out infinite;
 }
 
-/* ── RESPONSIVE PHONE SIZES ── CSS controls width, JS reads it for scale */
-@media (min-width: 1400px) {
-  .phonesRow { --pw: 260px; }
-  .phone     { --pw: 260px; width: 260px; }
+/* tighten gap on smaller laptops */
+@media (max-width: 900px) {
+  .phonesRow { gap: 12px; }
 }
 
-@media (min-width: 1100px) and (max-width: 1399px) {
-  .phonesRow { --pw: 230px; }
-  .phone     { --pw: 230px; width: 230px; }
-}
-
-@media (min-width: 800px) and (max-width: 1099px) {
-  .phonesRow { --pw: 190px; }
-  .phone     { --pw: 190px; width: 190px; }
-}
-
-@media (min-width: 700px) and (max-width: 799px) {
-  .phonesRow { --pw: 155px; gap: 12px; }
-  .phone     { --pw: 155px; width: 155px; }
-}
-
-/* ── MOBILE: stack phones vertically, no sticky scroll ── */
+/* ── MOBILE: stack phones vertically, one after another, no sticky scroll ── */
 @media (max-width: 699px) {
   .section {
     height: auto;
@@ -234,19 +220,22 @@
   }
 
   .phonesRow {
+    width: 100%;
+    max-width: none;
     flex-direction: column;
     align-items: center;
-    gap: 36px;
+    gap: 40px;
   }
 
-  .phoneWrap { flex-shrink: 0; }
+  .phoneWrap {
+    flex: none;
+    width: min(300px, 80vw);
+  }
 
   .phone {
-    --pw: 280px;
-    width: 280px;
+    --pw: 300px;
+    width: 100%;
   }
-
-  .phonesRow { --pw: 280px; }
 
   .scrollHint { display: none; }
 }
