@@ -29,6 +29,12 @@ export default function MediaHeader() {
     return () => { document.body.style.overflow = '' }
   }, [menuOpen])
 
+  // Set cursor accent to teal while on media pages
+  useEffect(() => {
+    document.documentElement.style.setProperty('--cursor-accent', '#00D4B4')
+    return () => { document.documentElement.style.removeProperty('--cursor-accent') }
+  }, [])
+
   return (
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
@@ -38,7 +44,7 @@ export default function MediaHeader() {
               ← Telos AI
             </Link>
             <Link href="/media" className={styles.brand} aria-label="Telos Media home">
-              <Logo size="sm" />
+              <Logo size="sm" accentColor="#00D4B4" />
               <span className={styles.wordmark}>Telos Media</span>
             </Link>
           </div>

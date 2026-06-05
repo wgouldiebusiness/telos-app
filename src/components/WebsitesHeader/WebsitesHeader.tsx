@@ -22,6 +22,12 @@ export default function WebsitesHeader() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Set cursor accent colour to red while on websites pages
+  useEffect(() => {
+    document.documentElement.style.setProperty('--cursor-accent', '#E8352A')
+    return () => { document.documentElement.style.removeProperty('--cursor-accent') }
+  }, [])
+
   useEffect(() => { setMenuOpen(false) }, [pathname])
 
   useEffect(() => {
@@ -38,7 +44,7 @@ export default function WebsitesHeader() {
               ← Telos AI
             </Link>
             <Link href="/websites" className={styles.brand} aria-label="Telos Websites home">
-              <Logo size="sm" />
+              <Logo size="sm" accentColor="#E8352A" />
               <span className={styles.wordmark}>Telos Websites</span>
             </Link>
           </div>

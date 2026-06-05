@@ -5,9 +5,10 @@ interface LogoProps {
   dark?: boolean
   float?: boolean
   className?: string
+  accentColor?: string
 }
 
-export default function Logo({ size = 'sm', dark = false, float = false, className }: LogoProps) {
+export default function Logo({ size = 'sm', dark = false, float = false, className, accentColor }: LogoProps) {
   const isLarge = size === 'lg'
   const w = isLarge ? 52 : 24
   const h = isLarge ? 62 : 28
@@ -15,8 +16,8 @@ export default function Logo({ size = 'sm', dark = false, float = false, classNa
   const stemW = isLarge ? 18 : 8
   const stemX = (w - stemW) / 2
 
-  // crossbar: always purple. stem: white on dark backgrounds, dark on light backgrounds
-  const crossColor = '#7868E6'
+  // crossbar: brand accent (defaults to TelosAI purple). stem: white on dark, dark on light.
+  const crossColor = accentColor ?? '#7868E6'
   const stemColor  = dark ? '#ffffff' : '#1D1D1F'
 
   return (

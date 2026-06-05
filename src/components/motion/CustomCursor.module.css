@@ -16,7 +16,7 @@
 .dotHover {
   width: 12px;
   height: 12px;
-  background: var(--purple);
+  background: var(--cursor-accent, var(--purple));
 }
 
 .ring {
@@ -37,7 +37,7 @@
 .ringHover {
   width: 48px;
   height: 48px;
-  border-color: var(--purple);
+  border-color: var(--cursor-accent, var(--purple));
 }
 
 @media (hover: none), (pointer: coarse) {
