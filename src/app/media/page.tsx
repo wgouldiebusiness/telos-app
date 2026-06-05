@@ -20,13 +20,13 @@ const services = [
   {
     icon: '🎬',
     title: 'AI Video Production',
-    desc: 'AI-generated brand videos, ads, reels, and promos at a fraction of traditional production cost — without sacrificing quality or creativity.',
+    desc: 'AI-generated brand videos, ads, reels, and promos. A fraction of traditional production cost, with none of the compromise on quality or creative direction.',
     tags: ['Brand Video', 'Reels', 'Ads', 'Promos'],
   },
   {
     icon: '📣',
     title: 'Advertising Campaigns',
-    desc: 'Paid media that performs. We plan, create, and manage campaigns across Meta, Google, TikTok, and LinkedIn — optimised for your goals.',
+    desc: 'Paid media that performs. We plan, create, and manage campaigns across Meta, Google, TikTok, and LinkedIn. Optimised for your goals, tracked against what matters.',
     tags: ['Meta', 'Google', 'TikTok', 'LinkedIn'],
   },
   {
@@ -54,13 +54,13 @@ const examples = [
   },
   {
     label:   'Paid Ad Creative',
-    caption: 'Meta ad set — 6 variants tested across audiences. Split-tested copy and visual.',
+    caption: 'Meta ad set. Six variants tested across audiences. Split-tested copy and visual.',
     gradient: 'linear-gradient(135deg, rgba(220,100,80,.2) 0%, rgba(140,40,30,.1) 100%)',
     accent: '#E06848',
   },
   {
     label:   'Reels & Short-Form',
-    caption: 'Weekly reel package — scripted, edited, and captioned in your brand voice.',
+    caption: 'Weekly reel package. Scripted, edited, and captioned in your brand voice.',
     gradient: 'linear-gradient(135deg, rgba(230,160,60,.2) 0%, rgba(140,90,20,.1) 100%)',
     accent: '#E6A23C',
   },
@@ -196,8 +196,8 @@ export default function MediaPage() {
           {/* Request note */}
           <Reveal>
             <div className={styles.examplesNote}>
-              Examples available on request —{' '}
-              <a href="#booking" className={styles.examplesNoteLink}>book a call</a>{' '}
+              Examples available on request.{' '}
+              <a href="#booking" className={styles.examplesNoteLink}>Book a call</a>{' '}
               to see work relevant to your industry.
             </div>
           </Reveal>
@@ -243,7 +243,7 @@ export default function MediaPage() {
         <div className="container">
           <Reveal>
             <span className={styles.label}>Pricing</span>
-            <h2 className={styles.sectionH2}>Every brand is different — so is our pricing.</h2>
+            <h2 className={styles.sectionH2}>Every brand is different. So is our pricing.</h2>
             <p className={styles.sectionSub}>
               We tailor every package to your goals, audience, and content volume.
               Whether you are a growing startup or an established brand, we will build a
