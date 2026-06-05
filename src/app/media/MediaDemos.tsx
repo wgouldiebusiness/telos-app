@@ -202,16 +202,8 @@ export default function MediaDemos() {
         <SocialPost />
       </div>
       <div className={styles.cell}>
-        <div className={styles.cellLabel}>AI Video Production</div>
-        <VideoThumbnail />
-      </div>
-      <div className={styles.cell}>
         <div className={styles.cellLabel}>Paid Ad Creative</div>
         <AdCreative />
-      </div>
-      <div className={styles.cell}>
-        <div className={styles.cellLabel}>Reels & Short-Form</div>
-        <ReelPhone />
       </div>
     </div>
   )
