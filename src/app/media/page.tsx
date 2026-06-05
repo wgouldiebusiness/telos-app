@@ -122,26 +122,6 @@ export default function MediaPage() {
         </div>
       </section>
 
-      {/* ═══ STATS ═══ */}
-      <section className={styles.stats}>
-        <div className="container">
-          <div className={styles.statsGrid}>
-            {[
-              { n: '7M+',  label: 'Organic views generated' },
-              { n: '3.2×', label: 'Average ROAS on paid campaigns' },
-              { n: '30',   label: 'Day turnaround on brand video' },
-              { n: '100%', label: 'Bespoke. No templates.' },
-            ].map((s, i) => (
-              <Reveal key={s.n} delay={i * 0.08}>
-                <div className={styles.stat}>
-                  <div className={styles.statNum}>{s.n}</div>
-                  <div className={styles.statLabel}>{s.label}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ═══ EXAMPLES ═══ */}
       <section id="examples" className={styles.examples}>
