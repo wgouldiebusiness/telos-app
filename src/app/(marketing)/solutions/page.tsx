@@ -6,7 +6,7 @@ import styles from './page.module.css'
 export const metadata: Metadata = {
   title: 'What We Do',
   description:
-    'We are not a software product. We are the technical partner who learns your business, builds your AI system, and manages it for you. Every build is bespoke.',
+    'We are not a software product. We are the technical partner who learns your business, builds your system, and manages it for you. Every build is bespoke.',
 }
 
 interface Example { n: string; title: string; desc: string }
@@ -59,7 +59,7 @@ export default function SolutionsPage() {
             <p className={styles.heroSub} style={{ color: '#ffffff', marginTop: '1.25rem' }}>
               Off-the-shelf products require you to change how you work to fit the software.
               We work the other way. We learn your operation, then build: custom code,
-              back end systems, support systems, and AI agents, tailored around exactly
+              back end systems, support systems, and intelligent agents, tailored around exactly
               how you already operate.
             </p>
           </Reveal>
@@ -101,7 +101,7 @@ export default function SolutionsPage() {
                 <span className="label">AI Agents</span>
                 <h2 className={styles.exH2}>Intelligent agents that run your front line.</h2>
                 <p className={styles.exSub}>
-                  Purpose-built AI systems that handle the work that currently falls through the cracks: calls, leads, follow-up, and admin.
+                  Purpose-built software that handles the work that currently falls through the cracks: calls, leads, follow-up, and admin.
                 </p>
               </div>
             </Reveal>

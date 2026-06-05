@@ -23,7 +23,7 @@ const values = [
   {
     n: '03',
     title: 'Straight talking',
-    desc: 'We tell you exactly what AI can do for your business and what it cannot. We will not oversell the technology or dress up a limitation as a feature.',
+    desc: 'We tell you exactly what the software can do for your business and what it cannot. We will not oversell the technology or dress up a limitation as a feature.',
   },
 ]
 

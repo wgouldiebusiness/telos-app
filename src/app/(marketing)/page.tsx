@@ -10,9 +10,9 @@ import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos AI: AI systems for ambitious service businesses.',
+  title: 'Telos AI: Custom software for ambitious service businesses.',
   description:
-    'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Fully managed. Improving every month.',
+    'We build and manage custom software, automation, and intelligent systems that handle your admin, capture leads, and keep your pipeline moving. Built for your business. Fully managed.',
 }
 
 const receptionistConversation: ChatMessage[] = [
@@ -66,8 +66,8 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.55}>
             <p className={styles.heroDetail}>
-              We build and manage custom AI systems, back end infrastructure, and support systems
-              that handle your admin, capture leads, and keep you focused on your actual work.
+              We build and manage custom software systems, back end infrastructure, and automation
+              that handles your admin, captures leads, and keeps you focused on your actual work.
             </p>
           </Reveal>
           <Reveal delay={0.7} className={styles.heroBtns}>
@@ -90,12 +90,12 @@ export default function HomePage() {
             <span className="label">Our purpose</span>
           </Reveal>
           <TextScanner dark className={styles.statementH2}>
-            The AI platform built to let businesses focus on what they do best.
+            The software platform built to let businesses focus on what they do best.
           </TextScanner>
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
-              Most AI tools are generalised. They are not built for your business. We are a
-              technical team tailoring custom code, back end systems, and AI agents
+              Most software tools are generalised. They are not built for your business. We are a
+              technical team tailoring custom code, back end systems, and intelligent agents
               specifically to how your business operates.
             </p>
           </Reveal>
@@ -166,7 +166,7 @@ export default function HomePage() {
                 on your business, your voice, and your clients.
               </p>
               <Link href="/contact" className={styles.btnPriLight}>
-                Get your own AI team
+                Get your system built
               </Link>
             </div>
           </Reveal>
