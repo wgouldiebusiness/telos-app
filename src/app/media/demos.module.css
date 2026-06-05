@@ -1,475 +1,367 @@
-/* ── MediaDemos layout ── */
+/* ── Grid wrapper ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2px;
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 18px;
-  overflow: hidden;
+  gap: 2rem;
   margin-top: 3rem;
+  align-items: start;
 }
 
 .cell {
-  background: rgba(0,0,0,.35);
-  padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.25rem;
-  border-right: 1px solid rgba(255,255,255,.07);
-  border-bottom: 1px solid rgba(255,255,255,.07);
-  transition: background 0.2s ease;
+  gap: 1rem;
 }
-
-.cell:nth-child(2n) { border-right: none; }
-.cell:nth-child(n+3) { border-bottom: none; }
-.cell:hover { background: rgba(0,212,180,.04); }
 
 .cellLabel {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #00D4B4;
 }
 
-/* ── Social Post ── */
-.socialCard {
+/* ══════════════════════════════
+   INSTAGRAM POST
+══════════════════════════════ */
+.igCard {
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
-  max-width: 320px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.35);
+  max-width: 380px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-.socialHeader {
+/* Header */
+.igHeader {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px 12px;
 }
 
-.socialAvatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00D4B4, #7868E6);
+.igAvatarWrap {
+  position: relative;
   flex-shrink: 0;
 }
 
-.socialName {
+.igAvatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  padding: 2px;
+  box-sizing: border-box;
+}
+
+.igAvatar::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 50%;
+  background: #c9a96e;
+}
+
+.igOnline {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #31a24c;
+  border: 1.5px solid white;
+}
+
+.igHeaderText { flex: 1; }
+
+.igHandle {
   font-size: 13px;
   font-weight: 700;
   color: #111;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
-.socialMeta {
+.igLocation {
   font-size: 11px;
   color: #888;
-  display: flex;
-  align-items: center;
-  gap: 4px;
 }
 
-.socialMore {
-  margin-left: auto;
-  color: #333;
-  font-size: 16px;
-  line-height: 1;
+.igMore {
+  background: none;
+  border: none;
   cursor: pointer;
+  color: #333;
+  padding: 4px;
 }
 
-.socialImg {
+/* Photo */
+.igImgWrap {
+  position: relative;
   width: 100%;
-  aspect-ratio: 1;
-  background: linear-gradient(135deg, rgba(0,212,180,.25) 0%, rgba(120,104,230,.25) 100%);
+  aspect-ratio: 4/5;
+  background: #f0ebe3;
+  overflow: hidden;
+}
+
+.igImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+.igImgOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,.15) 100%);
+  pointer-events: none;
+}
+
+/* Actions */
+.igActions {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-}
-
-.socialImgInner { text-align: center; }
-
-.socialImgText {
-  display: block;
-  font-size: 15px;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: rgba(0,0,0,.7);
-  margin-bottom: 4px;
-}
-
-.socialImgSub {
-  display: block;
-  font-size: 11px;
-  color: rgba(0,0,0,.4);
-}
-
-.socialActions {
-  display: flex;
-  gap: 12px;
   padding: 8px 12px 4px;
 }
 
-.socialBtn {
+.igLeft {
+  display: flex;
+  gap: 12px;
+}
+
+.igBtn {
   background: none;
   border: none;
   cursor: pointer;
   color: #111;
   padding: 2px;
   display: flex;
-  align-items: center;
   transition: transform 0.15s ease;
 }
 
-.socialBtn:hover { transform: scale(1.15); }
-.socialBtnLiked { color: #E8352A; }
+.igBtn:hover { transform: scale(1.12); }
+.igBtnLiked  { color: #e0245e !important; }
+.igBtnSaved  { color: #111; }
 
-.socialLikes {
-  font-size: 12px;
+.igLikes {
+  padding: 0 12px 4px;
+  font-size: 13px;
   font-weight: 700;
   color: #111;
-  padding: 0 12px 4px;
 }
 
-.socialCaption {
-  font-size: 12px;
-  color: #333;
-  padding: 0 12px 12px;
+.igCaption {
+  padding: 0 12px 4px;
+  font-size: 13px;
+  color: #111;
   line-height: 1.5;
 }
 
-.socialCaptionUser { font-weight: 700; color: #111; }
+.igCaptionHandle { font-weight: 700; }
 
-/* ── Video ── */
-.videoCard {
-  border-radius: 12px;
-  overflow: hidden;
-  cursor: pointer;
-  max-width: 320px;
-}
-
-.videoBg {
-  position: relative;
-  height: 180px;
-  background: linear-gradient(135deg, #0C4A3C 0%, #001A14 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.videoOverlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.3s ease;
-}
-
-.videoPlayBtn {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  background: rgba(0,212,180,.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
-.videoCard:hover .videoPlayBtn { transform: scale(1.1); background: #00D4B4; }
-
-.videoDuration {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  font-size: 11px;
-  font-weight: 700;
-  color: white;
-  background: rgba(0,0,0,.6);
-  padding: 2px 6px;
-  border-radius: 4px;
-}
-
-.videoBadge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #00D4B4;
-  background: rgba(0,0,0,.6);
-  padding: 3px 8px;
-  border-radius: 980px;
-  border: 1px solid rgba(0,212,180,.35);
-}
-
-.videoPlaying {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 0 16px 16px;
-  gap: 8px;
-}
-
-.videoBar {
-  width: 100%;
-  height: 3px;
-  background: rgba(255,255,255,.2);
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.videoBarFill {
-  height: 100%;
-  background: #00D4B4;
-  animation: videoProgress 8s linear forwards;
-  border-radius: 2px;
-}
-
-@keyframes videoProgress {
-  from { width: 0; }
-  to   { width: 100%; }
-}
-
-.videoPlayingLabel {
-  font-size: 11px;
-  color: rgba(255,255,255,.7);
-}
-
-.videoMeta {
-  padding: 12px 14px;
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  border-top: none;
-  border-radius: 0 0 12px 12px;
-}
-
-.videoTitle {
-  display: block;
+.igTags {
+  color: #00376b;
   font-size: 13px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 4px;
-  letter-spacing: -0.02em;
 }
 
-.videoSub {
+.igViewComments {
   display: block;
-  font-size: 11px;
-  color: rgba(255,255,255,.4);
+  padding: 0 12px 4px;
+  font-size: 13px;
+  color: #737373;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
 }
 
-/* ── Ad Creative ── */
-.adCard {
+.igTimestamp {
+  padding: 0 12px 12px;
+  font-size: 10px;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+/* ══════════════════════════════
+   FACEBOOK AD
+══════════════════════════════ */
+.fbCard {
   background: #ffffff;
   border-radius: 12px;
   overflow: hidden;
-  max-width: 320px;
+  box-shadow: 0 8px 40px rgba(0,0,0,.35);
+  max-width: 380px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-.adPlatform {
+/* Header */
+.fbHeader {
   display: flex;
   align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  font-size: 11px;
-  color: #555;
-  font-weight: 600;
-  border-bottom: 1px solid #f0f0f0;
+  gap: 10px;
+  padding: 10px 12px;
 }
 
-.adImgWrap {
-  width: 100%;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 16px;
-  transition: background 0.4s ease;
+.fbPageAvatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00D4B4 0%, #007B6A 100%);
+  flex-shrink: 0;
 }
 
-.adImgText {
+.fbHeaderText { flex: 1; }
+
+.fbPageName {
   font-size: 14px;
-  font-weight: 800;
-  color: rgba(0,0,0,.7);
-  text-align: center;
-  line-height: 1.4;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  color: #1c1e21;
+  line-height: 1.3;
 }
 
-.adMeta {
+.fbMeta {
+  font-size: 12px;
+  color: #65676b;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.fbMore {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #606770;
+  padding: 4px;
+}
+
+/* Body copy */
+.fbBody {
+  padding: 0 12px 10px;
+  font-size: 14px;
+  color: #1c1e21;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* Image */
+.fbImgWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: #f0f2f5;
+  overflow: hidden;
+}
+
+.fbImg {
+  object-fit: cover;
+  object-position: top center;
+}
+
+/* Link preview strip */
+.fbLinkStrip {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
   padding: 10px 12px;
-  border-top: 1px solid #f0f0f0;
+  background: #f0f2f5;
+  border-top: 1px solid #ddd;
 }
 
-.adBrand { font-size: 11px; font-weight: 700; color: #111; }
-.adHeadline {
+.fbLinkDomain {
   font-size: 11px;
-  color: #555;
-  max-width: 180px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #65676b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 2px;
 }
 
-.adCta {
+.fbLinkHeadline {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c1e21;
+  line-height: 1.3;
+}
+
+.fbLinkSub {
+  font-size: 13px;
+  color: #65676b;
+  line-height: 1.4;
+}
+
+.fbCta {
   flex-shrink: 0;
-  padding: 6px 14px;
+  padding: 8px 16px;
   background: #1877F2;
-  color: white;
-  font-size: 12px;
+  color: #fff;
+  font-size: 13px;
   font-weight: 700;
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s ease;
 }
-.adCta:hover { background: #1565c0; }
+.fbCta:hover { background: #1565c0; }
 
-.adVariants {
+/* Reactions */
+.fbReactionBar {
   display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 12px;
-  border-top: 1px solid #f0f0f0;
-}
-
-.adVariantDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #ddd;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-  padding: 0;
-}
-.adVariantActive { background: #1877F2; }
-.adVariantLabel { font-size: 10px; color: #999; margin-left: 4px; }
-
-/* ── Reel Phone ── */
-.reelPhone {
-  max-width: 180px;
-  margin: 0 auto;
-}
-
-.reelScreen {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 9/16;
-  border-radius: 20px;
-  background: linear-gradient(180deg, #0C4A3C 0%, #001A14 60%, #020308 100%);
-  overflow: hidden;
-  border: 2px solid rgba(255,255,255,.15);
-  box-shadow: 0 16px 40px rgba(0,0,0,.6);
-}
-
-.reelIsland {
-  position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70px;
-  height: 22px;
-  background: #000;
-  border-radius: 12px;
-  z-index: 10;
-}
-
-.reelContent {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: flex-end;
   justify-content: space-between;
-  padding: 16px 12px 36px;
-}
-
-.reelMeta { flex: 1; }
-
-.reelTitle {
-  display: block;
-  font-size: 13px;
-  font-weight: 700;
-  color: white;
-  margin-bottom: 6px;
-  text-shadow: 0 1px 4px rgba(0,0,0,.6);
-}
-
-.reelTags { display: flex; flex-wrap: wrap; gap: 4px; }
-
-.reelTag {
-  font-size: 10px;
-  font-weight: 600;
-  color: rgba(255,255,255,.7);
-}
-
-.reelSide {
-  display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 16px;
+  padding: 6px 12px;
+  border-bottom: 1px solid #e4e6ea;
 }
 
-.reelAction {
+.fbReactionIcons {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  font-size: 10px;
-  color: rgba(255,255,255,.8);
-  font-weight: 600;
-}
-
-.reelViews {
-  display: flex;
-  flex-direction: column;
   align-items: center;
   gap: 2px;
-  font-size: 10px;
-  color: rgba(255,255,255,.7);
+  font-size: 16px;
 }
 
-.reelViewCount {
+.fbReactionCount {
   font-size: 13px;
-  font-weight: 800;
-  color: #00D4B4;
+  color: #65676b;
+  margin-left: 4px;
 }
 
-.reelDots {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
+.fbCommentCount {
+  font-size: 13px;
+  color: #65676b;
+}
+
+/* Action buttons */
+.fbActions {
   display: flex;
-  gap: 5px;
-  align-items: center;
+  padding: 2px 0;
 }
 
-.reelDot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.3);
+.fbActionBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px;
+  background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  transition: background 0.2s ease, transform 0.2s ease;
+  font-size: 13px;
+  font-weight: 600;
+  color: #65676b;
+  border-radius: 6px;
+  transition: background 0.15s ease, color 0.15s ease;
 }
-.reelDotActive { background: #00D4B4; transform: scale(1.3); }
 
-/* Responsive */
-@media (max-width: 900px) {
+.fbActionBtn:hover { background: #f0f2f5; }
+.fbActionBtnActive { color: #1877F2 !important; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
   .grid { grid-template-columns: 1fr; }
-  .cell:nth-child(2n) { border-right: 1px solid rgba(255,255,255,.07); }
 }
