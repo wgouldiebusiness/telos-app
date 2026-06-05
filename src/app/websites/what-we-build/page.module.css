@@ -9,8 +9,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(120,104,230,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120,104,230,.05) 1px, transparent 1px);
+    linear-gradient(rgba(232,53,42,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,53,42,.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
   pointer-events: none;
@@ -25,7 +25,7 @@
   margin: 16px 0 24px;
 }
 
-.accent { color: var(--purple); }
+.accent { color: #E8352A; }
 
 .heroSub {
   max-width: 560px;
@@ -55,7 +55,7 @@
 }
 
 .typeCard:hover {
-  border-color: rgba(120,104,230,.25);
+  border-color: rgba(232,53,42,.25);
   transform: translateY(-3px);
 }
 
@@ -146,7 +146,7 @@
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--purple);
+  color: #E8352A;
   margin-bottom: 12px;
 }
 
@@ -189,7 +189,7 @@
 .btnPri {
   display: inline-block;
   padding: 14px 32px;
-  background: var(--purple);
+  background: #E8352A;
   color: #ffffff;
   font-size: 15px;
   font-weight: 600;
@@ -200,7 +200,7 @@
 }
 
 .btnPri:hover {
-  background: var(--purple-2);
+  background: #C42E24;
   transform: translateY(-2px);
 }
 

@@ -98,7 +98,7 @@
   left: 0;
   width: 0;
   height: 1.5px;
-  background: var(--purple);
+  background: #E8352A;
   border-radius: 2px;
   transition: width 0.25s var(--ease-out);
 }
@@ -108,7 +108,7 @@
 .navLink.active::after { width: 100%; }
 
 .ctaBtn {
-  background: var(--purple);
+  background: #E8352A;
   color: var(--white);
   padding: 9px 20px;
   border-radius: 980px;
@@ -121,7 +121,7 @@
 }
 
 .ctaBtn:hover {
-  background: var(--purple-2);
+  background: #C42E24;
   transform: translateY(-1px);
 }
 
@@ -162,7 +162,7 @@
   background: rgba(5,2,15,.96);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-left: 1px solid rgba(120,104,230,.15);
+  border-left: 1px solid rgba(232,53,42,.15);
   z-index: 950;
   padding: 5rem 2rem 3rem;
   display: flex;
@@ -209,7 +209,7 @@
   display: inline-block;
   margin-top: 2rem;
   padding: 14px 28px;
-  background: var(--purple);
+  background: #E8352A;
   color: var(--white);
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 14px;
@@ -220,7 +220,7 @@
   transition: background var(--t-base);
 }
 
-.mobileCta:hover { background: var(--purple-2); }
+.mobileCta:hover { background: #C42E24; }
 
 @media (max-width: 900px) {
   .nav     { display: none; }

@@ -10,8 +10,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(120,104,230,.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(120,104,230,.05) 1px, transparent 1px);
+    linear-gradient(rgba(232,53,42,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,53,42,.05) 1px, transparent 1px);
   background-size: 64px 64px;
   mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 40%, transparent 100%);
   pointer-events: none;
@@ -26,7 +26,7 @@
   margin: 16px 0 28px;
 }
 
-.accent { color: var(--purple); }
+.accent { color: #E8352A; }
 
 .heroSub {
   max-width: 580px;
@@ -91,7 +91,7 @@
   margin-bottom: 56px;
 }
 
-.showcaseLabel { color: var(--purple-3); }
+.showcaseLabel { color: #E8352A; }
 
 .showcaseH2 {
   font-size: clamp(32px, 5vw, 60px);
@@ -137,7 +137,7 @@
   align-items: center;
   gap: 8px;
   padding: 13px 28px;
-  background: var(--purple);
+  background: #E8352A;
   color: #ffffff;
   font-size: 14px;
   font-weight: 600;
@@ -150,7 +150,7 @@
 }
 
 .btnPriLight:hover {
-  background: var(--purple-2);
+  background: #C42E24;
   transform: translateY(-2px);
 }
 
@@ -220,7 +220,7 @@
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.06em;
-  color: var(--purple);
+  color: #E8352A;
   margin-bottom: 14px;
 }
 
@@ -263,7 +263,7 @@
 .btnPri {
   display: inline-block;
   padding: 14px 32px;
-  background: var(--purple);
+  background: #E8352A;
   color: #ffffff;
   font-size: 15px;
   font-weight: 600;
@@ -274,7 +274,7 @@
 }
 
 .btnPri:hover {
-  background: var(--purple-2);
+  background: #C42E24;
   transform: translateY(-2px);
 }
 
@@ -300,12 +300,12 @@
 .btnOutline {
   display: inline-block;
   padding: 14px 28px;
-  color: var(--purple);
+  color: #E8352A;
   font-size: 14px;
   font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
-  border: 1.5px solid rgba(120,104,230,.4);
+  border: 1.5px solid rgba(232,53,42,.4);
   border-radius: 980px;
   white-space: nowrap;
   transition: border-color 0.2s ease, background 0.2s ease;
@@ -313,8 +313,8 @@
 }
 
 .btnOutline:hover {
-  border-color: var(--purple);
-  background: rgba(120,104,230,.08);
+  border-color: #E8352A;
+  background: rgba(232,53,42,.08);
 }
 
 /* ── RESPONSIVE ── */
