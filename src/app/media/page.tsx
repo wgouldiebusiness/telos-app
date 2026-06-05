@@ -1,146 +1,88 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
+import MediaAccordion from './MediaAccordion'
+import MediaContactForm from './MediaContactForm'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos Media | Content, AI Video & Advertising Campaigns',
+  title: 'Telos Media | Content, Video & Advertising',
   description:
-    'AI-powered social media content, video production, and advertising campaigns built for modern brands. Part of the TelosAI Group.',
+    'Social media content, AI video production, and advertising campaigns. Built for modern brands that want to grow without guesswork.',
 }
 
-/* ── Services data — edit here ── */
 const services = [
   {
-    icon: '📱',
+    n: '01',
     title: 'Social Media Content',
-    desc: 'Strategy, copywriting, on-brand graphics, and automated scheduling. We run your channels so your team can focus on what they do best.',
+    desc: 'Strategy, copywriting, on-brand graphics, and automated scheduling. We run your channels so your team can focus on the work that actually moves the business.',
     tags: ['Strategy', 'Copywriting', 'Design', 'Scheduling'],
   },
   {
-    icon: '🎬',
+    n: '02',
     title: 'AI Video Production',
     desc: 'AI-generated brand videos, ads, reels, and promos. A fraction of traditional production cost, with none of the compromise on quality or creative direction.',
     tags: ['Brand Video', 'Reels', 'Ads', 'Promos'],
   },
   {
-    icon: '📣',
+    n: '03',
     title: 'Advertising Campaigns',
     desc: 'Paid media that performs. We plan, create, and manage campaigns across Meta, Google, TikTok, and LinkedIn. Optimised for your goals, tracked against what matters.',
     tags: ['Meta', 'Google', 'TikTok', 'LinkedIn'],
   },
   {
-    icon: '🧭',
+    n: '04',
     title: 'Brand Content Strategy',
     desc: 'Clarity on what to say, how to say it, and where. Content planning, tone of voice, messaging frameworks, and creative direction built around your audience.',
     tags: ['Content Plan', 'Tone of Voice', 'Creative Direction'],
   },
 ]
 
-/* ── Example placeholder cards — swap in real thumbnails/videos later ── */
 const examples = [
-  {
-    label:   'AI Brand Video',
-    caption: 'Premium brand film produced entirely with AI. Fast, high-quality, fraction of the cost.',
-    /* TODO: replace with real thumbnail image once assets are ready */
-    gradient: 'linear-gradient(135deg, rgba(0,180,150,.25) 0%, rgba(0,100,90,.12) 100%)',
-    accent: '#00D4B4',
-  },
-  {
-    label:   'Social Campaign',
-    caption: '30-day content calendar with graphics and copy for a lifestyle brand.',
-    gradient: 'linear-gradient(135deg, rgba(120,104,230,.25) 0%, rgba(60,50,140,.12) 100%)',
-    accent: '#7868E6',
-  },
-  {
-    label:   'Paid Ad Creative',
-    caption: 'Meta ad set. Six variants tested across audiences. Split-tested copy and visual.',
-    gradient: 'linear-gradient(135deg, rgba(220,100,80,.2) 0%, rgba(140,40,30,.1) 100%)',
-    accent: '#E06848',
-  },
-  {
-    label:   'Reels & Short-Form',
-    caption: 'Weekly reel package. Scripted, edited, and captioned in your brand voice.',
-    gradient: 'linear-gradient(135deg, rgba(230,160,60,.2) 0%, rgba(140,90,20,.1) 100%)',
-    accent: '#E6A23C',
-  },
+  { label: 'AI Brand Video',    caption: 'Premium brand film produced entirely with AI. Fast turnaround, cinematic quality.', gradient: 'linear-gradient(135deg, rgba(0,180,150,.3) 0%, rgba(0,80,65,.15) 100%)',  accent: '#00D4B4' },
+  { label: 'Social Campaign',   caption: '30-day content calendar for a lifestyle brand. Consistent, on-brand, zero effort from the client.', gradient: 'linear-gradient(135deg, rgba(120,104,230,.3) 0%, rgba(50,40,120,.15) 100%)', accent: '#7868E6' },
+  { label: 'Paid Ad Creative',  caption: 'Meta ad set. Six variants tested. 3.2x ROAS achieved.', gradient: 'linear-gradient(135deg, rgba(220,80,60,.25) 0%, rgba(120,30,20,.12) 100%)',  accent: '#E06848' },
+  { label: 'Reels & Short-Form',caption: 'Weekly reel package. Scripted, edited, and captioned in your brand voice.', gradient: 'linear-gradient(135deg, rgba(220,155,50,.25) 0%, rgba(130,80,10,.12) 100%)',  accent: '#DCA032' },
 ]
 
-/* ── Pricing tiers ── */
 const tiers = [
-  {
-    name: 'Starter',
-    price: '£150',
-    period: '/mo',
-    popular: false,
-    features: [
-      '8 social posts per month',
-      'Copywriting & graphics included',
-      '1 platform managed',
-    ],
-  },
-  {
-    name: 'Growth',
-    price: '£275',
-    period: '/mo',
-    popular: true,
-    features: [
-      '15 social posts per month',
-      '2 AI-generated videos',
-      '2 platforms managed',
-    ],
-  },
-  {
-    name: 'Pro',
-    price: '£450',
-    period: '/mo',
-    popular: false,
-    features: [
-      '25 social posts per month',
-      '4 AI-generated videos',
-      'Paid ads managed',
-      'Content strategy included',
-    ],
-  },
+  { name: 'Starter', price: '£150', period: '/mo', popular: false, features: ['8 social posts/month', 'Copywriting & graphics', '1 platform managed'] },
+  { name: 'Growth',  price: '£275', period: '/mo', popular: true,  features: ['15 social posts/month', '2 AI-generated videos', '2 platforms managed'] },
+  { name: 'Pro',     price: '£450', period: '/mo', popular: false, features: ['25 social posts/month', '4 AI-generated videos', 'Paid ads managed', 'Strategy included'] },
 ]
 
 export default function MediaPage() {
   return (
     <>
-      {/* ════════════════════════════════════
-          HERO
-      ════════════════════════════════════ */}
+      {/* ═══ HERO ═══ */}
       <section className={styles.hero}>
-        {/* Teal orb */}
-        <div className={styles.heroOrb1} />
-        <div className={styles.heroOrb2} />
-
+        <div className={styles.heroGrain} />
         <div className="container">
           <Reveal>
             <div className={styles.heroPill}>
               <span className={styles.heroPillDot} />
-              <span>Part of the TelosAI Group</span>
+              Part of the TelosAI Group
             </div>
           </Reveal>
 
-          <Reveal delay={0.08}>
+          <Reveal delay={0.06}>
             <h1 className={styles.heroH1}>
-              Content That Converts.<br />
-              <span className={styles.heroAccent}>Campaigns That Captivate.</span>
+              <span className={styles.heroLine1}>Content That</span>
+              <span className={styles.heroLine2}>Converts.</span>
             </h1>
           </Reveal>
 
-          <Reveal delay={0.16}>
+          <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              AI-powered social media, video production, and advertising campaigns
-              built for modern brands that want to grow without guesswork.
+              Social media. AI video. Advertising campaigns.<br />
+              Built for modern brands that mean business.
             </p>
           </Reveal>
 
           <Reveal delay={0.22}>
             <div className={styles.heroCtas}>
               <a href="#services" className={styles.ctaPrimary}>What We Do</a>
-              <a href="#booking" className={styles.ctaSecondary}>Book a Call</a>
+              <a href="#booking"  className={styles.ctaGhost}>Book a Call</a>
             </div>
           </Reveal>
         </div>
@@ -148,31 +90,52 @@ export default function MediaPage() {
         <div className={styles.heroFade} />
       </section>
 
-      {/* ════════════════════════════════════
-          SERVICES
-      ════════════════════════════════════ */}
+      {/* ═══ MARQUEE ═══ */}
+      <div className={styles.marqueeWrap} aria-hidden="true">
+        <div className={styles.marqueeTrack}>
+          {[1, 2].map(n => (
+            <span key={n} className={styles.marqueeInner}>
+              {['SOCIAL MEDIA', 'AI VIDEO', 'PAID ADS', 'BRAND STRATEGY', 'CONTENT', 'REELS', 'CAMPAIGNS', 'COPYWRITING'].map(w => (
+                <span key={w} className={styles.marqueeItem}>
+                  <span className={styles.marqueeDot} />
+                  {w}
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* ═══ SERVICES ═══ */}
       <section id="services" className={styles.services}>
         <div className="container">
           <Reveal>
             <span className={styles.label}>What We Do</span>
-            <h2 className={styles.sectionH2}>Everything your brand needs to grow.</h2>
-            <p className={styles.sectionSub}>
-              Four disciplines. One team. Built to work together so nothing falls through the cracks.
-            </p>
+            <h2 className={styles.sectionH2}>
+              Four disciplines.<br />One team.
+            </h2>
           </Reveal>
 
-          <div className={styles.serviceGrid}>
-            {services.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.08}>
-                <div className={styles.serviceCard}>
-                  <div className={styles.serviceIcon}>{s.icon}</div>
-                  <h3 className={styles.serviceTitle}>{s.title}</h3>
-                  <p className={styles.serviceDesc}>{s.desc}</p>
-                  <div className={styles.tagRow}>
-                    {s.tags.map(t => (
-                      <span key={t} className={styles.tag}>{t}</span>
-                    ))}
-                  </div>
+          <Reveal delay={0.1}>
+            <MediaAccordion services={services} />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ═══ STATS ═══ */}
+      <section className={styles.stats}>
+        <div className="container">
+          <div className={styles.statsGrid}>
+            {[
+              { n: '7M+',  label: 'Organic views generated' },
+              { n: '3.2×', label: 'Average ROAS on paid campaigns' },
+              { n: '30',   label: 'Day turnaround on brand video' },
+              { n: '100%', label: 'Bespoke. No templates.' },
+            ].map((s, i) => (
+              <Reveal key={s.n} delay={i * 0.08}>
+                <div className={styles.stat}>
+                  <div className={styles.statNum}>{s.n}</div>
+                  <div className={styles.statLabel}>{s.label}</div>
                 </div>
               </Reveal>
             ))}
@@ -180,55 +143,38 @@ export default function MediaPage() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════
-          EXAMPLES / SHOWREEL
-      ════════════════════════════════════ */}
+      {/* ═══ EXAMPLES ═══ */}
       <section id="examples" className={styles.examples}>
         <div className="container">
           <Reveal>
-            <span className={styles.label}>Examples</span>
-            <h2 className={styles.sectionH2}>Work that speaks for itself.</h2>
-            <p className={styles.sectionSub}>
-              A sample of what we produce. Every project is bespoke.
+            <span className={styles.label}>Work</span>
+            <h2 className={styles.sectionH2}>Real results.<br />Real clients.</h2>
+            <p className={styles.sectionNote}>
+              Examples available on request.{' '}
+              <a href="#booking" className={styles.noteLink}>Book a call</a>{' '}
+              to see work relevant to your industry.
             </p>
           </Reveal>
 
-          {/* Request note */}
-          <Reveal>
-            <div className={styles.examplesNote}>
-              Examples available on request.{' '}
-              <a href="#booking" className={styles.examplesNoteLink}>Book a call</a>{' '}
-              to see work relevant to your industry.
-            </div>
-          </Reveal>
-
-          <div className={styles.examplesGrid}>
+          <div className={styles.exGrid}>
             {examples.map((ex, i) => (
               <Reveal key={ex.label} delay={i * 0.07}>
-                <div className={styles.exampleCard}>
-                  {/*
-                    TODO: Replace .exampleThumb gradient with a real asset:
-                    <img src="/media/thumbs/brand-video.jpg" className={styles.exampleThumb} />
-                    or wrap in a <video> tag for autoplay reel previews
-                  */}
-                  <div
-                    className={styles.exampleThumb}
-                    style={{ background: ex.gradient }}
-                  >
-                    {/* Play icon */}
-                    <div className={styles.playBtn}>
-                      <svg width="18" height="20" viewBox="0 0 18 20" fill="currentColor" aria-hidden="true">
-                        <path d="M2 2l14 8L2 18V2z"/>
-                      </svg>
-                    </div>
+                <div className={styles.exCard}>
+                  {/* Replace gradient with real <img> or <video> when ready */}
+                  <div className={styles.exThumb} style={{ background: ex.gradient }}>
                     <span
-                      className={styles.exampleBadge}
-                      style={{ color: ex.accent, borderColor: `${ex.accent}50`, background: `${ex.accent}18` }}
+                      className={styles.exBadge}
+                      style={{ color: ex.accent, borderColor: `${ex.accent}50`, background: `${ex.accent}15` }}
                     >
                       {ex.label}
                     </span>
+                    <div className={styles.exPlay}>
+                      <svg width="16" height="18" viewBox="0 0 16 18" fill="currentColor">
+                        <path d="M2 1l12 8-12 8V1z"/>
+                      </svg>
+                    </div>
                   </div>
-                  <div className={styles.exampleCaption}>{ex.caption}</div>
+                  <p className={styles.exCaption}>{ex.caption}</p>
                 </div>
               </Reveal>
             ))}
@@ -236,42 +182,34 @@ export default function MediaPage() {
         </div>
       </section>
 
-      {/* ════════════════════════════════════
-          PRICING
-      ════════════════════════════════════ */}
+      {/* ═══ PRICING ═══ */}
       <section id="pricing" className={styles.pricing}>
         <div className="container">
           <Reveal>
             <span className={styles.label}>Pricing</span>
-            <h2 className={styles.sectionH2}>Every brand is different. So is our pricing.</h2>
-            <p className={styles.sectionSub}>
-              We tailor every package to your goals, audience, and content volume.
-              Whether you are a growing startup or an established brand, we will build a
-              proposal that fits. All prices shown are starting points.
+            <h2 className={styles.sectionH2}>Every brand is different.<br />So is our pricing.</h2>
+            <p className={styles.pricingSub}>
+              All prices are starting points. Final packages are tailored to your goals, audience, and content volume.
             </p>
           </Reveal>
 
-          <div className={styles.tierGrid}>
+          <div className={styles.tierRow}>
             {tiers.map((tier, i) => (
               <Reveal key={tier.name} delay={i * 0.1}>
-                <div className={`${styles.tierCard} ${tier.popular ? styles.tierPopular : ''}`}>
-                  {tier.popular && (
-                    <div className={styles.popularBadge}>Most Popular</div>
-                  )}
+                <div className={`${styles.tier} ${tier.popular ? styles.tierPop : ''}`}>
+                  {tier.popular && <span className={styles.tierBadge}>Most Popular</span>}
                   <div className={styles.tierName}>{tier.name}</div>
-                  <div className={styles.tierPriceRow}>
-                    <span className={styles.tierPrice}>From {tier.price}</span>
-                    <span className={styles.tierPer}>{tier.period}</span>
+                  <div className={styles.tierPrice}>
+                    From {tier.price}<span className={styles.tierPer}>{tier.period}</span>
                   </div>
-                  <ul className={styles.tierFeatures}>
+                  <ul className={styles.tierList}>
                     {tier.features.map(f => (
-                      <li key={f} className={styles.tierFeature}>
-                        <span className={styles.tierTick}>✓</span>
-                        {f}
+                      <li key={f} className={styles.tierItem}>
+                        <span className={styles.tierTick}>✓</span>{f}
                       </li>
                     ))}
                   </ul>
-                  <a href="#booking" className={tier.popular ? styles.tierBtnPrimary : styles.tierBtnGhost}>
+                  <a href="#booking" className={tier.popular ? styles.tierBtnPop : styles.tierBtnGhost}>
                     Get Started
                   </a>
                 </div>
@@ -279,37 +217,31 @@ export default function MediaPage() {
             ))}
           </div>
 
-          {/* One-off video note */}
           <Reveal>
-            <p className={styles.videoNote}>One-off AI video production from <strong>£99</strong></p>
-          </Reveal>
-
-          {/* Disclaimer */}
-          <Reveal>
+            <p className={styles.pricingNote}>
+              One-off AI video production from <strong>£99</strong>
+            </p>
             <p className={styles.disclaimer}>
-              All prices are indicative. Final pricing varies depending on your requirements.
               Minimum 3-month commitment on retainer packages. Ad spend is always separate and client-owned.
             </p>
           </Reveal>
 
           <Reveal>
-            <div className={styles.pricingCta}>
+            <div style={{ textAlign: 'center', marginTop: '2.5rem' }}>
               <a href="#booking" className={styles.ctaPrimary}>Get a Quote</a>
             </div>
           </Reveal>
         </div>
       </section>
 
-      {/* ════════════════════════════════════
-          BOOKING
-      ════════════════════════════════════ */}
+      {/* ═══ BOOKING ═══ */}
       <section id="booking" className={styles.booking}>
         <div className="container">
           <Reveal>
             <span className={styles.label}>Get Started</span>
-            <h2 className={styles.sectionH2}>Let's Create Something.</h2>
-            <p className={styles.sectionSub}>
-              Pick a time or send us a message. We will come back to you within one working day.
+            <h2 className={styles.sectionH2}>Let's Create<br />Something.</h2>
+            <p className={styles.bookingSub}>
+              Pick a time or send a message. We will be back within one working day.
             </p>
           </Reveal>
 
@@ -318,23 +250,18 @@ export default function MediaPage() {
               {/* Google Calendar booking card */}
               <div className={styles.calCard}>
                 <div className={styles.calIcon}>
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#00D4B4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#00D4B4" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" rx="2"/>
                     <path d="M16 2v4M8 2v4M3 10h18M8 14h2M11 14h2M14 14h2M8 17h2M11 17h2M14 17h2"/>
                   </svg>
                 </div>
                 <h3 className={styles.calTitle}>Discovery call</h3>
                 <p className={styles.calDesc}>
-                  Pick a time that suits you. The call is 30 minutes over Google Meet
-                  and you will receive a confirmation and calendar invite straight away.
+                  30 minutes over Google Meet. We learn your brand, your goals, and what kind of content you need. You walk away with a clear proposal.
                 </p>
                 <ul className={styles.calAgenda}>
-                  {[
-                    'Your brand, goals, and content needs',
-                    'Which services fit best',
-                    'Pricing and next steps',
-                  ].map(item => (
-                    <li key={item} className={styles.calAgendaItem}>
+                  {['Your brand, goals, and content needs', 'Which services fit best', 'Pricing and next steps'].map(item => (
+                    <li key={item} className={styles.calItem}>
                       <span className={styles.calTick}>✓</span>{item}
                     </li>
                   ))}
@@ -347,10 +274,9 @@ export default function MediaPage() {
                 >
                   Book a 30-minute call →
                 </a>
-                <p className={styles.calNote}>Free, no commitment.</p>
+                <p className={styles.calFree}>Free. No commitment.</p>
               </div>
 
-              {/* Contact form — handled client-side */}
               <MediaContactForm />
             </div>
           </Reveal>
@@ -359,6 +285,3 @@ export default function MediaPage() {
     </>
   )
 }
-
-/* ── Client component for the form ── */
-import MediaContactForm from './MediaContactForm'
