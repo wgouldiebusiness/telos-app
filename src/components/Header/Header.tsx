@@ -7,14 +7,18 @@ import Logo from '@/components/Logo/Logo'
 import styles from './Header.module.css'
 
 const navLinks = [
-  { label: 'Home',             href: '/',          badge: false, badgeColor: '' },
-  { label: 'What We Do',       href: '/solutions', badge: false, badgeColor: '' },
-  { label: 'How It Works',     href: '/process',   badge: false, badgeColor: '' },
-  { label: 'Pricing',          href: '/pricing',   badge: false, badgeColor: '' },
-  { label: 'About',            href: '/about',     badge: false, badgeColor: '' },
-  { label: 'Telos Websites',   href: '/websites',  badge: true,  badgeColor: 'purple' },
-  { label: 'Telos Media',      href: '/media',     badge: true,  badgeColor: 'teal'   },
-  { label: 'Log In',           href: '/login',     badge: false, badgeColor: '' },
+  { label: 'Home',       href: '/',          badge: false, badgeColor: '' },
+  { label: 'What We Do', href: '/solutions', badge: false, badgeColor: '' },
+  { label: 'How It Works',href: '/process',  badge: false, badgeColor: '' },
+  { label: 'Pricing',    href: '/pricing',   badge: false, badgeColor: '' },
+  { label: 'About',      href: '/about',     badge: false, badgeColor: '' },
+  { label: 'Log In',     href: '/login',     badge: false, badgeColor: '' },
+]
+
+// Sub-brand badge links — grouped tightly together
+const brandLinks = [
+  { label: 'Telos Websites', href: '/websites', badgeColor: 'red'  },
+  { label: 'Telos Media',    href: '/media',    badgeColor: 'teal' },
 ]
 
 export default function Header() {
@@ -49,17 +53,23 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={
-                  !link.badge
-                    ? `${styles.navLink} ${pathname === link.href ? styles.active : ''}`
-                    : link.badgeColor === 'teal'
-                      ? styles.navBadgeTeal
-                      : styles.navBadge
-                }
+                className={`${styles.navLink} ${pathname === link.href ? styles.active : ''}`}
               >
                 {link.label}
               </Link>
             ))}
+            {/* Sub-brand badges grouped tightly */}
+            <div className={styles.brandBadges}>
+              {brandLinks.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={link.badgeColor === 'teal' ? styles.navBadgeTeal : styles.navBadgeRed}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
             <Link href="/contact" className={styles.ctaBtn}>
               Book a Call
             </Link>
@@ -97,13 +107,22 @@ export default function Header() {
                 >
                   <Link
                     href={link.href}
-                    className={
-                      !link.badge
-                        ? `${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`
-                        : link.badgeColor === 'teal'
-                          ? `${styles.mobileLink} ${styles.mobileLinkBadgeTeal}`
-                          : `${styles.mobileLink} ${styles.mobileLinkBadge}`
-                    }
+                    className={`${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+              {brandLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navLinks.length + i) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                >
+                  <Link
+                    href={link.href}
+                    className={`${styles.mobileLink} ${link.badgeColor === 'teal' ? styles.mobileLinkBadgeTeal : styles.mobileLinkBadgeRed}`}
                   >
                     {link.label}
                   </Link>
@@ -112,7 +131,7 @@ export default function Header() {
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                transition={{ delay: (navLinks.length + brandLinks.length) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <Link href="/contact" className={styles.mobileCta}>
                   Book a Call

@@ -9,6 +9,7 @@ import styles from './MediaHeader.module.css'
 const navLinks = [
   { label: 'What We Do', href: '/media#services' },
   { label: 'Pricing',    href: '/media#pricing'  },
+  { label: 'Telos AI',   href: '/'               },
 ]
 
 export default function MediaHeader() {
@@ -39,15 +40,10 @@ export default function MediaHeader() {
     <>
       <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
         <div className={styles.inner}>
-          <div className={styles.brandGroup}>
-            <Link href="/" className={styles.backPill} title="Back to Telos AI">
-              ← Telos AI
-            </Link>
-            <Link href="/media" className={styles.brand} aria-label="Telos Media home">
-              <Logo size="sm" accentColor="#00D4B4" />
-              <span className={styles.wordmark}>Telos Media</span>
-            </Link>
-          </div>
+          <Link href="/media" className={styles.brand} aria-label="Telos Media home">
+            <Logo size="sm" accentColor="#00D4B4" />
+            <span className={styles.wordmark}>Telos Media</span>
+          </Link>
 
           <nav className={styles.nav} aria-label="Media navigation">
             {navLinks.map(link => (
@@ -87,19 +83,12 @@ export default function MediaHeader() {
             transition={{ duration: 0.38, ease: [0.2, 0.7, 0.2, 1] }}
           >
             <nav className={styles.mobileNav}>
-              <motion.div
-                initial={{ opacity: 0, x: 24 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
-              >
-                <Link href="/" className={styles.mobileBack}>← Back to Telos AI</Link>
-              </motion.div>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
                   initial={{ opacity: 0, x: 24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: (i + 1) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                  transition={{ delay: i * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
                 >
                   <Link
                     href={link.href}
@@ -113,7 +102,7 @@ export default function MediaHeader() {
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: (navLinks.length + 1) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                transition={{ delay: navLinks.length * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <Link href="/media#booking" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>
                   Book a Call

@@ -208,6 +208,37 @@
 }
 .mobileLinkBadge:hover { color: var(--purple) !important; }
 
+/* Sub-brand badges grouped with tight gap */
+.brandBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Red badge variant — Telos Websites */
+.navBadgeRed {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #E8352A;
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid rgba(232,53,42,.35);
+  border-radius: 980px;
+  transition: background var(--t-fast), border-color var(--t-fast);
+}
+
+.navBadgeRed:hover {
+  background: rgba(232,53,42,.1);
+  border-color: #E8352A;
+}
+
+.mobileLinkBadgeRed {
+  color: #E8352A !important;
+}
+.mobileLinkBadgeRed:hover { color: #E8352A !important; }
+
 /* Teal badge variant — Telos Media */
 .navBadgeTeal {
   font-family: var(--font-inter, 'Inter'), sans-serif;
