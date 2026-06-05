@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
 import MediaAccordion from './MediaAccordion'
+import MediaDemos from './MediaDemos'
 import MediaContactForm from './MediaContactForm'
 import styles from './page.module.css'
 
@@ -38,12 +39,6 @@ const services = [
   },
 ]
 
-const examples = [
-  { label: 'AI Brand Video',    caption: 'Premium brand film produced entirely with AI. Fast turnaround, cinematic quality.', gradient: 'linear-gradient(135deg, rgba(0,180,150,.3) 0%, rgba(0,80,65,.15) 100%)',  accent: '#00D4B4' },
-  { label: 'Social Campaign',   caption: '30-day content calendar for a lifestyle brand. Consistent, on-brand, zero effort from the client.', gradient: 'linear-gradient(135deg, rgba(120,104,230,.3) 0%, rgba(50,40,120,.15) 100%)', accent: '#7868E6' },
-  { label: 'Paid Ad Creative',  caption: 'Meta ad set. Six variants tested. 3.2x ROAS achieved.', gradient: 'linear-gradient(135deg, rgba(220,80,60,.25) 0%, rgba(120,30,20,.12) 100%)',  accent: '#E06848' },
-  { label: 'Reels & Short-Form',caption: 'Weekly reel package. Scripted, edited, and captioned in your brand voice.', gradient: 'linear-gradient(135deg, rgba(220,155,50,.25) 0%, rgba(130,80,10,.12) 100%)',  accent: '#DCA032' },
-]
 
 const tiers = [
   { name: 'Starter', price: '£150', period: '/mo', popular: false, features: ['8 social posts/month', 'Copywriting & graphics', '1 platform managed'] },
@@ -127,38 +122,18 @@ export default function MediaPage() {
       <section id="examples" className={styles.examples}>
         <div className="container">
           <Reveal>
-            <span className={styles.label}>Work</span>
-            <h2 className={styles.sectionH2}>Real results.<br />Real clients.</h2>
+            <span className={styles.label}>What We Produce</span>
+            <h2 className={styles.sectionH2}>See it in action.</h2>
             <p className={styles.sectionNote}>
-              Examples available on request.{' '}
-              <a href="#booking" className={styles.noteLink}>Book a call</a>{' '}
-              to see work relevant to your industry.
+              Interactive demos of the four things we build for brands every week.
+              Real work examples available on request —{' '}
+              <a href="#booking" className={styles.noteLink}>book a call</a>.
             </p>
           </Reveal>
 
-          <div className={styles.exGrid}>
-            {examples.map((ex, i) => (
-              <Reveal key={ex.label} delay={i * 0.07}>
-                <div className={styles.exCard}>
-                  {/* Replace gradient with real <img> or <video> when ready */}
-                  <div className={styles.exThumb} style={{ background: ex.gradient }}>
-                    <span
-                      className={styles.exBadge}
-                      style={{ color: ex.accent, borderColor: `${ex.accent}50`, background: `${ex.accent}15` }}
-                    >
-                      {ex.label}
-                    </span>
-                    <div className={styles.exPlay}>
-                      <svg width="16" height="18" viewBox="0 0 16 18" fill="currentColor">
-                        <path d="M2 1l12 8-12 8V1z"/>
-                      </svg>
-                    </div>
-                  </div>
-                  <p className={styles.exCaption}>{ex.caption}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delay={0.1}>
+            <MediaDemos />
+          </Reveal>
         </div>
       </section>
 

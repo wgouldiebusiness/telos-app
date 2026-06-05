@@ -431,27 +431,33 @@
   gap: 1px;
   border: 1px solid rgba(255,255,255,.08);
   border-radius: 18px;
-  overflow: hidden;
+  /* overflow: visible so the Most Popular badge isn't clipped */
+  overflow: visible;
   margin-bottom: 2.5rem;
+  margin-top: 20px; /* room for the badge above the border */
 }
 
 .tier {
   position: relative;
-  padding: 2.5rem 2rem;
+  padding: 2.5rem 2rem 2.5rem;
   background: rgba(0,0,0,.4);
   display: flex;
   flex-direction: column;
   gap: 0;
   border-right: 1px solid rgba(255,255,255,.06);
   transition: background 0.25s ease;
+  min-height: 340px;
 }
 
-.tier:last-child { border-right: none; }
+.tier:first-child { border-radius: 17px 0 0 17px; }
+.tier:last-child  { border-radius: 0 17px 17px 0; border-right: none; }
 .tier:hover { background: rgba(0,212,180,.05); }
 
 .tierPop {
   background: rgba(0,212,180,.07) !important;
-  border-color: rgba(0,212,180,.2) !important;
+  border: 1px solid rgba(0,212,180,.25) !important;
+  border-radius: 0 !important;
+  padding-top: 3.25rem !important; /* room for the badge */
 }
 
 .tierBadge {
