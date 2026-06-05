@@ -9,7 +9,11 @@ import styles from './WebsitesHeader.module.css'
 const navLinks = [
   { label: 'What We Build', href: '/websites/what-we-build' },
   { label: 'Pricing',       href: '/websites/pricing' },
-  { label: 'Telos AI',      href: '/' },
+]
+
+const brandLinks = [
+  { label: 'Telos AI',    href: '/',      color: 'purple' },
+  { label: 'Telos Media', href: '/media', color: 'teal'   },
 ]
 
 export default function WebsitesHeader() {
@@ -55,6 +59,17 @@ export default function WebsitesHeader() {
                 {link.label}
               </Link>
             ))}
+            <div className={styles.brandBadges}>
+              {brandLinks.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={link.color === 'teal' ? styles.badgeTeal : styles.badgePurple}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
             <Link href="/contact" className={styles.ctaBtn}>
               Book a Call
             </Link>
@@ -98,10 +113,25 @@ export default function WebsitesHeader() {
                   </Link>
                 </motion.div>
               ))}
+              {brandLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navLinks.length + i) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                >
+                  <Link
+                    href={link.href}
+                    className={`${styles.mobileLink} ${link.color === 'teal' ? styles.mobileTeal : styles.mobilePurple}`}
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                transition={{ delay: (navLinks.length + brandLinks.length) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <Link href="/contact" className={styles.mobileCta}>
                   Book a Call

@@ -9,7 +9,11 @@ import styles from './MediaHeader.module.css'
 const navLinks = [
   { label: 'What We Do', href: '/media#services' },
   { label: 'Pricing',    href: '/media#pricing'  },
-  { label: 'Telos AI',   href: '/'               },
+]
+
+const brandLinks = [
+  { label: 'Telos AI',       href: '/',         color: 'purple' },
+  { label: 'Telos Websites', href: '/websites', color: 'red'    },
 ]
 
 export default function MediaHeader() {
@@ -55,6 +59,17 @@ export default function MediaHeader() {
                 {link.label}
               </Link>
             ))}
+            <div className={styles.brandBadges}>
+              {brandLinks.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={link.color === 'red' ? styles.badgeRed : styles.badgePurple}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
             <Link href="/media#booking" className={styles.ctaBtn}>
               Book a Call
             </Link>
@@ -90,10 +105,22 @@ export default function MediaHeader() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
                 >
+                  <Link href={link.href} onClick={() => setMenuOpen(false)} className={styles.mobileLink}>
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+              {brandLinks.map((link, i) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: (navLinks.length + i) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                >
                   <Link
                     href={link.href}
                     onClick={() => setMenuOpen(false)}
-                    className={styles.mobileLink}
+                    className={`${styles.mobileLink} ${link.color === 'red' ? styles.mobileRed : styles.mobilePurple}`}
                   >
                     {link.label}
                   </Link>
@@ -102,7 +129,7 @@ export default function MediaHeader() {
               <motion.div
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+                transition={{ delay: (navLinks.length + brandLinks.length) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <Link href="/media#booking" className={styles.mobileCta} onClick={() => setMenuOpen(false)}>
                   Book a Call

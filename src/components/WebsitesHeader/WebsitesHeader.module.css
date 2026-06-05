@@ -125,6 +125,46 @@
   transform: translateY(-1px);
 }
 
+/* Cross-brand badge group */
+.brandBadges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.badgePurple {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #7868E6;
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid rgba(120,104,230,.35);
+  border-radius: 980px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.badgePurple:hover { background: rgba(120,104,230,.1); border-color: #7868E6; }
+
+.badgeTeal {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #00D4B4;
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid rgba(0,212,180,.35);
+  border-radius: 980px;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.badgeTeal:hover { background: rgba(0,212,180,.1); border-color: #00D4B4; }
+
+.mobilePurple { color: #7868E6 !important; }
+.mobilePurple:hover { color: #7868E6 !important; }
+.mobileTeal   { color: #00D4B4 !important; }
+.mobileTeal:hover   { color: #00D4B4 !important; }
+
 /* Hamburger */
 .menuBtn {
   display: none;
