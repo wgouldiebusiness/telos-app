@@ -8,7 +8,7 @@ import type { PhoneDemo } from '@/components/demos/PhoneShowcase'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos Websites — Built to Win Clients',
+  title: 'Telos Websites: Built to Win Clients',
   description:
     'We design and build websites for service businesses. Fast, focused, and wired into your AI agents from day one.',
 }

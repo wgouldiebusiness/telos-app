@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { createAdminClient } from '@/lib/supabase/admin'
 import styles from './page.module.css'
 
-export const metadata: Metadata = { title: 'Module Library — Admin' }
+export const metadata: Metadata = { title: 'Module Library | Admin' }
 
 export default async function ModulesPage() {
   const admin = createAdminClient()

@@ -1,0 +1,333 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Portfolio | ÉLEVATE Studio</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#f1e0cc",
+                    "secondary-fixed-dim": "#e9c349",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "on-secondary-fixed": "#241a00",
+                    "outline-variant": "#d3c3be",
+                    "inverse-primary": "#e0c0b4",
+                    "on-secondary-container": "#745c00",
+                    "on-primary-fixed": "#291710",
+                    "on-surface-variant": "#4f4441",
+                    "on-tertiary-container": "#898783",
+                    "on-error-container": "#93000a",
+                    "on-tertiary-fixed": "#1c1c19",
+                    "primary-fixed": "#fddbd0",
+                    "inverse-on-surface": "#ffeedc",
+                    "surface-container-low": "#fff1e4",
+                    "surface-dim": "#e9d7c4",
+                    "surface-bright": "#fff8f4",
+                    "primary": "#110402",
+                    "on-primary-fixed-variant": "#584239",
+                    "secondary": "#735c00",
+                    "error-container": "#ffdad6",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#fed65b",
+                    "on-tertiary-fixed-variant": "#474743",
+                    "surface": "#fff8f4",
+                    "tertiary-fixed-dim": "#c9c6c2",
+                    "primary-fixed-dim": "#e0c0b4",
+                    "secondary-fixed": "#ffe088",
+                    "tertiary": "#080806",
+                    "outline": "#817470",
+                    "tertiary-container": "#20201d",
+                    "on-background": "#231a0e",
+                    "surface-container-high": "#f7e5d1",
+                    "tertiary-fixed": "#e5e2dd",
+                    "surface-container-highest": "#f1e0cc",
+                    "on-primary-container": "#9d8177",
+                    "primary-container": "#2d1b14",
+                    "surface-container": "#fdebd7",
+                    "surface-tint": "#725950",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#231a0e",
+                    "inverse-surface": "#392f21",
+                    "on-error": "#ffffff",
+                    "background": "#fff8f4",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-desktop": "64px",
+                    "gutter": "24px",
+                    "margin-mobile": "24px",
+                    "section-gap": "120px",
+                    "container-max": "1280px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Playfair Display"],
+                    "headline-md": ["Playfair Display"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-md": ["Hanken Grotesk"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-lg": ["Hanken Grotesk"],
+                    "label-sm": ["Hanken Grotesk"]
+            },
+            "fontSize": {
+                    "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                    "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "300"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .grain-overlay {
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+            z-index: 99;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.04;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .reveal-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="grain-overlay"></div>
+<!-- TopAppBar -->
+<header class="docked full-width top-0 sticky z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md">
+<nav class="flex justify-between items-center w-full px-6 py-4 md:px-16">
+<button class="scale-95 active:scale-90 transition-transform duration-300 text-primary hover:opacity-70">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<a class="font-display-lg text-headline-md tracking-widest text-primary uppercase" href="{{DATA:SCREEN:SCREEN_2}}">ÉLEVATE</a>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:opacity-70 transition-opacity" href="{{DATA:SCREEN:SCREEN_2}}">Studio</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:opacity-70 transition-opacity" href="{{DATA:SCREEN:SCREEN_2}}">Services</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold" href="{{DATA:SCREEN:SCREEN_2}}">Portfolio</a>
+</div>
+<button class="scale-95 active:scale-90 transition-transform duration-300 text-primary hover:opacity-70">
+<span class="material-symbols-outlined">shopping_bag</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="max-w-container-max mx-auto px-6 md:px-16 py-12 md:py-24">
+<!-- Hero Section -->
+<section class="mb-24">
+<div class="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+<div class="max-w-2xl">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6 leading-tight">The Art of <br><span class="italic font-light">Refinement</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-lg">A curated gallery of our recent transformations. Each image reflects our commitment to minimalist elegance and the unique beauty of every individual who walks through our doors.</p>
+</div>
+<div class="flex gap-4 pb-2">
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] border-b border-primary py-1">All Work</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-outline py-1 cursor-pointer hover:text-primary transition-colors">Hair</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-outline py-1 cursor-pointer hover:text-primary transition-colors">Skincare</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em] text-outline py-1 cursor-pointer hover:text-primary transition-colors">Editorial</span>
+</div>
+</div>
+<!-- Bento Portfolio Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
+<!-- Main Feature -->
+<div class="md:col-span-8 group cursor-pointer overflow-hidden reveal-on-scroll visible">
+<div class="aspect-[16/10] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out grayscale-[20%] group-hover:grayscale-0" data-alt="A high-fashion close-up of a model with luminous skin and wet-look slicked back hair, set against a warm beige background. The lighting is soft and cinematic, emphasizing the dewy texture of the skin and professional makeup artistry. The overall mood is high-end, sophisticated, and serene, perfectly embodying the minimalist luxury salon aesthetic with a palette of cream and warm chocolate tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJn02Ogg_8MoDZnwptLRSgNj_-R-rb-K-eOdyL3RDNIAUtowF3L519fyVVUQX09YDjVskmnIlb4VBczis8jpQL2EJOuGZkddNw-MXpoLqqx0tRNxp_94s98aeqN9Lsvr7-U7ACamDp5BKOAh-6mwMqFR8_Yp284FSJmYrRYxMAbISdtXOpCA0sJv7wwtmNkFp6uFja6dIoJVN1Y-LFNaofN8rk1-s3hoSCjOHgToyipbE4i_ZxZONmTNUFFTm1Oj-s-iF1LbHA-xw8">
+</div>
+<div class="mt-6 flex justify-between items-baseline border-t border-outline-variant/30 pt-4">
+<h3 class="font-headline-md text-headline-md italic">Luminous Ritual</h3>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Skincare &amp; Glow</p>
+</div>
+</div>
+<!-- Side Portrait -->
+<div class="md:col-span-4 group cursor-pointer overflow-hidden reveal-on-scroll visible" style="transition-delay: 100ms;">
+<div class="aspect-[3/4] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Detail shot of a perfectly executed sleek bob haircut on a woman with dark hair. The image focuses on the sharp, precise lines of the cut and the glossy shine of the hair. The background is a muted, warm-toned studio setting that complements the minimalist luxury theme. The lighting is crisp yet soft, highlighting the professional hair styling quality in a palette of deep browns and neutrals." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbTBDsNJEDRpidayWWIfVVokkzPDUuQS9a_FvOwoUCV0p7qF7yQRcOT7GiKVJBr0ySZNodJ3B6WZt82mHE5vgK1bauagomsLeIz5T0oHsaJbjO04eQs5RevI-MyV_qOgfwYW5OzD_6s7CtLm21VXU-Qr_1kH7eHDoRAnHuxyQK-MMxXZVBsVVt79zjkwJ3F2krV0s0N1ZpWnsXQMJW_BE892as7aRcLzErk1U0ha-WEXha9JsCqXWsEh4j507TwdRWxtey5Cgp2p8f">
+</div>
+<div class="mt-6 border-t border-outline-variant/30 pt-4">
+<h3 class="font-headline-md text-headline-md italic">Architectural Cut</h3>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Precision Styling</p>
+</div>
+</div>
+<!-- Secondary Row -->
+<div class="md:col-span-4 group cursor-pointer overflow-hidden reveal-on-scroll visible" style="transition-delay: 200ms;">
+<div class="aspect-square overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Extreme close-up of a woman's eye with impeccably applied natural-looking mascara and subtle neutral eyeshadow. The image showcases the delicate texture of the skin and the precision of the lash application. The lighting is airy and bright, creating a clean, high-fashion beauty look that fits the calm and restorative mood of a high-end boutique salon." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAahPZbGDRSFsLzYvrKZw_flgFXHWKso5NBbytqdiBjkoXpWH4d_AdgexbqnoucZV6krY5ln_JRdlOIykgxXHsyFmoTDzmCGcUrI-CxDEbdCrTeaAao9XRkwk7YkK710Ts253z_TfKcRdzeomNBbuDysP_tOSngUIu8idLu3eUymtrI-KJPRpERBJfiTU7sapNkwUYXvwz-vohfl5FZOu5pPjJZ3MP5-iPrOdVx9ZjWI3nAiP5isns0q1QZrjEeE2VaoDqP6_pfAXLK">
+</div>
+<div class="mt-6 border-t border-outline-variant/30 pt-4">
+<h3 class="font-headline-md text-headline-md italic">Defined Gaze</h3>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Lash &amp; Brow Artistry</p>
+</div>
+</div>
+<div class="md:col-span-8 group cursor-pointer overflow-hidden reveal-on-scroll visible" style="transition-delay: 300ms;">
+<div class="aspect-[16/8] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A tranquil scene of a salon interior featuring minimalist product displays and a soft, textured linen cloth draped over a table. The environment is bathed in warm, diffused natural light, emphasizing a sense of restorative calm. The color palette consists of cream, taupe, and deep chocolate accents, reinforcing a quiet luxury and professional excellence atmosphere through a clean and asymmetrical composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAs-lTV7Q8QMCFjE_nK72UFkzoZc_kNCIqYomCtZJVAYEozJtFYNlD_hWnCHvpXA8dRWm34ZPhCK33QVpjyzFFzA9-T7h0Brar39MssFzOLgN6L5SJTuCAxahWN9SxasRZGp5AgVBF1mC-o8_ComVw41KOHZEXXoV0w50Nvdlui6Cw2gJPL5J6s8fVFt9jyz2HEWF4AGfl1FW4_qw-JZVtCFcLFVgki7cnD--rUL7F_tayh6CSmTUrrtANva9tcyGw_95vbwbIzgo7s">
+</div>
+<div class="mt-6 flex justify-between items-baseline border-t border-outline-variant/30 pt-4">
+<h3 class="font-headline-md text-headline-md italic">Curated Serenity</h3>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Editorial Environment</p>
+</div>
+</div>
+<!-- Third Row -->
+<div class="md:col-span-6 group cursor-pointer overflow-hidden reveal-on-scroll visible" style="transition-delay: 400ms;">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Artistic side profile of a woman with her hair in a loose, elegant updo, showcasing the texture and highlights. The photo is taken with a shallow depth of field, blurring the warm neutral background and focusing on the intricate styling. The lighting is golden and soft, creating a warm, tactile serenity that aligns with high-fashion salon portfolios." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlxdraeMLkoc12LHEGoPDl9PwYluXZuscWrxrIBpNnFZqXU1NT3BHdIaBd0CCzhUAyX6KyNWRO7AjxYae9oLGmnH-UqeeafwqRFiW3RlkrhI84ZLZ5Vxt1qCRjBoxsJn1604hr88RYA8UejRWsVbvJKUHtGKD7jWVHe7eiXaVIU4y50aR43C40-m2d2qH5j9xckAUX5vYBgSY3oixQE52SezCkJov5u_3iAVFnypIgiFIiOD8kf93dlhXU4-c8_lrjdfE0LAYFAxKv">
+</div>
+<div class="mt-6 border-t border-outline-variant/30 pt-4">
+<h3 class="font-headline-md text-headline-md italic">The Sculpted Updo</h3>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Formal Artistry</p>
+</div>
+</div>
+<div class="md:col-span-6 group cursor-pointer overflow-hidden reveal-on-scroll visible" style="transition-delay: 500ms;">
+<div class="aspect-[4/5] overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="Close-up of a person receiving a relaxing facial treatment with white cream masks applied. The person’s eyes are closed in a state of pure relaxation. The scene is shot from above in a minimalist, clean spa setting with soft lighting and a palette of whites and skin-toned neutrals. The image communicates professional excellence and a restorative, luxurious wellness experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCm6P_-Zdl9As2mCgaMMS0IBxgCqEV-zg944DxhCyIPYj8Vm_2Q9788phvfQxNhr-zdD4t7KnUZT5dAbqHhMGwb1u3-_o4dIsr7g77VdrYOjR7P9kHZGU55YIWaumehwJyNHVexHBlMiXmWmqUon-U0h_mDPKP96tnAMCxISGtjLYwdmWZLl9tphzBX7212YZgqX-9N7IvnNNp-0fue8wkqN15zZhw6uWuOVluUdLubLXB4UPVHr1ZPaG2CUL5cn76o1k3Z-8uGIjw4">
+</div>
+<div class="mt-6 border-t border-outline-variant/30 pt-4">
+<h3 class="font-headline-md text-headline-md italic">Restorative Facial</h3>
+<p class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Clinical Care</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="section-gap flex flex-col items-center text-center reveal-on-scroll visible">
+<h2 class="font-display-lg text-headline-lg md:text-display-lg mb-8 max-w-3xl italic">Begin your own <br>transformation story.</h2>
+<div class="flex flex-col sm:flex-row gap-4">
+<a href="{{DATA:SCREEN:SCREEN_7}}" class="px-12 py-5 bg-primary text-surface font-label-sm text-label-sm uppercase tracking-[0.2em] hover:bg-on-surface-variant transition-colors active:scale-95 duration-300 text-center">Book an Appointment</a>
+<a href="{{DATA:SCREEN:SCREEN_7}}" class="px-12 py-5 border border-primary text-primary font-label-sm text-label-sm uppercase tracking-[0.2em] hover:bg-primary hover:text-surface transition-all active:scale-95 duration-300 text-center">View Services</a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low pt-24 pb-12 px-6 md:px-16 mt-24">
+<div class="max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-24">
+<div class="md:col-span-2">
+<h2 class="font-display-lg text-headline-md mb-8 uppercase tracking-widest text-primary">ÉLEVATE</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-sm mb-8">Redefining the salon experience through meticulous craft and a commitment to essential beauty.</p>
+<div class="flex gap-6">
+<a class="text-primary hover:opacity-50 transition-opacity" href="#">Instagram</a>
+<a class="text-primary hover:opacity-50 transition-opacity" href="#">Pinterest</a>
+<a class="text-primary hover:opacity-50 transition-opacity" href="#">LinkedIn</a>
+</div>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-8">Studio</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#">Our Story</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_9}}">Stylist Profiles</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Memberships</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Gift Cards</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-sm text-label-sm uppercase tracking-widest text-primary mb-8">Legal</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li class=""><a class="hover:text-primary transition-colors" href="#">Privacy Policy</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_9}}">Terms of Service</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Cookies</a></li>
+<li class=""><a class="hover:text-primary transition-colors" href="#">Accessibility</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-12 border-t border-outline-variant/30 flex flex-col md:flex-row justify-between items-center gap-6">
+<p class="font-label-sm text-label-sm text-outline uppercase tracking-widest">© 2024 ÉLEVATE STUDIO. ALL RIGHTS RESERVED.</p>
+<div class="flex items-center gap-4 text-outline font-label-sm text-label-sm">
+<span class="">ESTABLISHED 2018</span>
+<span class="w-1 h-1 bg-outline rounded-full"></span>
+<span class="">123 Smith Road, City Name, ST 12345</span>
+</div>
+</div>
+</div>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="fixed bottom-0 left-0 w-full h-20 bg-surface/90 backdrop-blur-lg border-t border-outline-variant/30 flex justify-around items-center px-4 pb-safe md:hidden z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_2}}">
+<span class="material-symbols-outlined mb-1">home_pin</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Studio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined mb-1">content_cut</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold -translate-y-1 transition-all duration-300" href="{{DATA:SCREEN:SCREEN_10}}">
+<span class="material-symbols-outlined mb-1">auto_awesome</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined mb-1">calendar_today</span>
+<span class="font-label-sm text-[10px] uppercase tracking-widest">Book</span>
+</a>
+</nav>
+<script>
+        // Reveal on scroll logic
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+
+        // Hover effect for portfolio items
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                item.style.zIndex = "10";
+            });
+            item.addEventListener('mouseleave', () => {
+                setTimeout(() => {
+                    item.style.zIndex = "1";
+                }, 300);
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

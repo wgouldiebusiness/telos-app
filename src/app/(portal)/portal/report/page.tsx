@@ -3,7 +3,7 @@ import { createClient } from '@/lib/supabase/server'
 import { redirect } from 'next/navigation'
 import styles from './page.module.css'
 
-export const metadata: Metadata = { title: 'Performance Report — Telos AI Portal' }
+export const metadata: Metadata = { title: 'Performance Report | Telos AI Portal' }
 
 export default async function ReportPage() {
   const supabase = await createClient()

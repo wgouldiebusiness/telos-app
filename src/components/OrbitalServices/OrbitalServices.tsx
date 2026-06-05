@@ -26,55 +26,71 @@ const R = 220
 
 export default function OrbitalServices() {
   const [activeId, setActiveId] = useState<number | null>(null)
-  const nodeRefs = useRef<(HTMLDivElement | null)[]>([])
-  const rotRef   = useRef(0)
-  const rafRef   = useRef<number>(0)
-  const pausedRef = useRef(false)
-  const lastTs   = useRef<number>(0)
+  const wrapperRef  = useRef<HTMLDivElement>(null)
+  const nodeRefs    = useRef<(HTMLDivElement | null)[]>([])
+  const rotRef      = useRef(0)
+  const rafRef      = useRef<number>(0)
+  const lastTs      = useRef<number>(0)
+  const activeIdRef = useRef<number | null>(null)
+
+  activeIdRef.current = activeId
+
+  // Dismiss active card when clicking outside any node
+  useEffect(() => {
+    if (activeId === null) return
+    function onDocClick(e: MouseEvent) {
+      const target = e.target as Node
+      const hitNode = nodeRefs.current.some(el => el && el.contains(target))
+      if (!hitNode) setActiveId(null)
+    }
+    document.addEventListener('click', onDocClick)
+    return () => document.removeEventListener('click', onDocClick)
+  }, [activeId])
 
   const animate = useCallback((ts: number) => {
-    if (!pausedRef.current) {
-      const delta = lastTs.current ? ts - lastTs.current : 16
-      lastTs.current = ts
-      // ~0.9 degrees per second — equivalent to the old setInterval but smooth
-      rotRef.current = (rotRef.current + delta * 0.018) % 360
+    const delta = lastTs.current ? ts - lastTs.current : 16
+    lastTs.current = ts
+    rotRef.current = (rotRef.current + delta * 0.018) % 360
 
-      nodeRefs.current.forEach((el, i) => {
-        if (!el) return
-        const angle = ((i / services.length) * 360 + rotRef.current) * (Math.PI / 180)
-        const x = R * Math.cos(angle)
-        const y = R * Math.sin(angle)
-        const depth = Math.sin(angle)
-        const opacity = Math.max(0.35, 0.35 + 0.65 * ((1 + depth) / 2))
-        const scale  = Math.max(0.7,  0.7  + 0.3  * ((1 + depth) / 2))
-        el.style.transform = `translate(${x}px, ${y}px) scale(${scale})`
-        el.style.opacity   = String(opacity)
-        el.style.zIndex    = String(Math.round(100 + 50 * depth))
-      })
-    } else {
-      lastTs.current = 0
-    }
+    nodeRefs.current.forEach((el, i) => {
+      if (!el) return
+      const angle    = ((i / services.length) * 360 + rotRef.current) * (Math.PI / 180)
+      const x        = R * Math.cos(angle)
+      const y        = R * Math.sin(angle)
+      const depth    = Math.sin(angle)
+      const isActive = activeIdRef.current === services[i].id
+      const opacity  = isActive ? 1 : Math.max(0.35, 0.35 + 0.65 * ((1 + depth) / 2))
+      const scale    = isActive ? 1.3 : Math.max(0.7, 0.7 + 0.3 * ((1 + depth) / 2))
+      el.style.transform = `translate(${x}px, ${y}px) scale(${scale})`
+      el.style.opacity   = String(opacity)
+      el.style.zIndex    = isActive ? '200' : String(Math.round(100 + 50 * depth))
+    })
 
     rafRef.current = requestAnimationFrame(animate)
   }, [])
 
+  // Start/stop loop based on visibility — no wasted frames when off-screen
   useEffect(() => {
-    rafRef.current = requestAnimationFrame(animate)
-    return () => cancelAnimationFrame(rafRef.current)
+    const el = wrapperRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        lastTs.current = 0
+        rafRef.current = requestAnimationFrame(animate)
+      } else {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }, { threshold: 0.01 })
+    io.observe(el)
+    return () => { io.disconnect(); cancelAnimationFrame(rafRef.current) }
   }, [animate])
 
   function handleClick(id: number) {
-    if (activeId === id) {
-      setActiveId(null)
-      pausedRef.current = false
-    } else {
-      setActiveId(id)
-      pausedRef.current = true
-    }
+    setActiveId(prev => prev === id ? null : id)
   }
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={wrapperRef} className={styles.wrapper}>
       <div className={styles.orbit}>
         <div className={styles.ring} />
 
@@ -90,7 +106,6 @@ export default function OrbitalServices() {
               key={s.id}
               ref={el => { nodeRefs.current[i] = el }}
               className={`${styles.node} ${isActive ? styles.nodeActive : ''}`}
-              style={isActive ? { transform: 'scale(1.3)', opacity: '1', zIndex: 200 } : undefined}
               onClick={() => handleClick(s.id)}
             >
               <div className={styles.nodeIcon}>{s.icon}</div>

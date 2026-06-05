@@ -4,7 +4,7 @@ import { createAdminClient } from '@/lib/supabase/admin'
 import { notFound } from 'next/navigation'
 import styles from './page.module.css'
 
-export const metadata: Metadata = { title: 'Client Detail — Admin' }
+export const metadata: Metadata = { title: 'Client Detail | Admin' }
 
 interface Props {
   params: Promise<{ id: string }>
@@ -87,7 +87,7 @@ export default async function ClientDetailPage({ params }: Props) {
           </span>
         </div>
         <p className={styles.pageSub}>
-          {profile?.full_name ?? ''}{profile?.email ? ` — ${profile.email}` : ''}
+          {profile?.full_name ?? ''}{profile?.email ? ` (${profile.email})` : ''}
         </p>
       </div>
 

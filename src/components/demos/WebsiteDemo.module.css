@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   /* Fixed height prevents infinite scroll */
-  height: 520px;
+  height: 676px;
   position: relative;
   transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s var(--ease-mag);
 }
@@ -99,13 +99,11 @@
 .tab:hover { color: rgba(255,255,255,.65); }
 .tabActive  { color: #ffffff; border-bottom-color: var(--purple); }
 
-/* iframe preview — exactly 380px tall, clips to that */
 .previewWrap {
   flex: 1;
   overflow: hidden;
   position: relative;
   background: #ffffff;
-  /* 380px is filled by the scaled iframe */
 }
 
 .frame {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import styles from '../portal.module.css'
 
-export const metadata: Metadata = { title: 'Support — Telos AI Portal' }
+export const metadata: Metadata = { title: 'Support | Telos AI Portal' }
 
 export default function SupportPage() {
   const waNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || ''

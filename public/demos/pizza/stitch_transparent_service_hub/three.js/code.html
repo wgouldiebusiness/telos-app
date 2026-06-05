@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_THREEJS_START:ANIMATION_17 class="fixed inset-0 w-full h-full bg-transparent" -->
+<div class="fixed inset-0 w-full h-full bg-transparent" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_17" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_17');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ServicePro Website Demo</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body { font-family: 'Manrope', sans-serif; overflow-x: hidden; }
+        .screen-container { position: relative; width: 100%; max-width: 480px; margin: 0 auto; min-height: 100vh; background: #fff; box-shadow: 0 0 50px rgba(0,0,0,0.1); }
+        .page { display: none; }
+        .page.active { display: block; }
+        /* Include global styles from screens */
+        .reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+
+<body class="bg-slate-100">
+<div class="screen-container">
+<!-- The background shader would be here as a persistent layer -->
+<div class="fixed inset-0 pointer-events-none z-0 opacity-10" id="shader-bg"></div>
+<!-- Home Page (SCREEN_15) -->
+<div class="page active" id="home">
+<!-- Content of SCREEN_15 -->
+</div>
+<!-- Services Page (SCREEN_12) -->
+<div class="page" id="services">
+<!-- Content of SCREEN_12 -->
+</div>
+<!-- Trust Page (SCREEN_14) -->
+<div class="page" id="trust">
+<!-- Content of SCREEN_14 -->
+</div>
+<!-- Quote Page (SCREEN_10) -->
+<div class="page" id="quote">
+<!-- Content of SCREEN_10 -->
+</div>
+</div>
+<script>
+        // Simple SPA Router logic for the demo
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0,0);
+        }
+
+        // Setup IntersectionObserver for reveal animations
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Logic to intercept links and use showPage() instead of navigation
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a');
+            if (link && link.getAttribute('href').startsWith('#')) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                showPage(targetId);
+            }
+        });
+    </script>
+</body>
+
+})();
+
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_17 -->
+</body>
+</html>

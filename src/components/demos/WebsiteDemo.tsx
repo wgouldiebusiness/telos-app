@@ -15,7 +15,7 @@ interface Props {
   pages:    DemoPage[]
 }
 
-const IFRAME_WIDTH = 1280
+const IFRAME_WIDTH = 1600
 
 export default function WebsiteDemo({ name, category, url, pages }: Props) {
   const [active, setActive]       = useState(0)
@@ -27,11 +27,11 @@ export default function WebsiteDemo({ name, category, url, pages }: Props) {
     function update() {
       if (!wrapRef.current) return
       const w = wrapRef.current.offsetWidth
-      if (!w) return
+      const h = wrapRef.current.offsetHeight
+      if (!w || !h) return
       const s = w / IFRAME_WIDTH
       setScale(s)
-      // fixed preview area is 380px tall; iframe height fills it exactly
-      setFrameHeight(Math.round(380 / s))
+      setFrameHeight(Math.round(h / s))
     }
 
     update()

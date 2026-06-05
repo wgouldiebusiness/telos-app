@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { createAdminClient } from '@/lib/supabase/admin'
 import styles from './page.module.css'
 
-export const metadata: Metadata = { title: 'Admin — Telos AI' }
+export const metadata: Metadata = { title: 'Admin | Telos AI' }
 
 export default async function AdminPage() {
   const admin = createAdminClient()

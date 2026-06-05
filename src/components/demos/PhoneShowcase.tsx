@@ -56,11 +56,12 @@ export default function PhoneShowcase({ demos }: Props) {
     return () => ro.disconnect()
   }, [])
 
-  // Scroll-sync rAF — reads maxScrollRef so it never goes stale on resize
+  // Scroll-sync — only fires on scroll, one rAF per event (no idle loop)
   useEffect(() => {
+    let ticking = false
+
     function tick() {
       if (sectionRef.current) {
-        // Skip scroll animation below mobile breakpoint
         if (window.innerWidth < 700) {
           wrapRefs.current.forEach(w => { if (w) w.style.transform = 'translateY(0)' })
         } else {
@@ -71,10 +72,22 @@ export default function PhoneShowcase({ demos }: Props) {
           wrapRefs.current.forEach(w => { if (w) w.style.transform = `translateY(${ty}px)` })
         }
       }
-      rafRef.current = requestAnimationFrame(tick)
+      ticking = false
     }
-    rafRef.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(rafRef.current)
+
+    function onScroll() {
+      if (!ticking) {
+        ticking = true
+        rafRef.current = requestAnimationFrame(tick)
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    tick() // set initial position
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      cancelAnimationFrame(rafRef.current)
+    }
   }, [])
 
   return (

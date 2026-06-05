@@ -14,8 +14,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s — Telos AI',
-    default: 'Telos AI — AI systems for ambitious service businesses.',
+    template: '%s | Telos AI',
+    default: 'Telos AI: AI systems for ambitious service businesses.',
   },
   description:
     'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Fully managed. Improving every month.',
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     siteName:    'Telos AI',
     locale:      'en_GB',
     type:        'website',
-    title:       'Telos AI — AI systems for ambitious service businesses.',
+    title:       'Telos AI: AI systems for ambitious service businesses.',
     description: 'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving.',
     url:         'https://telosai.co.uk',
   },
   twitter: {
     card:        'summary_large_image',
-    title:       'Telos AI — AI systems for ambitious service businesses.',
+    title:       'Telos AI: AI systems for ambitious service businesses.',
     description: 'Custom AI systems that handle admin, capture leads, and keep your pipeline moving.',
   },
   robots: { index: true, follow: true },

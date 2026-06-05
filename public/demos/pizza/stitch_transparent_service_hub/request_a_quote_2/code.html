@@ -1,0 +1,279 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Request a Quote | Lavisha Professional Services</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Inter:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;family=Manrope:wght@100..900&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#e0e3e5",
+                        "background": "#f8f9ff",
+                        "on-surface": "#0b1c30",
+                        "on-background": "#0b1c30",
+                        "on-surface-variant": "#45464d",
+                        "surface-container": "#e5eeff",
+                        "on-primary-container": "#7c839b",
+                        "on-secondary": "#ffffff",
+                        "tertiary-fixed": "#c8f17a",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-variant": "#d3e4fe",
+                        "on-secondary-fixed": "#191c1e",
+                        "tertiary-fixed-dim": "#add461",
+                        "surface-container-low": "#eff4ff",
+                        "surface-tint": "#565e74",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f8f9ff",
+                        "outline": "#76777d",
+                        "inverse-primary": "#bec6e0",
+                        "inverse-on-surface": "#eaf1ff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#444749",
+                        "surface": "#f8f9ff",
+                        "surface-container-highest": "#d3e4fe",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "primary-fixed-dim": "#bec6e0",
+                        "on-primary": "#ffffff",
+                        "secondary-fixed-dim": "#c4c7c9",
+                        "primary-container": "#131b2e",
+                        "tertiary": "#000000",
+                        "surface-container-high": "#dce9ff",
+                        "surface-dim": "#cbdbf5",
+                        "on-tertiary-fixed": "#131f00",
+                        "on-secondary-container": "#626567",
+                        "outline-variant": "#c6c6cd",
+                        "secondary": "#5c5f61",
+                        "on-primary-fixed": "#131b2e",
+                        "tertiary-container": "#131f00",
+                        "on-tertiary-fixed-variant": "#364e00",
+                        "primary": "#000000",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#213145",
+                        "on-error": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "secondary-container": "#e0e3e5",
+                        "on-tertiary-container": "#6c8f24"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "margin-desktop": "80px",
+                        "section-padding-mobile": "64px",
+                        "section-padding-desktop": "120px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Manrope"],
+                        "label-caps": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg-mobile": ["Manrope"],
+                        "headline-xl": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "600"}],
+                        "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .form-input-shadow {
+            box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest dark:bg-on-primary-container flex justify-between items-center w-full px-4 h-16 sticky top-0 z-50 border-b border-outline-variant dark:border-on-surface-variant">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface dark:text-surface-bright cursor-pointer hover:bg-surface-container-low transition-colors p-2 rounded-full">menu</span>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface dark:text-surface-bright">Lavisha</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_10}}">Home</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_2}}">Services</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_9}}">Reviews</a>
+<a class="font-label-caps text-label-caps text-on-surface-variant dark:text-outline hover:text-primary transition-colors" href="{{DATA:SCREEN:SCREEN_11}}">Contact</a>
+</nav>
+<a href="{{DATA:SCREEN:SCREEN_11}}" class="bg-tertiary-container text-on-tertiary-container px-6 py-2 rounded-xl font-label-caps text-label-caps hover:bg-tertiary-fixed transition-all active:scale-95 flex items-center justify-center">Book Now</a>
+</header>
+<main class="max-w-[1280px] mx-auto px-4 md:px-margin-desktop py-12 md:py-24 grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left Column: Branding & Value Proposition -->
+<div class="lg:col-span-5 flex flex-col justify-start">
+<span class="text-on-primary-container font-label-caps text-label-caps mb-4 uppercase tracking-widest">Informed Confidence</span>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-6 leading-tight">Tell us how we can help.</h1>
+<p class="text-on-surface-variant font-body-md mb-12 max-w-md">
+                Experience a new standard of property care. Whether it's a routine refresh or a specialized deep clean, our expert team is ready to transform your space.
+            </p>
+<!-- Trust Indicators -->
+<div class="space-y-6 mb-12">
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-outline-variant rounded-xl">
+<div class="bg-tertiary-container p-3 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-container">verified_user</span>
+</div>
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">Licensed &amp; Insured</h4>
+<p class="text-body-sm text-on-surface-variant">Full coverage for your peace of mind and property protection.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-6 bg-surface-container-lowest border border-outline-variant rounded-xl">
+<div class="bg-tertiary-container p-3 rounded-lg">
+<span class="material-symbols-outlined text-on-tertiary-container">star</span>
+</div>
+<div>
+<h4 class="font-headline-lg text-[20px] mb-1">9,000+ Five Star Ratings</h4>
+<p class="text-body-sm text-on-surface-variant">Consistent excellence recognized by homeowners across the city.</p>
+</div>
+</div>
+</div>
+<!-- What Happens Next Section -->
+<div class="bg-surface-container border-l-4 border-on-tertiary-container p-8 rounded-r-xl">
+<h3 class="font-headline-lg text-[18px] mb-4 text-primary">What Happens Next?</h3>
+<ul class="space-y-4">
+<li class="flex gap-3 items-center text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">looks_one</span>
+                        We review your request and service details.
+                    </li>
+<li class="flex gap-3 items-center text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">looks_two</span>
+                        A specialist calls you for a 5-minute consult.
+                    </li>
+<li class="flex gap-3 items-center text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-on-tertiary-container text-[18px]">looks_3</span>
+                        You receive a precise, no-obligation quote.
+                    </li>
+</ul>
+</div>
+</div>
+<!-- Right Column: Booking Form -->
+<div class="lg:col-span-7">
+<div class="bg-surface-container-lowest border border-outline-variant p-8 md:p-12 rounded-xl form-input-shadow">
+<form class="space-y-8" onsubmit="event.preventDefault(); alert('Request received! We will contact you shortly.');">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Name Field -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="full-name">FULL NAME</label>
+<input class="bg-[#F1F5F9] border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-4 py-3 font-body-md transition-all" id="full-name" placeholder="John Doe" required="" type="text">
+</div>
+<!-- Email Field -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="email">EMAIL ADDRESS</label>
+<input class="bg-[#F1F5F9] border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-4 py-3 font-body-md transition-all" id="email" placeholder="john@example.com" required="" type="email">
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Service Type -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="service">SERVICE TYPE</label>
+<select class="bg-[#F1F5F9] border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-4 py-3 font-body-md appearance-none" id="service">
+<option value="standard">Standard Cleaning</option>
+<option value="deep">Deep Sanitization</option>
+<option value="move">Move-in / Move-out</option>
+<option value="commercial">Commercial Space</option>
+</select>
+</div>
+<!-- Date -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="date">PREFERRED DATE</label>
+<input class="bg-[#F1F5F9] border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-4 py-3 font-body-md transition-all" id="date" required="" type="date">
+</div>
+</div>
+<!-- Address -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="address">SERVICE ADDRESS</label>
+<input class="bg-[#F1F5F9] border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-4 py-3 font-body-md transition-all" id="address" placeholder="123 Luxury Lane, Suite 400" required="" type="text">
+</div>
+<!-- Message -->
+<div class="flex flex-col gap-2">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="message">ADDITIONAL DETAILS (OPTIONAL)</label>
+<textarea class="bg-[#F1F5F9] border-0 border-b border-outline-variant focus:ring-0 focus:border-primary px-4 py-3 font-body-md transition-all resize-none" id="message" placeholder="Tell us about specific areas of concern or special requests..." rows="4"></textarea>
+</div>
+<!-- CTA Button -->
+<button class="w-full bg-primary text-on-primary py-5 rounded-xl font-headline-lg text-[18px] hover:bg-on-surface-variant transition-all transform active:scale-[0.98] mt-4 flex items-center justify-center gap-3 shadow-md" type="submit">
+                        Request a Free Quote
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<p class="text-center text-body-sm text-on-surface-variant mt-4">
+                        By submitting, you agree to our <a class="underline hover:text-primary" href="#">Privacy Policy</a>. No payment required today.
+                    </p>
+</form>
+</div>
+<!-- Image/Visual Decoration -->
+<div class="mt-8 relative overflow-hidden rounded-xl h-64 md:h-80 border border-outline-variant group">
+<img alt="Cleaning Professional" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A professional cleaner in a sleek minimalist uniform working in a bright, high-end modern living room. The setting is bathed in soft, natural morning light, emphasizing a sense of cleanliness and calm. The color palette is sophisticated with soft whites, grays, and subtle sage green accents. The overall mood is composed, dependable, and highly professional, reflecting a premium service environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxNcuF6eN38zb0LwzESB1Q7CkT_1ctMkWJc9Dey70VNuy7c_u5ZMSisht1m5gYn5s5Huvhnk0b5HOufIkLu9b2RuhC6S7CY7bXt7hi-T_N7VOXqBLDqYwGtX-ZBpfaezprkcn2RbUnvsq3S1V4KC5A2lQ0_QsCfaMZC-GWA8pMTgknFISQiMDa1p7AgPZyie8P8xhSHFD8c6O1oxBd15d0m_U443iykXn1QgIRub8YR8yCnnHQMbagIkkXnNq2STng-EPEfEOHRF4">
+<div class="absolute inset-0 bg-gradient-to-t from-primary/60 to-transparent flex items-end p-8">
+<div class="text-white">
+<div class="flex items-center gap-1 mb-2">
+<span class="material-symbols-outlined text-tertiary-fixed fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-tertiary-fixed fill" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-headline-lg text-[20px]">"The most thorough clean I've ever had. Truly professional."</p>
+<p class="font-label-caps text-label-caps mt-2 opacity-80">— Sarah Jenkins, Property Manager</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full px-4 py-12 flex flex-col items-center text-center gap-6 bg-primary-container dark:bg-on-background border-t border-on-primary-fixed-variant">
+<span class="font-headline-lg text-headline-lg text-surface-container-lowest">Lavisha</span>
+<div class="flex gap-8">
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-on-secondary transition-colors" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-on-secondary transition-colors" href="#">Terms of Service</a>
+<a class="font-body-sm text-body-sm text-on-primary-container hover:text-on-secondary transition-colors" href="#">Service Areas</a>
+</div>
+<p class="font-body-sm text-body-sm text-on-primary-container">© 2024 Lavisha Professional Services. Licensed &amp; Insured.</p>
+</footer>
+<!-- Bottom Nav for Mobile -->
+<div class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 px-2 bg-surface-container-lowest dark:bg-on-primary-container border-t border-outline-variant md:hidden shadow-lg">
+<a href="{{DATA:SCREEN:SCREEN_10}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline cursor-pointer active:scale-110 transition-transform"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-label-caps">Home</span></a>
+<a href="{{DATA:SCREEN:SCREEN_2}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline cursor-pointer active:scale-110 transition-transform"><span class="material-symbols-outlined">build</span><span class="font-label-caps text-label-caps">Services</span></a>
+<a href="{{DATA:SCREEN:SCREEN_11}}" class="flex flex-col items-center justify-center text-primary dark:text-tertiary-fixed-dim cursor-pointer active:scale-110 transition-transform"><span class="material-symbols-outlined">description</span><span class="font-label-caps text-label-caps">Quote</span></a>
+<a href="{{DATA:SCREEN:SCREEN_11}}" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline cursor-pointer active:scale-110 transition-transform"><span class="material-symbols-outlined">call</span><span class="font-label-caps text-label-caps">Contact</span></a>
+</div>
+<script>
+        // Simple Interaction: Smooth focus for inputs
+        document.querySelectorAll('input, select, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                el.parentElement.querySelector('label').classList.add('text-primary');
+            });
+            el.addEventListener('blur', () => {
+                el.parentElement.querySelector('label').classList.remove('text-primary');
+            });
+        });
+    </script>
+
+
+</body></html>

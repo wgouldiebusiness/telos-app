@@ -4,7 +4,7 @@ import { redirect } from 'next/navigation'
 import styles from '../portal.module.css'
 import salesStyles from './page.module.css'
 
-export const metadata: Metadata = { title: 'Sales — Telos AI Portal' }
+export const metadata: Metadata = { title: 'Sales | Telos AI Portal' }
 
 const trackedMetrics = [
   {

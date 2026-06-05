@@ -4,7 +4,7 @@ import Reveal from '@/components/motion/RevealOnScroll'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'What We Build — Telos Websites',
+  title: 'What We Build | Telos Websites',
   description:
     'Custom websites for service businesses. Restaurants, barbers, trades, clinics, salons, gyms, and more. Every site built from scratch around your business.',
 }

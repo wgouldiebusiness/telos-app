@@ -7,17 +7,18 @@ export default function CustomCursor() {
   const dotRef  = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
-  const [hovered, setHovered] = useState(false)
 
   const mouse = useRef({ x: 0, y: 0 })
   const ring  = useRef({ x: 0, y: 0 })
   const raf   = useRef<number>(0)
 
   useEffect(() => {
-    // Only show on desktop pointer devices
     if (!window.matchMedia('(pointer: fine)').matches) return
-
     setVisible(true)
+  }, [])
+
+  useEffect(() => {
+    if (!visible) return
 
     function onMove(e: MouseEvent) {
       mouse.current = { x: e.clientX, y: e.clientY }
@@ -28,8 +29,9 @@ export default function CustomCursor() {
 
     function onOver(e: MouseEvent) {
       const el = e.target as HTMLElement
-      const interactive = el.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="hover"]')
-      setHovered(!!interactive)
+      const interactive = !!el.closest('a, button, [role="button"], input, textarea, select, label, [data-cursor="hover"]')
+      dotRef.current?.classList.toggle(styles.dotHover, interactive)
+      ringRef.current?.classList.toggle(styles.ringHover, interactive)
     }
 
     function animate() {
@@ -50,14 +52,14 @@ export default function CustomCursor() {
       document.removeEventListener('mouseover', onOver)
       cancelAnimationFrame(raf.current)
     }
-  }, [])
+  }, [visible])
 
   if (!visible) return null
 
   return (
     <>
-      <div ref={dotRef}  className={`${styles.dot}  ${hovered ? styles.dotHover  : ''}`} />
-      <div ref={ringRef} className={`${styles.ring} ${hovered ? styles.ringHover : ''}`} />
+      <div ref={dotRef}  className={styles.dot}  />
+      <div ref={ringRef} className={styles.ring} />
     </>
   )
 }

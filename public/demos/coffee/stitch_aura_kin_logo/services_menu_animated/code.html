@@ -1,0 +1,427 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Services | ÉLEVATE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&amp;family=Hanken+Grotesk:wght@300;400;500;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#f1e0cc",
+                        "secondary-fixed-dim": "#e9c349",
+                        "error": "#ba1a1a",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#241a00",
+                        "outline-variant": "#d3c3be",
+                        "inverse-primary": "#e0c0b4",
+                        "on-secondary-container": "#745c00",
+                        "on-primary-fixed": "#291710",
+                        "on-surface-variant": "#4f4441",
+                        "on-tertiary-container": "#898783",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#1c1c19",
+                        "primary-fixed": "#fddbd0",
+                        "inverse-on-surface": "#ffeedc",
+                        "surface-container-low": "#fff1e4",
+                        "surface-dim": "#e9d7c4",
+                        "surface-bright": "#fff8f4",
+                        "primary": "#110402",
+                        "on-primary-fixed-variant": "#584239",
+                        "secondary": "#735c00",
+                        "error-container": "#ffdad6",
+                        "on-primary": "#ffffff",
+                        "secondary-container": "#fed65b",
+                        "on-tertiary-fixed-variant": "#474743",
+                        "surface": "#fff8f4",
+                        "tertiary-fixed-dim": "#c9c6c2",
+                        "primary-fixed-dim": "#e0c0b4",
+                        "secondary-fixed": "#ffe088",
+                        "tertiary": "#080806",
+                        "outline": "#817470",
+                        "tertiary-container": "#20201d",
+                        "on-background": "#231a0e",
+                        "surface-container-high": "#f7e5d1",
+                        "tertiary-fixed": "#e5e2dd",
+                        "surface-container-highest": "#f1e0cc",
+                        "on-primary-container": "#9d8177",
+                        "primary-container": "#2d1b14",
+                        "surface-container": "#fdebd7",
+                        "surface-tint": "#725950",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#231a0e",
+                        "inverse-surface": "#392f21",
+                        "on-error": "#ffffff",
+                        "background": "#fff8f4",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-tertiary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "margin-mobile": "24px",
+                        "section-gap": "120px",
+                        "container-max": "1280px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Playfair Display"],
+                        "headline-md": ["Playfair Display"],
+                        "headline-lg": ["Playfair Display"],
+                        "body-md": ["Hanken Grotesk"],
+                        "display-lg-mobile": ["Playfair Display"],
+                        "body-lg": ["Hanken Grotesk"],
+                        "label-sm": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "400"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0.01em", "fontWeight": "300"}],
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.1em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .editorial-line {
+            height: 1px;
+            background: linear-gradient(to right, transparent, theme('colors.outline-variant'), transparent);
+        }
+        /* Shimmer Effect */
+        @keyframes shimmer {
+            0% { transform: translateX(-150%); }
+            100% { transform: translateX(150%); }
+        }
+        .btn-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-shimmer::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent,
+                rgba(255, 255, 255, 0.1),
+                transparent
+            );
+            transform: translateX(-150%);
+            animation: shimmer 4s infinite linear;
+        }
+        
+        /* Reveal Animation Classes */
+        .reveal-hidden {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal-visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Category Chip Transition */
+        .category-chip {
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .category-chip.active {
+            background-color: theme('colors.primary');
+            color: theme('colors.on-primary');
+            transform: scale(1.05);
+            letter-spacing: 0.15em;
+        }
+
+        /* Parallax Container */
+        .parallax-container {
+            overflow: hidden;
+        }
+        .parallax-img {
+            transition: transform 0.2s ease-out;
+            will-change: transform;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation -->
+<nav class="bg-surface/80 backdrop-blur-md sticky top-0 z-50 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:opacity-70 transition-opacity">menu</button>
+<a class="font-display-lg text-headline-md tracking-widest text-primary hidden md:block" href="{{DATA:SCREEN:SCREEN_2}}">ÉLEVATE</a>
+</div>
+<a class="font-display-lg text-headline-md tracking-widest text-primary md:hidden" href="{{DATA:SCREEN:SCREEN_2}}">ÉLEVATE</a>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Studio</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold" href="#">Services</a>
+<a class="font-label-sm text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors" href="#">Portfolio</a>
+</div>
+<button class="material-symbols-outlined text-primary hover:opacity-70 transition-opacity">shopping_bag</button>
+</div>
+</nav>
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Hero Section -->
+<header class="py-section-gap flex flex-col items-center text-center transition-all duration-1000">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg mb-6">Luxe Studio</h1>
+<p class="font-body-lg text-body-lg max-w-2xl text-on-surface-variant italic mb-12">
+                A sanctuary of intentional beauty, where modern technique meets ancestral ritual.
+            </p>
+<div class="editorial-line w-1/3"></div>
+</header>
+<!-- Category Toggle -->
+<div class="flex justify-center gap-4 mb-section-gap overflow-x-auto pb-4 scrollbar-hide">
+<a class="category-chip shrink-0 bg-surface-container text-on-surface px-6 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-widest hover:bg-primary/10 transition-all duration-300" href="#hair">Hair</a>
+<a class="category-chip shrink-0 bg-surface-container text-on-surface px-6 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-widest hover:bg-primary/10 transition-all duration-300" href="#skin">Skin</a>
+<a class="category-chip shrink-0 bg-surface-container text-on-surface px-6 py-2 rounded-full font-label-sm text-label-sm uppercase tracking-widest hover:bg-primary/10 transition-all duration-300 active" href="#rituals">Rituals</a>
+</div>
+<!-- Hair Section -->
+<section class="mb-section-gap reveal-hidden reveal-visible" id="hair">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-end mb-16">
+<div class="md:col-span-4">
+<h2 class="font-headline-lg text-headline-lg mb-4">Hair</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Precision cutting and organic coloring techniques designed to enhance your natural architecture.</p>
+</div>
+<div class="md:col-span-8 h-px bg-outline-variant/30 mb-4"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+<!-- Service 1 -->
+<div class="group border-b border-outline-variant/30 pb-8 hover:border-primary transition-colors duration-500">
+<div class="flex justify-between items-start mb-6">
+<h3 class="font-headline-md text-headline-md italic group-hover:text-primary">The Signature Cut</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">75 MIN / $140</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">
+                        A bespoke tailoring experience including a botanical scalp massage, curated conditioning treatment, and structural hand-finished styling.
+                    </p>
+<button class="btn-shimmer w-full bg-primary-container text-on-primary py-4 font-label-sm text-label-sm uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all">
+                        Book Service
+                    </button>
+</div>
+<!-- Service 2 -->
+<div class="group border-b border-outline-variant/30 pb-8 hover:border-primary transition-colors duration-500">
+<div class="flex justify-between items-start mb-6">
+<h3 class="font-headline-md text-headline-md italic group-hover:text-primary">Lived-In Color</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">180 MIN / $320</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 line-clamp-3">
+                        Dimensional hand-painting that mimics the sun's natural path. Low-maintenance elegance that evolves gracefully over time.
+                    </p>
+<button class="btn-shimmer w-full bg-primary-container text-on-primary py-4 font-label-sm text-label-sm uppercase tracking-widest hover:opacity-90 active:scale-95 transition-all">
+                        Book Service
+                    </button>
+</div>
+<!-- Featured Image with Parallax -->
+<div class="parallax-container relative h-[400px] overflow-hidden md:translate-y-12">
+<img class="parallax-img w-full h-[120%] object-cover grayscale hover:grayscale-0 transition-all duration-1000 scale-110" data-alt="A close-up, editorial-style photograph of long, healthy hair" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgYDYnoi1Nfri5H001PN_AGqeUrLG-PWpeqTswEug9CC-EWXc6TusXIbLwJzrfYlqO84RnJ-vv-b3h6OnXdVhJgNhmUi19sDkpPW1Fv6E-WWpZuLtch7NhnygUMSyHZNDRne7H6j6Pi35Da7JUrBrDPU2vRB6NdN6WdZsasDp8DskaCOPjXP8LavehrGQa6KEerR9RgYaf2mCi8ktgyPrfOW4gsBYWSXk37lLwIk16XllLlMg6nFxgkrBl-5HtbbE5oEYd3wkDD_tK">
+</div>
+</div>
+</section>
+<!-- Skin Section -->
+<section class="mb-section-gap reveal-hidden reveal-visible" id="skin">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter items-end mb-16">
+<div class="md:col-span-8 h-px bg-outline-variant/30 mb-4 order-2 md:order-1"></div>
+<div class="md:col-span-4 text-right order-1 md:order-2">
+<h2 class="font-headline-lg text-headline-lg mb-4">Skin</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Holistic dermal therapies focusing on barrier health and luminescent vitality.</p>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+<div class="parallax-container relative h-[600px]">
+<img class="parallax-img w-full h-[115%] object-cover" data-alt="A serene portrait of a person receiving a facial treatment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBGiVcUsdvn_DjWCas5XGGacpDPFY64Sv8_okb8-YwddFh6wtV9tSzg3LXfgBpAMaOtm_jnfGqTwQChe4KKZ_WBNHYo0PEjmZyEyd9Ss6uay0TquGISwCyE0OQlUovJKiFGUPrUwYFS6PHxxXdOOW3QjpAXeUSYOK7wRQvm88fNEOrmLt3JpPbcqcjjHFlrS6vS_a-likYcJjw1l4aElrJLYb8F5SmevWs6_1grZvh-NUSD6IH13f7YTw5-nGYtuNoZXoGjsxqdkahQ">
+</div>
+<div class="flex flex-col justify-center space-y-12">
+<!-- Service 3 -->
+<div class="group border-b border-outline-variant/30 pb-8 hover:border-secondary transition-colors duration-500">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md italic">Sculpt &amp; Sculpt</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">60 MIN / $185</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            Intense manual lymphatic drainage combined with intra-oral buccal massage for natural lifting and fluid movement.
+                        </p>
+<button class="btn-shimmer border border-secondary text-secondary px-8 py-3 font-label-sm text-label-sm uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                            Reserve Time
+                        </button>
+</div>
+<!-- Service 4 -->
+<div class="group border-b border-outline-variant/30 pb-8 hover:border-secondary transition-colors duration-500">
+<div class="flex justify-between items-start mb-4">
+<h3 class="font-headline-md text-headline-md italic">The Ritual Facial</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant">90 MIN / $250</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6">
+                            A fully customized immersion using cold-pressed botanicals and stone therapy to restore skin and spirit.
+                        </p>
+<button class="btn-shimmer border border-secondary text-secondary px-8 py-3 font-label-sm text-label-sm uppercase tracking-widest hover:bg-secondary hover:text-on-secondary transition-all">
+                            Reserve Time
+                        </button>
+</div>
+</div>
+</div>
+</section>
+<!-- Rituals Section -->
+<section class="mb-section-gap pb-20 reveal-hidden reveal-visible" id="rituals">
+<div class="text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg mb-4">Rituals</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-lg mx-auto">Sensory journeys designed to quiet the mind and harmonize the body's internal rhythms.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<!-- Rituals blocks... -->
+<div class="bg-surface-container-low p-10 flex flex-col items-center text-center group hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6">spa</span>
+<h3 class="font-headline-md text-headline-md mb-2 italic">Sound Bath</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">45 MIN / $95</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Crystal singing bowls and restorative breathwork for deep cellular resonance.</p>
+<button class="btn-shimmer font-label-sm text-label-sm uppercase tracking-widest border-b border-primary py-1 hover:pb-2 transition-all">Book</button>
+</div>
+<div class="bg-surface-container-low p-10 flex flex-col items-center text-center group hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6">air</span>
+<h3 class="font-headline-md text-headline-md mb-2 italic">Aromatherapy</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">30 MIN / $65</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Custom essential oil blending paired with focused head and neck tension release.</p>
+<button class="btn-shimmer font-label-sm text-label-sm uppercase tracking-widest border-b border-primary py-1 hover:pb-2 transition-all">Book</button>
+</div>
+<div class="bg-surface-container-low p-10 flex flex-col items-center text-center group hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6">self_improvement</span>
+<h3 class="font-headline-md text-headline-md mb-2 italic">Body Polish</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">60 MIN / $160</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Full-body dry brushing and silk protein exfoliation for velvety skin texture.</p>
+<button class="btn-shimmer font-label-sm text-label-sm uppercase tracking-widest border-b border-primary py-1 hover:pb-2 transition-all">Book</button>
+</div>
+<div class="bg-surface-container-low p-10 flex flex-col items-center text-center group hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-4xl text-secondary mb-6">hot_tub</span>
+<h3 class="font-headline-md text-headline-md mb-2 italic">Mineral Soak</h3>
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-4">40 MIN / $80</p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8">Detoxifying Dead Sea salts and thermal water immersion in private quarters.</p>
+<button class="btn-shimmer font-label-sm text-label-sm uppercase tracking-widest border-b border-primary py-1 hover:pb-2 transition-all">Book</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<div class="md:hidden fixed bottom-0 left-0 w-full h-20 bg-surface/90 backdrop-blur-lg flex justify-around items-center px-4 pb-safe border-t border-outline-variant/30 z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_2}}">
+<span class="material-symbols-outlined">home_pin</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Studio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-secondary font-bold -translate-y-1 transition-all" href="{{DATA:SCREEN:SCREEN_7}}">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">content_cut</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Services</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="{{DATA:SCREEN:SCREEN_10}}">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Portfolio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-label-sm text-label-sm uppercase tracking-widest">Book</span>
+</a>
+</div>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest py-20 px-margin-mobile md:px-margin-desktop border-t border-outline-variant/20">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+<div class="col-span-1 md:col-span-2">
+<h4 class="font-display-lg text-headline-md tracking-widest text-primary mb-8">Luxe Studio</h4>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-sm">123 Smith Road, City Name<br>ST 12345</p>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest mb-6 text-primary">Hours</h5>
+<ul class="font-body-md text-body-md text-on-surface-variant space-y-2">
+<li class="">Tue — Fri: 10am - 8pm</li>
+<li class="">Sat: 9am - 6pm</li>
+<li class="">Sun — Mon: Closed</li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-sm text-label-sm uppercase tracking-widest mb-6 text-primary">Inquiries</h5>
+<ul class="font-body-md text-body-md text-on-surface-variant space-y-2">
+<li class="">hello@example.com</li>
+<li class="">123-456-7890</li>
+</ul>
+</div>
+</div>
+<div class="max-w-container-max mx-auto mt-20 flex flex-col md:flex-row justify-between items-center pt-8 border-t border-outline-variant/10 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-widest">
+<p class="">© 2024 Luxe Studio Group</p>
+<div class="flex gap-8 mt-4 md:mt-0">
+<a class="hover:text-primary" href="#">Instagram</a>
+<a class="hover:text-primary" href="#">Pinterest</a>
+<a class="hover:text-primary" href="#">Journal</a>
+</div>
+</div>
+</footer>
+<script>
+    // Intersection Observer for Reveal Sections
+    const observerOptions = { threshold: 0.1 };
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('reveal-visible');
+                updateCategoryChips(entry.target.id);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.reveal-hidden').forEach(el => revealObserver.observe(el));
+
+    // Category Chip Synchronization
+    const chips = document.querySelectorAll('.category-chip');
+    function updateCategoryChips(activeId) {
+        chips.forEach(chip => {
+            const href = chip.getAttribute('href').substring(1);
+            if (href === activeId) {
+                chip.classList.add('active');
+            } else {
+                chip.classList.remove('active');
+            }
+        });
+    }
+
+    // Smooth Category Click
+    chips.forEach(chip => {
+        chip.addEventListener('click', (e) => {
+            chips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+        });
+    });
+
+    // Parallax Scroll Effect
+    window.addEventListener('scroll', () => {
+        const parallaxImgs = document.querySelectorAll('.parallax-img');
+        parallaxImgs.forEach(img => {
+            const rect = img.parentElement.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                // Calculate percentage of container through viewport
+                const offset = (window.innerHeight - rect.top) / (window.innerHeight + rect.height);
+                const translateY = (offset * 15) - 7.5; // Translate range between -7.5% to 7.5%
+                img.style.transform = `translateY(${translateY}%) scale(1.1)`;
+            }
+        });
+    });
+</script>
+
+
+</body></html>

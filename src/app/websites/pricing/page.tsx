@@ -4,7 +4,7 @@ import Reveal from '@/components/motion/RevealOnScroll'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Telos Websites',
+  title: 'Pricing | Telos Websites',
   description:
     'A fixed build fee, scoped to your business. Ongoing management available. No hidden costs.',
 }
@@ -24,7 +24,7 @@ const tiers = [
       'SEO foundations built in',
       'Delivered in two weeks',
     ],
-    note: '£50/mo ongoing — maintenance, security & running costs',
+    note: '£50/mo ongoing: maintenance, security & running costs',
   },
   {
     name: 'Business Site',
@@ -40,7 +40,7 @@ const tiers = [
       'Google Analytics and Search Console',
       'AI agent integration ready',
     ],
-    note: '£50/mo ongoing — maintenance, security & running costs',
+    note: '£50/mo ongoing: maintenance, security & running costs',
   },
   {
     name: 'Custom',
@@ -67,7 +67,7 @@ const faqs = [
   },
   {
     q: 'Is there a monthly fee?',
-    a: 'Yes. There is a £50/month ongoing plan that covers hosting, domain management, security updates, performance monitoring, SSL renewal, monthly backups, and small content changes. It is optional — you can host elsewhere if you prefer.',
+    a: 'Yes. There is a £50/month ongoing plan that covers hosting, domain management, security updates, performance monitoring, SSL renewal, monthly backups, and small content changes. It is optional; you can host elsewhere if you prefer.',
   },
   {
     q: 'How long does it take?',

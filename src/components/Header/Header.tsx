@@ -7,13 +7,14 @@ import Logo from '@/components/Logo/Logo'
 import styles from './Header.module.css'
 
 const navLinks = [
-  { label: 'Home',             href: '/',          badge: false },
-  { label: 'What We Do',       href: '/solutions', badge: false },
-  { label: 'How It Works',     href: '/process',   badge: false },
-  { label: 'Pricing',          href: '/pricing',   badge: false },
-  { label: 'About',            href: '/about',     badge: false },
-  { label: 'Telos Websites',   href: '/websites',  badge: true  },
-  { label: 'Log In',           href: '/login',     badge: false },
+  { label: 'Home',             href: '/',          badge: false, badgeColor: '' },
+  { label: 'What We Do',       href: '/solutions', badge: false, badgeColor: '' },
+  { label: 'How It Works',     href: '/process',   badge: false, badgeColor: '' },
+  { label: 'Pricing',          href: '/pricing',   badge: false, badgeColor: '' },
+  { label: 'About',            href: '/about',     badge: false, badgeColor: '' },
+  { label: 'Telos Websites',   href: '/websites',  badge: true,  badgeColor: 'purple' },
+  { label: 'Telos Media',      href: '/media',     badge: true,  badgeColor: 'teal'   },
+  { label: 'Log In',           href: '/login',     badge: false, badgeColor: '' },
 ]
 
 export default function Header() {
@@ -49,9 +50,11 @@ export default function Header() {
                 key={link.href}
                 href={link.href}
                 className={
-                  link.badge
-                    ? styles.navBadge
-                    : `${styles.navLink} ${pathname === link.href ? styles.active : ''}`
+                  !link.badge
+                    ? `${styles.navLink} ${pathname === link.href ? styles.active : ''}`
+                    : link.badgeColor === 'teal'
+                      ? styles.navBadgeTeal
+                      : styles.navBadge
                 }
               >
                 {link.label}
@@ -95,9 +98,11 @@ export default function Header() {
                   <Link
                     href={link.href}
                     className={
-                      link.badge
-                        ? `${styles.mobileLink} ${styles.mobileLinkBadge}`
-                        : `${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`
+                      !link.badge
+                        ? `${styles.mobileLink} ${pathname === link.href ? styles.active : ''}`
+                        : link.badgeColor === 'teal'
+                          ? `${styles.mobileLink} ${styles.mobileLinkBadgeTeal}`
+                          : `${styles.mobileLink} ${styles.mobileLinkBadge}`
                     }
                   >
                     {link.label}

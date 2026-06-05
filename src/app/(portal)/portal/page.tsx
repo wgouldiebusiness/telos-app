@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Dashboard — Telos AI Portal',
+  title: 'Dashboard | Telos AI Portal',
 }
 
 function greeting() {

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import styles from '../portal.module.css'
 
-export const metadata: Metadata = { title: 'Billing — Telos AI Portal' }
+export const metadata: Metadata = { title: 'Billing | Telos AI Portal' }
 
 export default function BillingPage() {
   return (

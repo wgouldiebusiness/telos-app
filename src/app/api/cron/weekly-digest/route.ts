@@ -36,7 +36,7 @@ async function upcomingEvents(): Promise<string[]> {
   return (data.items ?? []).map(e => {
     const when = e.start?.dateTime || e.start?.date || ''
     const label = when ? new Date(when).toLocaleString('en-GB', { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }) : ''
-    return `${label} — ${e.summary || 'Untitled'}`
+    return `${label}: ${e.summary || 'Untitled'}`
   })
 }
 
@@ -79,7 +79,7 @@ export async function GET(req: NextRequest) {
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
       <table role="presentation" width="100%" style="max-width:560px;background:#fff;border-radius:16px;overflow:hidden;">
         <tr><td style="background:#0A0510;padding:26px 32px;">
-          <div style="font-size:18px;font-weight:800;letter-spacing:-0.03em;color:#fff;">Telos AI — your week</div>
+          <div style="font-size:18px;font-weight:800;letter-spacing:-0.03em;color:#fff;">Telos AI: your week</div>
         </td></tr>
         <tr><td style="padding:30px 32px;">
           <p style="font-size:16px;font-weight:600;color:#1D1D1F;margin:0 0 24px;">${escapeHtml(summary)}</p>

@@ -10,7 +10,7 @@ import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos AI — AI systems for ambitious service businesses.',
+  title: 'Telos AI: AI systems for ambitious service businesses.',
   description:
     'We engineer custom AI infrastructure that handles admin, captures leads, and keeps your pipeline moving. Built for your business. Fully managed. Improving every month.',
 }
@@ -109,7 +109,7 @@ export default function HomePage() {
           <Reveal delay={0.2}>
             <div className={styles.buildsCallout}>
               <p className={styles.buildsCalloutText}>
-                Whatever your business needs — custom code, back end systems, or support systems — we build it from the ground up, tailored to you.
+                Whatever your business needs: custom code, back end systems, or support systems. We build it from the ground up, tailored to you.
               </p>
               <Link href="/solutions" className={styles.buildsCalloutLink}>
                 See all examples

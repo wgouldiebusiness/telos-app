@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import AnimatedButton from '@/components/motion/AnimatedButton'
 import styles from '../portal.module.css'
 
-export const metadata: Metadata = { title: 'Book a Meeting — Telos AI Portal' }
+export const metadata: Metadata = { title: 'Book a Meeting | Telos AI Portal' }
 
 export default function MeetingsPage() {
   const bookingUrl = process.env.NEXT_PUBLIC_BOOKING_URL || '#'

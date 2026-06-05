@@ -21,17 +21,17 @@ const aiAgents: Example[] = [
 ]
 
 const backendSystems: Example[] = [
-  { n: '01', title: 'Custom API Development',       desc: 'We build the APIs that connect your tools — booking platforms, payment processors, CRMs, and internal systems — into one coherent operation.' },
+  { n: '01', title: 'Custom API Development',       desc: 'We build the APIs that connect your tools: booking platforms, payment processors, CRMs, and internal systems, into one coherent operation.' },
   { n: '02', title: 'Database Architecture',         desc: 'Structured, scalable data foundations. Whether you need a client database, a product catalogue, or a reporting store, we design and build it properly.' },
-  { n: '03', title: 'Third-Party Integrations',      desc: 'Stripe, Calendly, GoCardless, Xero, HubSpot, Zapier — we wire your stack together so data flows where it needs to without manual intervention.' },
+  { n: '03', title: 'Third-Party Integrations',      desc: 'Stripe, Calendly, GoCardless, Xero, HubSpot, Zapier: we wire your stack together so data flows where it needs to without manual intervention.' },
   { n: '04', title: 'Workflow Automation',           desc: 'The repetitive internal tasks that drain your team. Automated. Triggered by the right events, running reliably in the background every day.' },
   { n: '05', title: 'Client & Staff Portals',        desc: 'Secure, branded portals for clients to book, pay, view documents, or submit requests. And for staff to manage their work without spreadsheets.' },
-  { n: '06', title: 'Data Pipelines & Reporting',    desc: 'Pull data from any source — CRM, website, bookings, ads — clean it, structure it, and serve it back as dashboards your team actually uses.' },
+  { n: '06', title: 'Data Pipelines & Reporting',    desc: 'Pull data from any source: CRM, website, bookings, ads. Clean it, structure it, and serve it back as dashboards your team actually uses.' },
 ]
 
 const marketing: Example[] = [
-  { n: '01', title: 'Lead Generation Systems',      desc: 'Not ad spend guesswork — structured systems. Landing pages, lead magnets, qualification flows, and outreach sequences built to fill your pipeline.' },
-  { n: '02', title: 'Email Marketing Automation',   desc: 'Sequences that run on their own. Welcome flows, nurture campaigns, re-engagement series, and post-purchase follow-up — all triggered by behaviour.' },
+  { n: '01', title: 'Lead Generation Systems',      desc: 'Not ad spend guesswork. Structured systems. Landing pages, lead magnets, qualification flows, and outreach sequences built to fill your pipeline.' },
+  { n: '02', title: 'Email Marketing Automation',   desc: 'Sequences that run on their own. Welcome flows, nurture campaigns, re-engagement series, and post-purchase follow-up, all triggered by behaviour.' },
   { n: '03', title: 'Campaign Infrastructure',       desc: 'The backend of a proper marketing operation: tracking, attribution, audience segmentation, and A/B testing built to tell you what is actually working.' },
   { n: '04', title: 'Conversion Funnels',            desc: 'End-to-end journeys from first click to signed client. Built around your offer, tested against your audience, and iterated until conversion improves.' },
   { n: '05', title: 'Content & Social Automation',   desc: 'On-brand content produced in your voice and published on your behalf every week. Consistent presence without consistent effort.' },
@@ -51,15 +51,15 @@ export default function SolutionsPage() {
           </Reveal>
           <Reveal delay={0.18}>
             <p className={styles.heroSub}>
-              Tailoring technology to your business — not repurposing a generic tool and
+              Tailoring technology to your business, not repurposing a generic tool and
               hoping it fits.
             </p>
           </Reveal>
           <Reveal delay={0.26}>
             <p className={styles.heroSub} style={{ color: '#ffffff', marginTop: '1.25rem' }}>
               Off-the-shelf products require you to change how you work to fit the software.
-              We work the other way. We learn your operation, then build — custom code,
-              back end systems, support systems, and AI agents — tailored around exactly
+              We work the other way. We learn your operation, then build: custom code,
+              back end systems, support systems, and AI agents, tailored around exactly
               how you already operate.
             </p>
           </Reveal>
@@ -101,7 +101,7 @@ export default function SolutionsPage() {
                 <span className="label">AI Agents</span>
                 <h2 className={styles.exH2}>Intelligent agents that run your front line.</h2>
                 <p className={styles.exSub}>
-                  Purpose-built AI systems that handle the work that currently falls through the cracks — calls, leads, follow-up, and admin.
+                  Purpose-built AI systems that handle the work that currently falls through the cracks: calls, leads, follow-up, and admin.
                 </p>
               </div>
             </Reveal>
@@ -149,7 +149,7 @@ export default function SolutionsPage() {
                 <span className="label">Marketing & Lead Generation</span>
                 <h2 className={styles.exH2}>Systems that fill your pipeline while you work.</h2>
                 <p className={styles.exSub}>
-                  Not generic campaigns — structured lead generation and marketing infrastructure built around your offer, your audience, and your conversion goals.
+                  Not generic campaigns. Structured lead generation and marketing infrastructure built around your offer, your audience, and your conversion goals.
                 </p>
               </div>
             </Reveal>
