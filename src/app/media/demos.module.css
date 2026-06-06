@@ -108,6 +108,8 @@
 .igImg {
   object-fit: cover;
   object-position: top center;
+  transform: scale(1.15);
+  transform-origin: top center;
 }
 
 .igImgOverlay {

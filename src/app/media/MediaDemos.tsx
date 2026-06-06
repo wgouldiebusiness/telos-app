@@ -20,7 +20,7 @@ function InstagramPost() {
           <div className={styles.igOnline} />
         </div>
         <div className={styles.igHeaderText}>
-          <div className={styles.igHandle}>aura.kin</div>
+          <div className={styles.igHandle}>elevate.studio</div>
           <div className={styles.igLocation}>London, UK</div>
         </div>
         <button className={styles.igMore} aria-label="More options">
@@ -33,8 +33,8 @@ function InstagramPost() {
       {/* Photo — Aura Kin salon screenshot */}
       <div className={styles.igImgWrap}>
         <Image
-          src="/demos/coffee/stitch_aura_kin_logo/13b59a3a81cd189add1801293066ab26.jpg/screen.png"
-          alt="Aura Kin luxury salon"
+          src="/demos/coffee/stitch_aura_kin_logo/59a8206e328a1e967527334d65f81ea5.jpg/screen.png"
+          alt="Elevate brand editorial"
           fill
           className={styles.igImg}
           sizes="(max-width: 600px) 100vw, 380px"
@@ -81,10 +81,10 @@ function InstagramPost() {
 
       {/* Caption */}
       <div className={styles.igCaption}>
-        <span className={styles.igCaptionHandle}>aura.kin</span>{' '}
-        Luxury you can feel from the first scroll. New season treatments now booking.
-        Book your appointment via the link in bio. ✨
-        <span className={styles.igTags}> #luxurysalon #skincare #London #selfcare #beautytreatments</span>
+        <span className={styles.igCaptionHandle}>elevate.studio</span>{' '}
+        Crafted for those who know the difference. New editorial now live.
+        Shop the collection via link in bio. ✨
+        <span className={styles.igTags}> #elevate #luxuryjewellery #editorial #minimalstyle #London</span>
       </div>
 
       {/* Comments teaser */}
@@ -130,8 +130,8 @@ function FacebookAd() {
       {/* Ad image — Lavisha Cleaning screenshot */}
       <div className={styles.fbImgWrap}>
         <Image
-          src="/demos/pizza/stitch_transparent_service_hub/6ec0ab32f3013e68b9688c55368ceb2a.jpg/screen.png"
-          alt="Lavisha Cleaning website"
+          src="/demos/pizza/stitch_transparent_service_hub/bf54eab207e1a0dcd4a94b7dadf5c083.jpg/screen.png"
+          alt="Professional Cleaning website on desktop"
           fill
           className={styles.fbImg}
           sizes="(max-width: 600px) 100vw, 380px"
