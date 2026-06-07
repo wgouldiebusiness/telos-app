@@ -33,7 +33,7 @@ function InstagramPost() {
       {/* Photo — retro pizza delivery poster */}
       <div className={styles.igImgWrap}>
         <Image
-          src="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/42c706cb651991aa3387b8abb09919f0.jpg/screen.png"
+          src="/media/pizza-ig-post.png"
           alt="Pizza Co. retro delivery poster"
           fill
           className={styles.igImg}
@@ -95,7 +95,7 @@ function InstagramPost() {
 
 /* ─────────────────────────────────────────
    Facebook-style ad
-   Image: Lavisha Cleaning website screenshot
+   Creative: Branded service ad (Lavisha Cleaning)
 ───────────────────────────────────────── */
 function FacebookAd() {
   const [reacted, setReacted] = useState(false)
@@ -126,15 +126,18 @@ function FacebookAd() {
         Tired of unreliable cleaners? Lavisha delivers a premium, fully managed cleaning service for homes and businesses across London. Book your first clean today.
       </p>
 
-      {/* Ad image — Lavisha Cleaning screenshot */}
-      <div className={styles.fbImgWrap}>
-        <Image
-          src="/demos/pizza/stitch_transparent_service_hub/bf54eab207e1a0dcd4a94b7dadf5c083.jpg/screen.png"
-          alt="Professional Cleaning website on desktop"
-          fill
-          className={styles.fbImg}
-          sizes="(max-width: 600px) 100vw, 380px"
-        />
+      {/* Ad creative — branded graphic, not a website screenshot */}
+      <div className={styles.fbAdCreative}>
+        <div className={styles.fbAdBg} />
+        <div className={styles.fbAdContent}>
+          <div className={styles.fbAdBadge}>Premium Service</div>
+          <div className={styles.fbAdHeadline}>Your Home,<br />Spotless.</div>
+          <div className={styles.fbAdSub}>From £49 · Same-day available</div>
+          <div className={styles.fbAdRating}>
+            ★★★★★ <span>4.9 · 600+ happy clients</span>
+          </div>
+        </div>
+        <div className={styles.fbAdLogo}>L</div>
       </div>
 
       {/* Link preview strip */}

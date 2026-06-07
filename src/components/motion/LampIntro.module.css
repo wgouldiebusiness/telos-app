@@ -19,6 +19,7 @@
   height: 55vh;
   max-height: 480px;
   overflow: hidden;
+  will-change: width, opacity;
 }
 
 .coneLeft {
