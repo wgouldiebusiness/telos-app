@@ -16,6 +16,16 @@ import { getMissedCallConfig, buildMissedCallMessage } from '@/agents/missed-cal
 // In-memory cooldown. Note: resets on cold start, so for durable cooldown
 // across serverless instances move this to Supabase or Redis later.
 const lastMessaged = new Map<string, number>()
+let lastCooldownSweep = 0
+
+function sweepCooldown(windowMs: number): void {
+  const now = Date.now()
+  if (now - lastCooldownSweep < 60_000) return
+  lastCooldownSweep = now
+  for (const [key, ts] of lastMessaged) {
+    if (now - ts > windowMs) lastMessaged.delete(key)
+  }
+}
 
 // Empty TwiML — tells Twilio "received, do nothing further".
 const EMPTY_TWIML = '<?xml version="1.0" encoding="UTF-8"?><Response></Response>'
@@ -59,8 +69,9 @@ export async function POST(req: NextRequest, ctx: { params: Promise<{ clientId: 
   // Cooldown check.
   const key = `${clientId}:${caller}`
   const now = Date.now()
-  const last = lastMessaged.get(key)
   const windowMs = config.cooldownHours * 60 * 60 * 1000
+  sweepCooldown(windowMs)
+  const last = lastMessaged.get(key)
   if (last && now - last < windowMs) return twiml()
 
   // Send the recovery SMS.

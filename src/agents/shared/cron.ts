@@ -7,9 +7,11 @@
 // ─────────────────────────────────────────────────────────────
 
 import type { NextRequest } from 'next/server'
+import { timingSafeCompare } from '@/lib/security'
 
 export function isAuthorisedCron(req: NextRequest): boolean {
   const secret = process.env.CRON_SECRET
   if (!secret) return false
-  return req.headers.get('authorization') === `Bearer ${secret}`
+  const provided = req.headers.get('authorization') ?? ''
+  return timingSafeCompare(provided, `Bearer ${secret}`)
 }

@@ -15,9 +15,13 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { rateLimit } from '@/agents/shared/rateLimiter'
+import { isValidEmail } from '@/lib/security'
 import { askClaude, type ChatTurn } from '@/agents/shared/claude'
 import { getBookingConfig } from '@/agents/booking/config'
 import { getFreeSlots, createEvent } from '@/agents/booking/calendar'
+
+const MAX_MESSAGE_LENGTH = 2000
+const MAX_NAME_LENGTH = 200
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
@@ -58,6 +62,15 @@ export async function POST(req: NextRequest) {
     if (!service || !body.slotStart || !body.name) {
       return NextResponse.json({ error: 'Service, slot, and name are required.' }, { status: 400 })
     }
+    if (body.name.length > MAX_NAME_LENGTH) {
+      return NextResponse.json({ error: 'Name is too long.' }, { status: 400 })
+    }
+    if (isNaN(Date.parse(body.slotStart))) {
+      return NextResponse.json({ error: 'Invalid slot time.' }, { status: 400 })
+    }
+    if (body.email && !isValidEmail(body.email)) {
+      return NextResponse.json({ error: 'Invalid email address.' }, { status: 400 })
+    }
     const end = new Date(new Date(body.slotStart).getTime() + service.durationMins * 60 * 1000).toISOString()
     const ok = await createEvent({
       calendarId: config.calendarId,
@@ -80,10 +93,23 @@ export async function POST(req: NextRequest) {
     }
     const message = (body.message ?? '').trim()
     if (!message) return NextResponse.json({ error: 'Message is required.' }, { status: 400 })
+    if (message.length > MAX_MESSAGE_LENGTH) {
+      return NextResponse.json({ error: 'Message is too long.' }, { status: 400 })
+    }
 
     const system = `You are the booking assistant for ${config.businessName}. You help visitors choose a service and book an appointment. Services: ${config.services.map(s => `${s.name} (${s.durationMins} mins)`).join(', ')}. Be warm and brief. When the visitor seems ready, tell them to pick a service and you will show available times. Never invent availability. British English. No em dashes.`
 
-    const history = Array.isArray(body.history) ? body.history.slice(-10) : []
+    const history: ChatTurn[] = Array.isArray(body.history)
+      ? body.history
+          .slice(-10)
+          .filter(
+            h =>
+              (h.role === 'user' || h.role === 'assistant') &&
+              typeof h.content === 'string'
+          )
+          .map(h => ({ role: h.role, content: h.content.slice(0, MAX_MESSAGE_LENGTH) }))
+      : []
+
     try {
       const reply = await askClaude({
         system,

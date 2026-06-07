@@ -8,7 +8,7 @@ import { AUTH_CONFIG } from './config.js'
 import { hashPassword, verifyPassword, requiresPasswordChange } from './passwords.js'
 import { generateAccessToken, generateRefreshToken, rotateRefreshToken, revokeAllTokens } from './tokens.js'
 import { createSession, terminateSession, terminateAllSessions } from './sessions.js'
-import { auditLog } from '../accounts/permissions.js'
+import { auditLog, hasPermission } from '../accounts/permissions.js'
 import { sendEmail } from '../emails/emailEngine.js'
 
 // In-memory account store — replace with DB in production
@@ -244,6 +244,5 @@ export function unlockAccount(accountId, unlockedBy) {
  * @returns {boolean}
  */
 export function checkPermission(accountId, action, resourceId) {
-  const { hasPermission } = require('../accounts/permissions.js')
   return hasPermission(accountId, action)
 }

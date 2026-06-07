@@ -1,42 +1,57 @@
 /**
  * PASSWORDS — hashing, validation, reset tokens.
- * Uses bcrypt for all password operations.
+ * Uses PBKDF2-HMAC-SHA512 (Node.js built-in, no extra dependencies).
+ * OWASP recommends 210,000 iterations for PBKDF2-HMAC-SHA512.
  */
 
-import { randomBytes } from 'crypto'
+import { randomBytes, pbkdf2, timingSafeEqual } from 'crypto'
+import { promisify } from 'util'
 import { AUTH_CONFIG } from './config.js'
 
+const pbkdf2Async = promisify(pbkdf2)
+const ITERATIONS = 210_000
+const KEY_LEN    = 64
+const DIGEST     = 'sha512'
+const SALT_LEN   = 32
+
 // In-memory store — replace with DB table in production
-const resetTokenStore = new Map()
+const resetTokenStore  = new Map()
 const forceChangeFlags = new Map()
 
 // ─── HASHING ───────────────────────────────────────────────
 
 /**
- * Hashes a plaintext password with bcrypt.
+ * Hashes a plaintext password with PBKDF2-HMAC-SHA512.
+ * Stored format: `pbkdf2$<iterations>$<saltHex>$<keyHex>`
  * @param {string} plaintext
- * @returns {Promise<string>} bcrypt hash
+ * @returns {Promise<string>} hash string
  */
 export async function hashPassword(plaintext) {
-  // CONNECT: bcrypt — replace with real bcrypt call
-  // const bcrypt = require('bcrypt')
-  // return bcrypt.hash(plaintext, AUTH_CONFIG.passwords.saltRounds)
-
-  console.log('[passwords][MOCK] bcrypt.hash called')
-  return `mock_hash_${Buffer.from(plaintext).toString('base64')}`
+  const salt   = randomBytes(SALT_LEN)
+  const key    = await pbkdf2Async(plaintext, salt, ITERATIONS, KEY_LEN, DIGEST)
+  return `pbkdf2$${ITERATIONS}$${salt.toString('hex')}$${key.toString('hex')}`
 }
 
 /**
- * Verifies a plaintext password against a stored hash.
+ * Verifies a plaintext password against a stored hash using constant-time comparison.
  * @param {string} plaintext
  * @param {string} hash
  * @returns {Promise<boolean>}
  */
 export async function verifyPassword(plaintext, hash) {
-  // CONNECT: bcrypt — replace with real bcrypt call
-  // return bcrypt.compare(plaintext, hash)
-
-  return hash === `mock_hash_${Buffer.from(plaintext).toString('base64')}`
+  try {
+    const parts = hash.split('$')
+    if (parts.length !== 4 || parts[0] !== 'pbkdf2') return false
+    const [, iterStr, saltHex, keyHex] = parts
+    const iterations  = parseInt(iterStr, 10)
+    const salt        = Buffer.from(saltHex, 'hex')
+    const expectedKey = Buffer.from(keyHex, 'hex')
+    const actualKey   = await pbkdf2Async(plaintext, salt, iterations, KEY_LEN, DIGEST)
+    if (actualKey.length !== expectedKey.length) return false
+    return timingSafeEqual(actualKey, expectedKey)
+  } catch {
+    return false
+  }
 }
 
 // ─── VALIDATION ────────────────────────────────────────────
@@ -71,8 +86,8 @@ export function validatePasswordStrength(password) {
  * @returns {string} reset token
  */
 export function generateResetToken(accountId) {
-  const token   = randomBytes(32).toString('hex')
-  const expiry  = Date.now() + AUTH_CONFIG.passwords.resetTokenExpiry
+  const token  = randomBytes(32).toString('hex')
+  const expiry = Date.now() + AUTH_CONFIG.passwords.resetTokenExpiry
   resetTokenStore.set(token, { accountId, expiry, used: false, attempts: 0 })
   console.log(`[passwords] Reset token generated for account ${accountId}`)
   return token
@@ -125,7 +140,7 @@ export async function resetPassword(token, newPassword) {
   if (record) record.used = true
 
   // CONNECT: email — send password-changed confirmation
-  console.log(`[passwords][MOCK] Password-changed email → account ${accountId}`)
+  console.log(`[passwords] Password-changed email → account ${accountId}`)
 
   return { success: true, error: null }
 }
@@ -135,7 +150,6 @@ export async function resetPassword(token, newPassword) {
  * @param {string} accountId
  * @param {string} initiatedBy - accountId of who triggered this
  * @param {string} reason
- * @returns {void}
  */
 export function forcePasswordChange(accountId, initiatedBy, reason = '') {
   forceChangeFlags.set(accountId, { initiatedBy, reason, flaggedAt: new Date().toISOString() })

@@ -5,7 +5,9 @@
 
 export const AUTH_CONFIG = {
   jwt: {
-    secret:              'JWT_SECRET_KEY',    // min 64 chars, cryptographically random
+    // Loaded at runtime from the JWT_SECRET env var by tokens.js.
+    // This fallback MUST NOT be used in production — set JWT_SECRET to a 64-char random value.
+    secret:              process.env.JWT_SECRET ?? '',
     accessTokenExpiry:   '15m',
     refreshTokenExpiry:  '7d',
     algorithm:           'HS256',
