@@ -7,11 +7,13 @@
 // ─────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
+import { timingSafeCompare } from '@/lib/security'
 import { writeOutreachDrafts } from '@/agents/outreach'
 
 export async function POST(req: NextRequest) {
   const secret = process.env.TELOS_INTERNAL_SECRET
-  if (!secret || req.headers.get('x-telos-secret') !== secret) {
+  const provided = req.headers.get('x-telos-secret') ?? ''
+  if (!secret || !timingSafeCompare(provided, secret)) {
     return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
   }
 

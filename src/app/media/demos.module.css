@@ -63,6 +63,12 @@
   background: #c9a96e;
 }
 
+/* Pizza Co. avatar — cream background matching the retro poster palette */
+.igAvatarPizza::after {
+  background: #f0e6d3;
+  background-image: radial-gradient(circle at 40% 40%, #f5efe4, #e8d5b0);
+}
+
 .igOnline {
   position: absolute;
   bottom: 0;
@@ -107,9 +113,7 @@
 
 .igImg {
   object-fit: cover;
-  object-position: top center;
-  transform: scale(1.15);
-  transform-origin: top center;
+  object-position: center;
 }
 
 .igImgOverlay {

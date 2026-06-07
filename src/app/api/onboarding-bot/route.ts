@@ -29,9 +29,23 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
   }
 
-  const answers = body.answers ?? {}
-  if (Object.keys(answers).length === 0) {
+  const rawAnswers = body.answers ?? {}
+  if (Object.keys(rawAnswers).length === 0) {
     return NextResponse.json({ error: 'No answers provided.' }, { status: 400 })
+  }
+
+  // Only retain answers for known question fields — reject arbitrary keys.
+  const allowedFields = new Set(onboardingQuestions.map(q => q.field))
+  const MAX_ANSWER_LENGTH = 2000
+  const answers: Record<string, string> = {}
+  for (const field of allowedFields) {
+    const val = rawAnswers[field]
+    if (typeof val === 'string' && val.trim()) {
+      answers[field] = val.slice(0, MAX_ANSWER_LENGTH)
+    }
+  }
+  if (Object.keys(answers).length === 0) {
+    return NextResponse.json({ error: 'No valid answers provided.' }, { status: 400 })
   }
 
   // Find this user's business.

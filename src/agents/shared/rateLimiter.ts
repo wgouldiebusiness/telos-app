@@ -12,6 +12,17 @@ interface Bucket {
 }
 
 const store = new Map<string, Bucket>()
+let lastCleanup = 0
+
+// Purge expired buckets at most once per minute to prevent unbounded growth.
+function sweep(): void {
+  const now = Date.now()
+  if (now - lastCleanup < 60_000) return
+  lastCleanup = now
+  for (const [key, bucket] of store) {
+    if (now > bucket.reset) store.delete(key)
+  }
+}
 
 /**
  * Returns true if the request is allowed, false if the limit is hit.
@@ -21,6 +32,8 @@ const store = new Map<string, Bucket>()
  * @param windowMs  Window length in milliseconds
  */
 export function rateLimit(key: string, max: number, windowMs: number): boolean {
+  sweep()
+
   const now = Date.now()
   const bucket = store.get(key)
 

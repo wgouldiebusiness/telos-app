@@ -13,6 +13,8 @@ import { rateLimit } from '@/agents/shared/rateLimiter'
 import { getReceptionistConfig } from '@/agents/receptionist/config'
 import { buildReceptionistPrompt } from '@/agents/receptionist/systemPrompt'
 
+const MAX_MESSAGE_LENGTH = 2000
+
 export async function POST(req: NextRequest) {
   const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
 
@@ -48,8 +50,23 @@ export async function POST(req: NextRequest) {
   if (!message) {
     return NextResponse.json({ error: 'Message is required.' }, { status: 400 })
   }
+  if (message.length > MAX_MESSAGE_LENGTH) {
+    return NextResponse.json({ error: 'Message is too long.' }, { status: 400 })
+  }
 
-  const history = Array.isArray(body.history) ? body.history.slice(-10) : []
+  // Validate history: only allow well-formed turns so arbitrary data cannot
+  // be injected into the prompt.
+  const history: ChatTurn[] = Array.isArray(body.history)
+    ? body.history
+        .slice(-10)
+        .filter(
+          h =>
+            (h.role === 'user' || h.role === 'assistant') &&
+            typeof h.content === 'string'
+        )
+        .map(h => ({ role: h.role, content: h.content.slice(0, MAX_MESSAGE_LENGTH) }))
+    : []
+
   const messages: ChatTurn[] = [...history, { role: 'user', content: message }]
 
   try {

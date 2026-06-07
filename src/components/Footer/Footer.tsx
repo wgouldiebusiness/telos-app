@@ -27,9 +27,9 @@ export default function Footer() {
       <div className={`container ${styles.inner}`}>
         <div className={styles.grid}>
           <div className={styles.brand}>
-            <span className={styles.wordmark}>Telos&nbsp;AI</span>
+            <span className={styles.wordmark}>Telos.ai</span>
             <p className={styles.tagline}>
-              AI systems built for service businesses that are serious about growth.
+              Custom software, AI agents, and creative content for businesses that are serious about growth.
             </p>
           </div>
 
@@ -50,7 +50,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <span className={styles.copy}>
-            &copy; 2026 Telos AI. All rights reserved.
+            &copy; 2026 Telos.ai. All rights reserved.
           </span>
           <nav aria-label="Legal links" className={styles.bottomRight}>
             {legalLinks.map(l => (

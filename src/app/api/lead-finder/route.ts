@@ -6,11 +6,15 @@
 // ─────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
+import { timingSafeCompare } from '@/lib/security'
 import { findLeads } from '@/agents/lead-finder'
+
+const MAX_INPUT = 200
 
 export async function POST(req: NextRequest) {
   const secret = process.env.TELOS_INTERNAL_SECRET
-  if (!secret || req.headers.get('x-telos-secret') !== secret) {
+  const provided = req.headers.get('x-telos-secret') ?? ''
+  if (!secret || !timingSafeCompare(provided, secret)) {
     return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
   }
 
@@ -21,9 +25,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
   }
 
-  const { businessType, location } = body
+  const businessType = (body.businessType ?? '').trim()
+  const location = (body.location ?? '').trim()
   if (!businessType || !location) {
     return NextResponse.json({ error: 'businessType and location are required.' }, { status: 400 })
+  }
+  if (businessType.length > MAX_INPUT || location.length > MAX_INPUT) {
+    return NextResponse.json({ error: 'Input too long.' }, { status: 400 })
   }
 
   const added = await findLeads(businessType, location)

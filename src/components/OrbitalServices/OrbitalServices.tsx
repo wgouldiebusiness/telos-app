@@ -17,7 +17,7 @@ const services: Service[] = [
   { id: 5,  title: 'Missed-Call Recovery',   desc: 'The moment a call goes unanswered, an intelligent message goes out immediately to recover the lead.',       icon: '📲' },
   { id: 6,  title: 'Lead Generation',        desc: 'Systematic outreach and qualification built around your ideal client. More conversations with the right people.', icon: '🎯' },
   { id: 7,  title: 'Conversion Website',     desc: 'A fast, focused website built around your offer and wired into your agents from day one.',                 icon: '🌐' },
-  { id: 8,  title: 'Content & Social',       desc: 'On-brand content produced in your voice and published on your behalf every week.',                         icon: '✍️' },
+  { id: 8,  title: 'Content & Design',        desc: 'Custom graphic design, on-brand content, and social posts produced in your voice — published on your behalf every week.', icon: '✍️' },
   { id: 9,  title: 'Backend Systems',        desc: 'Custom APIs, databases, and third-party integrations that connect every tool your business relies on.',     icon: '🔧' },
   { id: 10, title: 'Marketing Automation',   desc: 'Email sequences, campaign triggers, and audience segmentation running on autopilot so no lead goes cold.', icon: '📣' },
 ]
