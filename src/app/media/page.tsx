@@ -7,41 +7,35 @@ import MediaContactForm from './MediaContactForm'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos Media | Graphic Design, Content Creation & Advertising',
+  title: 'Telos Media | Content, Video & Advertising',
   description:
-    'Custom graphic design, content creation strategies, AI video production, and advertising campaigns. Built for modern brands that mean business.',
+    'Social media content, AI video production, and advertising campaigns. Built for modern brands that want to grow without guesswork.',
 }
 
 const services = [
   {
     n: '01',
-    title: 'Graphic Design & Branding',
-    desc: 'Custom logos, brand identities, social templates, print assets, and digital graphics. We design everything your business needs to look the part — from a single post to a full visual identity.',
-    tags: ['Logo Design', 'Brand Identity', 'Social Templates', 'Print & Digital'],
+    title: 'Social Media Content',
+    desc: 'Strategy, copywriting, on-brand graphics, and automated scheduling. We run your channels so your team can focus on the work that actually moves the business.',
+    tags: ['Strategy', 'Copywriting', 'Design', 'Scheduling'],
   },
   {
     n: '02',
-    title: 'Social Media Content',
-    desc: 'Content creation strategy, custom graphic design, copywriting, and automated scheduling. We produce and run your channels so your team can focus on the work that actually moves the business.',
-    tags: ['Strategy', 'Graphic Design', 'Copywriting', 'Scheduling'],
-  },
-  {
-    n: '03',
     title: 'AI Video Production',
     desc: 'AI-generated brand videos, ads, reels, and promos. A fraction of traditional production cost, with none of the compromise on quality or creative direction.',
     tags: ['Brand Video', 'Reels', 'Ads', 'Promos'],
   },
   {
-    n: '04',
+    n: '03',
     title: 'Advertising Campaigns',
     desc: 'Paid media that performs. We plan, create, and manage campaigns across Meta, Google, TikTok, and LinkedIn. Optimised for your goals, tracked against what matters.',
     tags: ['Meta', 'Google', 'TikTok', 'LinkedIn'],
   },
   {
-    n: '05',
+    n: '04',
     title: 'Brand Content Strategy',
-    desc: 'Clarity on what to say, how to say it, and where. Content planning, tone of voice, messaging frameworks, and creative direction — built around your audience and backed by data.',
-    tags: ['Content Plan', 'Tone of Voice', 'Creative Direction', 'Copywriting'],
+    desc: 'Clarity on what to say, how to say it, and where. Content planning, tone of voice, messaging frameworks, and creative direction built around your audience.',
+    tags: ['Content Plan', 'Tone of Voice', 'Creative Direction'],
   },
 ]
 
@@ -62,7 +56,7 @@ export default function MediaPage() {
           <Reveal>
             <div className={styles.heroPill}>
               <span className={styles.heroPillDot} />
-              Part of the Telos.ai Group
+              Part of the TelosAI Group
             </div>
           </Reveal>
 
@@ -75,7 +69,7 @@ export default function MediaPage() {
 
           <Reveal delay={0.14}>
             <p className={styles.heroSub}>
-              Graphic design. Content creation. AI video. Advertising.<br />
+              Social media. AI video. Advertising campaigns.<br />
               Built for modern brands that mean business.
             </p>
           </Reveal>
@@ -96,7 +90,7 @@ export default function MediaPage() {
         <div className={styles.marqueeTrack}>
           {[1, 2].map(n => (
             <span key={n} className={styles.marqueeInner}>
-              {['SOCIAL MEDIA', 'GRAPHIC DESIGN', 'AI VIDEO', 'PAID ADS', 'BRAND STRATEGY', 'CONTENT CREATION', 'REELS', 'CAMPAIGNS', 'COPYWRITING'].map(w => (
+              {['SOCIAL MEDIA', 'AI VIDEO', 'PAID ADS', 'BRAND STRATEGY', 'CONTENT', 'REELS', 'CAMPAIGNS', 'COPYWRITING'].map(w => (
                 <span key={w} className={styles.marqueeItem}>
                   <span className={styles.marqueeDot} />
                   {w}
@@ -113,7 +107,7 @@ export default function MediaPage() {
           <Reveal>
             <span className={styles.label}>What We Do</span>
             <h2 className={styles.sectionH2}>
-              Five disciplines.<br />One team.
+              Four disciplines.<br />One team.
             </h2>
           </Reveal>
 

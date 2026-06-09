@@ -63,12 +63,6 @@
   background: #c9a96e;
 }
 
-/* Pizza Co. avatar — cream background matching the retro poster palette */
-.igAvatarPizza::after {
-  background: #f0e6d3;
-  background-image: radial-gradient(circle at 40% 40%, #f5efe4, #e8d5b0);
-}
-
 .igOnline {
   position: absolute;
   bottom: 0;
@@ -113,7 +107,9 @@
 
 .igImg {
   object-fit: cover;
-  object-position: center;
+  object-position: top center;
+  transform: scale(1.15);
+  transform-origin: top center;
 }
 
 .igImgOverlay {
@@ -252,105 +248,18 @@
   margin: 0;
 }
 
-/* Ad creative — branded graphic panel */
-.fbAdCreative {
+/* Image */
+.fbImgWrap {
   position: relative;
   width: 100%;
   aspect-ratio: 16/9;
+  background: #f0f2f5;
   overflow: hidden;
-  display: flex;
-  align-items: flex-end;
 }
 
-.fbAdBg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, #0a2942 0%, #0d3d5c 40%, #0a2942 100%);
-}
-
-.fbAdBg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse 60% 80% at 80% 20%, rgba(0, 212, 180, 0.18) 0%, transparent 70%),
-    radial-gradient(ellipse 40% 60% at 10% 80%, rgba(0, 212, 180, 0.10) 0%, transparent 70%);
-}
-
-.fbAdBg::after {
-  content: '';
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  width: 90px;
-  height: 90px;
-  border: 2px solid rgba(0, 212, 180, 0.25);
-  border-radius: 50%;
-}
-
-.fbAdContent {
-  position: relative;
-  z-index: 2;
-  padding: 20px;
-  width: 100%;
-}
-
-.fbAdBadge {
-  display: inline-block;
-  padding: 3px 10px;
-  background: rgba(0, 212, 180, 0.2);
-  border: 1px solid rgba(0, 212, 180, 0.5);
-  border-radius: 20px;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: #00D4B4;
-  margin-bottom: 8px;
-}
-
-.fbAdHeadline {
-  font-size: 22px;
-  font-weight: 900;
-  color: #ffffff;
-  line-height: 1.15;
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
-}
-
-.fbAdSub {
-  font-size: 12px;
-  color: rgba(255,255,255,0.65);
-  margin-bottom: 8px;
-}
-
-.fbAdRating {
-  font-size: 12px;
-  color: #f5c842;
-  font-weight: 600;
-}
-
-.fbAdRating span {
-  color: rgba(255,255,255,0.55);
-  font-weight: 400;
-}
-
-.fbAdLogo {
-  position: absolute;
-  top: 16px;
-  right: 20px;
-  z-index: 2;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: linear-gradient(135deg, #00D4B4, #007B6A);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  font-weight: 900;
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0,212,180,0.35);
+.fbImg {
+  object-fit: cover;
+  object-position: top center;
 }
 
 /* Link preview strip */

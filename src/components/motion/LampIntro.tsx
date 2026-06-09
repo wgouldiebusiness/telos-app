@@ -28,7 +28,7 @@ export default function LampIntro() {
             className={`${styles.cone} ${styles.coneLeft}`}
             initial={{ width: '6rem', opacity: 0.4 }}
             animate={{ width: '28rem', opacity: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
           />
 
           {/* Right cone */}
@@ -36,7 +36,7 @@ export default function LampIntro() {
             className={`${styles.cone} ${styles.coneRight}`}
             initial={{ width: '6rem', opacity: 0.4 }}
             animate={{ width: '28rem', opacity: 1 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
           />
 
           {/* Glow line */}
@@ -44,7 +44,7 @@ export default function LampIntro() {
             className={styles.line}
             initial={{ width: '6rem' }}
             animate={{ width: '28rem' }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.85, ease: 'easeInOut' }}
           />
 
           {/* Dark masks */}
@@ -54,12 +54,12 @@ export default function LampIntro() {
           {/* Logo */}
           <motion.div
             className={styles.brand}
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: 0.45, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <Logo size="lg" dark />
-            <span className={styles.wordmark}>telos.ai</span>
+            <span className={styles.wordmark}>Telos AI</span>
           </motion.div>
 
           <AutoDismiss onDismiss={() => setShow(false)} />
@@ -71,7 +71,7 @@ export default function LampIntro() {
 
 function AutoDismiss({ onDismiss }: { onDismiss: () => void }) {
   useEffect(() => {
-    const t = setTimeout(onDismiss, 1500)
+    const t = setTimeout(onDismiss, 1700)
     return () => clearTimeout(t)
   }, [onDismiss])
   return null

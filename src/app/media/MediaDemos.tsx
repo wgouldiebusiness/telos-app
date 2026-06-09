@@ -5,7 +5,7 @@ import styles from './demos.module.css'
 
 /* ─────────────────────────────────────────
    Instagram-style post
-   Image: Pizza Co. retro delivery poster (Bosco / Rudy's aesthetic)
+   Image: Aura Kin luxury salon website screenshot
 ───────────────────────────────────────── */
 function InstagramPost() {
   const [liked, setLiked] = useState(false)
@@ -16,12 +16,12 @@ function InstagramPost() {
       {/* Header */}
       <div className={styles.igHeader}>
         <div className={styles.igAvatarWrap}>
-          <div className={`${styles.igAvatar} ${styles.igAvatarPizza}`} />
+          <div className={styles.igAvatar} />
           <div className={styles.igOnline} />
         </div>
         <div className={styles.igHeaderText}>
-          <div className={styles.igHandle}>pizzaco.uk</div>
-          <div className={styles.igLocation}>Manchester, UK</div>
+          <div className={styles.igHandle}>elevate.studio</div>
+          <div className={styles.igLocation}>London, UK</div>
         </div>
         <button className={styles.igMore} aria-label="More options">
           <svg width="18" height="4" viewBox="0 0 18 4" fill="currentColor">
@@ -30,11 +30,11 @@ function InstagramPost() {
         </button>
       </div>
 
-      {/* Photo — retro pizza delivery poster */}
+      {/* Photo — Aura Kin salon screenshot */}
       <div className={styles.igImgWrap}>
         <Image
-          src="/media/pizza-ig-post.png"
-          alt="Pizza Co. retro delivery poster"
+          src="/demos/coffee/stitch_aura_kin_logo/59a8206e328a1e967527334d65f81ea5.jpg/screen.png"
+          alt="Elevate brand editorial"
           fill
           className={styles.igImg}
           sizes="(max-width: 600px) 100vw, 380px"
@@ -77,25 +77,26 @@ function InstagramPost() {
       </div>
 
       {/* Likes */}
-      <div className={styles.igLikes}>{liked ? '3,842' : '3,841'} likes</div>
+      <div className={styles.igLikes}>{liked ? '2,419' : '2,418'} likes</div>
 
       {/* Caption */}
       <div className={styles.igCaption}>
-        <span className={styles.igCaptionHandle}>pizzaco.uk</span>{' '}
-        Hot. Fresh. On its way. 🍕 Our original menu is back — same dough, same oven, same obsession. Order via the link in bio.
-        <span className={styles.igTags}> #Pizza #WoodFiredPizza #PizzaDelivery #ManchesterFood #ItalianFood</span>
+        <span className={styles.igCaptionHandle}>elevate.studio</span>{' '}
+        Crafted for those who know the difference. New editorial now live.
+        Shop the collection via link in bio. ✨
+        <span className={styles.igTags}> #elevate #luxuryjewellery #editorial #minimalstyle #London</span>
       </div>
 
       {/* Comments teaser */}
-      <button className={styles.igViewComments}>View all 112 comments</button>
-      <div className={styles.igTimestamp}>3 hours ago</div>
+      <button className={styles.igViewComments}>View all 47 comments</button>
+      <div className={styles.igTimestamp}>2 hours ago</div>
     </div>
   )
 }
 
 /* ─────────────────────────────────────────
    Facebook-style ad
-   Creative: Branded service ad (Lavisha Cleaning)
+   Image: Lavisha Cleaning website screenshot
 ───────────────────────────────────────── */
 function FacebookAd() {
   const [reacted, setReacted] = useState(false)
@@ -126,18 +127,15 @@ function FacebookAd() {
         Tired of unreliable cleaners? Lavisha delivers a premium, fully managed cleaning service for homes and businesses across London. Book your first clean today.
       </p>
 
-      {/* Ad creative — branded graphic, not a website screenshot */}
-      <div className={styles.fbAdCreative}>
-        <div className={styles.fbAdBg} />
-        <div className={styles.fbAdContent}>
-          <div className={styles.fbAdBadge}>Premium Service</div>
-          <div className={styles.fbAdHeadline}>Your Home,<br />Spotless.</div>
-          <div className={styles.fbAdSub}>From £49 · Same-day available</div>
-          <div className={styles.fbAdRating}>
-            ★★★★★ <span>4.9 · 600+ happy clients</span>
-          </div>
-        </div>
-        <div className={styles.fbAdLogo}>L</div>
+      {/* Ad image — Lavisha Cleaning screenshot */}
+      <div className={styles.fbImgWrap}>
+        <Image
+          src="/demos/pizza/stitch_transparent_service_hub/bf54eab207e1a0dcd4a94b7dadf5c083.jpg/screen.png"
+          alt="Professional Cleaning website on desktop"
+          fill
+          className={styles.fbImg}
+          sizes="(max-width: 600px) 100vw, 380px"
+        />
       </div>
 
       {/* Link preview strip */}

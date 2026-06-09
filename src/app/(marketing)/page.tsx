@@ -10,9 +10,9 @@ import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
 export const metadata: Metadata = {
-  title: 'Telos.ai — Custom Software, AI Agents & Creative Content',
+  title: 'Telos AI: Custom software for ambitious service businesses.',
   description:
-    'We build custom software, AI agents, and content strategies for service businesses. From back-end systems and intelligent automation to graphic design and social media — built around your business and fully managed.',
+    'We build and manage custom software, automation, and intelligent systems that handle your admin, capture leads, and keep your pipeline moving. Built for your business. Fully managed.',
 }
 
 const receptionistConversation: ChatMessage[] = [
@@ -66,7 +66,8 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.55}>
             <p className={styles.heroDetail}>
-              We build custom software, AI agents, and creative content strategies — from back-end infrastructure and automation to graphic design and social media — tailored to your business and fully managed.
+              We build and manage custom software systems, back end infrastructure, and automation
+              that handles your admin, captures leads, and keeps you focused on your actual work.
             </p>
           </Reveal>
           <Reveal delay={0.7} className={styles.heroBtns}>
@@ -94,9 +95,8 @@ export default function HomePage() {
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
               Most software tools are generalised. They are not built for your business. We are a
-              technical and creative team — writing custom code, building back-end systems, deploying
-              intelligent AI agents, and producing content and graphic design specifically around how
-              your business operates.
+              technical team tailoring custom code, back end systems, and intelligent agents
+              specifically to how your business operates.
             </p>
           </Reveal>
         </div>
@@ -109,7 +109,7 @@ export default function HomePage() {
           <Reveal delay={0.2}>
             <div className={styles.buildsCallout}>
               <p className={styles.buildsCalloutText}>
-                Whatever your business needs: custom code, AI automation, graphic design, or content strategy. We build it from the ground up, tailored to you.
+                Whatever your business needs: custom code, back end systems, or support systems. We build it from the ground up, tailored to you.
               </p>
               <Link href="/solutions" className={styles.buildsCalloutLink}>
                 See all examples
@@ -133,7 +133,7 @@ export default function HomePage() {
             </TextScanner>
             <Reveal delay={0.2}>
               <p className={styles.showcaseSub}>
-                Every system is custom — from AI agents and back-end infrastructure to content creation and graphic design. These are examples of what that looks like.
+                Every agent is custom. These are examples of what that looks like.
               </p>
             </Reveal>
           </div>
