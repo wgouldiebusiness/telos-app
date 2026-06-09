@@ -4,12 +4,17 @@
   left: 0;
   right: 0;
   bottom: 0;
+  /* Use -webkit-fill-available so it fills the full iOS viewport including behind the address bar */
+  height: 100%;
+  height: -webkit-fill-available;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-  /* Fade in after ~300ms so WebGL canvas is ready before it shows */
+  /* Purple gradient fallback — visible while WebGL loads and on mobile */
+  background: radial-gradient(ellipse 80% 60% at 30% 30%, #1a1040 0%, #000 60%),
+              radial-gradient(ellipse 60% 50% at 75% 80%, #0d0828 0%, #000 70%);
   animation: bgFadeIn 0.6s ease forwards;
 }
 
@@ -67,9 +72,16 @@
   to   { transform: translate(-4vw, -5vh) scale(1.08); }
 }
 
-/* Disable WebGL layer on mobile — CSS blobs still show */
+/* Disable WebGL layer on mobile — CSS gradient + blobs show instead */
 @media (max-width: 768px) {
   .layer { display: none; }
+
+  .blob1 {
+    background: radial-gradient(circle, rgba(120,104,230,.45) 0%, rgba(80,60,200,.12) 50%, transparent 70%);
+  }
+  .blob2 {
+    background: radial-gradient(circle, rgba(100,80,210,.35) 0%, rgba(60,40,180,.10) 50%, transparent 70%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

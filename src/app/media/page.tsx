@@ -126,8 +126,8 @@ export default function MediaPage() {
             <h2 className={styles.sectionH2}>See it in action.</h2>
             <p className={styles.sectionNote}>
               Interactive demos of the four things we build for brands every week.
-              Real work examples available on request —{' '}
-              <a href="#booking" className={styles.noteLink}>book a call</a>.
+              Real work examples available on request.{' '}
+              <a href="#booking" className={styles.noteLink}>Book a call</a>.
             </p>
           </Reveal>
 
