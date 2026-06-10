@@ -8,8 +8,8 @@ export default function WebsitesShaderBackground() {
       {/* Deep red mesh gradient */}
       <MeshGradient
         className={styles.layer}
-        colors={['#000000', '#0E0302', '#3D0A08', '#000000', '#180302']}
-        speed={0.08}
+        colors={['#000000', '#180302', '#621008', '#2A0502', '#0E0201']}
+        speed={0.14}
       />
       <div className={styles.blob1} />
       <div className={styles.blob2} />

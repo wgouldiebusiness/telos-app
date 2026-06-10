@@ -8,8 +8,8 @@ export default function MediaShaderBackground() {
       {/* Deep teal mesh gradient */}
       <MeshGradient
         className={styles.layer}
-        colors={['#000000', '#00100D', '#0C4A3C', '#000000', '#001A14']}
-        speed={0.08}
+        colors={['#000000', '#001A14', '#0D6B52', '#003828', '#001F18']}
+        speed={0.14}
       />
       <div className={styles.blob1} />
       <div className={styles.blob2} />

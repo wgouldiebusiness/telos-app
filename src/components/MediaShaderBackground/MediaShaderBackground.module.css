@@ -12,8 +12,8 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   /* Teal gradient fallback — visible while WebGL loads and on mobile */
-  background: radial-gradient(ellipse 80% 60% at 30% 30%, #0a2820 0%, #000 60%),
-              radial-gradient(ellipse 60% 50% at 75% 80%, #061a14 0%, #000 70%);
+  background: radial-gradient(ellipse 80% 60% at 30% 30%, #0d3828 0%, #000 60%),
+              radial-gradient(ellipse 60% 50% at 75% 80%, #082218 0%, #000 70%);
   animation: bgFadeIn 0.6s ease forwards;
 }
 
@@ -39,7 +39,7 @@
   max-width: 720px;
   max-height: 720px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,180,150,.22) 0%, rgba(0,120,100,.06) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,200,165,.32) 0%, rgba(0,140,115,.09) 50%, transparent 70%);
   animation: blobDrift1 22s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -54,7 +54,7 @@
   max-width: 640px;
   max-height: 640px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(0,212,180,.14) 0%, rgba(0,140,120,.04) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(0,212,180,.22) 0%, rgba(0,150,130,.07) 50%, transparent 70%);
   animation: blobDrift2 28s ease-in-out infinite alternate;
   will-change: transform;
 }
