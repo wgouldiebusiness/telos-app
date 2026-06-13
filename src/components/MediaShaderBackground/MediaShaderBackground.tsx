@@ -7,7 +7,7 @@ export default function MediaShaderBackground() {
     <div className={styles.root} aria-hidden="true">
       <MeshGradient
         className={styles.layer}
-        colors={['#000000', '#1A0000', '#8C1808', '#380000', '#080000']}
+        colors={['#000000', '#001A14', '#0D6B52', '#003828', '#001F18']}
         speed={0.22}
       />
       <div className={styles.blob1} />

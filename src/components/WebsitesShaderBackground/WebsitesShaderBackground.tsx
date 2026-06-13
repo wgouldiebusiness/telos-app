@@ -7,7 +7,7 @@ export default function WebsitesShaderBackground() {
     <div className={styles.root} aria-hidden="true">
       <MeshGradient
         className={styles.layer}
-        colors={['#000000', '#001818', '#0A7868', '#002828', '#000A08']}
+        colors={['#000000', '#1A0000', '#8C1808', '#380000', '#080000']}
         speed={0.22}
       />
       <div className={styles.blob1} />
