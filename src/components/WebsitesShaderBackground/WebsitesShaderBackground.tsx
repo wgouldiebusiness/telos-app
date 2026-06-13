@@ -5,11 +5,10 @@ import styles from './WebsitesShaderBackground.module.css'
 export default function WebsitesShaderBackground() {
   return (
     <div className={styles.root} aria-hidden="true">
-      {/* Deep red mesh gradient */}
       <MeshGradient
         className={styles.layer}
-        colors={['#000000', '#180302', '#621008', '#2A0502', '#0E0201']}
-        speed={0.14}
+        colors={['#000000', '#001818', '#0A7868', '#002828', '#000A08']}
+        speed={0.22}
       />
       <div className={styles.blob1} />
       <div className={styles.blob2} />

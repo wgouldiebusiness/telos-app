@@ -5,11 +5,10 @@ import styles from './MediaShaderBackground.module.css'
 export default function MediaShaderBackground() {
   return (
     <div className={styles.root} aria-hidden="true">
-      {/* Deep teal mesh gradient */}
       <MeshGradient
         className={styles.layer}
-        colors={['#000000', '#001A14', '#0D6B52', '#003828', '#001F18']}
-        speed={0.14}
+        colors={['#000000', '#1A0000', '#8C1808', '#380000', '#080000']}
+        speed={0.22}
       />
       <div className={styles.blob1} />
       <div className={styles.blob2} />

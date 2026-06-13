@@ -13,8 +13,8 @@
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
   /* Purple gradient fallback — visible while WebGL loads and on mobile */
-  background: radial-gradient(ellipse 80% 60% at 30% 30%, #1a1040 0%, #000 60%),
-              radial-gradient(ellipse 60% 50% at 75% 80%, #0d0828 0%, #000 70%);
+  background: radial-gradient(ellipse 80% 60% at 30% 30%, #22104A 0%, #000 60%),
+              radial-gradient(ellipse 60% 50% at 75% 80%, #120830 0%, #000 70%);
   animation: bgFadeIn 0.6s ease forwards;
 }
 
@@ -41,7 +41,7 @@
   max-width: 720px;
   max-height: 720px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(80,50,180,.3) 0%, rgba(50,30,120,.08) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(96,64,204,.38) 0%, rgba(60,30,150,.10) 50%, transparent 70%);
   animation: blobDrift1 22s ease-in-out infinite alternate;
   will-change: transform;
 }
@@ -55,7 +55,7 @@
   max-width: 640px;
   max-height: 640px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(60,40,160,.2) 0%, rgba(40,20,100,.06) 50%, transparent 70%);
+  background: radial-gradient(circle, rgba(70,45,180,.26) 0%, rgba(40,20,120,.08) 50%, transparent 70%);
   animation: blobDrift2 28s ease-in-out infinite alternate;
   will-change: transform;
 }
