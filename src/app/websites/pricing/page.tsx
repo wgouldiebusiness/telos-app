@@ -12,10 +12,10 @@ export const metadata: Metadata = {
 const tiers = [
   {
     name: 'Starter Site',
-    price: '£500',
+    price: '£295',
     period: '+ from',
-    build: 'One-off build',
-    desc: 'A clean, fast, professional website for businesses that need to establish a proper online presence.',
+    build: 'One-off build fee',
+    desc: 'A clean, fast, professional website for businesses that need a proper online presence without a big upfront commitment.',
     features: [
       'Up to 5 pages',
       'Custom design (no templates)',
@@ -24,13 +24,13 @@ const tiers = [
       'SEO foundations built in',
       'Delivered in two weeks',
     ],
-    note: '£50/mo ongoing: maintenance, security & running costs',
+    note: '£65/mo ongoing: hosting, maintenance, security & updates',
   },
   {
     name: 'Business Site',
-    price: '£900',
+    price: '£595',
     period: '+ from',
-    build: 'One-off build',
+    build: 'One-off build fee',
     desc: 'A conversion-focused site built around your full service offering, portfolio, and client journey.',
     features: [
       'Up to 10 pages',
@@ -40,23 +40,23 @@ const tiers = [
       'Google Analytics and Search Console',
       'AI agent integration ready',
     ],
-    note: '£50/mo ongoing: maintenance, security & running costs',
+    note: '£110/mo ongoing: hosting, maintenance, security & updates',
   },
   {
-    name: 'Custom',
-    price: 'Bespoke',
-    period: '',
-    build: 'Scoped to your requirements',
-    desc: 'Full custom build for businesses with complex needs: multiple service areas, booking systems, or AI integration.',
+    name: 'Site + AI Bundle',
+    price: '£499',
+    period: '+ from',
+    build: 'Build fee — site and agents included',
+    desc: 'Your website and AI agents built together and wired up from day one. The most cost-effective way to get both.',
     features: [
-      'Unlimited pages and features',
-      'Full Telos AI agent integration',
-      'Custom booking or CRM connection',
-      'E-commerce or membership (if required)',
-      'Content and SEO strategy',
-      'Dedicated account management',
+      'Business site (up to 10 pages)',
+      '2 custom AI agents included',
+      'Receptionist, chat, or lead follow-up',
+      'Fully integrated from launch',
+      'Each additional agent from £150 build + £65/mo',
+      'Priority build and support',
     ],
-    note: 'Priced on your call. Agreed before we start.',
+    note: '£225/mo ongoing: site + both agents maintained',
   },
 ]
 
@@ -67,7 +67,7 @@ const faqs = [
   },
   {
     q: 'Is there a monthly fee?',
-    a: 'Yes. There is a £50/month ongoing plan that covers hosting, domain management, security updates, performance monitoring, SSL renewal, monthly backups, and small content changes. It is optional; you can host elsewhere if you prefer.',
+    a: 'Yes. The ongoing plan starts from £65/month for a Starter Site and £110/month for a Business Site. It covers hosting, domain management, security updates, performance monitoring, SSL renewal, monthly backups, and small content changes. It is optional; you can host elsewhere if you prefer.',
   },
   {
     q: 'How long does it take?',
@@ -139,7 +139,7 @@ export default function WebsitesPricingPage() {
             <div className={styles.monthlyBand}>
               <div className={styles.monthlyLeft}>
                 <span className={styles.monthlyLabel}>Ongoing plan</span>
-                <div className={styles.monthlyPrice}>£50<span className={styles.monthlyPer}>/month</span></div>
+                <div className={styles.monthlyPrice}>from £65<span className={styles.monthlyPer}>/month</span></div>
                 <p className={styles.monthlyDesc}>
                   Every site we build comes with an optional ongoing plan covering everything
                   it takes to keep your site fast, secure, and running.

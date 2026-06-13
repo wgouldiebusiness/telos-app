@@ -14,8 +14,8 @@ const tiers = [
   {
     key: 'starter',
     name: 'Starter',
-    desc: 'One custom AI agent, built and maintained for your business. From £100 per month.',
-    price: '£100',
+    desc: 'One custom AI agent, built and fully managed for your business. A single focused problem solved properly.',
+    price: '£99',
     period: '/mo',
     best: 'One focused problem, solved properly',
     features: [
@@ -30,13 +30,14 @@ const tiers = [
   {
     key: 'growth',
     name: 'Growth',
-    desc: 'Two or more agents working together. More coverage, more automation. From £250 per month depending on the number of agents.',
-    price: '£250',
+    desc: 'Two agents working together. More coverage, more automation. Each additional agent from £65/mo.',
+    price: '£185',
     period: '/mo',
     best: 'Multiple problems, one coordinated system',
     features: [
-      'Multiple AI agents working together',
+      '2 custom AI agents included',
       'Pipeline, follow-up, and lead recovery',
+      'Each extra agent from £65/mo',
       'Live client dashboard',
       'Monthly and annual reporting',
       'Priority support',
@@ -47,7 +48,7 @@ const tiers = [
     key: 'bespoke',
     name: 'Bespoke',
     desc: 'Full custom AI infrastructure built from the ground up for your business. Priced on your requirements. Agreed on your call.',
-    price: '£1k',
+    price: '£500',
     period: '+/mo',
     best: 'Scoped to your requirements',
     features: [
