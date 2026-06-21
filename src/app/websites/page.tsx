@@ -74,25 +74,6 @@ export default function WebsitesHomePage() {
         <div className={styles.heroFade} />
       </section>
 
-      {/* ── STATEMENT ── */}
-      <section className={styles.statement}>
-        <div className="container">
-          <Reveal>
-            <span className="label">What we do</span>
-          </Reveal>
-          <TextScanner dark className={styles.statementH2}>
-            A website built around your business. Not a template adapted to it.
-          </TextScanner>
-          <Reveal delay={0.2}>
-            <p className={styles.statementSub}>
-              Most website builders give you a template and ask you to fit your
-              business into it. We do the opposite. We learn how you work, what your
-              clients need to see, and we build from the ground up around that.
-            </p>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ── DEMO SHOWCASE ── iPhone portrait scroll showcase */}
       <PhoneShowcase demos={phoneShowcaseDemos} />
 
@@ -109,6 +90,25 @@ export default function WebsitesHomePage() {
                 Get your own website
               </Link>
             </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── STATEMENT ── */}
+      <section className={styles.statement}>
+        <div className="container">
+          <Reveal>
+            <span className="label">What we do</span>
+          </Reveal>
+          <TextScanner dark className={styles.statementH2}>
+            A website built around your business. Not a template adapted to it.
+          </TextScanner>
+          <Reveal delay={0.2}>
+            <p className={styles.statementSub}>
+              Most website builders give you a template and ask you to fit your
+              business into it. We do the opposite. We learn how you work, what your
+              clients need to see, and we build from the ground up around that.
+            </p>
           </Reveal>
         </div>
       </section>
