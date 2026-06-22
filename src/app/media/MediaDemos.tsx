@@ -3,11 +3,27 @@ import { useState } from 'react'
 import Image from 'next/image'
 import styles from './demos.module.css'
 
+interface IgPostProps {
+  handle:      string
+  location:    string
+  image:       string
+  imageAlt:    string
+  /** object-position override for the photo crop */
+  imagePos?:   string
+  caption:     string
+  tags:        string
+  likes:       number
+  comments:    number
+  timeAgo:     string
+}
+
 /* ─────────────────────────────────────────
-   Instagram-style post
-   Image: Aura Kin luxury salon website screenshot
+   Instagram-style post (real photo content)
 ───────────────────────────────────────── */
-function InstagramPost() {
+function InstagramPost({
+  handle, location, image, imageAlt, imagePos,
+  caption, tags, likes, comments, timeAgo,
+}: IgPostProps) {
   const [liked, setLiked] = useState(false)
   const [saved, setSaved] = useState(false)
 
@@ -20,8 +36,8 @@ function InstagramPost() {
           <div className={styles.igOnline} />
         </div>
         <div className={styles.igHeaderText}>
-          <div className={styles.igHandle}>elevate.studio</div>
-          <div className={styles.igLocation}>London, UK</div>
+          <div className={styles.igHandle}>{handle}</div>
+          <div className={styles.igLocation}>{location}</div>
         </div>
         <button className={styles.igMore} aria-label="More options">
           <svg width="18" height="4" viewBox="0 0 18 4" fill="currentColor">
@@ -30,14 +46,15 @@ function InstagramPost() {
         </button>
       </div>
 
-      {/* Photo — Aura Kin salon screenshot */}
+      {/* Photo */}
       <div className={styles.igImgWrap}>
         <Image
-          src="/demos/coffee/stitch_aura_kin_logo/59a8206e328a1e967527334d65f81ea5.jpg/screen.png"
-          alt="Elevate brand editorial"
+          src={image}
+          alt={imageAlt}
           fill
           className={styles.igImg}
           sizes="(max-width: 600px) 100vw, 380px"
+          style={imagePos ? { objectPosition: imagePos } : undefined}
         />
         <div className={styles.igImgOverlay} />
       </div>
@@ -77,112 +94,18 @@ function InstagramPost() {
       </div>
 
       {/* Likes */}
-      <div className={styles.igLikes}>{liked ? '2,419' : '2,418'} likes</div>
+      <div className={styles.igLikes}>{(liked ? likes + 1 : likes).toLocaleString()} likes</div>
 
       {/* Caption */}
       <div className={styles.igCaption}>
-        <span className={styles.igCaptionHandle}>elevate.studio</span>{' '}
-        Crafted for those who know the difference. New editorial now live.
-        Shop the collection via link in bio. ✨
-        <span className={styles.igTags}> #elevate #luxuryjewellery #editorial #minimalstyle #London</span>
+        <span className={styles.igCaptionHandle}>{handle}</span>{' '}
+        {caption}
+        <span className={styles.igTags}> {tags}</span>
       </div>
 
       {/* Comments teaser */}
-      <button className={styles.igViewComments}>View all 47 comments</button>
-      <div className={styles.igTimestamp}>2 hours ago</div>
-    </div>
-  )
-}
-
-/* ─────────────────────────────────────────
-   Facebook-style ad
-   Image: Lavisha Cleaning website screenshot
-───────────────────────────────────────── */
-function FacebookAd() {
-  const [reacted, setReacted] = useState(false)
-
-  return (
-    <div className={styles.fbCard}>
-      {/* Ad header */}
-      <div className={styles.fbHeader}>
-        <div className={styles.fbPageAvatar} />
-        <div className={styles.fbHeaderText}>
-          <div className={styles.fbPageName}>Lavisha Cleaning</div>
-          <div className={styles.fbMeta}>
-            Sponsored ·{' '}
-            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor" style={{ display: 'inline', verticalAlign: 'middle' }}>
-              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-            </svg>
-          </div>
-        </div>
-        <button className={styles.fbMore} aria-label="More options">
-          <svg width="18" height="4" viewBox="0 0 18 4" fill="currentColor">
-            <circle cx="2" cy="2" r="2"/><circle cx="9" cy="2" r="2"/><circle cx="16" cy="2" r="2"/>
-          </svg>
-        </button>
-      </div>
-
-      {/* Ad copy */}
-      <p className={styles.fbBody}>
-        Tired of unreliable cleaners? Lavisha delivers a premium, fully managed cleaning service for homes and businesses across London. Book your first clean today.
-      </p>
-
-      {/* Ad image — Lavisha Cleaning screenshot */}
-      <div className={styles.fbImgWrap}>
-        <Image
-          src="/demos/pizza/stitch_transparent_service_hub/bf54eab207e1a0dcd4a94b7dadf5c083.jpg/screen.png"
-          alt="Professional Cleaning website on desktop"
-          fill
-          className={styles.fbImg}
-          sizes="(max-width: 600px) 100vw, 380px"
-        />
-      </div>
-
-      {/* Link preview strip */}
-      <div className={styles.fbLinkStrip}>
-        <div>
-          <div className={styles.fbLinkDomain}>lavishacleaning.co.uk</div>
-          <div className={styles.fbLinkHeadline}>Luxury Cleaning Made Simple</div>
-          <div className={styles.fbLinkSub}>Professional cleaning for homes and businesses across London.</div>
-        </div>
-        <a href="#booking" className={styles.fbCta}>Get a Quote</a>
-      </div>
-
-      {/* Reactions */}
-      <div className={styles.fbReactionBar}>
-        <div className={styles.fbReactionIcons}>
-          <span>👍</span><span>❤️</span><span>😮</span>
-          <span className={styles.fbReactionCount}>1,847</span>
-        </div>
-        <div className={styles.fbCommentCount}>214 comments · 89 shares</div>
-      </div>
-
-      {/* Action buttons */}
-      <div className={styles.fbActions}>
-        <button
-          className={`${styles.fbActionBtn} ${reacted ? styles.fbActionBtnActive : ''}`}
-          onClick={() => setReacted(r => !r)}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill={reacted ? '#1877F2' : 'none'} stroke={reacted ? '#1877F2' : 'currentColor'} strokeWidth="1.6">
-            <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
-            <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
-          </svg>
-          {reacted ? 'Liked' : 'Like'}
-        </button>
-        <button className={styles.fbActionBtn}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-          </svg>
-          Comment
-        </button>
-        <button className={styles.fbActionBtn}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
-            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
-            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
-          </svg>
-          Share
-        </button>
-      </div>
+      <button className={styles.igViewComments}>View all {comments} comments</button>
+      <div className={styles.igTimestamp}>{timeAgo}</div>
     </div>
   )
 }
@@ -192,12 +115,34 @@ export default function MediaDemos() {
   return (
     <div className={styles.grid}>
       <div className={styles.cell}>
-        <div className={styles.cellLabel}>Instagram Post</div>
-        <InstagramPost />
+        <div className={styles.cellLabel}>Instagram Post · Pizzeria</div>
+        <InstagramPost
+          handle="pizzaco.uk"
+          location="Bristol, UK"
+          image="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/e529550c4e8ddddc059b8159edb862c7.jpg/screen.png"
+          imageAlt="Wood-fired Margherita pizza with a fresh mozzarella pull"
+          imagePos="left center"
+          caption="48-hour dough, San Marzano D.O.P, mozzarella di bufala. The Margherita that started it all. 🍕 Order online, link in bio."
+          tags="#pizzaco #woodfired #neapolitanpizza #bristoleats #margherita"
+          likes={3127}
+          comments={64}
+          timeAgo="3 hours ago"
+        />
       </div>
       <div className={styles.cell}>
-        <div className={styles.cellLabel}>Facebook Ad</div>
-        <FacebookAd />
+        <div className={styles.cellLabel}>Instagram Post · Salon</div>
+        <InstagramPost
+          handle="aurakin.salon"
+          location="Mayfair, London"
+          image="/demos/stitch-salon/stitch_aura_kin_logo/13b59a3a81cd189add1801293066ab26.jpg/screen.png"
+          imageAlt="Aura Kin salon editorial, soft glow beauty look"
+          imagePos="top center"
+          caption="Glass-skin glow, straight from the chair. Our signature facial and gua sha finish, booked out all weekend ✨ Midweek slots just opened, tap the link in bio."
+          tags="#aurakin #glowup #facial #luxurysalon #londonbeauty"
+          likes={1284}
+          comments={38}
+          timeAgo="5 hours ago"
+        />
       </div>
     </div>
   )
