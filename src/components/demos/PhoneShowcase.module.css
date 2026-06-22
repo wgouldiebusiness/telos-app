@@ -2,6 +2,7 @@
 .section {
   height: 680vh;
   position: relative;
+  overflow: hidden;
 }
 
 /* ── STICKY PANEL ── fills the viewport while user scrolls */
@@ -14,9 +15,10 @@
   align-items: center;
   justify-content: center;
   gap: 32px;
-  overflow: hidden;
+  overflow: visible;
   /* top padding clears the fixed header so the intro never tucks under it */
   padding: 64px 32px 24px;
+  z-index: 1;
 }
 
 /* ── INTRO ── */
