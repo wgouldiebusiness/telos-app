@@ -151,8 +151,6 @@
 /* ═══ MARQUEE ═══ */
 .marqueeWrap {
   overflow: hidden;
-  border-top: 1px solid rgba(0,212,180,.12);
-  border-bottom: 1px solid rgba(0,212,180,.12);
   padding: 1.25rem 0;
   background: rgba(0,0,0,.25);
 }
@@ -299,8 +297,6 @@
 /* ═══ STATS ═══ */
 .stats {
   padding: 5rem 0;
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
   background: rgba(0,0,0,.3);
 }
 

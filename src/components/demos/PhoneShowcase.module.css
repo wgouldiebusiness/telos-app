@@ -15,7 +15,8 @@
   justify-content: center;
   gap: 32px;
   overflow: hidden;
-  padding: 0 32px;
+  /* top padding clears the fixed header so the intro never tucks under it */
+  padding: 64px 32px 24px;
 }
 
 /* ── INTRO ── */
