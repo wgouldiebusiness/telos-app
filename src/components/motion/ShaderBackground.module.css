@@ -76,6 +76,13 @@
 @media (max-width: 768px) {
   .layer { display: none; }
 
+  /* Colour-forward fallback so Safari/phones aren't mostly black */
+  .root {
+    background:
+      radial-gradient(ellipse 115% 78% at 25% 16%, #3D2090 0%, #1C0D55 44%, #0B0524 100%),
+      radial-gradient(ellipse 95% 68% at 82% 88%, #2C1678 0%, transparent 60%);
+  }
+
   .blob1 {
     background: radial-gradient(circle, rgba(120,104,230,.45) 0%, rgba(80,60,200,.12) 50%, transparent 70%);
   }

@@ -119,29 +119,29 @@ export default function MediaDemos() {
         <InstagramPost
           handle="pizzaco.uk"
           location="Bristol, UK"
-          image="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/42c706cb651991aa3387b8abb09919f0.jpg/screen.png"
-          imageAlt="Pizza Co. delivery promo artwork"
-          imagePos="center"
-          caption="Delivery is officially live 🍕 Hot, hand-stretched, and at your door in 30. Order online, link in bio."
-          tags="#pizzaco #woodfired #pizzadelivery #bristoleats #orderonline"
+          image="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/e529550c4e8ddddc059b8159edb862c7.jpg/screen.png"
+          imageAlt="Wood-fired Margherita pizza with a fresh mozzarella pull"
+          imagePos="left center"
+          caption="48-hour dough, San Marzano D.O.P, mozzarella di bufala. 🍕 The Margherita that started it all. Order online, link in bio."
+          tags="#pizzaco #woodfired #neapolitanpizza #bristoleats #margherita"
           likes={3127}
           comments={64}
           timeAgo="3 hours ago"
         />
       </div>
       <div className={styles.cell}>
-        <div className={styles.cellLabel}>Instagram Post · Salon</div>
+        <div className={styles.cellLabel}>Instagram Post · Coffee</div>
         <InstagramPost
-          handle="aurakin.salon"
-          location="Mayfair, London"
-          image="/demos/stitch-salon/stitch_aura_kin_logo/59a8206e328a1e967527334d65f81ea5.jpg/screen.png"
-          imageAlt="Aura Kin salon editorial, soft-light hair and beauty look"
-          imagePos="center top"
-          caption="New season, new look. Editorial cuts and lived-in colour by the Aura Kin team ✨ A few chairs left this week, tap the link in bio."
-          tags="#aurakin #balayage #luxurysalon #londonhair #hairgoals"
-          likes={1284}
-          comments={38}
-          timeAgo="5 hours ago"
+          handle="slowcup.coffee"
+          location="Shoreditch, London"
+          image="/demos/stitch-coffee/stitch_coffee_co_website_design/8d361a5c9690863189b7ef14919ae243.jpg/screen.png"
+          imageAlt="Hands holding Slow Cup takeaway coffees"
+          imagePos="center"
+          caption="Cups for the whole table ☕ Single-origin, slow-poured, made for lingering. New autumn blend landed this week, link in bio."
+          tags="#slowcup #specialtycoffee #flatwhite #londoncoffee #slowmornings"
+          likes={962}
+          comments={27}
+          timeAgo="2 hours ago"
         />
       </div>
     </div>

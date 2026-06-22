@@ -152,8 +152,6 @@
 /* ── AI BAND ── */
 .aiBand {
   padding: clamp(70px, 9vw, 110px) 0;
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
 }
 
 .aiBandInner {
