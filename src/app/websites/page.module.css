@@ -43,16 +43,6 @@
   flex-wrap: wrap;
 }
 
-.heroFade {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: linear-gradient(transparent, rgba(0,0,0,.4));
-  pointer-events: none;
-}
-
 /* ── STATEMENT ── */
 .statement {
   background: transparent;

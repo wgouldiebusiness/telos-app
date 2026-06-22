@@ -71,7 +71,6 @@ export default function WebsitesHomePage() {
             <Link href="/websites/what-we-build" className={styles.btnSec}>What we build</Link>
           </Reveal>
         </div>
-        <div className={styles.heroFade} />
       </section>
 
       {/* ── DEMO SHOWCASE ── iPhone portrait scroll showcase */}
