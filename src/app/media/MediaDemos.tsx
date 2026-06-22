@@ -119,11 +119,11 @@ export default function MediaDemos() {
         <InstagramPost
           handle="pizzaco.uk"
           location="Bristol, UK"
-          image="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/e529550c4e8ddddc059b8159edb862c7.jpg/screen.png"
-          imageAlt="Wood-fired Margherita pizza with a fresh mozzarella pull"
-          imagePos="left center"
-          caption="48-hour dough, San Marzano D.O.P, mozzarella di bufala. The Margherita that started it all. 🍕 Order online, link in bio."
-          tags="#pizzaco #woodfired #neapolitanpizza #bristoleats #margherita"
+          image="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/42c706cb651991aa3387b8abb09919f0.jpg/screen.png"
+          imageAlt="Pizza Co. delivery promo artwork"
+          imagePos="center"
+          caption="Delivery is officially live 🍕 Hot, hand-stretched, and at your door in 30. Order online, link in bio."
+          tags="#pizzaco #woodfired #pizzadelivery #bristoleats #orderonline"
           likes={3127}
           comments={64}
           timeAgo="3 hours ago"
@@ -134,11 +134,11 @@ export default function MediaDemos() {
         <InstagramPost
           handle="aurakin.salon"
           location="Mayfair, London"
-          image="/demos/stitch-salon/stitch_aura_kin_logo/13b59a3a81cd189add1801293066ab26.jpg/screen.png"
-          imageAlt="Aura Kin salon editorial, soft glow beauty look"
-          imagePos="top center"
-          caption="Glass-skin glow, straight from the chair. Our signature facial and gua sha finish, booked out all weekend ✨ Midweek slots just opened, tap the link in bio."
-          tags="#aurakin #glowup #facial #luxurysalon #londonbeauty"
+          image="/demos/stitch-salon/stitch_aura_kin_logo/59a8206e328a1e967527334d65f81ea5.jpg/screen.png"
+          imageAlt="Aura Kin salon editorial, soft-light hair and beauty look"
+          imagePos="center top"
+          caption="New season, new look. Editorial cuts and lived-in colour by the Aura Kin team ✨ A few chairs left this week, tap the link in bio."
+          tags="#aurakin #balayage #luxurysalon #londonhair #hairgoals"
           likes={1284}
           comments={38}
           timeAgo="5 hours ago"
