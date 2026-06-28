@@ -34,6 +34,27 @@ export default function PhoneShowcase({ demos }: Props) {
   const inView        = useInView(rowRef, { once: true, margin: '-100px 0px' })
 
   const [scale, setScale] = useState(dims(252).scale)
+  // Defer loading the (heavy) demo iframes until the section is near the
+  // viewport, so four in-iframe Tailwind compilers + a WebGL shader don't all
+  // spin up while the user is still at the hero.
+  const [load, setLoad] = useState(false)
+
+  useEffect(() => {
+    const section = sectionRef.current
+    if (!section) return
+    if (load) return
+    const io = new IntersectionObserver(
+      entries => {
+        if (entries.some(e => e.isIntersecting)) {
+          setLoad(true)
+          io.disconnect()
+        }
+      },
+      { rootMargin: '800px 0px' },
+    )
+    io.observe(section)
+    return () => io.disconnect()
+  }, [load])
 
   // Measure the actual rendered phone width → update scale + CSS custom prop
   useEffect(() => {
@@ -58,21 +79,33 @@ export default function PhoneShowcase({ demos }: Props) {
 
   // Scroll-sync — only fires on scroll, one rAF per event (no idle loop)
   useEffect(() => {
+    const mq = window.matchMedia('(max-width: 699px)')
+    let isMobile = mq.matches
+    let lastTy = NaN
     let ticking = false
 
-    function tick() {
-      if (sectionRef.current) {
-        if (window.innerWidth < 700) {
-          wrapRefs.current.forEach(w => { if (w) w.style.transform = 'translateY(0)' })
-        } else {
-          const rect     = sectionRef.current.getBoundingClientRect()
-          const total    = sectionRef.current.offsetHeight - window.innerHeight
-          const progress = total > 0 ? Math.max(0, Math.min(1, -rect.top / total)) : 0
-          const ty       = -Math.round(progress * maxScrollRef.current)
-          wrapRefs.current.forEach(w => { if (w) w.style.transform = `translateY(${ty}px)` })
-        }
+    // Only touch the DOM when the offset actually changes. Outside the
+    // showcase's active scroll range the offset is constant, so we skip the
+    // writes entirely and avoid recompositing the heavy iframes every frame.
+    function apply(ty: number) {
+      if (ty === lastTy) return
+      lastTy = ty
+      const wraps = wrapRefs.current
+      for (let i = 0; i < wraps.length; i++) {
+        const w = wraps[i]
+        if (w) w.style.transform = `translate3d(0, ${ty}px, 0)`
       }
+    }
+
+    function tick() {
       ticking = false
+      const section = sectionRef.current
+      if (!section) return
+      if (isMobile) { apply(0); return }
+      const rect     = section.getBoundingClientRect()
+      const total    = section.offsetHeight - window.innerHeight
+      const progress = total > 0 ? Math.max(0, Math.min(1, -rect.top / total)) : 0
+      apply(-Math.round(progress * maxScrollRef.current))
     }
 
     function onScroll() {
@@ -82,10 +115,18 @@ export default function PhoneShowcase({ demos }: Props) {
       }
     }
 
+    function onMq(e: MediaQueryListEvent) {
+      isMobile = e.matches
+      lastTy = NaN // force a re-apply on breakpoint change
+      tick()
+    }
+
     window.addEventListener('scroll', onScroll, { passive: true })
+    mq.addEventListener('change', onMq)
     tick() // set initial position
     return () => {
       window.removeEventListener('scroll', onScroll)
+      mq.removeEventListener('change', onMq)
       cancelAnimationFrame(rafRef.current)
     }
   }, [])
@@ -127,19 +168,21 @@ export default function PhoneShowcase({ demos }: Props) {
                     ref={el => { wrapRefs.current[i] = el }}
                     className={styles.iframeWrap}
                   >
-                    <iframe
-                      src={demo.path}
-                      className={styles.frame}
-                      style={{
-                        width:           `${IFRAME_W}px`,
-                        height:          `${IFRAME_H}px`,
-                        transform:       `scale(${scale})`,
-                        transformOrigin: '0 0',
-                      }}
-                      title={demo.name}
-                      loading="lazy"
-                      sandbox="allow-scripts allow-same-origin"
-                    />
+                    {load && (
+                      <iframe
+                        src={demo.path}
+                        className={styles.frame}
+                        style={{
+                          width:           `${IFRAME_W}px`,
+                          height:          `${IFRAME_H}px`,
+                          transform:       `scale(${scale})`,
+                          transformOrigin: '0 0',
+                        }}
+                        title={demo.name}
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin"
+                      />
+                    )}
                   </div>
                   <div className={styles.island} />
                   <div className={styles.homeBar} />
