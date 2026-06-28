@@ -291,38 +291,37 @@
   height: 100%;
 }
 
+/* Editorial, left-accented blocks instead of rounded cards */
 .problemItem {
-  background: rgba(0,0,0,.25);
-  border: 1px solid rgba(255,255,255,.06);
-  border-radius: 16px;
-  padding: 44px 36px;
+  background: transparent;
+  border: none;
+  border-left: 2px solid rgba(120,104,230,.55);
+  border-radius: 0;
+  padding: 4px 0 4px 26px;
   height: 100%;
-  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
+  transition: border-color 0.35s ease;
 }
 
 .problemItem:hover {
-  border-color: rgba(255,255,255,.14);
-  transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(0,0,0,.25);
+  border-color: var(--purple-2);
 }
 
 .problemWord {
   font-family: var(--font-inter, 'Inter'), sans-serif;
-  font-weight: 900;
-  font-size: clamp(42px, 5vw, 72px);
-  background: linear-gradient(135deg, var(--purple-3) 0%, #ffffff 55%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: -0.05em;
-  line-height: 1;
-  margin-bottom: 18px;
+  font-weight: 700;
+  font-size: clamp(20px, 2.4vw, 28px);
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin-bottom: 12px;
 }
 
 .problemBody {
   font-size: 16px;
-  color: rgba(255,255,255,.4);
-  line-height: 1.6;
+  color: rgba(255,255,255,.45);
+  line-height: 1.65;
   letter-spacing: -0.01em;
 }
 
@@ -366,7 +365,7 @@
 .showcaseBand {
   background: rgba(255,255,255,.05);
   border: 1px solid rgba(255,255,255,.08);
-  border-radius: 16px;
+  border-radius: 3px;
   padding: 36px 40px;
   display: flex;
   align-items: center;
@@ -443,7 +442,7 @@
 .buildsCallout {
   background: rgba(0,0,0,.45);
   border: 1px solid rgba(120,104,230,.25);
-  border-radius: 12px;
+  border-radius: 3px;
   padding: 28px 32px;
   display: flex;
   align-items: center;
@@ -489,7 +488,7 @@
 .buildCard {
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.1);
-  border-radius: 12px;
+  border-radius: 3px;
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
@@ -576,7 +575,7 @@
 .stepCard {
   background: rgba(255,255,255,.04);
   border: 1px solid rgba(255,255,255,.07);
-  border-radius: 16px;
+  border-radius: 3px;
   padding: 44px 40px;
   display: flex;
   flex-direction: column;

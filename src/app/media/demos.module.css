@@ -40,7 +40,11 @@
 .sliderStage {
   flex-shrink: 0;
   width: min(380px, 100%);
-  height: clamp(560px, 70vh, 660px);
+  /* Height tracks the card: a 4:5 image (1.25 x width) plus the fixed header,
+     actions, likes, 2-line caption and meta (~230px). This keeps the
+     absolutely-stacked slides from overflowing onto the next section,
+     which on mobile was covering the text below the run-club post. */
+  height: calc(min(380px, 100%) * 1.25 + 230px);
 }
 
 @media (max-width: 860px) {
@@ -228,6 +232,13 @@
   font-size: 13px;
   color: #111;
   line-height: 1.5;
+  /* Clamp to a uniform 2 lines so every post card is the same height and the
+     stage height calc holds (prevents the run-club post overflowing on phones). */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .igCaptionHandle { font-weight: 700; }

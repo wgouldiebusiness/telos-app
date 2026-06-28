@@ -95,9 +95,9 @@ export default function HomePage() {
           </TextScanner>
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
-              Most software tools are generalised. They are not built for your business. We are a
-              technical team tailoring custom code, back end systems, and intelligent agents
-              specifically to how your business operates.
+              Off-the-shelf tools make you bend your business around them. We work the
+              other way. We learn how you already operate, then write the code and wire
+              up the systems that fit it.
             </p>
           </Reveal>
         </div>
@@ -110,7 +110,9 @@ export default function HomePage() {
           <Reveal delay={0.2}>
             <div className={styles.buildsCallout}>
               <p className={styles.buildsCalloutText}>
-                Whatever your business needs: custom code, back end systems, or support systems. We build it from the ground up, tailored to you.
+                One client needs a single agent answering the phone. Another needs a
+                back end rebuilt. We scope it to what actually moves your numbers, and
+                leave out what does not.
               </p>
               <Link href="/solutions" className={styles.buildsCalloutLink}>
                 See all examples
@@ -134,7 +136,8 @@ export default function HomePage() {
             </TextScanner>
             <Reveal delay={0.2}>
               <p className={styles.showcaseSub}>
-                Every agent is custom. These are examples of what that looks like.
+                A few of the systems we have shipped. Yours will look different, because
+                it is shaped around how your business runs.
               </p>
             </Reveal>
           </div>
@@ -163,8 +166,8 @@ export default function HomePage() {
           <Reveal delay={0.3}>
             <div className={styles.showcaseBand}>
               <p className={styles.showcaseBandText}>
-                These are real-world examples of what we build. Every agent is trained
-                on your business, your voice, and your clients.
+                Working systems, not mock-ups. Each one is trained on a real business:
+                its voice, its clients, and the way it likes to work.
               </p>
               <Link href="/contact" className={styles.btnPriLight}>
                 Get your system built
