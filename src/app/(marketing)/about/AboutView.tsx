@@ -93,7 +93,7 @@ export default function AboutView({ ctaHref = '/contact' }: { ctaHref?: string }
                 <p className={styles.storyP}>
                   Will is a Chartered Physiotherapist with experience across the NHS,
                   private practice, and elite sport. He has worked in high-performance
-                  environments and run his own clinic. He knows exactly what it is like
+                  environments and runs his own clinic. He knows exactly what it is like
                   to be the clinician, the receptionist, the scheduler, and the person
                   chasing invoices, all at the same time.
                 </p>
