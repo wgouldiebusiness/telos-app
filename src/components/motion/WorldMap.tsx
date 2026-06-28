@@ -31,8 +31,6 @@ interface MapProps {
   /** colour of the static dotted base map (hex8 with alpha recommended) */
   dotColor?: string
   animationDuration?: number
-  /** seconds every arc stays fully drawn before retracting */
-  holdDuration?: number
 }
 
 /**
@@ -46,7 +44,6 @@ export function WorldMap({
   lineColor = '#9B8DF5',
   dotColor = '#9B8DF540',
   animationDuration = 2,
-  holdDuration = 3.5,
 }: MapProps) {
   const svgMap = useMemo(() => getDottedSvg(dotColor), [dotColor])
 
@@ -65,12 +62,51 @@ export function WorldMap({
     return `M ${start.x} ${start.y} Q ${midX} ${midY} ${end.x} ${end.y}`
   }
 
-  const staggerDelay = 0.3
-  // When the last arc finishes drawing, then how long every arc stays fully
-  // drawn (the "links to each city" lingering), then how long they retract.
-  const drawComplete = Math.max(0, dots.length - 1) * staggerDelay + animationDuration
-  const pauseTime = 1.5
-  const fullCycleDuration = drawComplete + holdDuration + pauseTime
+  // ── Two-phase looping timeline (all times in seconds) ──
+  // Phase A: every arc draws (nearly) together, holds, then retracts together.
+  // Phase B: arcs draw one at a time, alternating sides, hold, retract together.
+  // Then it loops back to Phase A, and so on.
+  const n = dots.length
+
+  // Order for Phase B: alternate between west- and east-bound destinations,
+  // farthest-out first, so it visibly ping-pongs across the map.
+  const idx = dots.map((_, i) => i)
+  const west = idx.filter(i => dots[i].end.lng < dots[i].start.lng)
+                  .sort((a, b) => dots[a].end.lng - dots[b].end.lng)
+  const east = idx.filter(i => dots[i].end.lng >= dots[i].start.lng)
+                  .sort((a, b) => dots[b].end.lng - dots[a].end.lng)
+  const order: number[] = []
+  for (let k = 0; k < Math.max(west.length, east.length); k++) {
+    if (k < west.length) order.push(west[k])
+    if (k < east.length) order.push(east[k])
+  }
+  const seqPos = new Array(n).fill(0)
+  order.forEach((pathIdx, pos) => { seqPos[pathIdx] = pos })
+
+  const staggerA   = 0.12              // Phase A: near-together draw stagger
+  const drawA      = animationDuration // Phase A: per-arc draw time
+  const holdA      = 2.0               // Phase A: hold fully drawn
+  const retract    = 1.0               // retract time (both phases)
+  const gap1       = 0.4               // pause between phases
+  const stepB      = 0.7               // Phase B: cadence — one arc every 0.7s
+  const drawB      = 0.6               // Phase B: per-arc draw time
+  const holdB      = 1.2               // Phase B: hold once all have reached
+  const gap2       = 0.4               // pause before looping back
+
+  const allDrawnA   = (n - 1) * staggerA + drawA
+  const retractStA  = allDrawnA + holdA
+  const retractEnA  = retractStA + retract
+  const phaseBStart = retractEnA + gap1
+  const allDrawnB   = phaseBStart + (n - 1) * stepB + drawB
+  const retractStB  = allDrawnB + holdB
+  const retractEnB  = retractStB + retract
+  const fullCycleDuration = retractEnB + gap2
+
+  // pathLength + travelling-dot keyframes are the same shape for every arc;
+  // only the per-arc times differ, computed in the map below.
+  const PATH_VALUES  = [0, 0, 1, 1, 0, 0, 1, 1, 0, 0]
+  const DOT_OFFSET   = ['0%', '0%', '100%', '100%', '100%', '0%', '100%', '100%', '100%', '0%']
+  const DOT_OPACITY  = [0, 0, 1, 0, 0, 0, 1, 0, 0, 0]
 
   return (
     <div className={styles.wrap}>
@@ -108,10 +144,20 @@ export function WorldMap({
           const startPoint = projectPoint(dot.start.lat, dot.start.lng)
           const endPoint = projectPoint(dot.end.lat, dot.end.lng)
 
-          const startTime = (i * staggerDelay) / fullCycleDuration
-          const endTime = (i * staggerDelay + animationDuration) / fullCycleDuration
-          // All arcs hold fully drawn until this point, then retract together.
-          const holdEnd = (drawComplete + holdDuration) / fullCycleDuration
+          const T = (s: number) => s / fullCycleDuration
+          const drawStA = i * staggerA
+          const drawEnA = i * staggerA + drawA
+          const drawStB = phaseBStart + seqPos[i] * stepB
+          const drawEnB = drawStB + drawB
+          // 10 keyframes: [start, A-draw-start, A-draw-end, A-retract-start,
+          //  A-retract-end, B-draw-start, B-draw-end, B-retract-start,
+          //  B-retract-end, loop-end]
+          const times = [
+            0,
+            T(drawStA), T(drawEnA), T(retractStA), T(retractEnA),
+            T(drawStB), T(drawEnB), T(retractStB), T(retractEnB),
+            1,
+          ]
           const path = createCurvedPath(startPoint, endPoint)
 
           return (
@@ -122,10 +168,10 @@ export function WorldMap({
                 stroke="url(#telos-map-gradient)"
                 strokeWidth="1"
                 initial={{ pathLength: 0 }}
-                animate={{ pathLength: [0, 0, 1, 1, 0] }}
+                animate={{ pathLength: PATH_VALUES }}
                 transition={{
                   duration: fullCycleDuration,
-                  times: [0, startTime, endTime, holdEnd, 1],
+                  times,
                   ease: 'easeInOut',
                   repeat: Infinity,
                   repeatDelay: 0,
@@ -137,12 +183,12 @@ export function WorldMap({
                 fill={lineColor}
                 initial={{ opacity: 0 }}
                 animate={{
-                  offsetDistance: ['0%', '0%', '100%', '100%', '100%'],
-                  opacity: [0, 0, 1, 0, 0],
+                  offsetDistance: DOT_OFFSET,
+                  opacity: DOT_OPACITY,
                 }}
                 transition={{
                   duration: fullCycleDuration,
-                  times: [0, startTime, endTime, holdEnd, 1],
+                  times,
                   ease: 'easeInOut',
                   repeat: Infinity,
                   repeatDelay: 0,
