@@ -1,0 +1,79 @@
+.root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  height: -webkit-fill-available;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* CSS custom property set via inline style; default is purple */
+  background: var(--shader-bg, radial-gradient(ellipse 80% 60% at 30% 30%, #22104A 0%, #000 60%), radial-gradient(ellipse 60% 50% at 75% 80%, #120830 0%, #000 70%));
+  transition: background 0.55s ease;
+  animation: bgFadeIn 0.6s ease forwards;
+}
+
+@keyframes bgFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.blob1 {
+  position: absolute;
+  top: -10vh;
+  left: -10vw;
+  width: 65vw;
+  height: 65vw;
+  max-width: 720px;
+  max-height: 720px;
+  border-radius: 50%;
+  animation: blobDrift1 22s ease-in-out infinite alternate;
+  will-change: transform;
+  transition: background 0.55s ease;
+}
+
+.blob2 {
+  position: absolute;
+  bottom: -5vh;
+  right: -8vw;
+  width: 55vw;
+  height: 55vw;
+  max-width: 640px;
+  max-height: 640px;
+  border-radius: 50%;
+  animation: blobDrift2 28s ease-in-out infinite alternate;
+  will-change: transform;
+  transition: background 0.55s ease;
+}
+
+@keyframes blobDrift1 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(4vw, 4vh) scale(1.1); }
+}
+@keyframes blobDrift2 {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-4vw, -5vh) scale(1.08); }
+}
+
+@media (max-width: 768px) {
+  .layer { display: none; }
+
+  .root {
+    background: var(--shader-bg-mobile, radial-gradient(ellipse 115% 78% at 25% 16%, #3D2090 0%, #1C0D55 44%, #0B0524 100%), radial-gradient(ellipse 95% 68% at 82% 88%, #2C1678 0%, transparent 60%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root { display: none; }
+}

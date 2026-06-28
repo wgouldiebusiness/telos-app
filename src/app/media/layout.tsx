@@ -1,6 +1,5 @@
 import MediaHeader from '@/components/MediaHeader/MediaHeader'
 import Footer from '@/components/Footer/Footer'
-import MediaShaderBackground from '@/components/MediaShaderBackground/MediaShaderBackground'
 import ChatWidget from '@/agents/website-chatbot/ChatWidget'
 
 export default function MediaLayout({ children }: { children: React.ReactNode }) {
@@ -13,7 +12,6 @@ export default function MediaLayout({ children }: { children: React.ReactNode })
 
   return (
     <>
-      <MediaShaderBackground />
       <MediaHeader />
       <div style={tealVars}>
         <main>{children}</main>

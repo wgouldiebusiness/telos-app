@@ -5,6 +5,7 @@ import LampIntro from '@/components/motion/LampIntro'
 import CookieBanner from '@/components/CookieBanner/CookieBanner'
 import CustomCursor from '@/components/motion/CustomCursor'
 import SmoothScroll from '@/components/motion/SmoothScroll'
+import GlobalShaderBackground from '@/components/motion/GlobalShaderBackground'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -49,6 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://eedptakfhrhxsmkfqxlc.supabase.co" />
       </head>
       <body>
+        <GlobalShaderBackground />
         <SmoothScroll />
         <LampIntro />
         <CustomCursor />
