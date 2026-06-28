@@ -1,4 +1,60 @@
-/* ── Grid wrapper ── */
+/* ══════════════════════════════
+   ANIMATED SLIDESHOW (hover slider)
+══════════════════════════════ */
+.slider {
+  display: flex;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+  margin-top: 3rem;
+}
+
+.sliderTitles {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(0.4rem, 1.3vw, 0.9rem);
+}
+
+.sliderKicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #00D4B4;
+  margin-bottom: 0.75rem;
+}
+
+.sliderTitle {
+  font-size: clamp(28px, 4.4vw, 48px);
+}
+
+.sliderHint {
+  margin-top: 1.25rem;
+  font-size: 13px;
+  color: rgba(255,255,255,.4);
+  letter-spacing: -0.01em;
+}
+
+.sliderStage {
+  flex-shrink: 0;
+  width: min(380px, 100%);
+  height: clamp(560px, 70vh, 660px);
+}
+
+@media (max-width: 860px) {
+  .slider {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2.5rem;
+  }
+  .sliderTitles { align-items: center; text-align: center; }
+  .sliderStage { width: min(380px, 100%); margin: 0 auto; }
+  .sliderHint { display: none; }
+}
+
+/* ── Grid wrapper (legacy, kept for reference) ── */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -81,6 +137,21 @@
   font-weight: 700;
   color: #111;
   line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.igDemoTag {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #00876f;
+  background: rgba(0,212,180,.16);
+  border: 1px solid rgba(0,212,180,.4);
+  border-radius: 4px;
+  padding: 1px 4px;
+  line-height: 1.4;
 }
 
 .igLocation {
@@ -107,9 +178,8 @@
 
 .igImg {
   object-fit: cover;
-  object-position: top center;
-  transform: scale(1.15);
-  transform-origin: top center;
+  /* object-position / transform scale are set inline per-post so finished
+     posters show in full while screenshots can zoom in */
 }
 
 .igImgOverlay {

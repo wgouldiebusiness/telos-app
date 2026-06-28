@@ -1,6 +1,12 @@
 'use client'
 import { useState } from 'react'
 import Image from 'next/image'
+import {
+  HoverSlider,
+  HoverSliderImage,
+  HoverSliderImageWrap,
+  TextStaggerHover,
+} from '@/components/motion/HoverSlider'
 import styles from './demos.module.css'
 
 interface IgPostProps {
@@ -10,6 +16,8 @@ interface IgPostProps {
   imageAlt:    string
   /** object-position override for the photo crop */
   imagePos?:   string
+  /** scale applied to the photo (screenshots zoom in; finished posters use 1) */
+  imageScale?: number
   caption:     string
   tags:        string
   likes:       number
@@ -21,7 +29,7 @@ interface IgPostProps {
    Instagram-style post (real photo content)
 ───────────────────────────────────────── */
 function InstagramPost({
-  handle, location, image, imageAlt, imagePos,
+  handle, location, image, imageAlt, imagePos, imageScale = 1,
   caption, tags, likes, comments, timeAgo,
 }: IgPostProps) {
   const [liked, setLiked] = useState(false)
@@ -36,7 +44,10 @@ function InstagramPost({
           <div className={styles.igOnline} />
         </div>
         <div className={styles.igHeaderText}>
-          <div className={styles.igHandle}>{handle}</div>
+          <div className={styles.igHandle}>
+            {handle}
+            <span className={styles.igDemoTag}>DEMO</span>
+          </div>
           <div className={styles.igLocation}>{location}</div>
         </div>
         <button className={styles.igMore} aria-label="More options">
@@ -54,7 +65,11 @@ function InstagramPost({
           fill
           className={styles.igImg}
           sizes="(max-width: 600px) 100vw, 380px"
-          style={imagePos ? { objectPosition: imagePos } : undefined}
+          style={{
+            objectPosition: imagePos ?? 'center',
+            transform: `scale(${imageScale})`,
+            transformOrigin: imagePos ?? 'center',
+          }}
         />
         <div className={styles.igImgOverlay} />
       </div>
@@ -110,40 +125,88 @@ function InstagramPost({
   )
 }
 
-/* ── Main export ── */
+/* ── The four demo posts, in order: burger, clothing, coffee, run club ── */
+const POSTS: (IgPostProps & { id: string; brand: string })[] = [
+  {
+    id: 'burger',
+    brand: 'Rebel Burgers',
+    handle: 'rebelburgers.demo',
+    location: 'Bristol, UK',
+    image: '/media/burger-ig-post.jpg',
+    imageAlt: 'Double smash burger with melted cheese on a toasted brioche bun',
+    caption: 'A delicious, perfect burger. 🍔 Double smash, double cheese, our house sauce. Stacked fresh to order — dine in or order online, link in bio.',
+    tags: '#smashburger #burgersofinstagram #bristoleats #foodie #cheeseburger',
+    likes: 4218,
+    comments: 87,
+    timeAgo: '2 hours ago',
+  },
+  {
+    id: 'clothing',
+    brand: 'NISB Apparel',
+    handle: 'nisb.demo',
+    location: 'London, UK',
+    image: '/media/clothing-ig-post.jpg',
+    imageAlt: 'NISB clothing rail with denim, knitwear and a hoodie, blurred crowd passing',
+    caption: 'Bored State; — the new drop. 🧥 Considered staples in washed denim, heavyweight knit and brushed fleece. Online now, link in bio.',
+    tags: '#nisb #streetwear #newdrop #ootd #londonfashion',
+    likes: 2764,
+    comments: 53,
+    timeAgo: '5 hours ago',
+  },
+  {
+    id: 'coffee',
+    brand: 'Slow Cup',
+    handle: 'slowcup.demo',
+    location: 'Shoreditch, London',
+    image: '/demos/stitch-coffee/stitch_coffee_co_website_design/8d361a5c9690863189b7ef14919ae243.jpg/screen.png',
+    imageAlt: 'Hands holding Slow Cup takeaway coffees',
+    imagePos: 'center',
+    imageScale: 1.15,
+    caption: 'Cups for the whole table ☕ Single-origin, slow-poured, made for lingering. New autumn blend landed this week, link in bio.',
+    tags: '#slowcup #specialtycoffee #flatwhite #londoncoffee #slowmornings',
+    likes: 962,
+    comments: 27,
+    timeAgo: '3 hours ago',
+  },
+  {
+    id: 'runclub',
+    brand: 'Frames Run Club',
+    handle: 'framesrunclub.demo',
+    location: 'London, UK',
+    image: '/media/runclub-ig-post.jpg',
+    imageAlt: 'Frames Run Club members gathered outside a shopfront before a run',
+    caption: 'Frames on, games on. 🏃 Thursday social run done — 5k through the city, coffee after. Everyone welcome, all paces. Next one in bio.',
+    tags: '#runclub #runningcommunity #londonrunners #runners #frames',
+    likes: 1843,
+    comments: 41,
+    timeAgo: '1 day ago',
+  },
+]
+
+/* ── Main export — animated slideshow of the four posts ── */
 export default function MediaDemos() {
   return (
-    <div className={styles.grid}>
-      <div className={styles.cell}>
-        <div className={styles.cellLabel}>Instagram Post · Burger Bar</div>
-        <InstagramPost
-          handle="smashandco.uk"
-          location="Bristol, UK"
-          image="/media/burger-ig-post.png"
-          imageAlt="Double smash burger with melted cheese and toasted brioche bun"
-          imagePos="center"
-          caption="Double smash, double cheese, our house sauce. 🍔 Stacked fresh to order. Dine in or order online, link in bio."
-          tags="#smashburger #burgersofinstagram #bristoleats #foodie #cheeseburger"
-          likes={4218}
-          comments={87}
-          timeAgo="2 hours ago"
-        />
+    <HoverSlider className={styles.slider} count={POSTS.length} autoplayInterval={3400}>
+      <div className={styles.sliderTitles}>
+        <span className={styles.sliderKicker}>Demo brands</span>
+        {POSTS.map((p, i) => (
+          <TextStaggerHover
+            key={p.id}
+            index={i}
+            text={p.brand}
+            className={styles.sliderTitle}
+          />
+        ))}
+        <span className={styles.sliderHint}>Hover a brand to preview its post</span>
       </div>
-      <div className={styles.cell}>
-        <div className={styles.cellLabel}>Instagram Post · Coffee</div>
-        <InstagramPost
-          handle="slowcup.coffee"
-          location="Shoreditch, London"
-          image="/demos/stitch-coffee/stitch_coffee_co_website_design/8d361a5c9690863189b7ef14919ae243.jpg/screen.png"
-          imageAlt="Hands holding Slow Cup takeaway coffees"
-          imagePos="center"
-          caption="Cups for the whole table ☕ Single-origin, slow-poured, made for lingering. New autumn blend landed this week, link in bio."
-          tags="#slowcup #specialtycoffee #flatwhite #londoncoffee #slowmornings"
-          likes={962}
-          comments={27}
-          timeAgo="2 hours ago"
-        />
-      </div>
-    </div>
+
+      <HoverSliderImageWrap className={styles.sliderStage}>
+        {POSTS.map((p, i) => (
+          <HoverSliderImage key={p.id} index={i}>
+            <InstagramPost {...p} />
+          </HoverSliderImage>
+        ))}
+      </HoverSliderImageWrap>
+    </HoverSlider>
   )
 }
