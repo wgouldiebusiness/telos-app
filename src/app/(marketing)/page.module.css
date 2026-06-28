@@ -165,12 +165,14 @@
   border-radius: 980px;
   text-decoration: none;
   border: 1px solid rgba(255,255,255,.2);
-  transition: border-color var(--t-fast), color var(--t-fast);
+  transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s var(--ease-mag), background 0.3s ease;
 }
 
 .btnSec:hover {
   border-color: rgba(255,255,255,.5);
   color: #ffffff;
+  background: rgba(255,255,255,.05);
+  transform: translateY(-2px);
 }
 
 .trustRow {
@@ -257,6 +259,13 @@
   border-radius: 16px;
   padding: 44px 36px;
   height: 100%;
+  transition: border-color 0.35s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
+}
+
+.problemItem:hover {
+  border-color: rgba(255,255,255,.14);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0,0,0,.25);
 }
 
 .problemWord {
@@ -535,12 +544,14 @@
   flex-direction: column;
   gap: 14px;
   height: 100%;
-  transition: background 0.3s ease, border-color 0.3s ease;
+  transition: background 0.35s ease, border-color 0.35s ease, transform 0.35s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.35s ease;
 }
 
 .stepCard:hover {
   background: rgba(120,104,230,.07);
   border-color: rgba(120,104,230,.2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0,0,0,.3);
 }
 
 .stepNum {

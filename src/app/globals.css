@@ -54,7 +54,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  scroll-behavior: smooth;
   /* Black prevents white flash during load; body is transparent so the fixed shader shows through */
   background: #000000;
   -webkit-overflow-scrolling: touch;

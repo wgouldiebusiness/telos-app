@@ -33,9 +33,13 @@
   font-weight: 700;
   letter-spacing: -0.01em;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.25s ease;
+  transition: background 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
 }
-.ctaPrimary:hover { background: #00B09A; transform: translateY(-1px); }
+.ctaPrimary:hover {
+  background: #00B09A;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,212,180,.35);
+}
 
 .ctaGhost {
   display: inline-block;
@@ -46,9 +50,14 @@
   font-size: 14px;
   font-weight: 600;
   text-decoration: none;
-  transition: border-color 0.2s ease, color 0.2s ease;
+  transition: border-color 0.3s ease, color 0.3s ease, background 0.3s ease, transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
 }
-.ctaGhost:hover { border-color: rgba(255,255,255,.5); color: #ffffff; }
+.ctaGhost:hover {
+  border-color: rgba(255,255,255,.5);
+  color: #ffffff;
+  background: rgba(255,255,255,.05);
+  transform: translateY(-2px);
+}
 
 /* ═══ HERO ═══ */
 .hero {

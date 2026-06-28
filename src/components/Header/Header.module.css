@@ -78,6 +78,7 @@
 }
 
 .navLink:hover { color: #ffffff; }
+.navLink:hover::after { width: 100%; }
 .navLink.active { color: #ffffff; }
 .navLink.active::after { width: 100%; }
 
@@ -111,12 +112,13 @@
   font-weight: 600;
   letter-spacing: -0.01em;
   text-decoration: none;
-  transition: background var(--t-base), transform 0.3s var(--ease-mag);
+  transition: background 0.3s ease, transform 0.3s var(--ease-mag), box-shadow 0.3s ease;
 }
 
 .ctaBtn:hover {
-  background: var(--purple);
-  transform: translateY(-1px);
+  background: var(--purple-2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(120,104,230,.4);
 }
 
 /* Hamburger */
