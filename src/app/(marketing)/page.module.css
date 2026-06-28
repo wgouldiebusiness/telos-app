@@ -220,6 +220,44 @@
   line-height: 1.65;
 }
 
+/* ── GLOBAL REACH ── animated world map */
+.world {
+  background: transparent;
+  padding: clamp(60px, 8vw, 110px) 0;
+  position: relative;
+}
+.world > * { position: relative; z-index: 1; }
+
+.worldHead {
+  max-width: 680px;
+  margin: 0 auto 48px;
+  text-align: center;
+}
+
+.worldLabel { color: var(--purple-3); }
+
+.worldH2 {
+  font-size: clamp(30px, 4.5vw, 56px);
+  color: #ffffff;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin: 18px 0 22px;
+}
+
+.worldSub {
+  font-size: 18px;
+  color: rgba(255,255,255,.55);
+  line-height: 1.65;
+  letter-spacing: -0.01em;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.worldMapWrap {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
 /* ── PROBLEM BAND ── transparent */
 .problem {
   background: transparent;

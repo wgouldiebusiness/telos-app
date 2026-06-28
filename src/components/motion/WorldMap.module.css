@@ -1,0 +1,34 @@
+.wrap {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  position: relative;
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  overflow: hidden;
+}
+
+/* Dotted base map — faded top and bottom so it melts into the shader */
+.dots {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(to bottom, transparent, #000 12%, #000 88%, transparent);
+}
+
+/* Animated connection arcs sit on top */
+.lines {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+  .wrap {
+    aspect-ratio: 1.7 / 1;
+  }
+}

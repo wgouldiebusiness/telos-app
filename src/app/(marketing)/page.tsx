@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Reveal from '@/components/motion/RevealOnScroll'
 import TextScanner from '@/components/motion/TextScanner'
+import WorldMap from '@/components/motion/WorldMap'
 import ChatDemo from '@/components/demos/ChatDemo'
 import PipelineDemo from '@/components/demos/PipelineDemo'
 import Logo from '@/components/Logo/Logo'
@@ -168,6 +169,45 @@ export default function HomePage() {
               <Link href="/contact" className={styles.btnPriLight}>
                 Get your system built
               </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ── GLOBAL REACH ── animated world map */}
+      <section className={styles.world}>
+        <div className="container">
+          <div className={styles.worldHead}>
+            <Reveal>
+              <span className={`label ${styles.worldLabel}`}>Worldwide</span>
+            </Reveal>
+            <Reveal delay={0.08}>
+              <h2 className={styles.worldH2}>
+                Purpose-built software, working across the globe.
+              </h2>
+            </Reveal>
+            <Reveal delay={0.16}>
+              <p className={styles.worldSub}>
+                From our UK base we build and manage intelligent systems for service
+                businesses everywhere. Wherever your clients are, your software keeps
+                you connected to them in every timezone, working around the clock so
+                nothing slips through.
+              </p>
+            </Reveal>
+          </div>
+          <Reveal delay={0.2}>
+            <div className={styles.worldMapWrap}>
+              <WorldMap
+                dots={[
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 40.7128, lng: -74.006 } },   // London → New York
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 34.0522, lng: -118.2437 } }, // London → Los Angeles
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: -23.5505, lng: -46.6333 } }, // London → São Paulo
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 25.2048, lng: 55.2708 } },   // London → Dubai
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 1.3521, lng: 103.8198 } },   // London → Singapore
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: -33.8688, lng: 151.2093 } }, // London → Sydney
+                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: -33.9249, lng: 18.4241 } },  // London → Cape Town
+                ]}
+              />
             </div>
           </Reveal>
         </div>
