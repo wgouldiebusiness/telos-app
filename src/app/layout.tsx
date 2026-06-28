@@ -1,11 +1,13 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import 'lenis/dist/lenis.css'
 import LampIntro from '@/components/motion/LampIntro'
 import CookieBanner from '@/components/CookieBanner/CookieBanner'
 import CustomCursor from '@/components/motion/CustomCursor'
 import SmoothScroll from '@/components/motion/SmoothScroll'
 import GlobalShaderBackground from '@/components/motion/GlobalShaderBackground'
+import { MotionConfig } from 'framer-motion'
 
 const inter = Inter({
   subsets: ['latin'],
@@ -50,12 +52,14 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="preconnect" href="https://eedptakfhrhxsmkfqxlc.supabase.co" />
       </head>
       <body>
-        <GlobalShaderBackground />
-        <SmoothScroll />
-        <LampIntro />
-        <CustomCursor />
-        {children}
-        <CookieBanner />
+        <MotionConfig reducedMotion="user">
+          <GlobalShaderBackground />
+          <SmoothScroll />
+          <LampIntro />
+          <CustomCursor />
+          {children}
+          <CookieBanner />
+        </MotionConfig>
       </body>
     </html>
   )

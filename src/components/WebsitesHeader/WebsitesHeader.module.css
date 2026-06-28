@@ -193,6 +193,15 @@
 .menuOpen .bar:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
 /* Mobile menu */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 940;
+  background: rgba(0, 0, 0, 0.5);
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+
 .mobileMenu {
   position: fixed;
   top: 0;

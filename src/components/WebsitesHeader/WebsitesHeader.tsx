@@ -9,6 +9,8 @@ import styles from './WebsitesHeader.module.css'
 const navLinks = [
   { label: 'What We Build', href: '/websites/what-we-build' },
   { label: 'Pricing',       href: '/websites/pricing' },
+  { label: 'About',         href: '/websites/about' },
+  { label: 'Log In',        href: '/websites/login' },
 ]
 
 const brandLinks = [
@@ -90,7 +92,20 @@ export default function WebsitesHeader() {
 
       <AnimatePresence>
         {menuOpen && (
+          <>
+            {/* Tap anywhere outside the panel to close */}
+            <motion.div
+              key="backdrop"
+              className={styles.backdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              onClick={() => setMenuOpen(false)}
+              aria-hidden="true"
+            />
           <motion.div
+            key="panel"
             className={styles.mobileMenu}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
@@ -139,6 +154,7 @@ export default function WebsitesHeader() {
               </motion.div>
             </nav>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>

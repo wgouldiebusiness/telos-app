@@ -56,6 +56,8 @@ export function HoverSlider({
 
   useEffect(() => {
     if (!count || !autoplayInterval || paused) return
+    // Don't auto-advance for users who prefer reduced motion.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const id = setInterval(() => {
       setActiveSlide((activeRef.current + 1) % count)
     }, autoplayInterval)

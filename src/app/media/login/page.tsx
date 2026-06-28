@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import LoginForm from './LoginForm'
+import LoginForm from '@/app/(marketing)/login/LoginForm'
 
 export const metadata: Metadata = {
-  title: 'Log In',
+  title: 'Log In | Telos Media',
   description: 'Sign in to your Telos members room to view your dashboard, reports, and requests.',
 }
 
-export default function LoginPage() {
-  return <LoginForm />
+export default function MediaLoginPage() {
+  return <LoginForm logoAccent="#00D4B4" />
 }

@@ -4,6 +4,24 @@ import { motion } from 'framer-motion'
 import DottedMap from 'dotted-map'
 import styles from './WorldMap.module.css'
 
+// The dotted base map only depends on its colour and is expensive to build,
+// so cache the generated SVG per colour at module scope (shared across every
+// render, server and client) instead of rebuilding it on each mount.
+const svgCache = new Map<string, string>()
+function getDottedSvg(color: string): string {
+  const cached = svgCache.get(color)
+  if (cached) return cached
+  const map = new DottedMap({ height: 100, grid: 'diagonal' })
+  const svg = map.getSVG({
+    radius: 0.22,
+    color,
+    shape: 'circle',
+    backgroundColor: 'transparent',
+  })
+  svgCache.set(color, svg)
+  return svg
+}
+
 interface MapProps {
   dots?: Array<{
     start: { lat: number; lng: number; label?: string }
@@ -27,15 +45,7 @@ export function WorldMap({
   dotColor = '#9B8DF540',
   animationDuration = 2,
 }: MapProps) {
-  const svgMap = useMemo(() => {
-    const map = new DottedMap({ height: 100, grid: 'diagonal' })
-    return map.getSVG({
-      radius: 0.22,
-      color: dotColor,
-      shape: 'circle',
-      backgroundColor: 'transparent',
-    })
-  }, [dotColor])
+  const svgMap = useMemo(() => getDottedSvg(dotColor), [dotColor])
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360)
