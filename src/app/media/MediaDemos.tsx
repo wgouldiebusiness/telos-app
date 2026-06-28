@@ -115,18 +115,18 @@ export default function MediaDemos() {
   return (
     <div className={styles.grid}>
       <div className={styles.cell}>
-        <div className={styles.cellLabel}>Instagram Post · Pizzeria</div>
+        <div className={styles.cellLabel}>Instagram Post · Burger Bar</div>
         <InstagramPost
-          handle="pizzaco.uk"
+          handle="smashandco.uk"
           location="Bristol, UK"
-          image="/demos/stitch-pizza/stitch_modern_authentic_pizza_co/e529550c4e8ddddc059b8159edb862c7.jpg/screen.png"
-          imageAlt="Wood-fired Margherita pizza with a fresh mozzarella pull"
-          imagePos="left center"
-          caption="48-hour dough, San Marzano D.O.P, mozzarella di bufala. 🍕 The Margherita that started it all. Order online, link in bio."
-          tags="#pizzaco #woodfired #neapolitanpizza #bristoleats #margherita"
-          likes={3127}
-          comments={64}
-          timeAgo="3 hours ago"
+          image="/media/burger-ig-post.png"
+          imageAlt="Double smash burger with melted cheese and toasted brioche bun"
+          imagePos="center"
+          caption="Double smash, double cheese, our house sauce. 🍔 Stacked fresh to order. Dine in or order online, link in bio."
+          tags="#smashburger #burgersofinstagram #bristoleats #foodie #cheeseburger"
+          likes={4218}
+          comments={87}
+          timeAgo="2 hours ago"
         />
       </div>
       <div className={styles.cell}>

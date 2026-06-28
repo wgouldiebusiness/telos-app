@@ -10,6 +10,8 @@ interface MapProps {
     end: { lat: number; lng: number; label?: string }
   }>
   lineColor?: string
+  /** colour of the static dotted base map (hex8 with alpha recommended) */
+  dotColor?: string
   animationDuration?: number
 }
 
@@ -22,17 +24,18 @@ interface MapProps {
 export function WorldMap({
   dots = [],
   lineColor = '#9B8DF5',
+  dotColor = '#9B8DF540',
   animationDuration = 2,
 }: MapProps) {
   const svgMap = useMemo(() => {
     const map = new DottedMap({ height: 100, grid: 'diagonal' })
     return map.getSVG({
       radius: 0.22,
-      color: '#9B8DF540',
+      color: dotColor,
       shape: 'circle',
       backgroundColor: 'transparent',
     })
-  }, [])
+  }, [dotColor])
 
   const projectPoint = (lat: number, lng: number) => {
     const x = (lng + 180) * (800 / 360)

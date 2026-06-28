@@ -101,6 +101,24 @@ export default function MediaPage() {
         </div>
       </div>
 
+      {/* ═══ EXAMPLES ═══ moved up to the opening, under the hero */}
+      <section id="examples" className={styles.examples}>
+        <div className="container">
+          <Reveal>
+            <span className={styles.label}>What We Produce</span>
+            <h2 className={styles.sectionH2}>See it in action.</h2>
+            <p className={styles.sectionNote}>
+              Real, on-brand social content like this, produced for you every week.{' '}
+              <a href="#booking" className={styles.noteLink}>Book a call</a>.
+            </p>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <MediaDemos />
+          </Reveal>
+        </div>
+      </section>
+
       {/* ═══ SERVICES ═══ */}
       <section id="services" className={styles.services}>
         <div className="container">
@@ -117,25 +135,6 @@ export default function MediaPage() {
         </div>
       </section>
 
-
-      {/* ═══ EXAMPLES ═══ */}
-      <section id="examples" className={styles.examples}>
-        <div className="container">
-          <Reveal>
-            <span className={styles.label}>What We Produce</span>
-            <h2 className={styles.sectionH2}>See it in action.</h2>
-            <p className={styles.sectionNote}>
-              Interactive demos of the four things we build for brands every week.
-              Real work examples available on request.{' '}
-              <a href="#booking" className={styles.noteLink}>Book a call</a>.
-            </p>
-          </Reveal>
-
-          <Reveal delay={0.1}>
-            <MediaDemos />
-          </Reveal>
-        </div>
-      </section>
 
       {/* ═══ PRICING ═══ */}
       <section id="pricing" className={styles.pricing}>

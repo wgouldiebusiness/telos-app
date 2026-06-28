@@ -2,7 +2,10 @@
 .section {
   height: 680vh;
   position: relative;
-  overflow: hidden;
+  /* NOTE: do not set overflow:hidden here — it turns this element into a
+     scroll container and breaks position:sticky on .sticky, which makes the
+     phones scroll off the top of the viewport. Each phone clips its own
+     iframe via .screen{overflow:hidden}, so section clipping isn't needed. */
 }
 
 /* ── STICKY PANEL ── fills the viewport while user scrolls */
