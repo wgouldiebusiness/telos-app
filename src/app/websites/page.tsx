@@ -4,7 +4,6 @@ import Reveal from '@/components/motion/RevealOnScroll'
 import TextScanner from '@/components/motion/TextScanner'
 import PhoneShowcase from '@/components/demos/PhoneShowcase'
 import type { PhoneDemo } from '@/components/demos/PhoneShowcase'
-import WorldMap from '@/components/motion/WorldMap'
 
 import styles from './page.module.css'
 
@@ -140,45 +139,6 @@ export default function WebsitesHomePage() {
               </Link>
             </Reveal>
           </div>
-        </div>
-      </section>
-
-      {/* ── GLOBAL REACH ── animated world map */}
-      <section className={styles.world}>
-        <div className="container">
-          <div className={styles.worldHead}>
-            <Reveal>
-              <span className="label">Worldwide</span>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <h2 className={styles.worldH2}>
-                Built for clients across the globe.
-              </h2>
-            </Reveal>
-            <Reveal delay={0.16}>
-              <p className={styles.worldSub}>
-                Wherever your customers are, your website meets them there. Fast,
-                reliable, and built to convert in every market and every timezone.
-              </p>
-            </Reveal>
-          </div>
-          <Reveal delay={0.2}>
-            <div className={styles.worldMapWrap}>
-              <WorldMap
-                lineColor="#E8352A"
-                dotColor="#E8352A40"
-                dots={[
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 40.7128, lng: -74.006 } },
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 34.0522, lng: -118.2437 } },
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: -23.5505, lng: -46.6333 } },
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 25.2048, lng: 55.2708 } },
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: 1.3521, lng: 103.8198 } },
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: -33.8688, lng: 151.2093 } },
-                  { start: { lat: 51.5074, lng: -0.1278 },  end: { lat: -33.9249, lng: 18.4241 } },
-                ]}
-              />
-            </div>
-          </Reveal>
         </div>
       </section>
 

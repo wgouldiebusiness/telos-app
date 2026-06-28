@@ -228,6 +228,17 @@ create policy "clients see own briefs"
     where owner_id = (select id from profiles where user_id = auth.uid())
   ));
 
+-- Clients may create a brief for their own business. The onboarding bot inserts
+-- with the user's RLS-bound client (business_id is derived from the verified
+-- session), so without this policy the insert is denied. WITH CHECK ensures a
+-- user can only ever write a brief tied to a business they own.
+create policy "clients create own briefs"
+  on client_briefs for insert
+  with check (business_id in (
+    select id from businesses
+    where owner_id = (select id from profiles where user_id = auth.uid())
+  ));
+
 -- ============================================================
 -- MODULE SEED DATA
 -- ============================================================

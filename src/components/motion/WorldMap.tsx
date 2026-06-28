@@ -31,6 +31,8 @@ interface MapProps {
   /** colour of the static dotted base map (hex8 with alpha recommended) */
   dotColor?: string
   animationDuration?: number
+  /** seconds every arc stays fully drawn before retracting */
+  holdDuration?: number
 }
 
 /**
@@ -44,6 +46,7 @@ export function WorldMap({
   lineColor = '#9B8DF5',
   dotColor = '#9B8DF540',
   animationDuration = 2,
+  holdDuration = 3.5,
 }: MapProps) {
   const svgMap = useMemo(() => getDottedSvg(dotColor), [dotColor])
 
@@ -63,9 +66,11 @@ export function WorldMap({
   }
 
   const staggerDelay = 0.3
-  const totalAnimationTime = dots.length * staggerDelay + animationDuration
-  const pauseTime = 2
-  const fullCycleDuration = totalAnimationTime + pauseTime
+  // When the last arc finishes drawing, then how long every arc stays fully
+  // drawn (the "links to each city" lingering), then how long they retract.
+  const drawComplete = Math.max(0, dots.length - 1) * staggerDelay + animationDuration
+  const pauseTime = 1.5
+  const fullCycleDuration = drawComplete + holdDuration + pauseTime
 
   return (
     <div className={styles.wrap}>
@@ -105,7 +110,8 @@ export function WorldMap({
 
           const startTime = (i * staggerDelay) / fullCycleDuration
           const endTime = (i * staggerDelay + animationDuration) / fullCycleDuration
-          const resetTime = totalAnimationTime / fullCycleDuration
+          // All arcs hold fully drawn until this point, then retract together.
+          const holdEnd = (drawComplete + holdDuration) / fullCycleDuration
           const path = createCurvedPath(startPoint, endPoint)
 
           return (
@@ -119,7 +125,7 @@ export function WorldMap({
                 animate={{ pathLength: [0, 0, 1, 1, 0] }}
                 transition={{
                   duration: fullCycleDuration,
-                  times: [0, startTime, endTime, resetTime, 1],
+                  times: [0, startTime, endTime, holdEnd, 1],
                   ease: 'easeInOut',
                   repeat: Infinity,
                   repeatDelay: 0,
@@ -136,7 +142,7 @@ export function WorldMap({
                 }}
                 transition={{
                   duration: fullCycleDuration,
-                  times: [0, startTime, endTime, resetTime, 1],
+                  times: [0, startTime, endTime, holdEnd, 1],
                   ease: 'easeInOut',
                   repeat: Infinity,
                   repeatDelay: 0,

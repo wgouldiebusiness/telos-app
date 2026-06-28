@@ -107,10 +107,10 @@ export function HoverSliderImage({
       initial={false}
       animate={{
         opacity: isActive ? 1 : 0,
-        y: isActive ? 0 : 26,
-        scale: isActive ? 1 : 0.94,
+        y: isActive ? 0 : 48,
+        scale: isActive ? 1 : 0.92,
       }}
-      transition={{ duration: 0.55, ease: SLIDE_EASE }}
+      transition={{ duration: 0.6, ease: SLIDE_EASE }}
       style={{
         zIndex: isActive ? 2 : 1,
         pointerEvents: isActive ? 'auto' : 'none',
