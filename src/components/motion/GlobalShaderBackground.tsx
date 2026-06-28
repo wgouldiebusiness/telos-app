@@ -54,6 +54,12 @@ export default function GlobalShaderBackground() {
         className={styles.layer}
         colors={theme.colors}
         speed={0.22}
+        /* This is a soft, blurred, full-screen background. By default the
+           library renders it at min 2x pixel ratio up to ~8.3M pixels (4K),
+           which pegs the GPU on every page. Cap it to ~720p at 1x — visually
+           identical for a blurry gradient, a fraction of the cost. */
+        minPixelRatio={1}
+        maxPixelCount={1280 * 720}
       />
       <div className={styles.blob1} style={{ background: theme.blob1 }} />
       <div className={styles.blob2} style={{ background: theme.blob2 }} />
