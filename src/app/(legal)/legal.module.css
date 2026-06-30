@@ -1,8 +1,110 @@
+/* ── Document shell ── plain light page that covers the global shader.
+   No marketing chrome; reads like a standalone legal document. */
+.shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Slim top bar (static, not the marketing header) */
+.topbar {
+  border-bottom: 1px solid var(--grey-3);
+  background: var(--white);
+}
+
+.topbarInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 18px var(--side-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.topnavLink {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: var(--grey);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.topnavLink:hover { color: var(--dark); }
+
+.backLink {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--purple);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover { color: var(--purple-2); }
+
+/* Slim footer */
+.footer {
+  margin-top: auto;
+  border-top: 1px solid var(--grey-3);
+  background: var(--white);
+}
+
+.footerInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 22px var(--side-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footerCopy {
+  font-size: 12.5px;
+  color: var(--grey);
+  letter-spacing: -0.01em;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.footerLink {
+  font-size: 12.5px;
+  color: var(--grey);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footerLink:hover { color: var(--dark); }
+
 /* Legal pages — structured, readable, clean */
 .page {
   background: var(--white);
-  padding-top: 7rem;
-  padding-bottom: 5rem;
+  padding-top: 2.5rem;
+  padding-bottom: 4rem;
 }
 
 /* Simple light grey hero for legal pages */

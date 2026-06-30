@@ -12,14 +12,14 @@ export default function PrivacyPage() {
     <div className={styles.page}>
       <div className={`container ${styles.inner}`}>
         <h1 className={styles.title}>Privacy Policy</h1>
-        <p className={styles.meta}>Last updated: 31 May 2026</p>
+        <p className={styles.meta}>Last updated: 30 June 2026</p>
         <p className={styles.meta}>ICO Registration Number: [ADD ONCE REGISTERED AT ico.org.uk]</p>
 
         <h2 className={styles.h2}>Who we are</h2>
-        <p>Telos AI is the trading name of William Robert Gouldsmith, a sole trader registered in England.</p>
+        <p>Telos AI is the trading name of William Robert Gouldsmith, a sole trader based in Bristol, England.</p>
         <ul className={styles.defList}>
           <li><strong>Data controller:</strong> William Robert Gouldsmith, trading as Telos AI</li>
-          <li><strong>Address:</strong> [YOUR ADDRESS]</li>
+          <li><strong>Address:</strong> Bristol, United Kingdom (full postal address available on request)</li>
           <li><strong>Email:</strong> william.gouldsmith@telosai.co.uk</li>
           <li><strong>Website:</strong> telosai.co.uk</li>
         </ul>
@@ -34,6 +34,7 @@ export default function PrivacyPage() {
           <li>The content of any message, enquiry, or form submission</li>
           <li>Any information you provide when creating a portal account (business name, contact name, email, and password)</li>
           <li>Information provided during onboarding (business details, operational challenges, and service preferences)</li>
+          <li>Waitlist signup details: your email address, and optionally your name and business name</li>
         </ul>
         <h3 className={styles.h3}>Information collected automatically when you visit our website</h3>
         <ul className={styles.list}>
@@ -68,10 +69,15 @@ export default function PrivacyPage() {
               <tr><td>Improving the website and understanding how it is used</td><td>Analytics data</td><td>Legitimate interests</td></tr>
               <tr><td>Complying with legal obligations (tax records, etc.)</td><td>Financial records</td><td>Legal obligation</td></tr>
               <tr><td>Sending marketing communications</td><td>Email address</td><td>Consent only</td></tr>
+              <tr><td>Operating our waitlist (storing your details and sending a confirmation)</td><td>Email, and optionally name and business name</td><td>Consent</td></tr>
             </tbody>
           </table>
         </div>
         <p>We will never send you marketing emails unless you have explicitly opted in. You can withdraw consent at any time by emailing us.</p>
+
+        <h2 className={styles.h2}>Joining our waitlist</h2>
+        <p>If you join our waitlist, we collect the email address you submit, and optionally your name and business name. We use these details to keep you on the list and to contact you about availability.</p>
+        <p>Your signup details are stored in our database, which is hosted by Supabase. They are also processed through Resend, our email provider, which sends you a confirmation email and holds your details in our marketing audience list so we can reach out later. We rely on your consent (given when you submit the waitlist form) as our lawful basis. You can ask us to remove you from the waitlist and the audience list at any time by emailing us, and any marketing email we send will include an unsubscribe option.</p>
 
         <h2 className={styles.h2}>Third parties who process your data</h2>
         <p>To deliver our services and operate our website, we use the following third-party processors. Each has been assessed for UK GDPR compliance:</p>
@@ -81,7 +87,8 @@ export default function PrivacyPage() {
               <tr><th>Provider</th><th>Purpose</th><th>Privacy information</th></tr>
             </thead>
             <tbody>
-              <tr><td>Supabase</td><td>Secure database, authentication, and portal infrastructure</td><td>supabase.com/privacy</td></tr>
+              <tr><td>Supabase</td><td>Secure database, authentication, and portal infrastructure (including waitlist signups)</td><td>supabase.com/privacy</td></tr>
+              <tr><td>Resend</td><td>Sending transactional emails (such as waitlist confirmations) and managing our marketing audience / contact list</td><td>resend.com/legal/privacy-policy</td></tr>
               <tr><td>Stripe</td><td>Processing payments and managing billing</td><td>stripe.com/gb/privacy</td></tr>
               <tr><td>Vercel</td><td>Hosting this website and portal</td><td>vercel.com/legal/privacy-policy</td></tr>
               <tr><td>Google (Workspace and Analytics)</td><td>Business email, calendar, and optional website analytics</td><td>policies.google.com/privacy</td></tr>
@@ -133,7 +140,7 @@ export default function PrivacyPage() {
         <h2 className={styles.h2}>Contact us</h2>
         <p>William Robert Gouldsmith, trading as Telos AI</p>
         <p>Email: william.gouldsmith@telosai.co.uk</p>
-        <p>Address: [YOUR ADDRESS]</p>
+        <p>Address: Bristol, United Kingdom (full postal address available on request)</p>
       </div>
     </div>
   )
