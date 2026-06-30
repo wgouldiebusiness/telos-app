@@ -97,7 +97,7 @@ export default function HomePage() {
             <p className={styles.statementLead}>
               Off-the-shelf SaaS tools make you bend your business around them. We work the
               other way. We learn how you already operate and the ideal customer profile
-              (ICP) you sell to, then write the code and wire up the systems that fit it.
+              you sell to, then write the code and wire up the systems that fit it.
             </p>
           </Reveal>
         </div>
