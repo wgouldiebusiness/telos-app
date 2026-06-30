@@ -91,13 +91,13 @@ export default function HomePage() {
             <span className="label">Our purpose</span>
           </Reveal>
           <TextScanner dark className={styles.statementH2}>
-            The software platform built to let businesses focus on what they do best.
+            The B2B software platform built to let businesses focus on what they do best.
           </TextScanner>
           <Reveal delay={0.2}>
             <p className={styles.statementLead}>
-              Off-the-shelf tools make you bend your business around them. We work the
-              other way. We learn how you already operate, then write the code and wire
-              up the systems that fit it.
+              Off-the-shelf SaaS tools make you bend your business around them. We work the
+              other way. We learn how you already operate and the ideal customer profile
+              (ICP) you sell to, then write the code and wire up the systems that fit it.
             </p>
           </Reveal>
         </div>
@@ -111,8 +111,8 @@ export default function HomePage() {
             <div className={styles.buildsCallout}>
               <p className={styles.buildsCalloutText}>
                 One client needs a single agent answering the phone. Another needs a
-                back end rebuilt. We scope it to what actually moves your numbers, and
-                leave out what does not.
+                full SaaS platform rebuilt. We scope it to what actually moves your
+                numbers, and leave out what does not.
               </p>
               <Link href="/solutions" className={styles.buildsCalloutLink}>
                 See all examples
