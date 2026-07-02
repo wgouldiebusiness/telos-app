@@ -3,24 +3,18 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import styles from './CookieBanner.module.css'
-
-const KEY = 'telos-cookie-consent'
+import { getConsent, setConsent, type Consent } from '@/lib/consent'
 
 export default function CookieBanner() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const choice = localStorage.getItem(KEY)
-    if (!choice) setVisible(true)
+    // Show only if no choice has been recorded yet.
+    if (!getConsent()) setVisible(true)
   }, [])
 
-  function accept() {
-    localStorage.setItem(KEY, 'accepted')
-    setVisible(false)
-  }
-
-  function decline() {
-    localStorage.setItem(KEY, 'declined')
+  function choose(value: Consent) {
+    setConsent(value)
     setVisible(false)
   }
 
@@ -30,16 +24,16 @@ export default function CookieBanner() {
     <div className={styles.banner} role="dialog" aria-label="Cookie consent">
       <div className={styles.inner}>
         <p className={styles.text}>
-          We use essential cookies to keep the portal working and optional analytics
-          cookies to understand how the site is used. No advertising. No cross-site
-          tracking.{' '}
+          We use essential cookies to keep the site working. With your consent we
+          also use optional analytics cookies, and advertising cookies when we run
+          ad campaigns. Decline and only essential cookies are set.{' '}
           <Link href="/cookies" className={styles.link}>Cookie Policy</Link>
         </p>
         <div className={styles.actions}>
-          <button className={styles.btnDecline} onClick={decline}>
+          <button className={styles.btnDecline} onClick={() => choose('declined')}>
             Essential only
           </button>
-          <button className={styles.btnAccept} onClick={accept}>
+          <button className={styles.btnAccept} onClick={() => choose('accepted')}>
             Accept all
           </button>
         </div>
