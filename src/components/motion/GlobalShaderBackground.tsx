@@ -35,8 +35,15 @@ const THEMES: Record<string, Theme> = {
   },
 }
 
+// Plain white document pages — rendering a full-screen WebGL gradient behind
+// an opaque white shell is pure GPU cost, so skip it entirely there.
+const NO_SHADER_ROUTES = ['/privacy', '/terms', '/cookies']
+
 export default function GlobalShaderBackground() {
   const pathname = usePathname()
+
+  if (NO_SHADER_ROUTES.some(r => pathname.startsWith(r))) return null
+
   const theme = pathname.startsWith('/media') ? THEMES.media
               : pathname.startsWith('/websites') ? THEMES.websites
               : THEMES.default

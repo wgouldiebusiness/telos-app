@@ -331,6 +331,8 @@
   padding: clamp(80px, 10vw, 140px) 0;
   position: relative;
   overflow: hidden;
+  /* clears the fixed header when linked to via /#showcase */
+  scroll-margin-top: 90px;
 }
 
 .showcaseFadeTop,

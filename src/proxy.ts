@@ -11,9 +11,27 @@ function getMasterEmails(): string[] {
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // If Supabase isn't configured, don't take the whole site down — public
+  // pages must keep working. Treat everyone as logged out: protected areas
+  // bounce to /login, everything else renders normally.
+  if (!supabaseUrl || !supabaseKey) {
+    const { pathname } = request.nextUrl
+    if (
+      pathname.startsWith('/portal') ||
+      pathname.startsWith('/admin') ||
+      pathname.startsWith('/onboarding')
+    ) {
+      return NextResponse.redirect(new URL('/login', request.url))
+    }
+    return supabaseResponse
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    supabaseUrl,
+    supabaseKey,
     {
       cookies: {
         getAll() {

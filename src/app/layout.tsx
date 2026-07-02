@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import 'lenis/dist/lenis.css'
@@ -40,11 +40,19 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  // Extend the page under the iPhone notch/home bar (the fixed shader fills
+  // it) and make env(safe-area-inset-*) available to fixed bottom elements.
+  viewportFit: 'cover',
+  themeColor: '#000000',
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en-GB" className={inter.variable}>
       <head>
-        <meta name="theme-color" content="#000000" />
         {/* html stays black so there is never a white flash; body must be transparent so the fixed shader shows through */}
         <style>{`html{background:#000!important}body{background:transparent!important}`}</style>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

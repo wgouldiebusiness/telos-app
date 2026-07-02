@@ -62,7 +62,7 @@ export default function WaitlistForm({
           <h3 className={styles.successTitle}>You’re on the list.</h3>
           <p className={styles.successText}>
             Thanks for joining. We’ll be in touch the moment there’s a slot worth
-            your time — keep an eye on your inbox for a confirmation.
+            your time. Keep an eye on your inbox for a confirmation.
           </p>
         </div>
       </div>

@@ -63,7 +63,7 @@ export default function HomePage() {
           </Reveal>
           <Reveal delay={0.25} className={styles.heroSubWrap}>
             <p className={styles.heroSub}>
-              Tailoring Technology for Your Business
+              Customising Technology for Your Business
             </p>
           </Reveal>
           <Reveal delay={0.55}>
@@ -124,7 +124,7 @@ export default function HomePage() {
       </section>
 
       {/* ── AI SHOWCASE ── dark, demo cards */}
-      <section className={styles.showcase}>
+      <section id="showcase" className={styles.showcase}>
         <div className={styles.showcaseFadeTop} />
         <div className={styles.showcaseFadeBot} />
         <div className="container">
@@ -276,7 +276,7 @@ export default function HomePage() {
               <Reveal delay={0.2}>
                 <p className={styles.waitlistSub}>
                   We take on a small number of new clients at a time. Leave your
-                  email and we will reach out the moment there is a slot — no
+                  email and we will reach out the moment there is a slot. No
                   spam, no pitch.
                 </p>
               </Reveal>

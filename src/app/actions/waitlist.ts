@@ -1,11 +1,13 @@
 'use server'
 
+import { headers } from 'next/headers'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { rateLimit } from '@/agents/shared/rateLimiter'
+import { isValidEmail } from '@/lib/security'
 import { sendWaitlistConfirmationEmail } from '@/lib/resend/transactional'
 import { addContactToWaitlistAudience } from '@/lib/resend/audience'
 
-// Same check the client uses — defence in depth, never trust the client.
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+const MAX_FIELD = 200
 
 export interface JoinWaitlistInput {
   email: string
@@ -23,22 +25,30 @@ export interface JoinWaitlistResult {
 }
 
 export async function joinWaitlist(input: JoinWaitlistInput): Promise<JoinWaitlistResult> {
-  // 1. Spam honeypot — if filled, pretend success and write nothing.
+  // 1. Rate limit per IP — same guard the public API routes use, so a bot
+  //    can't flood the table (or the Resend send) through this action.
+  const hdrs = await headers()
+  const ip = hdrs.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
+  if (!rateLimit(`waitlist:${ip}`, 5, 60 * 60 * 1000)) {
+    return { ok: false, error: 'Too many attempts. Please try again in a little while.' }
+  }
+
+  // 2. Spam honeypot — if filled, pretend success and write nothing.
   if (input.company_website && input.company_website.trim() !== '') {
     return { ok: true, message: 'You’re on the list.' }
   }
 
-  // 2. Validate server-side.
+  // 3. Validate server-side — never trust the client.
   const email = (input.email ?? '').trim().toLowerCase()
-  if (!EMAIL_RE.test(email)) {
+  if (!isValidEmail(email)) {
     return { ok: false, error: 'Please enter a valid email address.' }
   }
 
-  const name = input.name?.trim() || null
-  const business = input.business?.trim() || null
-  const source = input.source?.trim() || 'homepage'
+  const name = input.name?.trim().slice(0, MAX_FIELD) || null
+  const business = input.business?.trim().slice(0, MAX_FIELD) || null
+  const source = input.source?.trim().slice(0, 50) || 'homepage'
 
-  // 3. Store the signup. Service-role client, server-side only — never the
+  // 4. Store the signup. Service-role client, server-side only — never the
   //    browser. This is the source of truth; everything after is best-effort.
   const admin = createAdminClient()
   const { error } = await admin
@@ -48,13 +58,13 @@ export async function joinWaitlist(input: JoinWaitlistInput): Promise<JoinWaitli
   if (error) {
     // 23505 = unique violation → already signed up. Treat as success.
     if ((error as { code?: string }).code === '23505') {
-      return { ok: true, message: 'You’re already on the list — we’ll be in touch.' }
+      return { ok: true, message: 'You’re already on the list. We’ll be in touch.' }
     }
     console.error('[waitlist] Supabase insert failed:', error)
     return { ok: false, error: 'Something went wrong on our end. Please try again.' }
   }
 
-  // 4. Post-signup side effects. The signup is ALREADY saved at this point, so
+  // 5. Post-signup side effects. The signup is ALREADY saved at this point, so
   //    a failure here must not lose the signup. We log and still return success.
 
   // (a) TRANSACTIONAL: send the confirmation email.

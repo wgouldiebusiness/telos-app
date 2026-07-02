@@ -1,18 +1,26 @@
 'use client'
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import Logo from '@/components/Logo/Logo'
 import styles from './LampIntro.module.css'
 
+// Plain document pages get no dark cinematic intro — someone landing on the
+// privacy policy from a footer or ad link should just see the document.
+const NO_INTRO_ROUTES = ['/privacy', '/terms', '/cookies']
+
 export default function LampIntro() {
   const [show, setShow] = useState(false)
+  const pathname = usePathname()
+  const skip = NO_INTRO_ROUTES.some(r => pathname.startsWith(r))
 
   useEffect(() => {
+    if (skip) return
     if (!sessionStorage.getItem('telos-intro-shown')) {
       setShow(true)
       sessionStorage.setItem('telos-intro-shown', '1')
     }
-  }, [])
+  }, [skip])
 
   return (
     <AnimatePresence>

@@ -11,6 +11,9 @@ export default function SmoothScroll() {
       lerp: 0.085,
       smoothWheel: true,
       touchMultiplier: 1.2,
+      // Smooth-scroll same-page anchor links (/#waitlist, /#showcase);
+      // offset keeps the target clear of the fixed header.
+      anchors: { offset: -90 },
     })
 
     let rafId: number
