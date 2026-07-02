@@ -3,7 +3,8 @@
 .shell {
   position: relative;
   z-index: 1;
-  min-height: 100vh;
+  min-height: 100vh; /* Safari fallback */
+  min-height: 100svh;
   background: var(--white);
   display: flex;
   flex-direction: column;

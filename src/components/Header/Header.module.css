@@ -190,7 +190,7 @@
   -webkit-backdrop-filter: blur(20px);
   border-left: 1px solid rgba(120,104,230,.15);
   z-index: 950;
-  padding: 5rem 2rem 3rem;
+  padding: 5rem 2rem calc(3rem + env(safe-area-inset-bottom, 0px));
   display: flex;
   flex-direction: column;
 }

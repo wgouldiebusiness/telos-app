@@ -67,7 +67,7 @@ export default function TermsPage() {
         <h2 className={styles.h2}>11. Contact</h2>
         <p>William Robert Gouldsmith, trading as Telos AI</p>
         <p>Email: william.gouldsmith@telosai.co.uk</p>
-        <p>Address: [YOUR ADDRESS]</p>
+        <p>Address: Bristol, United Kingdom (full postal address available on request)</p>
       </div>
     </div>
   )

@@ -1,11 +1,14 @@
 'use client'
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
+import { sendEnquiry } from '@/app/actions/enquiry'
 import styles from './page.module.css'
 
 export default function MediaContactForm() {
   const [form, setForm] = useState({ name: '', email: '', company: '', message: '' })
-  const [sent, setSent]     = useState(false)
-  const [loading, setLoading] = useState(false)
+  const [honeypot, setHoneypot] = useState('')
+  const [sent, setSent] = useState(false)
+  const [error, setError] = useState('')
+  const [pending, startTransition] = useTransition()
 
   function change(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -13,10 +16,12 @@ export default function MediaContactForm() {
 
   function submit(e: React.FormEvent) {
     e.preventDefault()
-    setLoading(true)
-    // TODO: replace with real submission (Resend API route, Formspree, etc.)
-    console.log('Telos Media enquiry:', form)
-    setTimeout(() => { setLoading(false); setSent(true) }, 700)
+    setError('')
+    startTransition(async () => {
+      const res = await sendEnquiry({ ...form, source: 'media', company_website: honeypot })
+      if (res.ok) setSent(true)
+      else setError(res.error ?? 'Something went wrong. Please try again.')
+    })
   }
 
   if (sent) {
@@ -37,6 +42,15 @@ export default function MediaContactForm() {
     <div className={styles.formCard}>
       <h3 className={styles.formTitle}>Or send a message</h3>
       <form onSubmit={submit} className={styles.form}>
+        {/* Honeypot — visually hidden, off-screen, not tabbable. */}
+        <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, overflow: 'hidden' }}>
+          <label htmlFor="media-company-website">Company website</label>
+          <input
+            id="media-company-website" name="company_website" type="text"
+            tabIndex={-1} autoComplete="off"
+            value={honeypot} onChange={e => setHoneypot(e.target.value)}
+          />
+        </div>
         <div className={styles.formRow}>
           <div className={styles.formGroup}>
             <label htmlFor="media-name" className={styles.formLabel}>Name *</label>
@@ -72,8 +86,9 @@ export default function MediaContactForm() {
             className={styles.formTextarea}
           />
         </div>
-        <button type="submit" disabled={loading} className={styles.formSubmit}>
-          {loading ? 'Sending…' : 'Send Message'}
+        {error && <p className={styles.formError} role="alert">{error}</p>}
+        <button type="submit" disabled={pending} className={styles.formSubmit}>
+          {pending ? 'Sending…' : 'Send Message'}
         </button>
         <p className={styles.formNote}>We will respond within one working day.</p>
       </form>

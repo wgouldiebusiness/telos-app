@@ -4,18 +4,25 @@
 // Body: { businessName, industry, tone, topic, platforms: string[] }
 // Returns: { posts: SocialPost[] }  (Monday to Friday)
 //
-// Rate limit: 10 generations per IP per hour.
+// Auth: portal-only — requires a signed-in user (this endpoint spends
+// model tokens, so the public must not be able to call it).
+// Rate limit: 10 generations per user per hour.
 // ─────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
 import { askClaude } from '@/agents/shared/claude'
 import { rateLimit } from '@/agents/shared/rateLimiter'
+import { createClient } from '@/lib/supabase/server'
 import type { SocialPost } from '@/agents/social-content/types'
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get('x-forwarded-for')?.split(',')[0].trim() ?? 'unknown'
+  const supabase = await createClient()
+  const { data: { user } } = await supabase.auth.getUser()
+  if (!user) {
+    return NextResponse.json({ error: 'Not signed in.' }, { status: 401 })
+  }
 
-  if (!rateLimit(`social:${ip}`, 10, 60 * 60 * 1000)) {
+  if (!rateLimit(`social:${user.id}`, 10, 60 * 60 * 1000)) {
     return NextResponse.json({ error: 'Please wait a little while before generating more.' }, { status: 429 })
   }
 

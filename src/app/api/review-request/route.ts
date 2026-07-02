@@ -10,6 +10,7 @@
 // ─────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
+import { timingSafeCompare } from '@/lib/security'
 import { sendSms } from '@/agents/shared/sms'
 import { getReviewRequestConfig, buildReviewMessage } from '@/agents/review-request/config'
 
@@ -17,9 +18,11 @@ import { getReviewRequestConfig, buildReviewMessage } from '@/agents/review-requ
 const alreadyAsked = new Set<string>()
 
 export async function POST(req: NextRequest) {
-  // Internal-only: verify the shared secret.
+  // Internal-only: verify the shared secret (constant-time, like the other
+  // internal routes).
   const secret = process.env.TELOS_INTERNAL_SECRET
-  if (!secret || req.headers.get('x-telos-secret') !== secret) {
+  const provided = req.headers.get('x-telos-secret') ?? ''
+  if (!secret || !timingSafeCompare(provided, secret)) {
     return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
   }
 

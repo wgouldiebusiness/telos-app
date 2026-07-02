@@ -104,6 +104,16 @@ button {
 
 ul, ol { list-style: none; }
 
+/* ── iOS FORM ZOOM GUARD ──
+   Safari auto-zooms the whole page when a focused input's font-size is
+   under 16px. Force 16px on touch devices so no form triggers it; desktop
+   keeps each form's designed size. */
+@media (pointer: coarse) {
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+}
+
 /* ── SELECTION ── */
 ::selection {
   background: var(--purple-dim);

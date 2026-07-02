@@ -13,7 +13,6 @@ export default function PrivacyPage() {
       <div className={`container ${styles.inner}`}>
         <h1 className={styles.title}>Privacy Policy</h1>
         <p className={styles.meta}>Last updated: 30 June 2026</p>
-        <p className={styles.meta}>ICO Registration Number: [ADD ONCE REGISTERED AT ico.org.uk]</p>
 
         <h2 className={styles.h2}>Who we are</h2>
         <p>Telos AI is the trading name of William Robert Gouldsmith, a sole trader based in Bristol, England.</p>
@@ -23,7 +22,7 @@ export default function PrivacyPage() {
           <li><strong>Email:</strong> william.gouldsmith@telosai.co.uk</li>
           <li><strong>Website:</strong> telosai.co.uk</li>
         </ul>
-        <p>We are registered with the Information Commissioner&rsquo;s Office (ICO) as a data controller. For questions about this policy or your personal data, contact us at the email above.</p>
+        <p>For questions about this policy or your personal data, contact us at the email above.</p>
 
         <h2 className={styles.h2}>What personal information we collect</h2>
         <h3 className={styles.h3}>Information you give us directly</h3>
