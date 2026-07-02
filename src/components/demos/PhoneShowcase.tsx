@@ -79,7 +79,8 @@ export default function PhoneShowcase({ demos }: Props) {
 
   // Scroll-sync — only fires on scroll, one rAF per event (no idle loop)
   useEffect(() => {
-    const mq = window.matchMedia('(max-width: 699px)')
+    // Must mirror the stacked-layout media query in the CSS module
+    const mq = window.matchMedia('(max-width: 699px), (max-height: 559px)')
     let isMobile = mq.matches
     let lastTy = NaN
     let ticking = false
