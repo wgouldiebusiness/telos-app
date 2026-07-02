@@ -70,6 +70,9 @@ export default function Header() {
                 </Link>
               ))}
             </div>
+            <Link href="/#waitlist" className={styles.navWaitlist}>
+              Join the waitlist
+            </Link>
             <Link href="/contact" className={styles.ctaBtn}>
               Book a Call
             </Link>
@@ -145,6 +148,15 @@ export default function Header() {
                 initial={{ opacity: 0, x: 24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: (navLinks.length + brandLinks.length) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
+              >
+                <Link href="/#waitlist" className={styles.mobileLink}>
+                  Join the waitlist
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 24 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: (navLinks.length + brandLinks.length + 1) * 0.06, duration: 0.35, ease: [0.2, 0.7, 0.2, 1] }}
               >
                 <Link href="/contact" className={styles.mobileCta}>
                   Book a Call

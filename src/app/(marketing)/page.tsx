@@ -7,6 +7,7 @@ import ChatDemo from '@/components/demos/ChatDemo'
 import PipelineDemo from '@/components/demos/PipelineDemo'
 import Logo from '@/components/Logo/Logo'
 import OrbitalServices from '@/components/OrbitalServices/OrbitalServices'
+import WaitlistForm from '@/components/WaitlistForm/WaitlistForm'
 import type { ChatMessage } from '@/components/demos/ChatDemo'
 import styles from './page.module.css'
 
@@ -255,6 +256,34 @@ export default function HomePage() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WAITLIST ── email capture */}
+      <section id="waitlist" className={styles.waitlist}>
+        <div className="container">
+          <div className={styles.waitlistInner}>
+            <div className={styles.waitlistHead}>
+              <Reveal>
+                <span className="label">Join the waitlist</span>
+              </Reveal>
+              <Reveal delay={0.1}>
+                <h2 className={styles.waitlistH2}>
+                  Be first in line when a build opens up.
+                </h2>
+              </Reveal>
+              <Reveal delay={0.2}>
+                <p className={styles.waitlistSub}>
+                  We take on a small number of new clients at a time. Leave your
+                  email and we will reach out the moment there is a slot — no
+                  spam, no pitch.
+                </p>
+              </Reveal>
+            </div>
+            <Reveal delay={0.15} className={styles.waitlistFormWrap}>
+              <WaitlistForm source="homepage" />
+            </Reveal>
           </div>
         </div>
       </section>

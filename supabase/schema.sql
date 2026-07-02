@@ -252,3 +252,22 @@ insert into modules (name, description, sort_order) values
   ('Data and Insights',      'Monthly performance reports, KPI tracking, and plain-English summaries of what your automations are doing.', 6),
   ('Conversion Website',     'A fast, conversion-focused website built and maintained for you. Includes SEO and analytics.',                7),
   ('Content and Social',     'Regular social posts and content generated from your business voice and published on your behalf.',           8);
+
+-- ============================================================
+-- WAITLIST (homepage lead capture)
+-- Written server-side with the service-role key (src/app/actions/waitlist.ts).
+-- RLS enabled with no policy = service role only, no anon/auth access.
+-- ============================================================
+create table waitlist (
+  id         uuid primary key default gen_random_uuid(),
+  email      text not null,
+  name       text,
+  business   text,
+  source     text not null default 'homepage',
+  created_at timestamptz not null default now()
+);
+
+-- One row per email (case-insensitive); repeat signups are a no-op success.
+create unique index waitlist_email_unique on waitlist (lower(email));
+
+alter table waitlist enable row level security;
