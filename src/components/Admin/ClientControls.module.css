@@ -1,0 +1,156 @@
+/* Controls for the admin client-detail page — matches the light admin theme */
+
+/* ── Module toggles ── */
+.modulesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+}
+
+.moduleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--white);
+  border: 1px solid var(--grey-3);
+  border-radius: 12px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--grey-2);
+  cursor: pointer;
+  text-align: left;
+  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+
+.moduleBtn:hover:not(:disabled) { border-color: var(--purple); }
+.moduleBtn:disabled { opacity: 0.6; cursor: default; }
+
+.moduleOn {
+  background: var(--purple-dim);
+  border-color: var(--purple);
+  color: var(--dark);
+}
+
+.moduleState {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.moduleOn .moduleState { color: var(--purple); }
+
+/* ── Edit form + metrics form ── */
+.editForm,
+.metricsForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.editRow {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.editSplit {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.editLabel {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--grey);
+}
+
+.editInput {
+  width: 100%;
+  padding: 10px 12px;
+  background: var(--white);
+  border: 1px solid var(--grey-3);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--dark);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+
+.editInput:focus {
+  outline: none;
+  border-color: var(--purple);
+  box-shadow: 0 0 0 3px var(--purple-dim);
+}
+
+.editFoot {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.saveBtn {
+  padding: 10px 22px;
+  background: var(--dark);
+  color: var(--white);
+  border: none;
+  border-radius: 980px;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  cursor: pointer;
+  transition: background var(--t-fast);
+}
+
+.saveBtn:hover:not(:disabled) { background: var(--purple); }
+.saveBtn:disabled { opacity: 0.6; cursor: default; }
+
+.okMsg { font-size: 13px; color: #1b7a3d; }
+.error { font-size: 13px; color: #c22f2f; margin: 6px 0 0; }
+
+/* ── Change request status ── */
+.reqControl {
+  display: inline-flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.reqBtn {
+  padding: 4px 10px;
+  background: var(--white);
+  border: 1px solid var(--grey-3);
+  border-radius: 980px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--grey);
+  cursor: pointer;
+  transition: border-color var(--t-fast), background var(--t-fast), color var(--t-fast);
+}
+
+.reqBtn:hover:not(:disabled) { border-color: var(--purple); color: var(--dark); }
+.reqBtn:disabled { opacity: 0.6; cursor: default; }
+
+.reqBtnOn {
+  background: var(--purple-dim);
+  border-color: var(--purple);
+  color: var(--dark);
+}
+
+@media (max-width: 640px) {
+  .editSplit,
+  .metricsGrid { grid-template-columns: 1fr; }
+}
