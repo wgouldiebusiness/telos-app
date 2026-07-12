@@ -42,15 +42,22 @@ export default function WaitlistForm({
     setEmailError('')
 
     startTransition(async () => {
-      const res = await joinWaitlist({
-        email: trimmed,
-        name,
-        business,
-        source,
-        company_website: honeypot,
-      })
-      if (res.ok) setDone(true)
-      else setFormError(res.error ?? 'Something went wrong. Please try again.')
+      // The action handles its own failures, but if the call itself throws
+      // (network drop, deploy mid-flight) the user must still see an honest
+      // error — never a silent reset.
+      try {
+        const res = await joinWaitlist({
+          email: trimmed,
+          name,
+          business,
+          source,
+          company_website: honeypot,
+        })
+        if (res.ok) setDone(true)
+        else setFormError(res.error ?? 'Something went wrong. Please try again.')
+      } catch {
+        setFormError('We could not reach the server. Please check your connection and try again.')
+      }
     })
   }
 
