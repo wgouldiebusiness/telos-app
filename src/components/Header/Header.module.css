@@ -19,7 +19,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1160px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 1.25rem var(--side-pad);
   transition: padding var(--t-slow);
@@ -51,18 +51,20 @@
 .nav {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: clamp(1rem, 1.5vw, 1.75rem);
 }
 
 .navLink {
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.01em;
-  color: rgba(255,255,255,.6);
+  color: rgba(255,255,255,.68);
   text-decoration: none;
   transition: color var(--t-fast);
   position: relative;
+  /* labels must never break onto two lines */
+  white-space: nowrap;
 }
 
 .navLink::after {
@@ -103,6 +105,7 @@
 
 /* Secondary CTA — scrolls to the homepage waitlist section */
 .navWaitlist {
+  white-space: nowrap;
   color: rgba(255, 255, 255, 0.82);
   padding: 9px 18px;
   border-radius: 980px;
@@ -124,6 +127,7 @@
 
 /* CTA */
 .ctaBtn {
+  white-space: nowrap;
   background: var(--purple);
   color: var(--white);
   padding: 9px 20px;
@@ -249,6 +253,7 @@
 
 /* Red badge variant — Telos Websites */
 .navBadgeRed {
+  white-space: nowrap;
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -273,6 +278,7 @@
 
 /* Teal badge variant — Telos Media */
 .navBadgeTeal {
+  white-space: nowrap;
   font-family: var(--font-inter, 'Inter'), sans-serif;
   font-size: 13px;
   font-weight: 600;
@@ -295,7 +301,7 @@
 }
 .mobileLinkBadgeTeal:hover { color: #00D4B4 !important; }
 
-@media (max-width: 900px) {
+@media (max-width: 1100px) {
   .nav     { display: none; }
   .menuBtn { display: flex; }
 }

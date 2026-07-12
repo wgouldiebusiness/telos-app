@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { isMasterEmail } from '@/lib/security'
 
 // ─────────────────────────────────────────────────────────────
 // Master-only management actions.
@@ -26,12 +27,7 @@ export interface AdminActionResult {
 async function requireMaster(): Promise<{ ok: true } | { ok: false; error: string }> {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  const masters = (process.env.MASTER_EMAILS ?? '')
-    .split(',')
-    .map(e => e.trim().toLowerCase())
-    .filter(Boolean)
-
-  if (!user || !masters.includes(user.email?.toLowerCase() ?? '')) {
+  if (!user || !isMasterEmail(user.email)) {
     return { ok: false, error: 'Not authorised.' }
   }
   return { ok: true }

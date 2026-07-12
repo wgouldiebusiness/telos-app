@@ -42,3 +42,17 @@ export function safeRedirectPath(next: string | null, fallback = '/'): string {
   }
   return fallback
 }
+
+/** Master (admin) account emails from MASTER_EMAILS — single source of truth. */
+export function getMasterEmails(): string[] {
+  return (process.env.MASTER_EMAILS ?? '')
+    .split(',')
+    .map(e => e.trim().toLowerCase())
+    .filter(Boolean)
+}
+
+/** True when the given email belongs to a master account. Fails closed. */
+export function isMasterEmail(email: string | null | undefined): boolean {
+  if (!email) return false
+  return getMasterEmails().includes(email.toLowerCase())
+}

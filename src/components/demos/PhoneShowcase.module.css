@@ -229,9 +229,11 @@
   .sticky {
     position: static;
     height: auto;
-    padding: 56px 24px;
-    gap: 40px;
+    padding: 64px 24px;
+    gap: 44px;
     overflow: visible;
+    /* static flow — must never paint above neighbouring sections */
+    z-index: auto;
   }
 
   .phonesRow {
@@ -246,6 +248,21 @@
     flex: none;
     width: min(300px, 80vw);
     max-width: none;
+    gap: 12px;
+  }
+
+  /* Brand name sits ABOVE its phone on small screens so the four
+     businesses are always identifiable before the screenshot loads. */
+  .demoLabel {
+    order: -1;
+    max-width: none;
+  }
+
+  .demoCat { font-size: 10px; }
+
+  .demoName {
+    font-size: 15px;
+    color: rgba(255,255,255,.92);
   }
 
   .phone {
