@@ -1,12 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
-
-function getMasterEmails(): string[] {
-  return (process.env.MASTER_EMAILS ?? '')
-    .split(',')
-    .map(e => e.trim().toLowerCase())
-    .filter(Boolean)
-}
+import { isMasterEmail } from '@/lib/security'
 
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
@@ -51,8 +45,7 @@ export async function proxy(request: NextRequest) {
   const { data: { user } } = await supabase.auth.getUser()
 
   const { pathname } = request.nextUrl
-  const masterEmails = getMasterEmails()
-  const isMaster = masterEmails.includes(user?.email?.toLowerCase() ?? '')
+  const isMaster = isMasterEmail(user?.email)
 
   // Unauthenticated: protect portal, admin, and onboarding
   if (!user) {

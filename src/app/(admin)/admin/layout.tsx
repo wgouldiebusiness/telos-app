@@ -1,13 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { isMasterEmail } from '@/lib/security'
 import AdminShell from '@/components/Admin/AdminShell'
-
-function getMasterEmails(): string[] {
-  return (process.env.MASTER_EMAILS ?? '')
-    .split(',')
-    .map(e => e.trim().toLowerCase())
-    .filter(Boolean)
-}
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   // Defense in depth: admin pages instantiate the service-role client, which
@@ -17,9 +11,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   // decisions should not live in the proxy alone.
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
-  const masters = getMasterEmails()
-
-  if (!user || !masters.includes(user.email?.toLowerCase() ?? '')) {
+  if (!user || !isMasterEmail(user.email)) {
     redirect('/portal')
   }
 
