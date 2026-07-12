@@ -6,7 +6,7 @@ import { rateLimit } from '@/agents/shared/rateLimiter'
 import { isValidEmail } from '@/lib/security'
 import { sendEmail } from '@/agents/shared/email'
 import { sendWaitlistConfirmationEmail } from '@/lib/resend/transactional'
-import { addContactToWaitlistAudience } from '@/lib/resend/audience'
+import { addContactToWaitlist } from '@/lib/resend/contacts'
 
 const MAX_FIELD = 200
 
@@ -135,14 +135,14 @@ export async function joinWaitlist(input: JoinWaitlistInput): Promise<JoinWaitli
     console.error('[waitlist] confirmation email threw:', err)
   }
 
-  // (b) MARKETING: add the contact to the Resend audience/list.
+  // (b) MARKETING: store the contact in Resend (global contacts + optional segment).
   try {
-    const added = await addContactToWaitlistAudience({ email, name: name ?? undefined })
+    const added = await addContactToWaitlist({ email, name: name ?? undefined })
     if (!added.ok && !added.skipped) {
-      console.error('[waitlist] audience add failed:', added.error)
+      console.error('[waitlist] contact store failed:', added.error)
     }
   } catch (err) {
-    console.error('[waitlist] audience add threw:', err)
+    console.error('[waitlist] contact store threw:', err)
   }
 
   return { ok: true, message: 'You’re on the list.' }
