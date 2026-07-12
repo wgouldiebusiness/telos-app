@@ -2,6 +2,12 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { createAdminClient } from '@/lib/supabase/admin'
 import { notFound } from 'next/navigation'
+import {
+  ModuleToggles,
+  BusinessEditForm,
+  RequestStatusControl,
+  MetricsForm,
+} from '@/components/Admin/ClientControls'
 import styles from './page.module.css'
 
 export const metadata: Metadata = { title: 'Client Detail | Admin' }
@@ -74,7 +80,6 @@ export default async function ClientDetailPage({ params }: Props) {
 
   const PLAN_LABELS: Record<string, string> = { starter: 'Starter', growth: 'Growth', bespoke: 'Bespoke' }
   const STATUS_LABELS: Record<string, string> = { active: 'Active', onboarding: 'Onboarding', paused: 'Paused' }
-  const REQUEST_LABELS: Record<string, string> = { open: 'Open', in_progress: 'In Progress', done: 'Done' }
 
   return (
     <div className={styles.page}>
@@ -103,12 +108,18 @@ export default async function ClientDetailPage({ params }: Props) {
             <dt>Found us via</dt><dd>{business.heard_about ?? 'Not provided'}</dd>
             <dt>Joined</dt>     <dd>{new Date(business.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</dd>
           </dl>
+          <BusinessEditForm
+            businessId={business.id}
+            name={business.name}
+            plan={business.plan}
+            status={business.status}
+          />
         </div>
 
-        {/* Metrics at a glance */}
-        {metrics && metrics.length > 0 && (
-          <div className={styles.detailCard}>
-            <h2 className={styles.cardTitle}>Recent metrics</h2>
+        {/* Metrics at a glance + monthly entry */}
+        <div className={styles.detailCard}>
+          <h2 className={styles.cardTitle}>Recent metrics</h2>
+          {metrics && metrics.length > 0 ? (
             <div className={styles.metricsTable}>
               <div className={styles.metricsHead}>
                 <span>Month</span>
@@ -125,28 +136,25 @@ export default async function ClientDetailPage({ params }: Props) {
                 </div>
               ))}
             </div>
-          </div>
-        )}
+          ) : (
+            <p className={styles.sectionSub}>No metrics recorded yet. Enter the first month below.</p>
+          )}
+          <MetricsForm businessId={business.id} />
+        </div>
       </div>
 
       {/* Module assignment */}
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>Assigned modules</h2>
         <p className={styles.sectionSub}>
-          Modules marked as assigned appear in this client&rsquo;s portal.
-          Toggle assignments in the Supabase table directly until the full UI is built.
+          Modules marked as assigned appear in this client&rsquo;s portal
+          immediately. Click to assign or remove.
         </p>
-        <div className={styles.modulesGrid}>
-          {allModules?.map(m => {
-            const isAssigned = assignedIds.has(m.id)
-            return (
-              <div key={m.id} className={`${styles.moduleChip} ${isAssigned ? styles.moduleAssigned : ''}`}>
-                <span className={styles.moduleChipName}>{m.name}</span>
-                {isAssigned && <span className={styles.moduleChipBadge}>Active</span>}
-              </div>
-            )
-          })}
-        </div>
+        <ModuleToggles
+          businessId={business.id}
+          modules={(allModules ?? []).map(m => ({ id: m.id, name: m.name }))}
+          assignedIds={[...assignedIds].filter((v): v is string => typeof v === 'string')}
+        />
       </section>
 
       {/* Open change requests */}
@@ -156,9 +164,7 @@ export default async function ClientDetailPage({ params }: Props) {
           <div className={styles.requestList}>
             {requests.map(r => (
               <div key={r.id} className={styles.requestRow}>
-                <span className={`${styles.reqStatus} ${styles['req_' + r.status]}`}>
-                  {REQUEST_LABELS[r.status] ?? r.status}
-                </span>
+                <RequestStatusControl requestId={r.id} status={r.status} />
                 <p className={styles.reqDesc}>{r.description}</p>
                 <span className={styles.reqDate}>
                   {new Date(r.created_at).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
