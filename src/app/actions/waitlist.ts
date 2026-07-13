@@ -6,6 +6,7 @@ import { rateLimit } from '@/agents/shared/rateLimiter'
 import { isValidEmail } from '@/lib/security'
 import { sendEmail } from '@/agents/shared/email'
 import { sendWaitlistConfirmationEmail } from '@/lib/resend/transactional'
+import { scheduleNurtureSequence } from '@/lib/resend/nurture'
 import { addContactToWaitlist } from '@/lib/resend/contacts'
 
 const MAX_FIELD = 200
@@ -143,6 +144,24 @@ export async function joinWaitlist(input: JoinWaitlistInput): Promise<JoinWaitli
     }
   } catch (err) {
     console.error('[waitlist] contact store threw:', err)
+  }
+
+  // (c) NURTURE: schedule the 3-email follow-up sequence (days 3/8/14) via
+  //     Resend scheduled sends. Only for signups that landed in the DB —
+  //     the duplicate path returns earlier, so nobody gets the sequence
+  //     twice, and the alert-recovery path stays sequence-free until the
+  //     row is restored by hand.
+  if (saved) {
+    try {
+      const nurture = await scheduleNurtureSequence({ to: email, name: name ?? undefined })
+      if (nurture.skipped) {
+        // No key yet — expected until Resend is configured, no noise.
+      } else if (!nurture.ok) {
+        console.error('[waitlist] nurture scheduling incomplete:', nurture.errors?.join(' | '))
+      }
+    } catch (err) {
+      console.error('[waitlist] nurture scheduling threw:', err)
+    }
   }
 
   return { ok: true, message: 'You’re on the list.' }
