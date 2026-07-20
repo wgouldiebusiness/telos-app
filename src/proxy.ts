@@ -16,7 +16,8 @@ export async function proxy(request: NextRequest) {
     if (
       pathname.startsWith('/portal') ||
       pathname.startsWith('/admin') ||
-      pathname.startsWith('/onboarding')
+      pathname.startsWith('/onboarding') ||
+      pathname.startsWith('/agents')
     ) {
       return NextResponse.redirect(new URL('/login', request.url))
     }
@@ -52,7 +53,8 @@ export async function proxy(request: NextRequest) {
     if (
       pathname.startsWith('/portal') ||
       pathname.startsWith('/admin') ||
-      pathname.startsWith('/onboarding')
+      pathname.startsWith('/onboarding') ||
+      pathname.startsWith('/agents')
     ) {
       return NextResponse.redirect(new URL('/login', request.url))
     }
