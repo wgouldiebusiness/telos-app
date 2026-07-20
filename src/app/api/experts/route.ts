@@ -35,7 +35,7 @@ const EXPERTS_MODEL = process.env.EXPERTS_MODEL || 'claude-sonnet-5'
 // Distinctive markers from the registry's private instructions. If a reply
 // contains one, the model has been manipulated into quoting its prompt;
 // refuse the output rather than leak it.
-const LEAK_MARKERS = ['CONDUCT RULES (these override', 'ADVANCED PLAYBOOK:', 'ACCURACY DISCIPLINE:', 'DELIVERABLE STANDARD:']
+const LEAK_MARKERS = ['CONDUCT RULES (these override', 'ADVANCED PLAYBOOK:', 'ACCURACY DISCIPLINE:', 'DELIVERABLE STANDARD:', 'COMPETITOR BAR (researched']
 
 export async function POST(req: NextRequest) {
   // 1. Session required — these agents are never public. If Supabase is
