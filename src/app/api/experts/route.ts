@@ -11,7 +11,11 @@
 // The membership lookup runs on the caller's OWN RLS-bound client, so a
 // user can never read another business's assignments.
 //
-// Rate limit: 30 messages per user per hour across all agents.
+// Rate limits: 8 messages per user per minute (burst) and 30 per hour.
+// Model: EXPERTS_MODEL env override, defaulting to claude-sonnet-5 so the
+// experts run on a stronger model than the lightweight site widgets.
+// Replies are screened so the system prompt can never leak verbatim, and
+// every conversation turn writes a structured usage log line.
 // ─────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
@@ -22,7 +26,16 @@ import { askClaude, type ChatTurn } from '@/agents/shared/claude'
 import { getExpertAgent } from '@/agents/experts/registry'
 
 const MAX_MESSAGE_LENGTH = 4000
-const MAX_HISTORY_TURNS = 20
+const MAX_HISTORY_TURNS = 30
+
+// The experts warrant a stronger model than the site widgets. Override per
+// environment without a deploy via EXPERTS_MODEL (e.g. claude-opus-4-8).
+const EXPERTS_MODEL = process.env.EXPERTS_MODEL || 'claude-sonnet-5'
+
+// Distinctive markers from the registry's private instructions. If a reply
+// contains one, the model has been manipulated into quoting its prompt;
+// refuse the output rather than leak it.
+const LEAK_MARKERS = ['CONDUCT RULES (these override', 'ADVANCED PLAYBOOK:', 'ACCURACY DISCIPLINE:', 'DELIVERABLE STANDARD:']
 
 export async function POST(req: NextRequest) {
   // 1. Session required — these agents are never public. If Supabase is
@@ -79,7 +92,14 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  // 4. Rate limit per user across all agents.
+  // 4. Rate limits per user across all agents: a per-minute burst cap on
+  //    top of the hourly cap, so scripted rapid-fire cannot drain tokens.
+  if (!rateLimit(`experts-burst:${user.id}`, 8, 60 * 1000)) {
+    return NextResponse.json(
+      { error: 'Slow down a little. Try again in a minute.' },
+      { status: 429 }
+    )
+  }
   if (!rateLimit(`experts:${user.id}`, 30, 60 * 60 * 1000)) {
     return NextResponse.json(
       { error: 'You have sent a lot of messages this hour. Please take a short break.' },
@@ -108,11 +128,27 @@ export async function POST(req: NextRequest) {
     : []
 
   try {
+    const started = Date.now()
     const reply = await askClaude({
       system: agent.systemPrompt,
       messages: [...history, { role: 'user', content: message }],
       maxTokens: agent.maxTokens,
+      model: EXPERTS_MODEL,
     })
+
+    // Prompt-leak guard: never return output that quotes the private brief.
+    if (LEAK_MARKERS.some(m => reply.includes(m))) {
+      console.warn(`[experts] leak guard tripped agent=${agent.slug} user=${user.id}`)
+      return NextResponse.json({
+        reply:
+          'I keep my internal working notes to myself, but I am glad to help with the actual job. What are you trying to get done?',
+      })
+    }
+
+    // Structured usage log: who used which agent, how much, how fast.
+    console.log(
+      `[experts] agent=${agent.slug} user=${user.id} turns=${history.length + 1} in=${message.length} out=${reply.length} ms=${Date.now() - started}`
+    )
     return NextResponse.json({ reply })
   } catch {
     return NextResponse.json(

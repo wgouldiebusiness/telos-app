@@ -33,6 +33,8 @@ interface AskClaudeOptions {
   messages: ChatTurn[]
   /** Max output tokens. Keep low for chat (fast, cheap). Default 512. */
   maxTokens?: number
+  /** Override the model for this call. Defaults to CLAUDE_MODEL. */
+  model?: string
 }
 
 /**
@@ -43,10 +45,11 @@ export async function askClaude({
   system,
   messages,
   maxTokens = 512,
+  model = CLAUDE_MODEL,
 }: AskClaudeOptions): Promise<string> {
   try {
     const response = await anthropic.messages.create({
-      model: CLAUDE_MODEL,
+      model,
       max_tokens: maxTokens,
       // cache_control caches the (stable) system prompt for ~5 minutes,
       // so repeat requests pay ~0.1x for it instead of full price.
