@@ -1,0 +1,196 @@
+/* ── Agents area ── dark brand shell over the global shader */
+
+.shell {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh; /* Safari fallback */
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.topbarInner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 16px var(--side-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.brand {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.brandAccent { color: var(--purple-2); }
+
+.topnav { display: flex; gap: 1.25rem; }
+
+.topnavLink {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color var(--t-fast);
+}
+
+.topnavLink:hover { color: #ffffff; }
+
+.main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: clamp(28px, 4vw, 56px) var(--side-pad) 64px;
+}
+
+/* ── Dashboard ── */
+.page { display: flex; flex-direction: column; gap: 2rem; }
+
+.head { max-width: 640px; }
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--purple-2);
+  margin-bottom: 10px;
+}
+
+.h1 {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+  margin: 0 0 12px;
+}
+
+.sub {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  text-decoration: none;
+  transition: border-color var(--t-fast), background var(--t-fast), transform 0.25s var(--ease-mag);
+}
+
+a.card:hover {
+  border-color: var(--purple);
+  background: rgba(120, 104, 230, 0.08);
+  transform: translateY(-3px);
+}
+
+.cardIcon { font-size: 26px; line-height: 1; }
+
+.cardName {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+}
+
+.cardTag {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--purple-2);
+}
+
+.cardDesc {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cardCta {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--purple-2);
+}
+
+.cardLocked { opacity: 0.55; }
+
+.cardLockedNote {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+}
+
+/* ── Chat page ── */
+.chatPage {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  height: 100%;
+}
+
+.chatHead { display: flex; flex-direction: column; gap: 10px; }
+
+.backLink {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--purple-2);
+  text-decoration: none;
+}
+
+.backLink:hover { color: #ffffff; }
+
+.chatHeadRow { display: flex; align-items: center; gap: 14px; }
+
+.chatIcon { font-size: 30px; line-height: 1; }
+
+.chatName {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  margin: 0;
+}
+
+.chatTag {
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 2px 0 0;
+}
+
+@media (max-width: 640px) {
+  .grid { grid-template-columns: 1fr; }
+}
