@@ -55,8 +55,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* html stays black so there is never a white flash; body must be transparent so the fixed shader shows through */}
         <style>{`html{background:#000!important}body{background:transparent!important}`}</style>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://eedptakfhrhxsmkfqxlc.supabase.co" />
       </head>
       <body>
