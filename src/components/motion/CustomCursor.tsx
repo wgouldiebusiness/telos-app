@@ -20,11 +20,20 @@ export default function CustomCursor() {
   useEffect(() => {
     if (!visible) return
 
+    let settling = false
+    let idleTimer: ReturnType<typeof setTimeout>
+
     function onMove(e: MouseEvent) {
       mouse.current = { x: e.clientX, y: e.clientY }
       if (dotRef.current) {
         dotRef.current.style.transform = `translate(${e.clientX - 4}px, ${e.clientY - 4}px)`
       }
+      if (!settling) {
+        settling = true
+        raf.current = requestAnimationFrame(animate)
+      }
+      clearTimeout(idleTimer)
+      idleTimer = setTimeout(() => { settling = false }, 300)
     }
 
     function onOver(e: MouseEvent) {
@@ -40,17 +49,17 @@ export default function CustomCursor() {
       if (ringRef.current) {
         ringRef.current.style.transform = `translate(${ring.current.x - 18}px, ${ring.current.y - 18}px)`
       }
-      raf.current = requestAnimationFrame(animate)
+      if (settling) raf.current = requestAnimationFrame(animate)
     }
 
     document.addEventListener('mousemove', onMove, { passive: true })
     document.addEventListener('mouseover', onOver, { passive: true })
-    raf.current = requestAnimationFrame(animate)
 
     return () => {
       document.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseover', onOver)
       cancelAnimationFrame(raf.current)
+      clearTimeout(idleTimer)
     }
   }, [visible])
 

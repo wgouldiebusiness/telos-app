@@ -34,27 +34,33 @@ export default function PhoneShowcase({ demos }: Props) {
   const inView        = useInView(rowRef, { once: true, margin: '-100px 0px' })
 
   const [scale, setScale] = useState(dims(252).scale)
-  // Defer loading the (heavy) demo iframes until the section is near the
-  // viewport, so four in-iframe Tailwind compilers + a WebGL shader don't all
-  // spin up while the user is still at the hero.
-  const [load, setLoad] = useState(false)
+  // Stagger-load the heavy demo iframes: only start loading once the section
+  // is near the viewport, then load one iframe at a time (each Tailwind CDN
+  // compiler is expensive). Each subsequent iframe loads 1.2s after the last.
+  const [loadCount, setLoadCount] = useState(0)
 
   useEffect(() => {
     const section = sectionRef.current
     if (!section) return
-    if (load) return
+    if (loadCount > 0) return
     const io = new IntersectionObserver(
       entries => {
         if (entries.some(e => e.isIntersecting)) {
-          setLoad(true)
+          setLoadCount(1)
           io.disconnect()
         }
       },
-      { rootMargin: '800px 0px' },
+      { rootMargin: '600px 0px' },
     )
     io.observe(section)
     return () => io.disconnect()
-  }, [load])
+  }, [loadCount])
+
+  useEffect(() => {
+    if (loadCount < 1 || loadCount >= demos.length) return
+    const t = setTimeout(() => setLoadCount(c => c + 1), 1200)
+    return () => clearTimeout(t)
+  }, [loadCount, demos.length])
 
   // Measure the actual rendered phone width → update scale + CSS custom prop
   useEffect(() => {
@@ -169,7 +175,7 @@ export default function PhoneShowcase({ demos }: Props) {
                     ref={el => { wrapRefs.current[i] = el }}
                     className={styles.iframeWrap}
                   >
-                    {load && (
+                    {i < loadCount && (
                       <iframe
                         src={demo.path}
                         className={styles.frame}
