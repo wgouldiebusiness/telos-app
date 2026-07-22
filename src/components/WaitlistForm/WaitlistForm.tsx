@@ -24,6 +24,7 @@ export default function WaitlistForm({
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [business, setBusiness] = useState('')
+  const [showMore, setShowMore] = useState(false) // progressive disclosure
   const [honeypot, setHoneypot] = useState('') // bots fill this; humans never see it
   const [emailError, setEmailError] = useState('')
   const [formError, setFormError] = useState('')
@@ -121,38 +122,50 @@ export default function WaitlistForm({
           )}
         </div>
 
-        <div className={styles.row}>
-          <div className={styles.field}>
-            <label htmlFor="wl-name" className={styles.label}>
-              Name <span className={styles.opt}>optional</span>
-            </label>
-            <input
-              id="wl-name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              placeholder="Your name"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              className={styles.input}
-            />
+        {/* Progressive disclosure — keep the ask to one field, reveal the
+            optional detail only if the visitor wants to give it. */}
+        {showMore ? (
+          <div className={styles.morePanel}>
+            <div className={styles.field}>
+              <label htmlFor="wl-name" className={styles.label}>
+                Name <span className={styles.opt}>optional</span>
+              </label>
+              <input
+                id="wl-name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                placeholder="Your name"
+                value={name}
+                onChange={e => setName(e.target.value)}
+                className={styles.input}
+              />
+            </div>
+            <div className={styles.field}>
+              <label htmlFor="wl-business" className={styles.label}>
+                Business <span className={styles.opt}>optional</span>
+              </label>
+              <input
+                id="wl-business"
+                name="business"
+                type="text"
+                autoComplete="organization"
+                placeholder="What do you run?"
+                value={business}
+                onChange={e => setBusiness(e.target.value)}
+                className={styles.input}
+              />
+            </div>
           </div>
-          <div className={styles.field}>
-            <label htmlFor="wl-business" className={styles.label}>
-              Business <span className={styles.opt}>optional</span>
-            </label>
-            <input
-              id="wl-business"
-              name="business"
-              type="text"
-              autoComplete="organization"
-              placeholder="Business name"
-              value={business}
-              onChange={e => setBusiness(e.target.value)}
-              className={styles.input}
-            />
-          </div>
-        </div>
+        ) : (
+          <button
+            type="button"
+            className={styles.moreToggle}
+            onClick={() => setShowMore(true)}
+          >
+            + Add name &amp; business <span className={styles.opt}>(optional)</span>
+          </button>
+        )}
 
         {formError && (
           <p className={styles.error} role="alert">

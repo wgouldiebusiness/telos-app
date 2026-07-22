@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import LegalShell from '../LegalShell'
 import styles from '../legal.module.css'
 
 export const metadata: Metadata = {
@@ -9,11 +10,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <div className={styles.page}>
-      <div className={`container ${styles.inner}`}>
-        <h1 className={styles.title}>Privacy Policy</h1>
-        <p className={styles.meta}>Last updated: 30 June 2026</p>
-
+    <LegalShell title="Privacy Policy" updated="30 June 2026">
         <h2 className={styles.h2}>Who we are</h2>
         <p>Telos AI is the trading name of William Robert Gouldsmith, a sole trader based in Bristol, England.</p>
         <ul className={styles.defList}>
@@ -140,7 +137,6 @@ export default function PrivacyPage() {
         <p>William Robert Gouldsmith, trading as Telos AI</p>
         <p>Email: william.gouldsmith@telosai.co.uk</p>
         <p>Address: Bristol, United Kingdom (full postal address available on request)</p>
-      </div>
-    </div>
+    </LegalShell>
   )
 }

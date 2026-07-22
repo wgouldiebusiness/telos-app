@@ -2,9 +2,9 @@
 // Resend — TRANSACTIONAL email  ("Emails" product)
 //
 // A 1:1 message triggered by a user action (here: a waitlist signup).
-// This is billed and handled SEPARATELY from the marketing audience side
-// (see ./audience.ts). Keep that boundary clear: anything in this file is
-// transactional; anything that touches a contact list lives in audience.ts.
+// This is billed and handled SEPARATELY from the marketing contact side
+// (see ./contacts.ts). Keep that boundary clear: anything in this file is
+// transactional; anything that touches the contact store lives in contacts.ts.
 //
 // Sends via the Resend REST API with fetch — matching the existing
 // src/agents/shared/email.ts approach (no SDK dependency).

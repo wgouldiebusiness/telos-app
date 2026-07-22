@@ -2,13 +2,13 @@ import type { Viewport } from 'next'
 import Link from 'next/link'
 import styles from './legal.module.css'
 
-// Light document pages — match the browser chrome to the white background
-// instead of the site-wide black.
+// Dark document pages — match the browser chrome to the near-black
+// background so the legal docs sit in the site's brand.
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#ffffff',
+  themeColor: '#0c0a12',
 }
 
 const docs = [

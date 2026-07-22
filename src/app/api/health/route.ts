@@ -11,12 +11,44 @@
 //
 // Public by design (it must be loadable from a phone in a hurry), so it
 // reports status only — no keys, no config detail, no error internals.
+//
+// One authenticated extra: call it with `Authorization: Bearer <CRON_SECRET>`
+// and the JSON gains an `env` block listing which environment variables the
+// RUNNING deployment can actually see (presence booleans only, never values).
+// This is the fast way to confirm a var like RESEND_API_KEY genuinely reached
+// the deployment after a redeploy — env vars only apply to builds made AFTER
+// they were added in Vercel, so a "set but empty at runtime" key is almost
+// always a stale deployment, which this block makes visible in one request.
 // ─────────────────────────────────────────────────────────────
 
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { isAuthorisedCron } from '@/agents/shared/cron'
 
 export const dynamic = 'force-dynamic'
+
+// Presence-only view of the env vars the funnel depends on. Never returns a
+// value — only whether the running deployment has a non-empty entry for it.
+function envPresence(): Record<string, boolean> {
+  const has = (v?: string) => Boolean(v && v.trim())
+  return {
+    NEXT_PUBLIC_SUPABASE_URL:      has(process.env.NEXT_PUBLIC_SUPABASE_URL),
+    NEXT_PUBLIC_SUPABASE_ANON_KEY: has(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
+    SUPABASE_SERVICE_ROLE_KEY:     has(process.env.SUPABASE_SERVICE_ROLE_KEY),
+    RESEND_API_KEY:                has(process.env.RESEND_API_KEY),
+    RESEND_WAITLIST_SEGMENT_ID:    has(process.env.RESEND_WAITLIST_SEGMENT_ID),
+    WAITLIST_ALERT_EMAIL:          has(process.env.WAITLIST_ALERT_EMAIL),
+    CRON_SECRET:                   has(process.env.CRON_SECRET),
+    MASTER_EMAILS:                 has(process.env.MASTER_EMAILS),
+    NEXT_PUBLIC_SITE_URL:          has(process.env.NEXT_PUBLIC_SITE_URL),
+    // LLM provider keys — whichever is set decides which provider the agents
+    // use (LLM_PROVIDER can force one explicitly).
+    ANTHROPIC_API_KEY:             has(process.env.ANTHROPIC_API_KEY),
+    GEMINI_API_KEY:                has(process.env.GEMINI_API_KEY),
+    GROQ_API_KEY:                  has(process.env.GROQ_API_KEY),
+    LLM_PROVIDER:                  has(process.env.LLM_PROVIDER),
+  }
+}
 
 interface Check {
   ok: boolean
@@ -73,7 +105,7 @@ async function checkResend(): Promise<Check> {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   const [supabase, resend] = await Promise.all([checkSupabase(), checkResend()])
   const ok = supabase.ok && resend.ok
 
@@ -88,6 +120,9 @@ export async function GET() {
           ].filter(Boolean).join('; ')}.`,
       supabase,
       resend,
+      // Only present for an authenticated caller (Bearer CRON_SECRET). Presence
+      // booleans only, so it is safe to look at without leaking any secret.
+      ...(isAuthorisedCron(req) ? { env: envPresence() } : {}),
       checkedAt: new Date().toISOString(),
     },
     { status: ok ? 200 : 503 }
