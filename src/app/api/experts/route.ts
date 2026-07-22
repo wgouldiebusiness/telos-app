@@ -22,15 +22,15 @@ import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
 import { isMasterEmail } from '@/lib/security'
 import { rateLimit } from '@/agents/shared/rateLimiter'
-import { askClaude, type ChatTurn } from '@/agents/shared/claude'
+import { askLLM, isLLMConfigured, activeProvider, type ChatTurn } from '@/agents/shared/llm'
 import { getExpertAgent } from '@/agents/experts/registry'
 
 const MAX_MESSAGE_LENGTH = 4000
 const MAX_HISTORY_TURNS = 30
 
-// The experts warrant a stronger model than the site widgets. Override per
-// environment without a deploy via EXPERTS_MODEL (e.g. claude-opus-4-8).
-const EXPERTS_MODEL = process.env.EXPERTS_MODEL || 'claude-sonnet-5'
+// The model provider is a single env var (LLM_PROVIDER: gemini | groq |
+// anthropic), resolved inside askLLM. Each provider has its own default
+// model, overridable via GEMINI_MODEL / GROQ_MODEL / EXPERTS_MODEL.
 
 // Distinctive markers from the registry's private instructions. If a reply
 // contains one, the model has been manipulated into quoting its prompt;
@@ -107,7 +107,7 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!isLLMConfigured()) {
     return NextResponse.json(
       { error: 'The agents are not available right now.' },
       { status: 503 }
@@ -129,11 +129,10 @@ export async function POST(req: NextRequest) {
 
   try {
     const started = Date.now()
-    const reply = await askClaude({
+    const reply = await askLLM({
       system: agent.systemPrompt,
       messages: [...history, { role: 'user', content: message }],
       maxTokens: agent.maxTokens,
-      model: EXPERTS_MODEL,
     })
 
     // Prompt-leak guard: never return output that quotes the private brief.
@@ -147,7 +146,7 @@ export async function POST(req: NextRequest) {
 
     // Structured usage log: who used which agent, how much, how fast.
     console.log(
-      `[experts] agent=${agent.slug} user=${user.id} turns=${history.length + 1} in=${message.length} out=${reply.length} ms=${Date.now() - started}`
+      `[experts] provider=${activeProvider()} agent=${agent.slug} user=${user.id} turns=${history.length + 1} in=${message.length} out=${reply.length} ms=${Date.now() - started}`
     )
     return NextResponse.json({ reply })
   } catch {
