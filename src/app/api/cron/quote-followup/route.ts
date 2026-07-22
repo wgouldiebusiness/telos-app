@@ -20,11 +20,9 @@ function daysSince(iso: string): number {
   return (Date.now() - new Date(iso).getTime()) / (1000 * 60 * 60 * 24)
 }
 
-export async function GET(req: NextRequest) {
-  if (!isAuthorisedCron(req)) {
-    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
-  }
-
+// Core job, callable directly by the daily dispatcher (see
+// /api/cron/daily). Returns a summary; throws only on a fatal DB error.
+export async function runQuoteFollowup(): Promise<{ sent: number; cooled: number }> {
   const supabase = createAdminClient()
   const { data: quotes, error } = await supabase
     .from('quotes')
@@ -33,7 +31,7 @@ export async function GET(req: NextRequest) {
 
   if (error) {
     console.error('[quote-followup] DB error:', error.message)
-    return NextResponse.json({ error: 'Database error.' }, { status: 500 })
+    throw new Error(error.message)
   }
 
   let sent = 0
@@ -75,5 +73,19 @@ export async function GET(req: NextRequest) {
   }
 
   console.log(`[quote-followup] sent ${sent}, cooled ${cooled}`)
-  return NextResponse.json({ ok: true, sent, cooled })
+  return { sent, cooled }
+}
+
+// Thin endpoint for manual/testing triggers. The daily schedule runs this
+// via /api/cron/daily, not this route directly.
+export async function GET(req: NextRequest) {
+  if (!isAuthorisedCron(req)) {
+    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
+  }
+  try {
+    const r = await runQuoteFollowup()
+    return NextResponse.json({ ok: true, ...r })
+  } catch {
+    return NextResponse.json({ error: 'Database error.' }, { status: 500 })
+  }
 }
