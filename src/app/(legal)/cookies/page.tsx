@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import LegalShell from '../LegalShell'
 import styles from '../legal.module.css'
 
 export const metadata: Metadata = {
@@ -9,16 +10,12 @@ export const metadata: Metadata = {
 
 export default function CookiesPage() {
   return (
-    <div className={styles.page}>
-      <div className={`container ${styles.inner}`}>
-        <h1 className={styles.title}>Cookie Policy</h1>
-        <p className={styles.meta}>Last updated: 30 June 2026</p>
-
+    <LegalShell title="Cookie Policy" updated="30 June 2026">
         <h2 className={styles.h2}>What are cookies?</h2>
         <p>Cookies are small text files that a website places on your device when you visit. They are widely used to make websites work correctly, to remember your preferences, and to give us information about how the site is being used.</p>
 
         <h2 className={styles.h2}>What cookies we use</h2>
-        <p>We use as few cookies as possible. Essential cookies are always on because the site cannot work without them. Optional cookies &mdash; analytics, and advertising cookies when we run ad campaigns &mdash; are only set if you accept them through our cookie banner. You can decline these and the site will still work normally.</p>
+        <p>We use as few cookies as possible. Essential cookies are always on because the site cannot work without them. Optional cookies, meaning analytics and advertising cookies when we run ad campaigns, are only set if you accept them through our cookie banner. You can decline these and the site will still work normally.</p>
 
         <h3 className={styles.h3}>Essential cookies</h3>
         <p>These are required for the website and portal to function. They cannot be switched off. They do not store any personally identifiable information.</p>
@@ -100,7 +97,6 @@ export default function CookiesPage() {
 
         <h2 className={styles.h2}>Contact us</h2>
         <p>If you have questions about our use of cookies, email us at william.gouldsmith@telosai.co.uk.</p>
-      </div>
-    </div>
+    </LegalShell>
   )
 }

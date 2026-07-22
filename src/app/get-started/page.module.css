@@ -1,0 +1,66 @@
+/* Standalone dark shell for the scoping wizard. Sits over the global
+   shader but paints its own near-black so the form reads crisp, with a
+   faint brand tint. */
+.shell {
+  --accent: #7868E6;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  min-height: 100svh;
+  background:
+    radial-gradient(120% 80% at 50% -10%, rgba(120, 104, 230, 0.14) 0%, transparent 60%),
+    #0c0a12;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 26px clamp(20px, 5vw, 56px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+.brandName {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.kicker {
+  font-family: var(--font-inter, 'Inter'), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  padding: 12px clamp(20px, 5vw, 56px) 72px;
+}
+
+@media (max-width: 560px) {
+  .kicker { display: none; }
+}

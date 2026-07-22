@@ -1,19 +1,32 @@
-/* ── Document shell ── plain light page that covers the global shader.
-   No marketing chrome; reads like a standalone legal document. */
+/* ── Document shell ── dark standalone legal document.
+   Reads like a clean legal document, in the site's dark brand rather than
+   the old white. Accent is the one brand token (purple here); a Websites or
+   Media legal page would only need to swap --accent. */
 .shell {
+  --accent:   #7868E6;
+  --accent-2: #9B8DF5;
+
   position: relative;
   z-index: 1;
   min-height: 100vh; /* Safari fallback */
   min-height: 100svh;
-  background: var(--white);
+  background:
+    radial-gradient(120% 70% at 50% -10%, rgba(120, 104, 230, 0.12) 0%, transparent 55%),
+    #0c0a12;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
 }
 
 /* Slim top bar (static, not the marketing header) */
 .topbar {
-  border-bottom: 1px solid var(--grey-3);
-  background: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(12, 10, 18, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .topbarInner {
@@ -30,7 +43,7 @@
   font-size: 16px;
   font-weight: 800;
   letter-spacing: -0.03em;
-  color: var(--dark);
+  color: #ffffff;
   text-decoration: none;
 }
 
@@ -45,29 +58,29 @@
   font-size: 13px;
   font-weight: 500;
   letter-spacing: -0.01em;
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.6);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.topnavLink:hover { color: var(--dark); }
+.topnavLink:hover { color: #ffffff; }
 
 .backLink {
   font-size: 13px;
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: var(--purple);
+  color: var(--accent-2);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.backLink:hover { color: var(--purple-2); }
+.backLink:hover { color: #ffffff; }
 
 /* Slim footer */
 .footer {
   margin-top: auto;
-  border-top: 1px solid var(--grey-3);
-  background: var(--white);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
 }
 
 .footerInner {
@@ -83,7 +96,7 @@
 
 .footerCopy {
   font-size: 12.5px;
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.42);
   letter-spacing: -0.01em;
 }
 
@@ -94,94 +107,168 @@
 
 .footerLink {
   font-size: 12.5px;
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.42);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
-.footerLink:hover { color: var(--dark); }
+.footerLink:hover { color: #ffffff; }
 
-/* Legal pages — structured, readable, clean */
+/* ── Page ── */
 .page {
-  background: var(--white);
   padding-top: 2.5rem;
-  padding-bottom: 4rem;
+  padding-bottom: 5rem;
 }
 
-/* Simple light grey hero for legal pages */
-.legalHero {
-  background: var(--light);
-  padding: 7rem 0 3rem;
-  border-bottom: 1px solid var(--grey-3);
+/* Document header block */
+.docHead {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 2.5rem var(--side-pad) 2rem;
 }
 
+.kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+}
+
+.title {
+  font-size: clamp(28px, 4.5vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  color: #ffffff;
+  margin: 14px 0 18px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.meta {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.emailPill {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--purple-dim);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-size: 12px;
+  color: var(--accent-2);
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.emailPill:hover { background: rgba(120, 104, 230, 0.2); }
+
+/* ── Two-column grid: sticky TOC + article ── */
+.grid {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--side-pad);
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.toc {
+  position: sticky;
+  top: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tocLink {
+  padding: 8px 0 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.tocLink:hover { color: rgba(255, 255, 255, 0.8); }
+.tocLinkActive {
+  color: #ffffff;
+  font-weight: 700;
+  border-left-color: var(--accent);
+}
+
+.article {
+  max-width: 68ch;
+}
+
+/* Deprecated single-column wrapper kept for any page without a TOC */
 .inner {
   max-width: 720px;
   margin-left: auto;
   margin-right: auto;
 }
 
+/* ── Document typography ── */
 .warning {
-  background: rgba(120,104,230,.06);
-  border-left: 3px solid var(--purple);
+  background: var(--purple-dim);
+  border-left: 3px solid var(--accent);
   padding: 14px 18px;
   font-size: 13px;
-  color: var(--purple);
+  color: var(--accent-2);
   line-height: 1.65;
   margin-bottom: 2.5rem;
   border-radius: 0 8px 8px 0;
 }
 
-.title {
-  font-size: clamp(28px, 4vw, 48px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
-  color: var(--dark);
-  margin-bottom: 0.5rem;
-}
-
-.meta {
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  color: var(--grey);
-  margin-bottom: 0.25rem;
-}
-
 .h2 {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: var(--dark);
-  margin-top: 3rem;
+  color: #ffffff;
+  margin-top: 2.75rem;
   margin-bottom: 0.875rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--grey-3);
+  scroll-margin-top: 100px;
 }
 
-.title + .meta + .h2,
-.meta + .h2 {
-  margin-top: 2rem;
-  border-top: none;
-  padding-top: 0;
+.article > .h2:first-child,
+.inner > .title + .meta + .h2,
+.inner > .meta + .h2 {
+  margin-top: 0;
 }
 
 .h3 {
   font-size: 16px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--dark);
+  color: rgba(255, 255, 255, 0.92);
   margin-top: 1.75rem;
   margin-bottom: 0.75rem;
 }
 
-.inner p {
+.page p {
   font-size: 16px;
-  color: var(--text-body);
+  color: rgba(255, 255, 255, 0.66);
   line-height: 1.8;
   margin-bottom: 1rem;
   letter-spacing: -0.01em;
 }
+
+.page p strong { color: rgba(255, 255, 255, 0.9); font-weight: 600; }
 
 .list {
   list-style: disc;
@@ -194,7 +281,7 @@
 
 .list li {
   font-size: 16px;
-  color: var(--text-body);
+  color: rgba(255, 255, 255, 0.66);
   line-height: 1.75;
   letter-spacing: -0.01em;
 }
@@ -209,7 +296,7 @@
 
 .defList li {
   font-size: 16px;
-  color: var(--text-body);
+  color: rgba(255, 255, 255, 0.66);
   line-height: 1.7;
   letter-spacing: -0.01em;
 }
@@ -218,9 +305,8 @@
 .tableWrap {
   overflow-x: auto;
   margin: 1rem 0 1.5rem;
-  border: 1px solid var(--grey-3);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 10px;
-  overflow: hidden;
 }
 
 .table {
@@ -234,18 +320,18 @@
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: rgba(255, 255, 255, 0.5);
   text-align: left;
   padding: 12px 16px;
-  background: var(--light);
-  border-bottom: 1px solid var(--grey-3);
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   white-space: nowrap;
 }
 
 .table td {
   padding: 12px 16px;
-  border-bottom: 1px solid var(--grey-3);
-  color: var(--text-body);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.65;
   vertical-align: top;
   letter-spacing: -0.01em;
@@ -253,11 +339,16 @@
 
 .table tr:last-child td { border-bottom: none; }
 
-.inner a {
-  color: var(--purple);
+.page a:not(.emailPill):not(.tocLink) {
+  color: var(--accent-2);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color 0.2s ease;
 }
 
-.inner a:hover { color: var(--purple-2); }
+.page a:not(.emailPill):not(.tocLink):hover { color: #ffffff; }
+
+@media (max-width: 860px) {
+  .grid { grid-template-columns: 1fr; gap: 0; }
+  .toc { display: none; }
+}
