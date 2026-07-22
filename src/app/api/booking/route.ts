@@ -16,7 +16,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { rateLimit } from '@/agents/shared/rateLimiter'
 import { isValidEmail } from '@/lib/security'
-import { askClaude, type ChatTurn } from '@/agents/shared/claude'
+import { askLLM, isLLMConfigured, type ChatTurn } from '@/agents/shared/llm'
 import { getBookingConfig } from '@/agents/booking/config'
 import { getFreeSlots, createEvent } from '@/agents/booking/calendar'
 
@@ -88,7 +88,7 @@ export async function POST(req: NextRequest) {
 
   // ── Chat ──
   if (body.action === 'chat') {
-    if (!process.env.ANTHROPIC_API_KEY) {
+    if (!isLLMConfigured()) {
       return NextResponse.json({ error: 'The assistant is not available right now.' }, { status: 503 })
     }
     const message = (body.message ?? '').trim()
@@ -111,7 +111,7 @@ export async function POST(req: NextRequest) {
       : []
 
     try {
-      const reply = await askClaude({
+      const reply = await askLLM({
         system,
         messages: [...history, { role: 'user', content: message }],
         maxTokens: 300,
