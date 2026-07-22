@@ -12,7 +12,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { createClient } from '@/lib/supabase/server'
-import { askClaude } from '@/agents/shared/claude'
+import { askLLM } from '@/agents/shared/llm'
 import { onboardingQuestions } from '@/agents/onboarding-bot/questions'
 
 export async function POST(req: NextRequest) {
@@ -65,7 +65,7 @@ export async function POST(req: NextRequest) {
 
   let summary = ''
   try {
-    summary = await askClaude({
+    summary = await askLLM({
       system: 'You turn a business owner\'s onboarding answers into a tidy one-paragraph brief for the team that will build their AI agent. British English. No em dashes. Do not invent anything not in the answers. Keep it under 100 words.',
       messages: [{ role: 'user', content: answerText }],
       maxTokens: 300,

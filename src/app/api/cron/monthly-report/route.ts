@@ -9,7 +9,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isAuthorisedCron } from '@/agents/shared/cron'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { askClaude } from '@/agents/shared/claude'
+import { askLLM } from '@/agents/shared/llm'
 import { sendEmail } from '@/agents/shared/email'
 import { monthlyReportEmail } from '@/agents/monthly-report/template'
 
@@ -57,7 +57,7 @@ export async function runMonthlyReport(): Promise<{ sent: number; month: string 
     const ownerEmail = (biz as { profiles?: { email?: string } }).profiles?.email
 
     try {
-      const body = await askClaude({
+      const body = await askLLM({
         system: REPORT_SYSTEM,
         messages: [{
           role: 'user',

@@ -9,7 +9,7 @@
 // ─────────────────────────────────────────────────────────────
 
 import { readSheet, updateCell } from '@/agents/shared/sheets'
-import { askClaude } from '@/agents/shared/claude'
+import { askLLM } from '@/agents/shared/llm'
 
 const EMAIL_SYSTEM = `Write a short cold email to a service business owner. The email is from William Gouldsmith, founder of Telos AI. It should be warm, direct, and personal. No more than four sentences. Do not use buzzwords or make promises. Mention one specific thing about their business that shows you have actually looked at it. The goal is to start a conversation, not to sell. End with a simple question. No subject line needed, just the email body. British English. No em dashes.`
 
@@ -35,7 +35,7 @@ export async function writeOutreachDrafts(): Promise<number> {
     if (!name || existingDraft) continue
 
     try {
-      const draft = await askClaude({
+      const draft = await askLLM({
         system: EMAIL_SYSTEM,
         messages: [{
           role: 'user',

@@ -8,7 +8,7 @@
 // ─────────────────────────────────────────────────────────────
 
 import { NextRequest, NextResponse } from 'next/server'
-import { askClaude, type ChatTurn } from '@/agents/shared/claude'
+import { askLLM, isLLMConfigured, type ChatTurn } from '@/agents/shared/llm'
 import { rateLimit } from '@/agents/shared/rateLimiter'
 import { getReceptionistConfig } from '@/agents/receptionist/config'
 import { buildReceptionistPrompt } from '@/agents/receptionist/systemPrompt'
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
     )
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!isLLMConfigured()) {
     console.error('[receptionist] ANTHROPIC_API_KEY is not set')
     return NextResponse.json(
       { error: 'The assistant is not available right now.' },
@@ -70,7 +70,7 @@ export async function POST(req: NextRequest) {
   const messages: ChatTurn[] = [...history, { role: 'user', content: message }]
 
   try {
-    const reply = await askClaude({
+    const reply = await askLLM({
       system: buildReceptionistPrompt(config),
       messages,
       maxTokens: 400,

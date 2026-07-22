@@ -9,7 +9,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isAuthorisedCron } from '@/agents/shared/cron'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { askClaude } from '@/agents/shared/claude'
+import { askLLM } from '@/agents/shared/llm'
 import { sendEmail } from '@/agents/shared/email'
 import { getGoogleAccessToken, SCOPE_CALENDAR } from '@/agents/shared/google'
 
@@ -58,7 +58,7 @@ export async function runWeeklyDigest(): Promise<{ ok: boolean; events: number; 
   // One-line AI summary of the week ahead.
   let summary = ''
   try {
-    summary = await askClaude({
+    summary = await askLLM({
       system: 'You write a single encouraging one-line summary of the week ahead for a solo business owner. British English. No em dashes. One sentence only.',
       messages: [{
         role: 'user',

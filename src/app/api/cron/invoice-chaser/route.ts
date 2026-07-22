@@ -10,7 +10,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { isAuthorisedCron } from '@/agents/shared/cron'
 import { createAdminClient } from '@/lib/supabase/admin'
-import { askClaude } from '@/agents/shared/claude'
+import { askLLM } from '@/agents/shared/llm'
 import { sendEmail } from '@/agents/shared/email'
 import {
   getInvoiceChaserConfig,
@@ -58,7 +58,7 @@ export async function runInvoiceChaser(): Promise<{ sent: number }> {
     if (!stage || !column) continue
 
     try {
-      const body = await askClaude({
+      const body = await askLLM({
         system: 'You write professional, polite overdue-invoice reminders. British English. No em dashes. Never aggressive.',
         messages: [{ role: 'user', content: buildReminderPrompt(config, stage, inv.client_name || 'there', Number(inv.amount) || 0) }],
         maxTokens: 400,

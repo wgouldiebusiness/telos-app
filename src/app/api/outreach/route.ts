@@ -8,6 +8,7 @@
 
 import { NextRequest, NextResponse } from 'next/server'
 import { timingSafeCompare } from '@/lib/security'
+import { isLLMConfigured } from '@/agents/shared/llm'
 import { writeOutreachDrafts } from '@/agents/outreach'
 
 export async function POST(req: NextRequest) {
@@ -17,8 +18,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return NextResponse.json({ error: 'Claude is not configured.' }, { status: 503 })
+  if (!isLLMConfigured()) {
+    return NextResponse.json({ error: 'The AI provider is not configured.' }, { status: 503 })
   }
 
   const written = await writeOutreachDrafts()
