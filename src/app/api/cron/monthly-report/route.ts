@@ -25,11 +25,9 @@ function lastMonth(): { iso: string; label: string } {
 const REPORT_SYSTEM =
   'You write short monthly performance reports for small business owners. Plain English, no jargon. Positive and honest. Never exaggerate or invent numbers. British English. No em dashes. Exactly three short paragraphs: what happened this month, what it means for the business, and one thing to look forward to next month. Maximum 150 words total.'
 
-export async function GET(req: NextRequest) {
-  if (!isAuthorisedCron(req)) {
-    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
-  }
-
+// Core job, callable directly by the daily dispatcher (see /api/cron/daily),
+// which runs it on the 1st of each month.
+export async function runMonthlyReport(): Promise<{ sent: number; month: string }> {
   const supabase = createAdminClient()
   const { iso, label } = lastMonth()
 
@@ -41,7 +39,7 @@ export async function GET(req: NextRequest) {
 
   if (error) {
     console.error('[monthly-report] DB error:', error.message)
-    return NextResponse.json({ error: 'Database error.' }, { status: 500 })
+    throw new Error(error.message)
   }
 
   let sent = 0
@@ -90,5 +88,18 @@ export async function GET(req: NextRequest) {
   }
 
   console.log(`[monthly-report] sent ${sent} reports for ${label}`)
-  return NextResponse.json({ ok: true, sent, month: label })
+  return { sent, month: label }
+}
+
+// Thin endpoint for manual/testing triggers.
+export async function GET(req: NextRequest) {
+  if (!isAuthorisedCron(req)) {
+    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
+  }
+  try {
+    const r = await runMonthlyReport()
+    return NextResponse.json({ ok: true, ...r })
+  } catch {
+    return NextResponse.json({ error: 'Database error.' }, { status: 500 })
+  }
 }

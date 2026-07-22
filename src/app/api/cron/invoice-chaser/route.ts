@@ -22,11 +22,8 @@ function daysOverdue(due: string): number {
   return (Date.now() - new Date(due).getTime()) / (1000 * 60 * 60 * 24)
 }
 
-export async function GET(req: NextRequest) {
-  if (!isAuthorisedCron(req)) {
-    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
-  }
-
+// Core job, callable directly by the daily dispatcher (see /api/cron/daily).
+export async function runInvoiceChaser(): Promise<{ sent: number }> {
   const supabase = createAdminClient()
   const { data: invoices, error } = await supabase
     .from('invoices')
@@ -35,7 +32,7 @@ export async function GET(req: NextRequest) {
 
   if (error) {
     console.error('[invoice-chaser] DB error:', error.message)
-    return NextResponse.json({ error: 'Database error.' }, { status: 500 })
+    throw new Error(error.message)
   }
 
   let sent = 0
@@ -89,5 +86,18 @@ export async function GET(req: NextRequest) {
   }
 
   console.log(`[invoice-chaser] sent ${sent} reminders`)
-  return NextResponse.json({ ok: true, sent })
+  return { sent }
+}
+
+// Thin endpoint for manual/testing triggers.
+export async function GET(req: NextRequest) {
+  if (!isAuthorisedCron(req)) {
+    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
+  }
+  try {
+    const r = await runInvoiceChaser()
+    return NextResponse.json({ ok: true, ...r })
+  } catch {
+    return NextResponse.json({ error: 'Database error.' }, { status: 500 })
+  }
 }

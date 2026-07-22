@@ -40,11 +40,9 @@ async function upcomingEvents(): Promise<string[]> {
   })
 }
 
-export async function GET(req: NextRequest) {
-  if (!isAuthorisedCron(req)) {
-    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
-  }
-
+// Core job, callable directly by the daily dispatcher (see /api/cron/daily),
+// which runs it on Mondays.
+export async function runWeeklyDigest(): Promise<{ ok: boolean; events: number; activity: number }> {
   const supabase = createAdminClient()
   const weekAgo = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
 
@@ -93,7 +91,16 @@ export async function GET(req: NextRequest) {
   </body></html>`
 
   const result = await sendEmail({ to: TO, subject: 'Your Telos week ahead', html })
-  return NextResponse.json({ ok: result.ok, events: events.length, activity: activity?.length ?? 0 })
+  return { ok: result.ok, events: events.length, activity: activity?.length ?? 0 }
+}
+
+// Thin endpoint for manual/testing triggers.
+export async function GET(req: NextRequest) {
+  if (!isAuthorisedCron(req)) {
+    return NextResponse.json({ error: 'Unauthorised.' }, { status: 401 })
+  }
+  const r = await runWeeklyDigest()
+  return NextResponse.json(r)
 }
 
 function escapeHtml(s: string): string {
