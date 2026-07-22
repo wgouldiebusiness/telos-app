@@ -1,0 +1,79 @@
+/* ============================================================
+   TELOS AI — Design tokens
+   Ported from the live app (globals.css). Dark by default,
+   Inter, purple accent. The accent is a single token so a
+   subtree can be re-branded: purple (Telos AI, default),
+   red (Telos Websites), teal (Telos Media).
+   ============================================================ */
+
+:root {
+  /* Core palette */
+  --tls-black: #000000;
+  --tls-bg: #0c0a12;
+  --tls-dark: #1d1d1f;
+  --tls-white: #ffffff;
+
+  /* Purple (primary brand accent) */
+  --tls-purple: #7868e6;
+  --tls-purple-2: #9b8df5;
+  --tls-purple-3: #c4baff;
+  --tls-purple-dim: rgba(120, 104, 230, 0.16);
+
+  /* Sub-brand accents */
+  --tls-red: #e8352a;     /* Telos Websites */
+  --tls-teal: #00d4b4;    /* Telos Media */
+
+  /* Active accent (overridden by [data-brand]) */
+  --tls-accent: var(--tls-purple);
+  --tls-accent-2: var(--tls-purple-2);
+  --tls-accent-3: var(--tls-purple-3);
+  --tls-accent-dim: var(--tls-purple-dim);
+
+  /* Surfaces (glass over the dark background) */
+  --tls-surface: rgba(255, 255, 255, 0.04);
+  --tls-surface-2: rgba(255, 255, 255, 0.03);
+  --tls-surface-strong: rgba(255, 255, 255, 0.07);
+  --tls-border: rgba(255, 255, 255, 0.1);
+  --tls-border-strong: rgba(255, 255, 255, 0.22);
+
+  /* Text on dark */
+  --tls-text: #ffffff;
+  --tls-text-2: rgba(255, 255, 255, 0.66);
+  --tls-text-muted: rgba(255, 255, 255, 0.42);
+  --tls-text-faint: rgba(255, 255, 255, 0.32);
+
+  /* State */
+  --tls-danger: #ff6b6b;
+
+  /* Typography */
+  --tls-font: 'Inter', system-ui, -apple-system, sans-serif;
+  --tls-tracking-tight: -0.01em;
+  --tls-tracking-tighter: -0.04em;
+  --tls-tracking-label: 0.16em;
+
+  /* Radii */
+  --tls-radius-sm: 8px;
+  --tls-radius-md: 12px;
+  --tls-radius-lg: 16px;
+  --tls-radius-pill: 980px;
+
+  /* Motion */
+  --tls-ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --tls-ease-mag: cubic-bezier(0.23, 1, 0.32, 1);
+  --tls-t-fast: 180ms var(--tls-ease);
+  --tls-t-base: 350ms var(--tls-ease);
+}
+
+/* Sub-brand scopes — set on a wrapper (BrandScope) or any element. */
+[data-brand='websites'] {
+  --tls-accent: var(--tls-red);
+  --tls-accent-2: #f05a50;
+  --tls-accent-3: #ffb3ad;
+  --tls-accent-dim: rgba(232, 53, 42, 0.16);
+}
+[data-brand='media'] {
+  --tls-accent: var(--tls-teal);
+  --tls-accent-2: #33e0c6;
+  --tls-accent-3: #99efe1;
+  --tls-accent-dim: rgba(0, 212, 180, 0.16);
+}
