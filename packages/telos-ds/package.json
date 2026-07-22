@@ -1,0 +1,35 @@
+{
+  "name": "telos-ds",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Telos AI design system — framework-free React primitives in the house style (Inter, dark, purple).",
+  "type": "module",
+  "module": "./dist/index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./styles/index.css"
+  },
+  "files": ["dist", "styles"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "react-dom": ">=18"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "typescript": "^5.6.0"
+  },
+  "dependencies": {
+    "@fontsource/inter": "^5.1.0"
+  }
+}

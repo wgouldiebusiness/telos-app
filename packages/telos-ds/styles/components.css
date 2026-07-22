@@ -1,0 +1,252 @@
+/* ============================================================
+   TELOS AI — Component styles
+   Class-based so the library builds with plain tsc (no CSS
+   imports in the TSX). Every component reads the tokens above.
+   ============================================================ */
+
+.tls-root {
+  font-family: var(--tls-font);
+  color: var(--tls-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Button ── */
+.tls-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--tls-font);
+  font-weight: 600;
+  letter-spacing: var(--tls-tracking-tight);
+  border: 1px solid transparent;
+  border-radius: var(--tls-radius-pill);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background var(--tls-t-base), border-color var(--tls-t-base),
+    transform 0.3s var(--tls-ease-mag), box-shadow 0.3s ease, color var(--tls-t-fast);
+}
+.tls-btn--md { padding: 13px 24px; font-size: 15px; }
+.tls-btn--sm { padding: 9px 18px; font-size: 13.5px; }
+.tls-btn--lg { padding: 16px 30px; font-size: 16px; }
+
+.tls-btn--primary {
+  background: var(--tls-accent);
+  color: #ffffff;
+  border-color: var(--tls-accent);
+}
+.tls-btn--primary:hover {
+  background: var(--tls-accent-2);
+  border-color: var(--tls-accent-2);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px var(--tls-accent-dim);
+}
+.tls-btn--secondary {
+  background: transparent;
+  color: var(--tls-text);
+  border-color: var(--tls-border-strong);
+}
+.tls-btn--secondary:hover {
+  border-color: var(--tls-accent-2);
+  background: var(--tls-accent-dim);
+}
+.tls-btn--ghost {
+  background: transparent;
+  color: var(--tls-text-2);
+  border-color: transparent;
+}
+.tls-btn--ghost:hover { color: var(--tls-text); }
+.tls-btn:disabled { opacity: 0.5; cursor: default; transform: none; box-shadow: none; }
+
+/* ── Card ── */
+.tls-card {
+  background: var(--tls-surface);
+  border: 1px solid var(--tls-border);
+  border-radius: var(--tls-radius-lg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+.tls-card--pad { padding: clamp(20px, 3vw, 32px); }
+
+/* ── Chip ── */
+.tls-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  font-family: var(--tls-font);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: var(--tls-tracking-tight);
+  color: var(--tls-text-2);
+  background: transparent;
+  border: 1px solid var(--tls-border-strong);
+  border-radius: var(--tls-radius-pill);
+  cursor: pointer;
+  transition: border-color var(--tls-t-fast), background var(--tls-t-fast), color var(--tls-t-fast);
+}
+.tls-chip:hover { border-color: rgba(255, 255, 255, 0.4); color: var(--tls-text); }
+.tls-chip--active {
+  background: var(--tls-accent);
+  border-color: var(--tls-accent);
+  color: #ffffff;
+}
+
+/* ── Fields ── */
+.tls-field { display: flex; flex-direction: column; gap: 7px; }
+.tls-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--tls-tracking-tight);
+  color: var(--tls-text-2);
+}
+.tls-req { color: var(--tls-accent-2); }
+.tls-opt { color: var(--tls-text-faint); font-weight: 400; }
+.tls-input,
+.tls-textarea,
+.tls-select {
+  appearance: none;
+  width: 100%;
+  padding: 13px 15px;
+  font-family: var(--tls-font);
+  font-size: 15px;
+  letter-spacing: var(--tls-tracking-tight);
+  color: var(--tls-text);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--tls-radius-md);
+  outline: none;
+  transition: border-color var(--tls-t-fast), background var(--tls-t-fast), box-shadow var(--tls-t-fast);
+}
+.tls-input::placeholder,
+.tls-textarea::placeholder { color: var(--tls-text-faint); }
+.tls-input:focus,
+.tls-textarea:focus,
+.tls-select:focus {
+  border-color: var(--tls-accent-2);
+  background: var(--tls-surface-strong);
+  box-shadow: 0 0 0 3px var(--tls-accent-dim);
+}
+.tls-textarea { resize: vertical; min-height: 88px; line-height: 1.55; }
+.tls-select option { background: #17141f; color: #ffffff; }
+.tls-input--error,
+.tls-input--error:focus {
+  border-color: var(--tls-danger);
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.16);
+}
+.tls-error { font-size: 13px; color: #ff8585; letter-spacing: var(--tls-tracking-tight); margin: 0; }
+
+/* ── Eyebrow ── */
+.tls-eyebrow {
+  display: inline-block;
+  font-family: var(--tls-font);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--tls-tracking-label);
+  text-transform: uppercase;
+  color: var(--tls-text-muted);
+}
+.tls-eyebrow--accent { color: var(--tls-accent-2); }
+
+/* ── Badge ── */
+.tls-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-family: var(--tls-font);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--tls-tracking-tight);
+  color: var(--tls-accent);
+  border: 1px solid var(--tls-accent-dim);
+  border-radius: var(--tls-radius-pill);
+  text-decoration: none;
+}
+.tls-badge__dot { width: 6px; height: 6px; border-radius: 999px; background: var(--tls-accent); }
+
+/* ── Heading ── */
+.tls-heading {
+  font-family: var(--tls-font);
+  font-weight: 800;
+  letter-spacing: var(--tls-tracking-tighter);
+  line-height: 1.06;
+  color: var(--tls-text);
+  margin: 0;
+}
+.tls-heading--display { font-size: clamp(2.4rem, 6vw, 4rem); }
+.tls-heading--h1 { font-size: clamp(1.9rem, 4.5vw, 3rem); }
+.tls-heading--h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+.tls-heading--h3 { font-size: 1.3rem; letter-spacing: -0.03em; }
+
+/* ── Step indicator ── */
+.tls-steps { display: flex; align-items: flex-start; }
+.tls-step { display: flex; align-items: center; flex: 1; }
+.tls-step:last-child { flex: none; }
+.tls-step__circle {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--tls-font);
+  font-size: 12px;
+  font-weight: 600;
+}
+.tls-step__circle--upcoming { background: transparent; color: var(--tls-text-muted); border: 1px solid var(--tls-border-strong); }
+.tls-step__circle--active { background: #ffffff; color: #12101a; border: 1px solid #ffffff; }
+.tls-step__circle--done { background: var(--tls-accent); color: #ffffff; border: 1px solid var(--tls-accent); }
+.tls-step__label { margin-left: 8px; font-family: var(--tls-font); font-size: 12px; letter-spacing: var(--tls-tracking-tight); color: var(--tls-text-2); white-space: nowrap; }
+.tls-step__label--muted { color: var(--tls-text-muted); }
+.tls-step__line { flex: 1; height: 1px; margin: 0 12px; background: var(--tls-border); }
+.tls-step__line--done { background: var(--tls-accent); }
+
+/* ── Success panel ── */
+.tls-success { text-align: center; padding: 32px 20px; }
+.tls-success__mark {
+  display: inline-flex;
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  background: var(--tls-accent);
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+}
+.tls-success__title {
+  margin: 20px 0 10px;
+  font-family: var(--tls-font);
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: var(--tls-tracking-tighter);
+  color: var(--tls-text);
+}
+.tls-success__text { margin: 0 auto; max-width: 42ch; font-size: 15px; line-height: 1.6; color: var(--tls-text-2); }
+
+/* ── TOC nav ── */
+.tls-toc { display: flex; flex-direction: column; gap: 2px; }
+.tls-toc__link {
+  padding: 8px 0 8px 14px;
+  font-family: var(--tls-font);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: var(--tls-tracking-tight);
+  color: var(--tls-text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  transition: color var(--tls-t-fast), border-color var(--tls-t-fast);
+}
+.tls-toc__link:hover { color: var(--tls-text-2); }
+.tls-toc__link--active { color: var(--tls-text); font-weight: 700; border-left-color: var(--tls-accent); }
+
+/* ── Backdrop ── */
+.tls-backdrop {
+  position: relative;
+  min-height: 100%;
+  background:
+    radial-gradient(120% 80% at 50% -10%, var(--tls-accent-dim) 0%, transparent 60%),
+    var(--tls-bg);
+}

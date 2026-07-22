@@ -1,0 +1,6 @@
+/* Telos DS — single stylesheet entry (design-sync cssEntry).
+   Ships the design tokens and every component's styles. Inter is wired in
+   at sync time via the design-sync `extraFonts` config (from @fontsource),
+   and self-hosted via next/font in the app. */
+@import './tokens.css';
+@import './components.css';
