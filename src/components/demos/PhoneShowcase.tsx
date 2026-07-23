@@ -16,12 +16,59 @@ interface Props {
 
 const IFRAME_W = 390
 const IFRAME_H = 4700
+const LOAD_FALLBACK_MS = 3500
+
+interface DemoFrameProps {
+  demo: PhoneDemo
+  scale: number
+}
+
+// Owns its own "reveal me" fallback timer and loaded state, independently
+// per phone. Mounting this as its own component (rather than one shared
+// effect keyed on a parent counter) matters: each instance's effect runs
+// exactly once at mount, so phone 1's fallback timer can't get cancelled
+// when phones 2-4 mount later — which is what happened when this lived in
+// the parent, keyed on the shared load-stagger counter.
+function DemoFrame({ demo, scale }: DemoFrameProps) {
+  const [loaded, setLoaded] = useState(false)
+  const reveal = () => setLoaded(true)
+
+  // Safety net: reveal even if onLoad never fires (a slow connection or a
+  // blocked third-party script inside the demo should never leave a phone
+  // shimmering forever).
+  useEffect(() => {
+    const t = setTimeout(reveal, LOAD_FALLBACK_MS)
+    return () => clearTimeout(t)
+  }, [])
+
+  return (
+    <>
+      <div className={`${styles.skeleton} ${loaded ? styles.skeletonHidden : ''}`} />
+      <iframe
+        src={demo.path}
+        className={`${styles.frame} ${loaded ? styles.frameLoaded : ''}`}
+        style={{
+          width:           `${IFRAME_W}px`,
+          height:          `${IFRAME_H}px`,
+          transform:       `scale(${scale})`,
+          transformOrigin: '0 0',
+        }}
+        title={demo.name}
+        sandbox="allow-scripts allow-same-origin"
+        onLoad={reveal}
+      />
+    </>
+  )
+}
 
 function dims(pw: number) {
   const scale     = (pw - 20) / IFRAME_W   // 20 = 2×10px horizontal bezel padding
   const screenH   = pw * 496 / 252
   const maxScroll = Math.max(0, Math.round(IFRAME_H * scale - screenH))
-  return { scale, maxScroll }
+  // How much of the full page a "screen" shows at once, for the scrollbar
+  // thumb's proportional size — mirrors a real browser scrollbar.
+  const thumbFraction = Math.min(1, screenH / (IFRAME_H * scale))
+  return { scale, maxScroll, thumbFraction }
 }
 
 export default function PhoneShowcase({ demos }: Props) {
@@ -31,12 +78,18 @@ export default function PhoneShowcase({ demos }: Props) {
   const wrapRefs      = useRef<(HTMLDivElement | null)[]>([])
   const rafRef        = useRef<number>(0)
   const maxScrollRef  = useRef(dims(252).maxScroll)
+  const thumbRef      = useRef<HTMLDivElement>(null)
+  const thumbTravelRef = useRef(0) // px the thumb can travel = track height - thumb height
   const inView        = useInView(rowRef, { once: true, margin: '-100px 0px' })
 
   const [scale, setScale] = useState(dims(252).scale)
+  const [phoneHeight, setPhoneHeight] = useState(252 * 530 / 252)
+  const [thumbHeight, setThumbHeight] = useState(40)
   // Stagger-load the heavy demo iframes: only start loading once the section
-  // is near the viewport, then load one iframe at a time (each Tailwind CDN
-  // compiler is expensive). Each subsequent iframe loads 1.2s after the last.
+  // is near the viewport, then load one iframe shortly after the last so
+  // four in-iframe Tailwind compilers don't all spin up at once. Assets are
+  // compressed now, so the gap only needs to be enough to avoid a thundering
+  // herd, not a long wait.
   const [loadCount, setLoadCount] = useState(0)
 
   useEffect(() => {
@@ -50,7 +103,7 @@ export default function PhoneShowcase({ demos }: Props) {
           io.disconnect()
         }
       },
-      { rootMargin: '600px 0px' },
+      { rootMargin: '900px 0px' },
     )
     io.observe(section)
     return () => io.disconnect()
@@ -58,7 +111,7 @@ export default function PhoneShowcase({ demos }: Props) {
 
   useEffect(() => {
     if (loadCount < 1 || loadCount >= demos.length) return
-    const t = setTimeout(() => setLoadCount(c => c + 1), 1200)
+    const t = setTimeout(() => setLoadCount(c => c + 1), 450)
     return () => clearTimeout(t)
   }, [loadCount, demos.length])
 
@@ -72,9 +125,14 @@ export default function PhoneShowcase({ demos }: Props) {
       const pw = phone!.offsetWidth
       if (!pw) return
       const d = dims(pw)
+      const ph = Math.round(pw * 530 / 252)
       row!.style.setProperty('--pw', `${pw}px`)
       setScale(d.scale)
+      setPhoneHeight(ph)
       maxScrollRef.current = d.maxScroll
+      const th = Math.max(28, Math.round(ph * d.thumbFraction))
+      setThumbHeight(th)
+      thumbTravelRef.current = Math.max(0, ph - th)
     }
 
     measure()
@@ -89,6 +147,7 @@ export default function PhoneShowcase({ demos }: Props) {
     const mq = window.matchMedia('(max-width: 699px), (max-height: 559px)')
     let isMobile = mq.matches
     let lastTy = NaN
+    let lastProgress = NaN
     let ticking = false
 
     // Only touch the DOM when the offset actually changes. Outside the
@@ -104,15 +163,27 @@ export default function PhoneShowcase({ demos }: Props) {
       }
     }
 
+    // The scrollbar thumb tracks the same 0-1 progress that drives the
+    // phones, so it always shows exactly how far through the demo the
+    // scrubbing has gone — no separate/lagged timeline.
+    function applyThumb(progress: number) {
+      if (progress === lastProgress) return
+      lastProgress = progress
+      const thumb = thumbRef.current
+      if (!thumb) return
+      thumb.style.transform = `translateY(${progress * thumbTravelRef.current}px)`
+    }
+
     function tick() {
       ticking = false
       const section = sectionRef.current
       if (!section) return
-      if (isMobile) { apply(0); return }
+      if (isMobile) { apply(0); applyThumb(0); return }
       const rect     = section.getBoundingClientRect()
       const total    = section.offsetHeight - window.innerHeight
       const progress = total > 0 ? Math.max(0, Math.min(1, -rect.top / total)) : 0
       apply(-Math.round(progress * maxScrollRef.current))
+      applyThumb(progress)
     }
 
     function onScroll() {
@@ -125,6 +196,7 @@ export default function PhoneShowcase({ demos }: Props) {
     function onMq(e: MediaQueryListEvent) {
       isMobile = e.matches
       lastTy = NaN // force a re-apply on breakpoint change
+      lastProgress = NaN
       tick()
     }
 
@@ -175,21 +247,9 @@ export default function PhoneShowcase({ demos }: Props) {
                     ref={el => { wrapRefs.current[i] = el }}
                     className={styles.iframeWrap}
                   >
-                    {i < loadCount && (
-                      <iframe
-                        src={demo.path}
-                        className={styles.frame}
-                        style={{
-                          width:           `${IFRAME_W}px`,
-                          height:          `${IFRAME_H}px`,
-                          transform:       `scale(${scale})`,
-                          transformOrigin: '0 0',
-                        }}
-                        title={demo.name}
-                        loading="lazy"
-                        sandbox="allow-scripts allow-same-origin"
-                      />
-                    )}
+                    {/* Skeleton shimmer + fade-in are owned inside DemoFrame,
+                        so a demo never hard-pops onto the phone glass. */}
+                    {i < loadCount && <DemoFrame demo={demo} scale={scale} />}
                   </div>
                   <div className={styles.island} />
                   <div className={styles.homeBar} />
@@ -202,6 +262,17 @@ export default function PhoneShowcase({ demos }: Props) {
               </div>
             </motion.div>
           ))}
+
+          {/* Scroll progress rail — mirrors how far the scrubbing has moved
+              through the demo pages, like a real browser scrollbar. Sits
+              beside the last phone at the same height as the phone glass. */}
+          <div className={styles.scrollbarTrack} style={{ height: `${phoneHeight}px` }} aria-hidden="true">
+            <div
+              ref={thumbRef}
+              className={styles.scrollbarThumb}
+              style={{ height: `${thumbHeight}px` }}
+            />
+          </div>
         </div>
 
         <motion.div

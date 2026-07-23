@@ -1,13 +1,13 @@
 // ─────────────────────────────────────────────────────────────
 // GET /api/health — is the funnel alive?
 //
-// Pings Supabase (a real query against the waitlist table) and Resend
+// Pings Supabase (a real query against the businesses table) and Resend
 // (an authenticated API call) and reports plainly whether each is
 // reachable. Load it in a browser and you know in two seconds.
 //
 // Also serves as the daily keep-alive: the Vercel cron hits this route,
 // and the Supabase query counts as project activity, which stops the
-// free-tier auto-pause that has been silently killing signups.
+// free-tier auto-pause.
 //
 // Public by design (it must be loadable from a phone in a hurry), so it
 // reports status only — no keys, no config detail, no error internals.
@@ -36,8 +36,6 @@ function envPresence(): Record<string, boolean> {
     NEXT_PUBLIC_SUPABASE_ANON_KEY: has(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY),
     SUPABASE_SERVICE_ROLE_KEY:     has(process.env.SUPABASE_SERVICE_ROLE_KEY),
     RESEND_API_KEY:                has(process.env.RESEND_API_KEY),
-    RESEND_WAITLIST_SEGMENT_ID:    has(process.env.RESEND_WAITLIST_SEGMENT_ID),
-    WAITLIST_ALERT_EMAIL:          has(process.env.WAITLIST_ALERT_EMAIL),
     CRON_SECRET:                   has(process.env.CRON_SECRET),
     MASTER_EMAILS:                 has(process.env.MASTER_EMAILS),
     NEXT_PUBLIC_SITE_URL:          has(process.env.NEXT_PUBLIC_SITE_URL),
@@ -75,7 +73,7 @@ async function checkSupabase(): Promise<Check> {
   try {
     const admin = createAdminClient()
     const { error } = await withTimeout(
-      admin.from('waitlist').select('id', { count: 'exact', head: true }).limit(1)
+      admin.from('businesses').select('id', { count: 'exact', head: true }).limit(1)
     )
     if (error) throw new Error(error.message)
     return { ok: true, status: 'ok', ms: Date.now() - start }

@@ -63,6 +63,29 @@
   max-width: 1200px;
 }
 
+/* ── SCROLL PROGRESS RAIL ── sits beside the last phone, same height as
+   the phone glass. A static (non-flexing, non-draggable) indicator of how
+   far the scrubbing has moved through the demo pages. */
+.scrollbarTrack {
+  flex: none;
+  align-self: flex-start;
+  width: 5px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.scrollbarThumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--purple-2, #9b8df5), var(--purple, #7868e6));
+  will-change: transform;
+}
+
 /* Each phone slot stretches to fill 1/4 of the row */
 .phoneWrap {
   flex: 1;
@@ -129,12 +152,53 @@
   transform: translateY(0);
 }
 
-/* iframe — scale set via inline style */
+/* iframe — scale set via inline style. Fades in on load instead of
+   popping straight onto the phone glass. */
 .frame {
   display: block;
   border: none;
   pointer-events: none;
   transform-origin: 0 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.frameLoaded {
+  opacity: 1;
+}
+
+/* Shimmer placeholder shown while a demo's iframe is loading. Sits above
+   the screen background, below the island/home-bar chrome, and fades out
+   once the frame reports loaded. */
+.skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: linear-gradient(
+    100deg,
+    rgba(255,255,255,.03) 30%,
+    rgba(255,255,255,.09) 50%,
+    rgba(255,255,255,.03) 70%
+  );
+  background-size: 220% 100%;
+  animation: skeletonShimmer 1.6s ease-in-out infinite;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.skeletonHidden {
+  opacity: 0;
+}
+
+@keyframes skeletonShimmer {
+  0%   { background-position: 130% 0; }
+  100% { background-position: -30% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton { animation: none; }
+  .frame { transition: none; }
 }
 
 /* Dynamic island */
@@ -271,4 +335,8 @@
   }
 
   .scrollHint { display: none; }
+
+  /* No scrubbing in the stacked layout, so the progress rail has nothing
+     to indicate — hide it rather than show a static, meaningless bar. */
+  .scrollbarTrack { display: none; }
 }
