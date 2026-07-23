@@ -30,9 +30,9 @@ function esc(s: string): string {
 }
 
 /**
- * Sends a contact-form enquiry to the Telos inbox. Unlike the waitlist
- * (where the DB row is the source of truth), the email IS the enquiry here,
- * so a failed send must return an honest error, never a fake success.
+ * Sends a contact-form enquiry to the Telos inbox. The email IS the
+ * enquiry, so a failed send must return an honest error, never a fake
+ * success.
  */
 export async function sendEnquiry(input: EnquiryInput): Promise<EnquiryResult> {
   const hdrs = await headers()

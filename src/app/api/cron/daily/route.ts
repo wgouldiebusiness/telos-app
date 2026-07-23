@@ -3,9 +3,9 @@
 //
 // Vercel Hobby allows at most 2 cron jobs, so five separate crons meant
 // three silently never fired — including the Supabase keep-alive, which is
-// why the project kept auto-pausing and the waitlist broke. This single
-// daily dispatcher runs everything on one schedule and decides what to do
-// by the date, so nothing is dropped:
+// why the project kept auto-pausing. This single daily dispatcher runs
+// everything on one schedule and decides what to do by the date, so
+// nothing is dropped:
 //
 //   every day    → Supabase keep-alive (explicit, first), quote follow-ups,
 //                  invoice chasers
@@ -35,7 +35,7 @@ async function keepAlive(): Promise<{ ok: boolean }> {
   try {
     const admin = createAdminClient()
     const { error } = await admin
-      .from('waitlist')
+      .from('businesses')
       .select('id', { count: 'exact', head: true })
       .limit(1)
     if (error) throw new Error(error.message)

@@ -616,55 +616,6 @@
   margin: 0;
 }
 
-/* ── WAITLIST ── email capture section */
-.waitlist {
-  background: transparent;
-  padding: clamp(70px, 9vw, 120px) 0;
-  /* clears the fixed header when scrolled to via the nav anchor */
-  scroll-margin-top: 90px;
-}
-
-.waitlistInner {
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: clamp(32px, 5vw, 72px);
-  align-items: center;
-}
-
-.waitlistHead {
-  max-width: 30ch;
-}
-
-.waitlistH2 {
-  font-size: clamp(30px, 4vw, 52px);
-  letter-spacing: -0.05em;
-  line-height: 1.05;
-  color: #ffffff;
-  margin: 16px 0 20px;
-}
-
-.waitlistSub {
-  font-size: 17px;
-  color: rgba(255, 255, 255, 0.5);
-  line-height: 1.65;
-  letter-spacing: -0.01em;
-  margin: 0;
-}
-
-.waitlistFormWrap {
-  width: 100%;
-}
-
-@media (max-width: 880px) {
-  .waitlistInner {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .waitlistHead {
-    max-width: none;
-  }
-}
-
 /* ── CTA ── transparent with glow */
 .cta {
   background: transparent;
